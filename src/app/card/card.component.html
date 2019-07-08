@@ -1,0 +1,42 @@
+<div class="card">
+  <div class="card-image">
+    <img
+      [lazyLoad]="cardContent.photoURL"
+      [defaultImage]="mainLazyImage"
+      height="165"
+      [useSrcset]="true"
+    />
+    <span class="discount-label">-{{ cardContent.discount }}%</span>
+    <span class="card-title gradient truncate"
+      ><b>{{ cardContent.title }}</b></span
+    >
+  </div>
+  <div class="card-content">
+    <p id="headCard">{{ cardContent.desc }}</p>
+    <p id="op">
+      <b>Price: </b>
+
+      <s class="grey-text">₹ {{ cardContent.mrp }}</s>
+      <b> ₹ {{ cardContent.price }}</b>
+    </p>
+
+    <!-- <p>Discount: {{ cardContent.discount }} %</p> -->
+    <div class="row " style="padding-left: 0px;margin-top: 5%">
+      <div
+        class="col s7 left grey-text"
+        style="font-size: 11px;padding-top: 5%;padding-left: 0px"
+      >
+        Limited Stock
+      </div>
+      <div
+        class="col s2 green-text"
+        style="font-size: 12px;font-weight: bolder;padding-top: 4%"
+      >
+        5KM
+      </div>
+      <div class="col s2 offset-s1">
+        <img src="../../assets/cirlceGreenWalk.png" width="30" height="30" />
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,201 @@
+<div class="navbar-fixed  grey darken-3">
+  <nav>
+    <div class="nav-wrapper grey darken-3">
+      <a href="#" class="brand-logo" style="padding-left: 4%;"
+        ><img
+          src="../../assets/logo.png"
+          alt="logo"
+          height="45"
+          width="155"
+          style="margin-top: 7%; margin-right: 4%"
+      /></a>
+      <a
+        href="#"
+        class="sidenav-trigger right"
+        data-target="mobile-nav2"
+        style="color:white"
+      >
+        <i class="material-icons">drag_indicator</i>
+      </a>
+
+      <ul class="hide-on-med-and-down" style="padding-left: 15%;">
+        <li>
+          <a
+            id="menu-dropdown"
+            href=""
+            class="dropdown-button"
+            data-target="services-dropdown"
+            style=" color:white;font-family: 'Oswald', sans-serif"
+            ><b>NEAR YOU</b
+            ><i class="material-icons right">arrow_drop_down</i></a
+          >
+        </li>
+        <form action="" method="post" autocomplete="off">
+          <div class="input-field" style="margin-left:-18%; color:black">
+            <input
+              #searchBox
+              id="search"
+              type="search"
+              placeholder="Search"
+              name="search"
+              (input)="search(searchBox.value)"
+            />
+            <!---->
+            <label class="label-icon" for="search">
+              <a routerLink="/search"> <i class="material-icons">search</i></a>
+            </label>
+            <i class="material-icons">close</i>
+          </div>
+        </form>
+      </ul>
+      <ul class="left hide-on-med-and-down">
+        <li>
+          <a class="modal-trigger" data-target="#modal1">
+            <i class="material-icons" style="color:white">my_location</i>
+          </a>
+        </li>
+
+        <li>
+          <a
+            id="notifications-dropdown"
+            class="dropdown-button"
+            data-target="services3-dropdown"
+            style="color:white"
+          >
+            <i class="material-icons" style="color:white">notifications_none</i>
+          </a>
+        </li>
+        <li class="imgProfil" style="color:white">
+          <a
+            id="dropdown-btn-profile"
+            href=""
+            class="dropdown-button"
+            data-target="services2-dropdown"
+            style="color:white"
+          >
+            <img
+              src="https://i0.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png?fit=256%2C256&quality=100&ssl=1"
+              alt=""
+              class="circle"
+              style="color:white"
+            />
+          </a>
+        </li>
+        <ul id="AccountInfo" class="hidden z-depth-5" style="color:white">
+          <li>sdfsdf</li>
+          <li>fghfgh</li>
+          <li>jkjkljkljkl</li>
+          <li>xwcxwcwxcwxc</li>
+        </ul>
+        <!-- <li>
+          <a href="">
+            <i class="material-icons" style="color:white">exit_to_app</i>
+          </a>
+        </li> -->
+      </ul>
+    </div>
+  </nav>
+</div>
+<!-- Near You Dropdown Menu -->
+<div id="services-dropdown" class="dropdown-content row">
+  <ul
+    id="menuDropdownContent"
+    class="vertical-tabs col s4"
+    style="font-family:  'Oswald', sans-serif;"
+  >
+    <li>
+      <a href="#!" style="font-weight: bolder" data-target="A">Apparel</a>
+    </li>
+    <li>
+      <a href="#!" style="font-weight: bolder" data-target="B">Grocery</a>
+    </li>
+    <li>
+      <a href="#!" style="font-weight: bolder" data-target="C"
+        >Home Appliances</a
+      >
+    </li>
+    <li><a href="#!" style="font-weight: bolder" data-target="D">Decors</a></li>
+  </ul>
+
+  <div id="vtc" class="vertical-tab-content col s8" style="padding: 0"></div>
+</div>
+<!-- Mobile Nav for Navbar -->
+<ul class="sidenav" id="mobile-nav2">
+  <li>
+    <a><i class="material-icons">notifications_none</i></a>
+  </li>
+  <li>
+    <a><i class="material-icons">exit_to_app</i></a>
+  </li>
+</ul>
+
+<!-- Inner Dropdown Menu Items -->
+
+<div class="vertical-tab-target" id="A">
+  <ul style="font-family:  'Oswald', sans-serif;">
+    <li><a href="">T-Shirts</a></li>
+    <li><a href="">Sweatshirts</a></li>
+    <li><a href="">Jeans</a></li>
+    <li><a href="">Sneakers</a></li>
+  </ul>
+</div>
+<div class="vertical-tab-target" id="B">
+  <ul style="font-family:  'Oswald', sans-serif;">
+    <li><a href="">Dressings & Sauces</a></li>
+    <li><a href="">Dairy Products</a></li>
+    <li><a href="">Fruits</a></li>
+    <li><a href="">Frozen Food</a></li>
+  </ul>
+</div>
+<div class="vertical-tab-target" id="C">
+  <ul style="font-family:  'Oswald', sans-serif;">
+    <li><a href="">TV & Home Theatres</a></li>
+    <li><a href="">Washing Machines</a></li>
+    <li><a href="">Speakers</a></li>
+    <li><a href="">Video Games & Consoles</a></li>
+  </ul>
+</div>
+<div class="vertical-tab-target" id="D">
+  <ul style="font-family:  'Oswald', sans-serif;">
+    <li><a href="">Curtains</a></li>
+    <li><a href="">Pillows & Cushions</a></li>
+    <li><a href="">Bed Sheets</a></li>
+    <li><a href="">Wallpapers</a></li>
+  </ul>
+</div>
+<!-- Select City Modal -->
+<div id="modal1" class="modal">
+  <div class="modal-content" style="font-family:  'Oswald', sans-serif;">
+    <h4>Select City</h4>
+    <label>Available Cities</label>
+    <select class="browser-default">
+      <option value="" disabled selected>Choose your option</option>
+      <option value="1">Delhi</option>
+      <option value="2">Bangalore</option>
+      <option value="3">Chennai</option>
+      <option value="4">Ahemdabad</option>
+      <option value="5">Indore</option>
+      <option value="6">Kolkata</option>
+    </select>
+  </div>
+  <div class="modal-footer">
+    <a
+      href="#!"
+      class=" modal-action modal-close waves-effect waves-green btn-flat"
+      >Select
+    </a>
+  </div>
+</div>
+<!-- Profile Dropdown Menu -->
+<div id="services2-dropdown" class="dropdown-content row">
+  <ul class="vertical-tabs">
+    <li><a href="#!" style="font-weight: bolder">View Profile</a></li>
+    <li><a href="#!" style="font-weight: bolder">Edit Profile Photo</a></li>
+  </ul>
+</div>
+<!-- Notification Dropdown -->
+<div id="services3-dropdown" class="dropdown-content row">
+  <ul class="vertical-tabs">
+    <li><a href="">No new Notifications</a></li>
+  </ul>
+</div>

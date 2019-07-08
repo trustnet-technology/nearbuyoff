@@ -1,0 +1,963 @@
+<div *ngIf="product; else second" style="background-color: #f2f3f4 ;font-family:  'Oswald', sans-serif;">
+  <div class="container">
+    <div id="productRow" class="row">
+      <div
+        class="col s12 m4 l5 card"
+        style="padding-top: 1%;padding-bottom: 0.5%; width:373px; height:470px"
+      >
+      <img class="materialboxed" [lazyLoad]="product.photoURL" id="productImage" [defaultImage]="mainLazyImage" [useSrcset]="true" />
+      </div>
+      <div class="col s12 m4 l6"  style="padding-left: 2.5%">
+        <div class="row card" >
+          <div class="col s7">
+            <h4>{{ product.title }}</h4> 
+          </div>
+          <div class="col s5" style="padding-top:6%;">
+            <h6 class="blue-grey-text"><b class="black-text">Category:</b> Grocery</h6>
+          </div>
+          <div class="divider"></div>
+        </div>
+        <div class="row card">
+          <div class="row">
+            <div class="col s10 offset-s1" style="padding-top: 2%">
+              <h6><b>Product Description:</b></h6>
+            </div>  
+          </div>
+          <div class="row">
+        <div class="col s10 offset-s1" style="font-family: 'Roboto', sans-serif;">
+            
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur.
+            
+          </div>
+        </div>
+      
+        <div class="row">
+          <div class="col s3 offset-s2">
+            <h5 id="span1">
+              <s>₹{{ product.mrp }}</s>
+            </h5>
+          </div>
+          <div class="col s3 center">
+            <h5>₹{{ product.price }}</h5>
+          </div>
+          <div class="col s2">
+            <a
+              id="social-dropdown"
+            data-target="services-social-dropdown"
+              class=" dropdown-button btn-floating btn-large waves-effect waves-light  blue darken-4"
+              ><i class="material-icons">share</i></a
+            >
+          </div>
+        </div>
+        <button class="btn btn-large center modal-trigger" style="width: 100%;font-size: 30px;font-family: inherit" data-target="modal-buyers">Select from +3 shops</button>
+      </div> 
+    </div> 
+    </div>
+  </div>
+
+  <div id="otherSellerscont">
+    <!-- <div class="row" style="padding-top:2%">
+      <hr id="hr2" />
+      <h5 class="center">Choose from sellers</h5>
+      <div class="card col s12 m4 l4 offset-l1" id="productSellerDetails">
+        <table class="highlight">
+          <thead>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <img
+                  class="circle z-depth-1 responsive-img"
+                  src="https://cdn3.iconfinder.com/data/icons/gradient-circle/36/2018-512.png"
+                  alt="profile image"
+                  style="width:65px"
+                />
+              </td>
+              <td>
+                <h5>Seller1</h5>
+                <p style="color:grey">5th Block, Kormangala</p>
+                <div class="rate">
+                  <input type="radio" id="star5" name="rate" value="5" />
+                  <label for="star5" title="text">5 stars</label>
+                  <input type="radio" id="star4" name="rate" value="4" />
+                  <label for="star4" title="text">4 stars</label>
+                  <input type="radio" id="star3" name="rate" value="3" />
+                  <label for="star3" title="text">3 stars</label>
+                  <input type="radio" id="star2" name="rate" value="2" />
+                  <label for="star2" title="text">2 stars</label>
+                  <input type="radio" id="star1" name="rate" value="1" />
+                  <label for="star1" title="text">1 star</label>
+                </div>
+              </td>
+              <td>
+                  <a class="waves-effect waves-light btn green" routerLink="/product/{{ product.productID }}/seller">Book</a>
+                  <h5>₹{{ product.mrp }}</h5>
+                  <p style="color:grey">
+                    <s>₹{{ product.mrp }}</s>
+                  </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <img
+                  class="circle z-depth-1 responsive-img"
+                  src="https://cdn3.iconfinder.com/data/icons/gradient-circle/36/2018-512.png"
+                  alt="profile image"
+                  style="width:65px"
+                />
+              </td>
+              <td>
+                <h5>Seller2</h5>
+                <p style="color:grey">8th Block, Kormangala</p>
+                <div class="rate">
+                  <input type="radio" id="star5" name="rate" value="5" />
+                  <label for="star5" title="text">5 stars</label>
+                  <input type="radio" id="star4" name="rate" value="4" />
+                  <label for="star4" title="text">4 stars</label>
+                  <input type="radio" id="star3" name="rate" value="3" />
+                  <label for="star3" title="text">3 stars</label>
+                  <input type="radio" id="star2" name="rate" value="2" />
+                  <label for="star2" title="text">2 stars</label>
+                  <input type="radio" id="star1" name="rate" value="1" />
+                  <label for="star1" title="text">1 star</label>
+                </div>
+              </td>
+              <td>
+                  <a class="waves-effect waves-light btn green" routerLink="/product/{{ product.productID }}/seller">Book</a>
+                <h5>₹{{ product.mrp }}</h5>
+                <p style="color:grey">
+                  <s>₹{{ product.mrp }}</s>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <img
+                  class="circle z-depth-1 responsive-img"
+                  src="https://cdn3.iconfinder.com/data/icons/gradient-circle/36/2018-512.png"
+                  alt="profile image"
+                  style="width:65px"
+                />
+              </td>
+              <td>
+                <h5>Seller3</h5>
+                <p style="color:grey">6th Block, Kormangala</p>
+                <div class="rate">
+                  <input type="radio" id="star5" name="rate" value="5" />
+                  <label for="star5" title="text">5 stars</label>
+                  <input type="radio" id="star4" name="rate" value="4" />
+                  <label for="star4" title="text">4 stars</label>
+                  <input type="radio" id="star3" name="rate" value="3" />
+                  <label for="star3" title="text">3 stars</label>
+                  <input type="radio" id="star2" name="rate" value="2" />
+                  <label for="star2" title="text">2 stars</label>
+                  <input type="radio" id="star1" name="rate" value="1" />
+                  <label for="star1" title="text">1 star</label>
+                </div>
+              </td>
+              <td>
+                  <a class="waves-effect waves-light btn green" routerLink="/product/{{ product.productID }}/seller">Book</a>
+                  <h5>₹{{ product.mrp }}</h5>
+                  <p style="color:grey">
+                    <s>₹{{ product.mrp }}</s>
+                  </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <img
+                  class="circle z-depth-1 responsive-img"
+                  src="https://cdn3.iconfinder.com/data/icons/gradient-circle/36/2018-512.png"
+                  alt="profile image"
+                  style="width:65px"
+                />
+              </td>
+              <td>
+                <h5>Seller4</h5>
+                <p style="color:grey">6th Block, Kormangala</p>
+                <div class="rate">
+                  <input type="radio" id="star5" name="rate" value="5" />
+                  <label for="star5" title="text">5 stars</label>
+                  <input type="radio" id="star4" name="rate" value="4" />
+                  <label for="star4" title="text">4 stars</label>
+                  <input type="radio" id="star3" name="rate" value="3" />
+                  <label for="star3" title="text">3 stars</label>
+                  <input type="radio" id="star2" name="rate" value="2" />
+                  <label for="star2" title="text">2 stars</label>
+                  <input type="radio" id="star1" name="rate" value="1" />
+                  <label for="star1" title="text">1 star</label>
+                </div>
+              </td>
+              <td>
+                  <a class="waves-effect waves-light btn green" routerLink="/product/{{ product.productID }}/seller">Book</a>
+                  <h5>₹{{ product.mrp }}</h5>
+                  <p style="color:grey">
+                    <s>₹{{ product.mrp }}</s>
+                  </p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col s12 m4 l6 card" style="padding-top:1%;padding-bottom: 1%">
+        <agm-map [latitude]="lat" [longitude]="lng">
+          <agm-marker
+            *ngFor="let position of positions"
+            [latitude]="position.post_latitude"
+            [longitude]="position.post_longitude">
+          </agm-marker>
+        </agm-map>
+      </div>
+    </div> -->
+    <div id="recommProductsSlider">
+      <hr />
+      <h5 class="center">Recommended Products</h5>
+      <div class="carousel" id="productPageCarousel">
+        <div class="carousel-item" id="recommCarousel">
+          <div id="gradientCard" class="card">
+            <div class="card-image">
+              <img 
+                src="../../../assets/etautzembed.jpg" height=270
+              />
+              <span class="card-title gradient">Suits</span>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item" id="recommCarousel">
+          <div id="gradientCard" class="card">
+            <div class="card-image">
+              <img 
+                src="../../../assets/etautzembed1.jpg" height=270
+              />
+              <span class="card-title gradient">Coats</span>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item" id="recommCarousel">
+          <div id="gradientCard" class="card">
+            <div class="card-image">
+              <img 
+                src="../../../assets/myargallery.jpg" height=270
+              />
+              <span class="card-title gradient">Women Suits</span>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item" id="recommCarousel">
+          <div id="gradientCard" class="card">
+            <div class="card-image">
+              <img 
+                src="../../../assets/myargallery1.jpg" height=270
+              />
+              <span class="card-title gradient">Jackets (Women)</span>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item" id="recommCarousel">
+          <div id="gradientCard" class="card">
+            <div class="card-image">
+              <img 
+                src="../../../assets/etautzembed.jpg" height=270
+              />
+              <span class="card-title gradient">Outfits</span>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item" id="recommCarousel">
+          <div id="gradientCard" class="card">
+            <div class="card-image">
+              <img 
+                src="../../../assets/theorygallery.jpg" height=270
+              />
+              <span class="card-title gradient">Formal Wear</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="modal-buyers" class="modal">
+  <div class="modal-content">
+    <div class="row">
+      <div class="col s12 m4 l7 card" style="padding-top:1%;padding-bottom: 1%;margin-right: 2%">
+        <agm-map [latitude]="lat" [longitude]="lng">
+          <agm-marker
+            *ngFor="let position of positions"
+            [latitude]="position.post_latitude"
+            [longitude]="position.post_longitude">
+          </agm-marker>
+        </agm-map>
+      </div>
+      <div class="card col s12 m4 l4" id="productSellerDetails">
+        <table class="highlight">
+          <thead>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <img
+                  class="circle z-depth-1 responsive-img"
+                  src="https://cdn3.iconfinder.com/data/icons/gradient-circle/36/2018-512.png"
+                  alt="profile image"
+                  style="width:65px"
+                />
+              </td>
+              <td>
+                <h5>Seller1</h5>
+                <p style="color:grey">5th Block, Kormangala</p>
+                <div class="rate">
+                  <input type="radio" id="star5" name="rate" value="5" />
+                  <label for="star5" title="text">5 stars</label>
+                  <input type="radio" id="star4" name="rate" value="4" />
+                  <label for="star4" title="text">4 stars</label>
+                  <input type="radio" id="star3" name="rate" value="3" />
+                  <label for="star3" title="text">3 stars</label>
+                  <input type="radio" id="star2" name="rate" value="2" />
+                  <label for="star2" title="text">2 stars</label>
+                  <input type="radio" id="star1" name="rate" value="1" />
+                  <label for="star1" title="text">1 star</label>
+                </div>
+              </td>
+              <td>
+                <div *ngIf="product; else secpro">
+                    <a class="waves-effect waves-light btn green" routerLink="/product/{{ product.productID }}/seller">Buy Now</a>
+                    <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" style="margin-top: 4%" >Connect</a>
+                    <h5><s style="color:grey;font-size: 18px">₹{{ product.mrp }}</s> ₹{{ product.mrp }}</h5>
+                </div>
+                <ng-template #secpro>
+                  <div *ngIf="product2; else thirdpro">
+                    <a class="waves-effect waves-light btn green" routerLink="/product/{{ product2.productID }}/seller">Buy Now</a>
+                    <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" style="margin-top: 4%" >Connect</a>
+                    <h5><s style="color:grey;font-size: 18px">₹{{ product2.mrp }}</s> ₹{{ product2.mrp }}</h5>
+                  </div>
+                  </ng-template>
+                  <ng-template #thirdpro>
+                      <div *ngIf="product3; else fourpro">
+                        <a class="waves-effect waves-light btn green" routerLink="/product/{{ product3.productID }}/seller">Buy Now</a>
+                        <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" style="margin-top: 4%" >Connect</a>
+                        <h5><s style="color:grey;font-size: 18px">₹{{ product3.mrp }}</s> ₹{{ product3.mrp }}</h5>
+                      </div>
+                      </ng-template>
+                      <ng-template #fourpro>
+                          <div *ngIf="product4">
+                            <a class="waves-effect waves-light btn green" routerLink="/product/{{ product4.productID }}/seller">Buy Now</a>
+                            <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" style="margin-top: 4%" >Connect</a>
+                            <h5><s style="color:grey;font-size: 18px">₹{{ product4.mrp }}</s> ₹{{ product4.mrp }}</h5>
+                          </div>
+                          </ng-template>
+                  
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <img
+                  class="circle z-depth-1 responsive-img"
+                  src="https://cdn3.iconfinder.com/data/icons/gradient-circle/36/2018-512.png"
+                  alt="profile image"
+                  style="width:65px"
+                />
+              </td>
+              <td>
+                <h5>Seller2</h5>
+                <p style="color:grey">8th Block, Kormangala</p>
+                <div class="rate">
+                  <input type="radio" id="star5" name="rate" value="5" />
+                  <label for="star5" title="text">5 stars</label>
+                  <input type="radio" id="star4" name="rate" value="4" />
+                  <label for="star4" title="text">4 stars</label>
+                  <input type="radio" id="star3" name="rate" value="3" />
+                  <label for="star3" title="text">3 stars</label>
+                  <input type="radio" id="star2" name="rate" value="2" />
+                  <label for="star2" title="text">2 stars</label>
+                  <input type="radio" id="star1" name="rate" value="1" />
+                  <label for="star1" title="text">1 star</label>
+                </div>
+              </td>
+              <td>
+                  <div *ngIf="product; else secpro">
+                      <a class="waves-effect waves-light btn green" routerLink="/product/{{ product.productID }}/seller">Buy Now</a>
+                      <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" style="margin-top: 4%" >Connect</a>
+                      <h5><s style="color:grey;font-size: 18px">₹{{ product.mrp }}</s> ₹{{ product.mrp }}</h5>
+                  </div>
+                  <ng-template #secpro>
+                    <div *ngIf="product2; else thirdpro">
+                      <a class="waves-effect waves-light btn green" routerLink="/product/{{ product2.productID }}/seller">Buy Now</a>
+                      <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" style="margin-top: 4%" >Connect</a>
+                      <h5><s style="color:grey;font-size: 18px">₹{{ product2.mrp }}</s> ₹{{ product2.mrp }}</h5>
+                    </div>
+                    </ng-template>
+                    <ng-template #thirdpro>
+                        <div *ngIf="product3; else fourpro">
+                          <a class="waves-effect waves-light btn green" routerLink="/product/{{ product3.productID }}/seller">Buy Now</a>
+                          <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" style="margin-top: 4%" >Connect</a>
+                          <h5><s style="color:grey;font-size: 18px">₹{{ product3.mrp }}</s> ₹{{ product3.mrp }}</h5>
+                        </div>
+                        </ng-template>
+                        <ng-template #fourpro>
+                            <div *ngIf="product4">
+                              <a class="waves-effect waves-light btn green" routerLink="/product/{{ product4.productID }}/seller">Buy Now</a>
+                              <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" style="margin-top: 4%" >Connect</a>
+                              <h5><s style="color:grey;font-size: 18px">₹{{ product4.mrp }}</s> ₹{{ product4.mrp }}</h5>
+                            </div>
+                            </ng-template>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <img
+                  class="circle z-depth-1 responsive-img"
+                  src="https://cdn3.iconfinder.com/data/icons/gradient-circle/36/2018-512.png"
+                  alt="profile image"
+                  style="width:65px"
+                />
+              </td>
+              <td>
+                <h5>Seller3</h5>
+                <p style="color:grey">6th Block, Kormangala</p>
+                <div class="rate">
+                  <input type="radio" id="star5" name="rate" value="5" />
+                  <label for="star5" title="text">5 stars</label>
+                  <input type="radio" id="star4" name="rate" value="4" />
+                  <label for="star4" title="text">4 stars</label>
+                  <input type="radio" id="star3" name="rate" value="3" />
+                  <label for="star3" title="text">3 stars</label>
+                  <input type="radio" id="star2" name="rate" value="2" />
+                  <label for="star2" title="text">2 stars</label>
+                  <input type="radio" id="star1" name="rate" value="1" />
+                  <label for="star1" title="text">1 star</label>
+                </div>
+              </td>
+              <td>
+                  <div *ngIf="product; else secpro">
+                      <a class="waves-effect waves-light btn green" routerLink="/product/{{ product.productID }}/seller">Buy Now</a>
+                      <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" style="margin-top: 4%" >Connect</a>
+                      <h5><s style="color:grey;font-size: 18px">₹{{ product.mrp }}</s> ₹{{ product.mrp }}</h5>
+                  </div>
+                  <ng-template #secpro>
+                    <div *ngIf="product2; else thirdpro">
+                      <a class="waves-effect waves-light btn green" routerLink="/product/{{ product2.productID }}/seller">Buy Now</a>
+                      <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" style="margin-top: 4%" >Connect</a>
+                      <h5><s style="color:grey;font-size: 18px">₹{{ product2.mrp }}</s> ₹{{ product2.mrp }}</h5>
+                    </div>
+                    </ng-template>
+                    <ng-template #thirdpro>
+                        <div *ngIf="product3; else fourpro">
+                          <a class="waves-effect waves-light btn green" routerLink="/product/{{ product3.productID }}/seller">Buy Now</a>
+                          <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" style="margin-top: 4%" >Connect</a>
+                          <h5><s style="color:grey;font-size: 18px">₹{{ product3.mrp }}</s> ₹{{ product3.mrp }}</h5>
+                        </div>
+                        </ng-template>
+                        <ng-template #fourpro>
+                            <div *ngIf="product4">
+                              <a class="waves-effect waves-light btn green" routerLink="/product/{{ product4.productID }}/seller">Buy Now</a>
+                              <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" style="margin-top: 4%" >Connect</a>
+                              <h5><s style="color:grey;font-size: 18px">₹{{ product4.mrp }}</s> ₹{{ product4.mrp }}</h5>
+                            </div>
+                            </ng-template>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <img
+                  class="circle z-depth-1 responsive-img"
+                  src="https://cdn3.iconfinder.com/data/icons/gradient-circle/36/2018-512.png"
+                  alt="profile image"
+                  style="width:65px"
+                />
+              </td>
+              <td>
+                <h5>Seller4</h5>
+                <p style="color:grey">6th Block, Kormangala</p>
+                <div class="rate">
+                  <input type="radio" id="star5" name="rate" value="5" />
+                  <label for="star5" title="text">5 stars</label>
+                  <input type="radio" id="star4" name="rate" value="4" />
+                  <label for="star4" title="text">4 stars</label>
+                  <input type="radio" id="star3" name="rate" value="3" />
+                  <label for="star3" title="text">3 stars</label>
+                  <input type="radio" id="star2" name="rate" value="2" />
+                  <label for="star2" title="text">2 stars</label>
+                  <input type="radio" id="star1" name="rate" value="1" />
+                  <label for="star1" title="text">1 star</label>
+                </div>
+              </td>
+              <td>
+                  <div *ngIf="product; else secpro">
+                      <a class="waves-effect waves-light btn green" routerLink="/product/{{ product.productID }}/seller">Buy Now</a>
+                      <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" style="margin-top: 4%" >Connect</a>
+                      <h5><s style="color:grey;font-size: 18px">₹{{ product.mrp }}</s> ₹{{ product.mrp }}</h5>
+                  </div>
+                  <ng-template #secpro>
+                    <div *ngIf="product2; else thirdpro">
+                      <a class="waves-effect waves-light btn green" routerLink="/product/{{ product2.productID }}/seller">Buy Now</a>
+                      <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" style="margin-top: 4%" >Connect</a>
+                      <h5><s style="color:grey;font-size: 18px">₹{{ product2.mrp }}</s> ₹{{ product2.mrp }}</h5>
+                    </div>
+                    </ng-template>
+                    <ng-template #thirdpro>
+                        <div *ngIf="product3; else fourpro">
+                          <a class="waves-effect waves-light btn green" routerLink="/product/{{ product3.productID }}/seller">Buy Now</a>
+                          <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" style="margin-top: 4%" >Connect</a>
+                          <h5><s style="color:grey;font-size: 18px">₹{{ product3.mrp }}</s> ₹{{ product3.mrp }}</h5>
+                        </div>
+                        </ng-template>
+                        <ng-template #fourpro>
+                            <div *ngIf="product4">
+                              <a class="waves-effect waves-light btn green" routerLink="/product/{{ product4.productID }}/seller">Buy Now</a>
+                              <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" style="margin-top: 4%" >Connect</a>
+                              <h5><s style="color:grey;font-size: 18px">₹{{ product4.mrp }}</s> ₹{{ product4.mrp }}</h5>
+                            </div>
+                            </ng-template>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="modal-otp" class="modal" >
+    <div class="modal-content">
+        <h4>Enter Phone</h4>
+        <input #otpTF placeholder="Phone Num" id="first_name" type="text" class="validate">
+      </div>
+      <div class="modal-footer">
+        <a (click)="getOTP(otpTF.value)" class="modal-close modal-trigger waves-effect waves-green btn-flat" data-target="modal-verify">Verify OTP</a>
+      </div>  
+</div>  
+
+<div id="modal-verify" class="modal" >
+    <div class="modal-content">
+      <h4>Enter OTP</h4>
+       <input #otpTFT placeholder="OTP" id="first_name" type="text" class="validate" style="width: 50%;">
+    </div>
+          <div class="modal-footer">
+            <a (click)="sendOTP(otpTFT.value,otpDET)" data-target="verified-modal" class="modal-close modal-trigger waves-effect waves-green btn-flat">Submit</a>
+          </div>
+        </div>
+
+          <div id="verified-modal" class="modal">
+              <div class="modal-content">
+                <p>{{otpRecvMessage.Details}}</p>
+              </div>
+              <div class="modal-footer">
+                <a class="modal-close waves-effect waves-green btn-flat">Close</a>
+              </div>
+            </div>
+
+<div id="services-social-dropdown" class="dropdown-content row">
+    <ul
+      id="menuDropdownContent"
+      class="vertical-tabs col s3"
+    >
+    <li><a href="#!"> 
+        <fb-like></fb-like></a>
+      </li> 
+      <li><a href="#!">  <linkedin-share></linkedin-share> </a></li> 
+    </ul>
+  </div>
+<ng-template #second>
+  <div *ngIf="product2; else third" style="background-color: #f2f3f4 ;font-family:  'Oswald', sans-serif;">
+    <div class="container">
+      <div id="productRow" class="row">
+        <div
+          class="col s12 m4 l5 card"
+          style="padding-top: 1%;padding-bottom: 0.5%; width:373px; height:470px"
+        >
+        <img class="materialboxed" [lazyLoad]="product2.photoURL" id="productImage" [defaultImage]="mainLazyImage" [useSrcset]="true" />
+        </div>
+        <div class="col s12 m4 l6"  style="padding-left: 2.5%">
+          <div class="row card" >
+            <div class="col s7">
+              <h4>{{ product2.title }}</h4> 
+            </div>
+            <div class="col s5" style="padding-top:6%;">
+              <h6 class="blue-grey-text"><b class="black-text">Category:</b> Grocery</h6>
+            </div>
+            <div class="divider"></div>
+          </div>
+          <div class="row card">
+            <div class="row">
+              <div class="col s10 offset-s1" style="padding-top: 2%">
+                <h6><b>Product Description:</b></h6>
+              </div>  
+            </div>
+            <div class="row">
+          <div class="col s10 offset-s1" style="font-family: 'Roboto', sans-serif;">
+              
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                nulla pariatur.
+              
+            </div>
+          </div>
+        
+          <div class="row">
+            <div class="col s3 offset-s2">
+              <h5 id="span1">
+                <s>₹{{ product2.mrp }}</s>
+              </h5>
+            </div>
+            <div class="col s3 center">
+              <h5>₹{{ product2.price }}</h5>
+            </div>
+            <div class="col s2">
+              <a
+                id="social-dropdown"
+              data-target="services-social-dropdown"
+                class=" dropdown-button btn-floating btn-large waves-effect waves-light  blue darken-4"
+                ><i class="material-icons">share</i></a
+              >
+            </div>
+          </div>
+          <button class="btn btn-large center modal-trigger" style="width: 100%;font-size: 30px;font-family: inherit" data-target="modal-buyers">Select from +3 shops</button>
+        </div> 
+      </div> 
+      </div>
+    </div>
+    
+    <div id="otherSellerscont">
+      <div id="recommProductsSlider">
+        <hr />
+        <h5 class="center">Recommended Products</h5>
+        <div class="carousel" id="productPageCarousel">
+          <div class="carousel-item" id="recommCarousel">
+            <div id="gradientCard" class="card">
+              <div class="card-image">
+                <img 
+                  src="../../../assets/etautzembed.jpg" height=270
+                />
+                <span class="card-title gradient">Suits</span>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item" id="recommCarousel">
+            <div id="gradientCard" class="card">
+              <div class="card-image">
+                <img 
+                  src="../../../assets/etautzembed1.jpg" height=270
+                />
+                <span class="card-title gradient">Coats</span>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item" id="recommCarousel">
+            <div id="gradientCard" class="card">
+              <div class="card-image">
+                <img 
+                  src="../../../assets/myargallery.jpg" height=270
+                />
+                <span class="card-title gradient">Women Suits</span>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item" id="recommCarousel">
+            <div id="gradientCard" class="card">
+              <div class="card-image">
+                <img 
+                  src="../../../assets/myargallery1.jpg" height=270
+                />
+                <span class="card-title gradient">Jackets (Women)</span>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item" id="recommCarousel">
+            <div id="gradientCard" class="card">
+              <div class="card-image">
+                <img 
+                  src="../../../assets/etautzembed.jpg" height=270
+                />
+                <span class="card-title gradient">Outfits</span>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item" id="recommCarousel">
+            <div id="gradientCard" class="card">
+              <div class="card-image">
+                <img 
+                  src="../../../assets/theorygallery.jpg" height=270
+                />
+                <span class="card-title gradient">Formal Wear</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>        
+  </ng-template>
+  <ng-template #third>
+      <div *ngIf="product3; else fourth" style="background-color: #f2f3f4 ;font-family:  'Oswald', sans-serif;">
+          <div class="container">
+            <div id="productRow" class="row">
+              <div
+                class="col s12 m4 l5 card"
+                style="padding-top: 1%;padding-bottom: 0.5%; width:373px; height:470px"
+              >
+              <img class="materialboxed" [lazyLoad]="product3.photoURL" id="productImage" [defaultImage]="mainLazyImage" [useSrcset]="true" />
+              </div>
+              <div class="col s12 m4 l6"  style="padding-left: 2.5%">
+                <div class="row card" >
+                  <div class="col s7">
+                    <h4>{{ product3.title }}</h4> 
+                  </div>
+                  <div class="col s5" style="padding-top:6%;">
+                    <h6 class="blue-grey-text"><b class="black-text">Category:</b> Grocery</h6>
+                  </div>
+                  <div class="divider"></div>
+                </div>
+                <div class="row card">
+                  <div class="row">
+                    <div class="col s10 offset-s1" style="padding-top: 2%">
+                      <h6><b>Product Description:</b></h6>
+                    </div>  
+                  </div>
+                  <div class="row">
+                <div class="col s10 offset-s1" style="font-family: 'Roboto', sans-serif;">
+                    
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                      eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                      enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                      nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                      reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                      nulla pariatur.
+                    
+                  </div>
+                </div>
+              
+                <div class="row">
+                  <div class="col s3 offset-s2">
+                    <h5 id="span1">
+                      <s>₹{{ product3.mrp }}</s>
+                    </h5>
+                  </div>
+                  <div class="col s3 center">
+                    <h5>₹{{ product3.price }}</h5>
+                  </div>
+                  <div class="col s2">
+                    <a
+                      id="social-dropdown"
+                    data-target="services-social-dropdown"
+                      class=" dropdown-button btn-floating btn-large waves-effect waves-light  blue darken-4"
+                      ><i class="material-icons">share</i></a
+                    >
+                  </div>
+                </div>
+                <button class="btn btn-large center modal-trigger" style="width: 100%;font-size: 30px;font-family: inherit" data-target="modal-buyers">Select from +3 shops</button>
+              </div> 
+            </div> 
+            </div>
+          </div>
+          
+          <div id="otherSellerscont">
+            <div id="recommProductsSlider">
+              <hr />
+              <h5 class="center">Recommended Products</h5>
+              <div class="carousel" id="productPageCarousel">
+                <div class="carousel-item" id="recommCarousel">
+                  <div id="gradientCard" class="card">
+                    <div class="card-image">
+                      <img 
+                        src="../../../assets/etautzembed.jpg" height=270
+                      />
+                      <span class="card-title gradient">Suits</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item" id="recommCarousel">
+                  <div id="gradientCard" class="card">
+                    <div class="card-image">
+                      <img 
+                        src="../../../assets/etautzembed1.jpg" height=270
+                      />
+                      <span class="card-title gradient">Coats</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item" id="recommCarousel">
+                  <div id="gradientCard" class="card">
+                    <div class="card-image">
+                      <img 
+                        src="../../../assets/myargallery.jpg" height=270
+                      />
+                      <span class="card-title gradient">Women Suits</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item" id="recommCarousel">
+                  <div id="gradientCard" class="card">
+                    <div class="card-image">
+                      <img 
+                        src="../../../assets/myargallery1.jpg" height=270
+                      />
+                      <span class="card-title gradient">Jackets (Women)</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item" id="recommCarousel">
+                  <div id="gradientCard" class="card">
+                    <div class="card-image">
+                      <img 
+                        src="../../../assets/etautzembed.jpg" height=270
+                      />
+                      <span class="card-title gradient">Outfits</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item" id="recommCarousel">
+                  <div id="gradientCard" class="card">
+                    <div class="card-image">
+                      <img 
+                        src="../../../assets/theorygallery.jpg" height=270
+                      />
+                      <span class="card-title gradient">Formal Wear</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> 
+  </ng-template>
+  <ng-template #fourth>
+      <div *ngIf="product4" style="background-color: #f2f3f4 ;font-family:  'Oswald', sans-serif;">
+          <div class="container">
+            <div id="productRow" class="row">
+              <div
+                class="col s12 m4 l5 card"
+                style="padding-top: 1%;padding-bottom: 0.5%; width:373px; height:470px"
+              >
+              <img class="materialboxed" [lazyLoad]="product4.photoURL" id="productImage" [defaultImage]="mainLazyImage" [useSrcset]="true" />
+              </div>
+              <div class="col s12 m4 l6"  style="padding-left: 2.5%">
+                <div class="row card" >
+                  <div class="col s7">
+                    <h4>{{ product4.title }}</h4> 
+                  </div>
+                  <div class="col s5" style="padding-top:6%;">
+                    <h6 class="blue-grey-text"><b class="black-text">Category:</b> Grocery</h6>
+                  </div>
+                  <div class="divider"></div>
+                </div>
+                <div class="row card">
+                  <div class="row">
+                    <div class="col s10 offset-s1" style="padding-top: 2%">
+                      <h6><b>Product Description:</b></h6>
+                    </div>  
+                  </div>
+                  <div class="row">
+                <div class="col s10 offset-s1" style="font-family: 'Roboto', sans-serif;">
+                    
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                      eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                      enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                      nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                      reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                      nulla pariatur.
+                    
+                  </div>
+                </div>
+              
+                <div class="row">
+                  <div class="col s3 offset-s2">
+                    <h5 id="span1">
+                      <s>₹{{ product4.mrp }}</s>
+                    </h5>
+                  </div>
+                  <div class="col s3 center">
+                    <h5>₹{{ product4.price }}</h5>
+                  </div>
+                  <div class="col s2">
+                    <a
+                      id="social-dropdown"
+                    data-target="services-social-dropdown"
+                      class=" dropdown-button btn-floating btn-large waves-effect waves-light  blue darken-4"
+                      ><i class="material-icons">share</i></a
+                    >
+                  </div>
+                </div>
+                <button class="btn btn-large center modal-trigger" style="width: 100%;font-size: 30px;font-family: inherit" data-target="modal-buyers">Select from +3 shops</button>
+              </div> 
+            </div> 
+            </div>
+          </div>
+          
+          <div id="otherSellerscont">
+            <div id="recommProductsSlider">
+              <hr />
+              <h5 class="center">Recommended Products</h5>
+              <div class="carousel" id="productPageCarousel">
+                <div class="carousel-item" id="recommCarousel">
+                  <div id="gradientCard" class="card">
+                    <div class="card-image">
+                      <img 
+                        src="../../../assets/etautzembed.jpg" height=270
+                      />
+                      <span class="card-title gradient">Suits</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item" id="recommCarousel">
+                  <div id="gradientCard" class="card">
+                    <div class="card-image">
+                      <img 
+                        src="../../../assets/etautzembed1.jpg" height=270
+                      />
+                      <span class="card-title gradient">Coats</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item" id="recommCarousel">
+                  <div id="gradientCard" class="card">
+                    <div class="card-image">
+                      <img 
+                        src="../../../assets/myargallery.jpg" height=270
+                      />
+                      <span class="card-title gradient">Women Suits</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item" id="recommCarousel">
+                  <div id="gradientCard" class="card">
+                    <div class="card-image">
+                      <img 
+                        src="../../../assets/myargallery1.jpg" height=270
+                      />
+                      <span class="card-title gradient">Jackets (Women)</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item" id="recommCarousel">
+                  <div id="gradientCard" class="card">
+                    <div class="card-image">
+                      <img 
+                        src="../../../assets/etautzembed.jpg" height=270
+                      />
+                      <span class="card-title gradient">Outfits</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item" id="recommCarousel">
+                  <div id="gradientCard" class="card">
+                    <div class="card-image">
+                      <img 
+                        src="../../../assets/theorygallery.jpg" height=270
+                      />
+                      <span class="card-title gradient">Formal Wear</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> 
+  </ng-template>

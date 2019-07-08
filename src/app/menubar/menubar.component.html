@@ -1,0 +1,42 @@
+<nav>
+  <div class="nav-wrapper">
+    <a href="#" class="sidenav-trigger" data-target="mobile-nav">
+      <i class="material-icons">menu</i>
+    </a>
+    <!-- class="sidenav-trigger" action="" method="post" -->
+    <!-- <div class="col s2">
+        <form>
+          <div class="input-field">
+            <input id="search" type="search" required />
+            <label class="label-icon" for="search"
+              ><i class="material-icons">search</i></label
+            >
+            <i class="material-icons">close</i>
+          </div>
+        </form>
+      </div> -->
+    <ul id="nav-mobile" class="container hide-on-med-and-down center">
+      <li
+        *ngFor="let mItem of mItems"
+        style="width: 145px;font-family:  'Oswald', sans-serif;"
+        class="center"
+      >
+        <a routerLink="/menu/{{ mItem.name }}">
+          <b>{{ mItem.name }}</b>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<ul class="sidenav" id="mobile-nav">
+  <li *ngFor="let mItem of mItems">
+    <a routerLink="/menu/{{ mItem.name }}">{{ mItem.name }}</a>
+  </li>
+</ul>
+<app-sel-city-modal></app-sel-city-modal>
+<app-slider></app-slider>
+<div>
+  <app-card-slider></app-card-slider>
+  <app-other-cards></app-other-cards>
+</div>

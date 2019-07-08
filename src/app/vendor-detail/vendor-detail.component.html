@@ -1,0 +1,365 @@
+<div style="background-color: #f2f3f4">
+  <a class="modal-trigger" href="#vendorMainImgSlider">
+    <img
+      id="landscapeImage"
+      [lazyLoad]="mainLandImage"
+      [defaultImage]="mainLazyImage"
+      [useSrcset]="true"
+    />
+  </a>
+  <!-- src="https://i.imgur.com/vzYVGZP.jpg" -->
+  <div class="container">
+    <div class="card" id="mainCard">
+      <figure class="card-profile-image">
+        <img
+          class="circle z-depth-1 responsive-img"
+          src="https://cdn3.iconfinder.com/data/icons/gradient-circle/36/2018-512.png"
+          alt="profile image"
+        />
+      </figure>
+      <div class="card-content">
+        <div class="row">
+          <div class="col s3 m3 l3 offset-l2">
+            <span class="card-title grey-text text-darken-4">
+              Seller Name
+            </span>
+            <div class="rate">
+              <input type="radio" id="star5" name="rate" value="5" />
+              <label for="star5" title="text">5 stars</label>
+              <input type="radio" id="star4" name="rate" value="4" />
+              <label for="star4" title="text">4 stars</label>
+              <input type="radio" id="star3" name="rate" value="3" />
+              <label for="star3" title="text">3 stars</label>
+              <input type="radio" id="star2" name="rate" value="2" />
+              <label for="star2" title="text">2 stars</label>
+              <input type="radio" id="star1" name="rate" value="1" />
+              <label for="star1" title="text">1 star</label>
+            </div>
+          </div>
+          <div class="col s2 m2 l2 center-align">
+            <h6 class="grey-text text-darken-4">9:30AM-5:30PM</h6>
+            <p class="medium-small grey-text">Opening Hours</p>
+          </div>
+          <div class="col s3 center-align">
+            <h6 class="grey-text text-darken-4">+91 7128218122</h6>
+            <p class="medium-small grey-text">Contact Number</p>
+          </div>
+          <div class="col s2 center-align">
+            <h6 class="grey-text text-darken-4">Apparels</h6>
+            <p class="medium-small grey-text">Category</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" id="rowBelowMainCard">
+      <div class="col s12 m4 l8">
+        <div class="row">
+          <div class="card">
+            <div class="card-content">
+              <span class="card-title">About Seller</span>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                nulla pariatur.
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="card">
+          <br />
+          <span class="card-title" style="padding: 4%;font-size: 28px"
+            >Top Rated Reviews</span
+          >
+          <div class="review-cards">
+            <div class="card">
+              <div class="card-content">
+                <span class="card-title"
+                  ><img
+                    src="../../assets/user.png"
+                    width="40"
+                    height="40"
+                    style="margin-right: 2%"
+                  />Surya Singh</span
+                >
+                <div class="other-content">
+                  <app-rating></app-rating><br /><br />
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-content">
+                <span class="card-title"
+                  ><img
+                    src="../../assets/user.png"
+                    width="40"
+                    height="40"
+                    style="margin-right: 2%"
+                  />Irfan Khan</span
+                >
+                <div class="other-content">
+                  <app-rating></app-rating><br /><br />
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-content">
+                <span class="card-title"
+                  ><img
+                    src="../../assets/user.png"
+                    width="40"
+                    height="40"
+                    style="margin-right: 2%"
+                  />Danny</span
+                >
+                <div class="other-content">
+                  <app-rating></app-rating><br /><br />
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+      </div>
+      <div class="col s12 m4 l4">
+        <div class="card ">
+          <div class="card-content">
+            <span class="card-title">Find us Here</span>
+            <agm-map [latitude]="lat" [longitude]="lng">
+              <agm-marker [latitude]="lat" [longitude]="lng"> </agm-marker>
+            </agm-map>
+            <h6>5th Block Kormangala, Bangalore, Karnataka</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="row" style="margin: 4%" id="cSliderDiv2">
+      <hr />
+      <h5 class="center">Today's Special Offers</h5>
+      <div class="col s12 m4 l5 offset-l1">
+        <div class="card" style="background-color: #839f0c">
+          <div class="card-content white-text">
+            <span
+              class="card-title center"
+              style="font-size: 27px; font-weight: bolder"
+              >Numeruno Sweatshirt</span
+            >
+            <p style="font-size: 17px">
+              Lorem incididunt ut labore et dolore magna aliqua. Ut enim ad
+              minim veniam, quis nostrud.
+            </p>
+          </div>
+          <div class="card-action center">
+            <a href="resume/projects" style="font-size: 23px ">Get 60% OFF</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col s12 m4 l5">
+        <div class="card " style="background-color: #839f0c">
+          <div class="card-content white-text">
+            <span
+              class="card-title center"
+              style="font-size: 27px; font-weight: bolder"
+              >Levi's Jeans</span
+            >
+            <p style="font-size: 17px">
+              Lorem incididunt ut labore et dolore magna aliqua. Ut enim ad
+              minim veniam, quis nostrud.
+            </p>
+          </div>
+          <div class="card-action center">
+            <a href="resume/projects" style="font-size: 23px;">Get 30% OFF</a>
+          </div>
+        </div>
+      </div>
+
+    </div> -->
+    <div class="row">
+      <hr />
+      <h5 class="center">Recommended Products by this Seller</h5>
+      <div class="carousel" id="mz2">
+        <div
+          *ngFor="let itemy of recommProd"
+          class="carousel-item"
+          id="opleCarousel"
+        >
+          <div id="gradientCard" class="card">
+            <div class="card-image">
+              <img src="{{ itemy.photoURL }}" />
+              <span class="card-title gradient">{{ itemy.title }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row " style="padding-top: 4%">
+      <hr />
+      <h5 class="center">More Products by this seller</h5>
+
+      <hr id="hr2" />
+      <h6 class="center" style="font-family: 'Oswald', sans-serif;">Jeans</h6>
+
+      <div class="carousel" id="vendorProductSlider">
+        <!-- <div class="left" id="leftDiv">
+          <a
+            href="Previo"
+            class="movePrevCarousel middle-indicator-text waves-effect waves-light content-indicator"
+            id="movPrevCarou"
+          >
+            <i class="material-icons left  middle-indicator-text"
+              >chevron_left
+            </i>
+          </a>
+        </div>
+        <div class="right" id="rightDiv">
+          <a
+            href="Siguiente"
+            class="moveNextCarousel middle-indicator-text waves-effect waves-light content-indicator"
+            id="movNxtCarou"
+          >
+            <i class="material-icons right middle-indicator-text">
+              chevron_right
+            </i>
+          </a>
+        </div> -->
+        <div *ngFor="let apparel of jeans" class="carousel-item ">
+          <app-card [cardContent]="apparel"> </app-card>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <hr id="hr2" />
+      <h6 class="center" style="font-family: 'Oswald', sans-serif;">
+        Sweatshirts
+      </h6>
+      <div class="carousel" id="vendorProductSlider">
+        <div *ngFor="let apparel of sweatshirts" class="carousel-item ">
+          <!-- <a routerLink="/product/{{ apparel.productID }}"> -->
+          <app-card [cardContent]="apparel"> </app-card>
+          <!-- </a> -->
+        </div>
+      </div>
+    </div>
+    <div class="row " style="padding-bottom: 7%;">
+      <hr id="hr2" />
+      <h6 class="center" style="font-family: 'Oswald', sans-serif;">
+        T-Shirts
+      </h6>
+      <div class="carousel" id="vendorProductSlider">
+        <div *ngFor="let apparel of tshirts" class="carousel-item ">
+          <!-- <a routerLink="/product/{{ apparel.productID }}"> -->
+          <app-card [cardContent]="apparel"> </app-card>
+          <!-- </a> -->
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="row"> -->
+    <!-- <div class="col s4 offset-s8" style="padding-top: 10px">
+      <a class="modal-trigger btn" href="#modal4">Become a Vendor</a>
+    </div>
+  </div>
+  <div class="row white z-depth-1">
+    <div class="col s5 offset-s1">
+      <h3>Seller Name</h3>
+    </div>
+    <div class="col s12 center">
+      <p>
+        Seller Private Ltd is committed to providing each customer with the
+        highest standard of customer service.
+      </p>
+    </div>
+    <div class="col s12 center">
+      <img src="../../assets/vendor.jpg" width="730" height="430" />
+    </div>
+  </div>
+  <div
+    class="row white z-depth-1"
+    style="padding-top:20px;padding-right: 15px;"
+  >
+    <hr />
+    <h5 class="center">Contact this Seller</h5>
+    <div
+      class="col s4 white"
+      style="padding: 18px 18px 37px 25px; border: 10px; border-color: darkred"
+    >
+      <div class="center promo promo-example">
+        <i class="material-icons" style="color:crimson">phone</i>
+        <p class="promo caption"></p>
+        <h6 class="center" style="color:grey">+91 7128122111</h6>
+      </div>
+    </div>
+    <div class="col s4 white" style="padding: 18px 18px 37px 25px">
+      <div class="center promo promo-example">
+        <i class="material-icons" style="color:crimson">email</i>
+        <p class="promo caption"></p>
+        <h6 class="center" style="color:grey">xyz@example.com</h6>
+      </div>
+    </div>
+    <div class="col s4 white" style="padding: 18px">
+      <div class="center promo promo-example">
+        <i class="material-icons" style="color:crimson">location_on</i>
+        <p class="promo caption"></p>
+        <h6 class="center" style="color:grey">
+          5th Block Kormangala, Bangalore, Karnataka
+        </h6>
+      </div>
+    </div>-->
+    <!-- </div>  -->
+  </div>
+  <!--  -->
+
+  <!-- Products Image Modal -->
+  <div class="modal" id="vendorMainImgSlider">
+    <div class="modal-content">
+      <div class="slider">
+        <ul class="slides">
+          <li>
+            <img
+              src="http://www.exploreclarion.com/wp-content/uploads/2018/03/KCFS_2-2-1024x768.jpg"
+            />
+            <!-- random image -->
+            <div class="caption right-align">
+              <h3>Right Aligned Caption</h3>
+              <h5 class="light grey-text text-lighten-3">
+                Here's our small slogan.
+              </h5>
+            </div>
+          </li>
+          <li>
+            <img
+              src="http://www.retaillistings.co.za/wp-content/uploads/2017/05/New-Springs-Mall-Changes-The-Retail-Landscape-with-World-Class-Shopping.jpg"
+            />
+            <!-- random image -->
+            <div class="caption center-align">
+              <!-- <h3>This is our big Tagline!</h3> -->
+              <h5 class="light grey-text text-lighten-3">
+                <!-- Here's our small slogan. -->
+              </h5>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="modal-close">X</div>
+  </div>
+</div>

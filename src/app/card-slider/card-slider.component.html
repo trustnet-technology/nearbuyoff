@@ -1,0 +1,185 @@
+<div id="csliderDiv">
+  <hr />
+  <h5 id="apparel" class="center">Apparels</h5>
+  <a class="btn right black" routerLink="/search">
+    View All<i class="material-icons right" style="margin-top: 5%"
+      >arrow_forward</i
+    ></a
+  >
+  <div class="carousel" id="mz1">
+    <div class="left" id="leftDiv">
+      <a
+        href="Previo"
+        class="movePrevCarousel middle-indicator-text waves-effect waves-light content-indicator"
+        id="movPrevCarou"
+      >
+        <i class="material-icons left  middle-indicator-text">chevron_left </i>
+      </a>
+    </div>
+    <div class="right" id="rightDiv">
+      <a
+        href="Siguiente"
+        class="moveNextCarousel middle-indicator-text waves-effect waves-light content-indicator"
+        id="movNxtCarou"
+      >
+        <i class="material-icons right middle-indicator-text">
+          chevron_right
+        </i>
+      </a>
+    </div>
+    <div *ngFor="let cardItem of products" class="carousel-item">
+      <a routerLink="/product/{{ cardItem.productID }}">
+        <app-card [cardContent]="cardItem"></app-card>
+      </a>
+    </div>
+  </div>
+</div>
+<div id="csliderDiv" class="">
+  <hr />
+  <h5 class="center">Home Appliances</h5>
+  <a class="btn right black" routerLink="/search">
+    View All<i class="material-icons right" style="margin-top: 5%"
+      >arrow_forward</i
+    ></a
+  >
+  <div class="carousel" id="mz1">
+    <div *ngFor="let cardItem2 of products2" class="carousel-item ">
+      <a routerLink="/product/{{ cardItem2.productID }}">
+        <app-card [cardContent]="cardItem2"></app-card
+      ></a>
+    </div>
+  </div>
+</div>
+
+<div id="csliderDiv">
+  <hr />
+  <h5 class="center">Grocery</h5>
+
+  <a class="btn right black" routerLink="/search">
+    View All<i class="material-icons right" style="margin-top: 5%"
+      >arrow_forward</i
+    ></a
+  >
+  <div class="carousel" id="mz1">
+    <div class="left" id="leftDiv">
+      <a
+        href="Previo"
+        class="movePrevCarousel middle-indicator-text waves-effect waves-light content-indicator"
+        id="movPrevCarou"
+      >
+        <i class="material-icons left  middle-indicator-text">chevron_left </i>
+      </a>
+    </div>
+    <div class="right" id="rightDiv">
+      <a
+        href="Siguiente"
+        class="moveNextCarousel middle-indicator-text waves-effect waves-light content-indicator"
+        id="movNxtCarou"
+      >
+        <i class="material-icons right middle-indicator-text">
+          chevron_right
+        </i>
+      </a>
+    </div>
+    <div *ngFor="let cardItem3 of products3" class="carousel-item ">
+      <a routerLink="/product/{{ cardItem3.productID }}"
+        ><app-card [cardContent]="cardItem3"></app-card
+      ></a>
+    </div>
+  </div>
+</div>
+
+<div id="csliderDiv" class="">
+  <hr />
+  <h5 class="center">Decors</h5>
+  <a class="btn right black" routerLink="/search">
+    View All<i class="material-icons right" style="margin-top: 5%"
+      >arrow_forward</i
+    ></a
+  >
+  <div class="carousel" id="mz1">
+    <div class="left" id="leftDiv">
+      <a
+        href="Previo"
+        class="movePrevCarousel middle-indicator-text waves-effect waves-light content-indicator"
+        id="movPrevCarou"
+      >
+        <i class="material-icons left  middle-indicator-text">chevron_left </i>
+      </a>
+    </div>
+    <div class="right" id="rightDiv">
+      <a
+        href="Siguiente"
+        class="moveNextCarousel middle-indicator-text waves-effect waves-light content-indicator"
+        id="movNxtCarou"
+      >
+        <i class="material-icons right middle-indicator-text">
+          chevron_right
+        </i>
+      </a>
+    </div>
+    <div *ngFor="let cardItem4 of products4" class="carousel-item ">
+      <a routerLink="/product/{{ cardItem4.productID }}"
+        ><app-card [cardContent]="cardItem4"></app-card
+      ></a>
+    </div>
+  </div>
+</div>
+<!-- <div id="flat-card-slider" style="padding-bottom:7%;">
+  <hr />
+  <h5 class="center">Nearby Offers</h5>
+  <a class="btn right black" routerLink="/search">
+    View All<i class="material-icons right" style="margin-top: 5%"
+      >arrow_forward</i
+    ></a
+  >
+  <div class="carousel" id="carousel-flat">
+    <div
+      *ngFor="let itemz of products5"
+      class="carousel-item"
+      id="carousel-flat-item"
+    >
+      <div class="card" style="background-color: #839f0c">
+        <div class="card-content white-text">
+          <span
+            class="card-title center"
+            style="font-size: 27px; font-weight: bolder"
+            >{{ itemz.title }}</span
+          >
+          <p>
+            I am a very simple card. I am good at containing small bits of
+            information. I am convenient because I require little markup to use
+            effectively.
+          </p>
+        </div>
+        <div class="card-action center">
+          <a href="resume/projects" style="font-size: 23px"
+            >GET {{ itemz.discount }}% OFF</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+<!-- <div style=" padding-bottom:1%" id="cSliderDiv3">
+  <hr />
+  <h5 class="center">Trending Offers</h5>
+  <div class="carousel" id="carousel-flat">
+    <div
+      *ngFor="let itemy of products5"
+      class="carousel-item"
+      id="carousel-flat-item"
+    >
+      <div id="gradientCard" class="card">
+        <div class="card-image">
+          <img
+            [lazyLoad]="itemy.photoURL"
+            [useSrcset]="true"
+            [defaultImage]="mainLazyImage"
+          />
+          <span class="card-title gradient">{{ itemy.title }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->

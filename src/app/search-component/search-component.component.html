@@ -1,0 +1,402 @@
+<div style="background-color: lightgrey;padding-top: 2%">
+  <div class="container">
+    <div class="row">
+      <div class="col s3" style="font-size: 15px;color: grey;">
+        <div
+          class="card"
+          style="padding-top: 6%;padding-left: 5%;padding-right: 6%;padding-bottom: 8%"
+        >
+          <div class="clear-all" style="text-align: center;font-weight: bolder">
+            <a routerLink=""><p>Clear all filters</p></a>
+          </div>
+          <div class="location-filter">
+            <p><b>Your Location</b></p>
+            <input
+              id="location"
+              type="text"
+              class="validate"
+              placeholder="e.g. HSR Layout"
+              style="margin-bottom: 5%; height:1rem;margin-left: 3%; margin-right: 10%"
+            />
+          </div>
+          <div class="location-filter">
+            <p><b>Distance/Speed</b></p>
+            <p>
+              <label>
+                <input name="group1" class="with-gap" type="radio" checked />
+                <span>Any</span>
+              </label>
+            </p>
+            <p>
+              <label>
+                <input class="with-gap" name="group1" type="radio" />
+                <span>Within 15 mins</span>
+              </label>
+            </p>
+            <p>
+              <label>
+                <input class="with-gap" name="group1" type="radio" />
+                <span>Within 30 mins</span>
+              </label>
+            </p>
+            <p>
+              <label>
+                <input class="with-gap" name="group1" type="radio" />
+                <span>Within 60 mins</span>
+              </label>
+            </p>
+          </div>
+          <div class="price-filter">
+            <p><b>Price</b></p>
+            <p>
+              <label>
+                <input name="group1" class="with-gap" type="radio" checked />
+                <span>Any</span>
+              </label>
+            </p>
+            <p>
+              <label>
+                <input
+                  class="with-gap"
+                  name="group1"
+                  type="radio"
+                  style="padding-left: 2%"
+                />
+                <span class="row" style="margin-left:0% ;margin-bottom:0px">
+                  <div class="col s4" style="margin-left:-3%">
+                    <input
+                      id="location"
+                      type="text"
+                      class="validate"
+                      placeholder="e.g. HSR Layout"
+                      style="margin-bottom: 5%; height:1rem;margin-left: 3%;"
+                    />
+                  </div>
+                  <div
+                    class="col s1"
+                    style="padding-left: 0px;padding-right:0px;"
+                  >
+                    to
+                  </div>
+                  <div class="col s4">
+                    <input
+                      id="location"
+                      type="text"
+                      class="validate"
+                      placeholder="e.g. HSR Layout"
+                      style="margin-bottom: 5%; height:1rem;margin-left: 3%;"
+                    />
+                  </div>
+                  <div
+                    class="col s2"
+                    style="padding-left:0px;padding-right: 0px"
+                  >
+                    <a
+                      class="btn btn-small"
+                      style="padding-left:10px;padding-right:10px"
+                      >Go</a
+                    >
+                  </div>
+                </span>
+              </label>
+            </p>
+          </div>
+          <div class="cateogory-filter">
+            <p><b>Category</b></p>
+            <p>
+              <label>
+                <input name="group1" class="with-gap" type="radio" checked />
+                <span>Apparel</span>
+              </label>
+            </p>
+            <p>
+              <label>
+                <input class="with-gap" name="group1" type="radio" />
+                <span>Home Appliances</span>
+              </label>
+            </p>
+            <p>
+              <label>
+                <input class="with-gap" name="group1" type="radio" />
+                <span>Grocery</span>
+              </label>
+            </p>
+            <p>
+              <label>
+                <input class="with-gap" name="group1" type="radio" />
+                <span>Decor</span>
+              </label>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col s9">
+        <div class="card">
+          <div class="row">
+            <div class="col s3" style="padding-top:1.5%">
+              <img
+                src="../../assets/googleSearch.jpg"
+                height="150"
+                width="150"
+              />
+            </div>
+            <div class="col s4">
+              <h4><b>Search Title</b></h4>
+              <p style="color:grey">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore
+              </p>
+            </div>
+            <div class="col s3" style="padding-top: 3%">
+              <h6><b>Category: Apparel</b></h6>
+              <app-rating></app-rating>
+            </div>
+            <div class="col s2 " style="padding-top:5%;">
+              <a class="btn btn-large" style="font-size: small;">Pre Book</a
+              ><br />
+              <div class="row" style="padding-top: 10%">
+                <div
+                  class="col s2 offset-s2"
+                  style="margin-top:4%;margin-right:1%"
+                >
+                  <b>5KM</b>
+                </div>
+                <div class="col s4 offset-s1">
+                  <img
+                    src="../../assets/cirlceGreenWalk.png"
+                    width="30"
+                    height="30"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="row">
+            <div class="col s3" style="padding-top:1.5%">
+              <img
+                src="../../assets/jasonSearch.jpg"
+                height="150"
+                width="150"
+              />
+            </div>
+            <div class="col s4">
+              <h4><b>Search Title</b></h4>
+              <p style="color:grey">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore
+              </p>
+            </div>
+            <div class="col s3" style="padding-top: 3%">
+              <h6><b>Category: Apparel</b></h6>
+              <app-rating></app-rating>
+            </div>
+            <div class="col s2" style="padding-top:5%;">
+              <a class="btn btn-large">Pre Book</a><br />
+              <div class="row" style="padding-top: 9%">
+                <div class="col s2 offset-s3"><b>5KM</b></div>
+                <div class="col s4 offset-s2">
+                  <img
+                    src="../../assets/cirlceGreenWalk.png"
+                    width="30"
+                    height="30"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="row">
+            <div class="col s3" style="padding-top:1.5%">
+              <img
+                src="../../assets/martinSearch.jpg"
+                height="150"
+                width="150"
+              />
+            </div>
+            <div class="col s4">
+              <h4><b>Search Title</b></h4>
+              <p style="color:grey">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore
+              </p>
+            </div>
+            <div class="col s3" style="padding-top: 3%">
+              <h6><b>Category: Apparel</b></h6>
+              <app-rating></app-rating>
+            </div>
+            <div class="col s2 " style="padding-top:5%;">
+              <a class="btn btn-large">Pre Book</a><br />
+              <div class="row" style="padding-top: 9%">
+                <div class="col s2 offset-s3"><b>5KM</b></div>
+                <div class="col s4 offset-s2">
+                  <img
+                    src="../../assets/cirlceGreenWalk.png"
+                    width="30"
+                    height="30"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="row">
+            <div class="col s3" style="padding-top:1.5%">
+              <img
+                src="../../assets/recordSearch.jpg"
+                height="150"
+                width="150"
+              />
+            </div>
+            <div class="col s4">
+              <h4><b>Search Title</b></h4>
+              <p style="color:grey">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore
+              </p>
+            </div>
+            <div class="col s3" style="padding-top: 3%">
+              <h6><b>Category: Apparel</b></h6>
+              <app-rating></app-rating>
+            </div>
+            <div class="col s2 " style="padding-top:5%;">
+              <a class="btn btn-large">Pre Book</a><br />
+              <div class="row" style="padding-top: 9%">
+                <div class="col s2 offset-s3"><b>5KM</b></div>
+                <div class="col s4 offset-s2">
+                  <img
+                    src="../../assets/cirlceGreenWalk.png"
+                    width="30"
+                    height="30"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="row">
+            <div class="col s3" style="padding-top:1.5%">
+              <img
+                src="../../assets/iphoneSearch.jpg"
+                height="150"
+                width="150"
+              />
+            </div>
+            <div class="col s4">
+              <h4><b>Search Title</b></h4>
+              <p style="color:grey">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore
+              </p>
+            </div>
+            <div class="col s3" style="padding-top: 3%">
+              <h6><b>Category: Apparel</b></h6>
+              <app-rating></app-rating>
+            </div>
+            <div class="col s2 " style="padding-top:5%;">
+              <a class="btn btn-large">Pre Book</a><br />
+              <div class="row" style="padding-top: 9%">
+                <div class="col s2 offset-s3"><b>5KM</b></div>
+                <div class="col s4 offset-s2">
+                  <img
+                    src="../../assets/cirlceGreenWalk.png"
+                    width="30"
+                    height="30"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="row">
+            <div class="col s3" style="padding-top:1.5%">
+              <img
+                src="../../assets/googleSearch.jpg"
+                height="150"
+                width="150"
+              />
+            </div>
+            <div class="col s4">
+              <h4><b>Search Title</b></h4>
+              <p style="color:grey">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore
+              </p>
+            </div>
+            <div class="col s3" style="padding-top: 3%">
+              <h6><b>Category: Apparel</b></h6>
+              <app-rating></app-rating>
+            </div>
+            <div class="col s2 " style="padding-top:5%;">
+              <a class="btn btn-large">Pre Book</a><br />
+              <div class="row" style="padding-top: 9%">
+                <div class="col s2 offset-s3"><b>5KM</b></div>
+                <div class="col s4 offset-s2">
+                  <img
+                    src="../../assets/cirlceGreenWalk.png"
+                    width="30"
+                    height="30"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="row">
+            <div class="col s3" style="padding-top:1.5%">
+              <img
+                src="../../assets/jasonSearch.jpg"
+                height="150"
+                width="150"
+              />
+            </div>
+            <div class="col s4">
+              <h4><b>Search Title</b></h4>
+              <p style="color:grey">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore
+              </p>
+            </div>
+            <div class="col s3" style="padding-top: 3%">
+              <h6><b>Category: Apparel</b></h6>
+              <app-rating></app-rating>
+            </div>
+            <div class="col s2 " style="padding-top:5%;">
+              <a class="btn btn-large">Pre Book</a><br />
+              <div class="row" style="padding-top: 9%">
+                <div class="col s2 offset-s3"><b>5KM</b></div>
+                <div class="col s4 offset-s2">
+                  <img
+                    src="../../assets/cirlceGreenWalk.png"
+                    width="30"
+                    height="30"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ul class="pagination center" style="margin-top: 5%; margin-bottom: 10%">
+      <li class="disabled">
+        <a href="#!"><i class="material-icons">chevron_left</i></a>
+      </li>
+      <li class="active grey darken-2"><a href="#!">1</a></li>
+      <li class="waves-effect"><a href="#!">2</a></li>
+      <li class="waves-effect"><a href="#!">3</a></li>
+      <li class="waves-effect"><a href="#!">4</a></li>
+      <li class="waves-effect"><a href="#!">5</a></li>
+      <li class="waves-effect">
+        <a href="#!"><i class="material-icons">chevron_right</i></a>
+      </li>
+    </ul>
+  </div>
+</div>

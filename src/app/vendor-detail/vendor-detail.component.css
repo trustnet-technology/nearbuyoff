@@ -1,0 +1,268 @@
+#landscapeImage {
+  width: 100%;
+  height: 30%;
+  padding-bottom: 4%;
+  max-width: 100%;
+  max-height: 30%;
+}
+.review-cards {
+  min-width: 100%;
+  min-height: 300px;
+  display: flex;
+  overflow-x: auto;
+}
+
+.review-cards > .card {
+  min-width: 250px;
+  margin: 2%;
+}
+
+/* Other cards thing below */
+
+.card .card-title.hidden {
+  text-indent: -9999px;
+}
+.card .card-image .card-badge {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  text-align: left;
+  text-transform: uppercase;
+  font-size: 0.9em;
+  padding: 0.2em 24px 0.8em 24px;
+  color: #fff;
+  z-index: 2;
+}
+.card .card-image .card-badge .material-icons {
+  position: relative;
+  margin-right: 8px;
+  top: 7px;
+}
+.card .card-image .card-badge + .card-title {
+  padding-bottom: 66px;
+}
+.card.horizontal .card-image .card-badge {
+  text-align: center;
+  padding: 0.2em 0;
+}
+.card.horizontal .card-image .card-badge .material-icons {
+  display: none;
+}
+
+.card-action {
+  white-space: nowrap;
+}
+hr {
+  width: 12%;
+  height: 8px;
+  border: none;
+  background-color: black;
+}
+h5 {
+  font-family: "Oswald", sans-serif;
+  font-size: 30px;
+  font-weight: bolder;
+}
+#hr2 {
+  width: 8%;
+  height: 5px;
+  border: none;
+  background-color: black;
+}
+
+.card .card-image .card-title.flow-text {
+  font-size: inherit;
+}
+.card .card-image .card-title.gradient {
+  padding-top: 64px;
+  display: block;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0);
+  background: linear-gradient(
+    to bottom,
+    rgba(125, 185, 232, 0) 0%,
+    rgba(0, 0, 0, 0.4) 50%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#007db9e8', endColorstr='#cc000000',GradientType=0 );
+}
+
+agm-map {
+  height: 307px;
+}
+@media only screen and (min-width: 961px) {
+  #rowBelowMainCard {
+    padding-top: 5%;
+  }
+  #mainCard {
+    width: 64%;
+    position: absolute;
+    top: 63%;
+    left: 18%;
+    z-index: 1;
+    cursor: pointer;
+    margin-bottom: 30%;
+  }
+  .card-profile-image {
+    width: 110px;
+    position: absolute;
+    top: -60px;
+    z-index: 1;
+    left: 70px;
+    cursor: pointer;
+    margin: 0;
+  }
+
+  .rate {
+    float: left;
+    height: 46px;
+    /* padding: 30px; */
+  }
+  .rate:not(:checked) > input {
+    position: absolute;
+    top: -9999px;
+  }
+  .rate:not(:checked) > label {
+    float: right;
+    width: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 30px;
+    color: #ccc;
+  }
+  .rate:not(:checked) > label:before {
+    content: "★ ";
+  }
+  .rate > input:checked ~ label {
+    color: #ffc700;
+  }
+  .rate:not(:checked) > label:hover,
+  .rate:not(:checked) > label:hover ~ label {
+    color: #deb217;
+  }
+  .rate > input:checked + label:hover,
+  .rate > input:checked + label:hover ~ label,
+  .rate > input:checked ~ label:hover,
+  .rate > input:checked ~ label:hover ~ label,
+  .rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+  }
+}
+@media only screen and (min-width: 350px) and (max-width: 430px) {
+  .card-title {
+    font-size: 18px;
+  }
+  #rowBelowMainCard {
+    padding-top: 22%;
+  }
+  #mainCard {
+    width: 90%;
+    height: 16%;
+    position: absolute;
+    top: 15%;
+    left: 5%;
+    z-index: 1;
+    font-size: 10px;
+    cursor: pointer;
+    margin-bottom: 30%;
+  }
+  h6 {
+    font-size: 10px;
+  }
+  .card-profile-image {
+    width: 50px;
+    position: absolute;
+    top: -30px;
+    z-index: 1;
+    left: 30px;
+    cursor: pointer;
+    margin: 0;
+  }
+  .rate {
+    float: left;
+    height: 36px;
+    /* padding: 30px; */
+  }
+  .rate:not(:checked) > input {
+    position: absolute;
+    top: -9999px;
+  }
+  .rate:not(:checked) > label {
+    float: left;
+    width: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 10px;
+    color: #ccc;
+  }
+  .rate:not(:checked) > label:before {
+    content: "★ ";
+  }
+  .rate > input:checked ~ label {
+    color: #ffc700;
+  }
+  .rate:not(:checked) > label:hover,
+  .rate:not(:checked) > label:hover ~ label {
+    color: #deb217;
+  }
+  .rate > input:checked + label:hover,
+  .rate > input:checked + label:hover ~ label,
+  .rate > input:checked ~ label:hover,
+  .rate > input:checked ~ label:hover ~ label,
+  .rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+  }
+}
+/* Modal Carousel */
+.modal {
+  width: 100% !important ;
+  max-height: 100% !important ;
+}
+div.explanation {
+  width: 40%;
+  background-color: #f0cc00;
+  padding: 1rem;
+  margin: 2rem auto;
+  font-size: 120%;
+}
+
+.modal-close {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  height: 24px;
+  width: 1.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.42);
+  color: #fffff0;
+  text-align: center;
+  line-height: 1.6rem;
+}
+#vendorProductSlider.carousel {
+  height: 360px;
+  padding-bottom: 30%;
+}
+#vendorProductSlider > .carousel-item {
+  height: 290px;
+  width: 220px;
+}
+
+#mz2 {
+  max-height: 100%;
+  height: 230px;
+}
+#opleCarousel {
+  max-height: 100%;
+  width: 300px;
+}
+.headerDivider {
+  border-left: 1px solid #38546d;
+  border-right: 1px solid #38546d;
+  height: 180px;
+  position: absolute;
+  right: 329px;
+  top: 50px;
+}

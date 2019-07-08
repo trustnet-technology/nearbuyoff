@@ -1,0 +1,182 @@
+#productRow {
+  padding: 3%;
+}
+#productImage {
+  height: 450px;
+  max-width: 100%;
+  object-fit: cover;
+  background-size: contain;
+}
+.left-column {
+  width: 65%;
+  position: relative;
+}
+
+.right-column {
+  width: 35%;
+  margin-top: 60px;
+}
+.left-column img {
+  position: absolute;
+  left: 0;
+  top: 70px;
+}
+.product-description {
+  border-bottom: 1px solid #e1e8ee;
+  margin-bottom: 20px;
+}
+.product-description span {
+  font-size: 12px;
+  color: #358ed7;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.product-description h1 {
+  font-weight: 300;
+  font-size: 52px;
+  color: #43484d;
+  letter-spacing: -2px;
+}
+.product-description p {
+  font-size: 16px;
+  font-weight: 300;
+  color: #86939e;
+  line-height: 24px;
+}
+.product-price {
+  display: flex;
+  align-items: center;
+  padding: 5%;
+}
+
+.product-price span {
+  font-size: 26px;
+  font-weight: 300;
+  margin-right: 20px;
+}
+
+.cart-btn {
+  display: inline-block;
+  background-color: #7dc855;
+  border-radius: 6px;
+  font-size: 16px;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 12px 30px;
+  transition: all 0.5s;
+}
+.cart-btn:hover {
+  background-color: #64af3d;
+}
+#span1 {
+  color: #86939e;
+}
+agm-map {
+  height: 483px;
+}
+h5 {
+  padding-bottom: 4%;
+}
+hr {
+  width: 10%;
+  height: 6px;
+  border: none;
+  background-color: black;
+}
+.card .card-image .card-title.flow-text {
+  font-size: inherit;
+}
+.card .card-image .card-title.gradient {
+  padding-top: 64px;
+  display: block;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0);
+  background: linear-gradient(
+    to bottom,
+    rgba(125, 185, 232, 0) 0%,
+    rgba(0, 0, 0, 0.4) 50%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#007db9e8', endColorstr='#cc000000',GradientType=0 );
+}
+#gradientCard {
+  border-radius: 15px;
+  overflow: hidden;
+}
+.carousel {
+  height: 295px;
+}
+#recommCarousel {
+  height: 274px;
+  width: 300px;
+  padding-bottom: 3%;
+  object-fit: cover;
+  background-size: contain;
+}
+#recommProductsSlider {
+  height: 100%;
+  padding-bottom: 8%;
+  padding-top: 2%;
+}
+#productPageCarousel {
+  padding-bottom: 2%;
+}
+/* Ratings Thing */
+
+.rate {
+  float: left;
+  height: 46px;
+  /* padding: 30px; */
+}
+.rate:not(:checked) > input {
+  position: absolute;
+  top: -9999px;
+}
+.rate:not(:checked) > label {
+  float: right;
+  width: 1em;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 20px;
+  color: #ccc;
+}
+.rate:not(:checked) > label:before {
+  content: "★ ";
+}
+.rate > input:checked ~ label {
+  color: #ffc700;
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+  color: #deb217;
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+  color: #c59b08;
+}
+#modal-buyers {
+  max-height: 100% !important;
+  width: 90% !important;
+}
+div.explanation {
+  width: 40%;
+  background-color: #f0cc00;
+  padding: 1rem;
+  margin: 2rem auto;
+  font-size: 120%;
+}
+
+#productSellerDetails {
+  height: 505px;
+  overflow: auto;
+}
+.dropdown-content.row {
+  overflow: hidden;
+  width: 40%;
+  height: auto;
+}
