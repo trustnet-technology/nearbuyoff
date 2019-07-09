@@ -2,10 +2,10 @@
   <hr />
   <h5 id="apparel" class="center">Apparels</h5>
   <a class="btn right black" routerLink="/search">
-    View All<i class="material-icons right" style="margin-top: 5%"
-      >arrow_forward</i
-    ></a
-  >
+    View All<i class="material-icons right" style="margin-top: 5%">
+      arrow_forward
+    </i>
+  </a>
   <div class="carousel" id="mz1">
     <div class="left" id="leftDiv">
       <a
@@ -33,6 +33,13 @@
       </a>
     </div>
   </div>
+  <div class="row" id="products-mob-apparel">
+    <div *ngFor="let mobApparel of mobProducts" class="col s4">
+      <a routerLink="/product/{{ mobApparel.productID }}">
+        <app-card [cardContent]="mobApparel"></app-card>
+      </a>
+    </div>
+  </div>
 </div>
 <div id="csliderDiv" class="">
   <hr />
@@ -47,6 +54,13 @@
       <a routerLink="/product/{{ cardItem2.productID }}">
         <app-card [cardContent]="cardItem2"></app-card
       ></a>
+    </div>
+  </div>
+  <div class="row" id="products-mob-apparel">
+    <div *ngFor="let mobApparel of mobProducts2" class="col s4">
+      <a routerLink="/product/{{ mobApparel.productID }}">
+        <app-card [cardContent]="mobApparel"></app-card>
+      </a>
     </div>
   </div>
 </div>
@@ -87,6 +101,13 @@
       ></a>
     </div>
   </div>
+  <div class="row" id="products-mob-apparel">
+    <div *ngFor="let mobApparel of mobProducts3" class="col s4">
+      <a routerLink="/product/{{ mobApparel.productID }}">
+        <app-card [cardContent]="mobApparel"></app-card>
+      </a>
+    </div>
+  </div>
 </div>
 
 <div id="csliderDiv" class="">
@@ -122,6 +143,13 @@
       <a routerLink="/product/{{ cardItem4.productID }}"
         ><app-card [cardContent]="cardItem4"></app-card
       ></a>
+    </div>
+  </div>
+  <div class="row" id="products-mob-apparel">
+    <div *ngFor="let mobApparel of mobProducts4" class="col s4">
+      <a routerLink="/product/{{ mobApparel.productID }}">
+        <app-card [cardContent]="mobApparel"></app-card>
+      </a>
     </div>
   </div>
 </div>

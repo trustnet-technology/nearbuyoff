@@ -3,6 +3,24 @@
     <a href="#" class="sidenav-trigger" data-target="mobile-nav">
       <i class="material-icons">menu</i>
     </a>
+    <form class="search-nearbyoff" action="" method="post" autocomplete="off">
+      <div class="input-field" style="color:black">
+        <input
+          #searchBox
+          id="search"
+          type="search"
+          name="search"
+          (input)="search(searchBox.value)"
+        />
+        <!---->
+        <label class="label-icon" for="search">
+          <a routerLink="/search">
+            <i id="icon-search" class="material-icons">search</i></a
+          >
+        </label>
+        <i class="material-icons">close</i>
+      </div>
+    </form>
     <!-- class="sidenav-trigger" action="" method="post" -->
     <!-- <div class="col s2">
         <form>

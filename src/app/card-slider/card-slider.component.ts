@@ -20,6 +20,10 @@ export class CardSliderComponent implements OnInit, AfterViewInit {
   mainLazyImage = "https://picsum.photos/id/777/12/8";
   products: ProductModel[];
   products2: ProductModel[];
+  mobProducts: ProductModel[] = [];
+  mobProducts2: ProductModel[] = [];
+  mobProducts3: ProductModel[] = [];
+  mobProducts4: ProductModel[] = [];
   products3: ProductModel[];
   products4: ProductModel[];
   products5: ProductModel[] = [
@@ -94,6 +98,10 @@ export class CardSliderComponent implements OnInit, AfterViewInit {
     this.getProducts2();
     this.getProducts3();
     this.getProducts4();
+    this.getMobProducts();
+    this.getMobProducts2();
+    this.getMobProducts3();
+    this.getMobProducts4();
     $("#movNxtCarou").click(function(e) {
       e.preventDefault();
       e.stopPropagation();
@@ -133,5 +141,31 @@ export class CardSliderComponent implements OnInit, AfterViewInit {
     this.productService
       .getProducts4()
       .subscribe(products4 => (this.products4 = products4));
+  }
+  getMobProducts(): void {
+    this.productService
+      .getProducts()
+      .subscribe(mobProducts => (this.mobProducts = mobProducts.slice(0, 6)));
+  }
+  getMobProducts2(): void {
+    this.productService
+      .getProducts2()
+      .subscribe(
+        mobProducts2 => (this.mobProducts2 = mobProducts2.slice(0, 6))
+      );
+  }
+  getMobProducts3(): void {
+    this.productService
+      .getProducts3()
+      .subscribe(
+        mobProducts3 => (this.mobProducts3 = mobProducts3.slice(0, 6))
+      );
+  }
+  getMobProducts4(): void {
+    this.productService
+      .getProducts4()
+      .subscribe(
+        mobProducts4 => (this.mobProducts4 = mobProducts4.slice(0, 6))
+      );
   }
 }

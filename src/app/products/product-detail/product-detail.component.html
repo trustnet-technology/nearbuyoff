@@ -2,8 +2,8 @@
   <div class="container">
     <div id="productRow" class="row">
       <div
+        id="img-container"
         class="col s12 m4 l5 card"
-        style="padding-top: 1%;padding-bottom: 0.5%; width:373px; height:470px"
       >
       <img class="materialboxed" [lazyLoad]="product.photoURL" id="productImage" [defaultImage]="mainLazyImage" [useSrcset]="true" />
       </div>
@@ -54,7 +54,7 @@
             >
           </div>
         </div>
-        <button class="btn btn-large center modal-trigger" style="width: 100%;font-size: 30px;font-family: inherit" data-target="modal-buyers">Select from +3 shops</button>
+        <button id="bt-sellers" class="btn btn-large center modal-trigger" data-target="modal-buyers">Select from +3 shops</button>
       </div> 
     </div> 
     </div>
@@ -280,6 +280,11 @@
         </div>
       </div>
     </div>
+    <div class="row" id="mob-rcmd-prods">
+      <div class="col s6">
+        <div class="card"></div>
+      </div>
+    </div>
   </div>
 </div>
 <div id="modal-buyers" class="modal">
@@ -308,7 +313,7 @@
                   style="width:65px"
                 />
               </td>
-              <td>
+              <a routerLink="/product/93/seller"><td>
                 <h5>Seller1</h5>
                 <p style="color:grey">5th Block, Kormangala</p>
                 <div class="rate">
@@ -323,7 +328,7 @@
                   <input type="radio" id="star1" name="rate" value="1" />
                   <label for="star1" title="text">1 star</label>
                 </div>
-              </td>
+              </td></a>
               <td>
                 <div *ngIf="product; else secpro">
                     <a class="waves-effect waves-light btn green" routerLink="/product/{{ product.productID }}/seller">Buy Now</a>
@@ -363,7 +368,7 @@
                   style="width:65px"
                 />
               </td>
-              <td>
+              <a routerLink="/product/93/seller"><td>
                 <h5>Seller2</h5>
                 <p style="color:grey">8th Block, Kormangala</p>
                 <div class="rate">
@@ -378,8 +383,8 @@
                   <input type="radio" id="star1" name="rate" value="1" />
                   <label for="star1" title="text">1 star</label>
                 </div>
-              </td>
-              <td>
+              </td></a>
+             <td>
                   <div *ngIf="product; else secpro">
                       <a class="waves-effect waves-light btn green" routerLink="/product/{{ product.productID }}/seller">Buy Now</a>
                       <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" style="margin-top: 4%" >Connect</a>
@@ -409,7 +414,7 @@
               </td>
             </tr>
             <tr>
-              <td>
+                <td>
                 <img
                   class="circle z-depth-1 responsive-img"
                   src="https://cdn3.iconfinder.com/data/icons/gradient-circle/36/2018-512.png"
@@ -417,7 +422,7 @@
                   style="width:65px"
                 />
               </td>
-              <td>
+              <a routerLink="/product/93/seller"><td>
                 <h5>Seller3</h5>
                 <p style="color:grey">6th Block, Kormangala</p>
                 <div class="rate">
@@ -432,7 +437,7 @@
                   <input type="radio" id="star1" name="rate" value="1" />
                   <label for="star1" title="text">1 star</label>
                 </div>
-              </td>
+              </td></a>
               <td>
                   <div *ngIf="product; else secpro">
                       <a class="waves-effect waves-light btn green" routerLink="/product/{{ product.productID }}/seller">Buy Now</a>
@@ -471,7 +476,7 @@
                   style="width:65px"
                 />
               </td>
-              <td>
+              <a routerLink="/product/93/seller"><td>
                 <h5>Seller4</h5>
                 <p style="color:grey">6th Block, Kormangala</p>
                 <div class="rate">
@@ -486,7 +491,7 @@
                   <input type="radio" id="star1" name="rate" value="1" />
                   <label for="star1" title="text">1 star</label>
                 </div>
-              </td>
+              </td></a>
               <td>
                   <div *ngIf="product; else secpro">
                       <a class="waves-effect waves-light btn green" routerLink="/product/{{ product.productID }}/seller">Buy Now</a>
@@ -567,8 +572,8 @@
     <div class="container">
       <div id="productRow" class="row">
         <div
+        id="img-container"
           class="col s12 m4 l5 card"
-          style="padding-top: 1%;padding-bottom: 0.5%; width:373px; height:470px"
         >
         <img class="materialboxed" [lazyLoad]="product2.photoURL" id="productImage" [defaultImage]="mainLazyImage" [useSrcset]="true" />
         </div>
@@ -619,7 +624,7 @@
               >
             </div>
           </div>
-          <button class="btn btn-large center modal-trigger" style="width: 100%;font-size: 30px;font-family: inherit" data-target="modal-buyers">Select from +3 shops</button>
+          <button class="btn btn-large center modal-trigger" id="bt-sellers" data-target="modal-buyers">Select from +3 shops</button>
         </div> 
       </div> 
       </div>
@@ -700,8 +705,8 @@
           <div class="container">
             <div id="productRow" class="row">
               <div
+              id="img-container"
                 class="col s12 m4 l5 card"
-                style="padding-top: 1%;padding-bottom: 0.5%; width:373px; height:470px"
               >
               <img class="materialboxed" [lazyLoad]="product3.photoURL" id="productImage" [defaultImage]="mainLazyImage" [useSrcset]="true" />
               </div>
@@ -752,7 +757,7 @@
                     >
                   </div>
                 </div>
-                <button class="btn btn-large center modal-trigger" style="width: 100%;font-size: 30px;font-family: inherit" data-target="modal-buyers">Select from +3 shops</button>
+                <button class="btn btn-large center modal-trigger" id="bt-sellers" data-target="modal-buyers">Select from +3 shops</button>
               </div> 
             </div> 
             </div>
@@ -833,8 +838,8 @@
           <div class="container">
             <div id="productRow" class="row">
               <div
-                class="col s12 m4 l5 card"
-                style="padding-top: 1%;padding-bottom: 0.5%; width:373px; height:470px"
+              id="img-container"  
+              class="col s12 m4 l5 card"
               >
               <img class="materialboxed" [lazyLoad]="product4.photoURL" id="productImage" [defaultImage]="mainLazyImage" [useSrcset]="true" />
               </div>
@@ -885,7 +890,7 @@
                     >
                   </div>
                 </div>
-                <button class="btn btn-large center modal-trigger" style="width: 100%;font-size: 30px;font-family: inherit" data-target="modal-buyers">Select from +3 shops</button>
+                <button class="btn btn-large center modal-trigger" id="bt-sellers" data-target="modal-buyers">Select from +3 shops</button>
               </div> 
             </div> 
             </div>

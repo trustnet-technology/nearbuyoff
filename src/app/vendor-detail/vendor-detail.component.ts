@@ -88,6 +88,9 @@ export class VendorDetailComponent implements OnInit, AfterViewInit {
       10
     )
   ];
+  mobJeans: ProductModel[] = [];
+  mobSs: ProductModel[] = [];
+  mobTs: ProductModel[] = [];
   jeans: ProductModel[] = [
     new ProductModel(
       1,
@@ -295,6 +298,9 @@ export class VendorDetailComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     // this.getApparels();
     this.jquery_code();
+    this.mobJeans = this.jeans.slice(0, 6);
+    this.mobSs = this.sweatshirts.slice(0, 6);
+    this.mobTs = this.tshirts.slice(0, 6);
   }
   ngAfterViewInit() {
     var elems9 = document.querySelectorAll("#vendorProductSlider");

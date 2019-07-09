@@ -1,9 +1,9 @@
 <div class="card">
   <div class="card-image">
     <img
+      id="product-card-image"
       [lazyLoad]="cardContent.photoURL"
       [defaultImage]="mainLazyImage"
-      height="165"
       [useSrcset]="true"
     />
     <span class="discount-label">-{{ cardContent.discount }}%</span>
@@ -21,21 +21,15 @@
     </p>
 
     <!-- <p>Discount: {{ cardContent.discount }} %</p> -->
-    <div class="row " style="padding-left: 0px;margin-top: 5%">
-      <div
-        class="col s7 left grey-text"
-        style="font-size: 11px;padding-top: 5%;padding-left: 0px"
-      >
+    <div id="dist-stock" class="row " style="padding-left: 0px;margin-top: 5%">
+      <div id="lim-stock" class="col s7 left grey-text">
         Limited Stock
       </div>
-      <div
-        class="col s2 green-text"
-        style="font-size: 12px;font-weight: bolder;padding-top: 4%"
-      >
+      <div id="dist-text" class="col s2 green-text">
         5KM
       </div>
       <div class="col s2 offset-s1">
-        <img src="../../assets/cirlceGreenWalk.png" width="30" height="30" />
+        <img id="distance-image" src="../../assets/cirlceGreenWalk.png" />
       </div>
     </div>
   </div>

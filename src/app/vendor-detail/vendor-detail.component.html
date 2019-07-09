@@ -244,6 +244,13 @@
           <app-card [cardContent]="apparel"> </app-card>
         </div>
       </div>
+      <div class="row" id="products-mob-vendor">
+        <div *ngFor="let mobProd of mobJeans" class="col s4">
+          <a routerLink="/product/{{ mobProd.productID }}">
+            <app-card [cardContent]="mobProd"></app-card>
+          </a>
+        </div>
+      </div>
     </div>
 
     <div class="row">
@@ -258,6 +265,13 @@
           <!-- </a> -->
         </div>
       </div>
+      <div class="row" id="products-mob-vendor">
+        <div *ngFor="let mobProd of mobSs" class="col s4">
+          <a routerLink="/product/{{ mobProd.productID }}">
+            <app-card [cardContent]="mobProd"></app-card>
+          </a>
+        </div>
+      </div>
     </div>
     <div class="row " style="padding-bottom: 7%;">
       <hr id="hr2" />
@@ -269,6 +283,13 @@
           <!-- <a routerLink="/product/{{ apparel.productID }}"> -->
           <app-card [cardContent]="apparel"> </app-card>
           <!-- </a> -->
+        </div>
+      </div>
+      <div class="row" id="products-mob-vendor">
+        <div *ngFor="let mobProd of mobTs" class="col s4">
+          <a routerLink="/product/{{ mobProd.productID }}">
+            <app-card [cardContent]="mobProd"></app-card>
+          </a>
         </div>
       </div>
     </div>

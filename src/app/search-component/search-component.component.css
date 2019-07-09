@@ -9,6 +9,21 @@
   position: absolute;
   top: -9999px;
 }
+#srch-img {
+  width: 150px;
+  height: 150px;
+}
+#mob-srch-rslt {
+  display: none;
+}
+#bt-pre-book {
+  height: 54px;
+  line-height: 51px;
+  font-size: 12px;
+  font-weight: bolder;
+  padding: 0 14px;
+}
+
 .rate:not(:checked) > label {
   float: right;
   width: 1em;
@@ -34,4 +49,28 @@
 .rate > input:checked ~ label:hover ~ label,
 .rate > label:hover ~ input:checked ~ label {
   color: #c59b08;
+}
+#mainColl {
+  display: none;
+}
+@media (min-width: 320px) and (max-width: 480px) {
+  #mainColl {
+    display: block;
+  }
+  #mainColl .collapsible-body {
+    padding: 0rem 1rem;
+    background-color: white;
+  }
+  .row .col.s9 {
+    width: 90%;
+  }
+  #bt-pre-book {
+    height: 35px;
+    line-height: 18px;
+    font-size: 14px;
+    font-weight: bolder;
+  }
+  #mob-srch-rslt {
+    display: block;
+  }
 }

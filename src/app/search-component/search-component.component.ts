@@ -43,6 +43,9 @@ export class SearchComponentComponent implements OnInit {
         });
       }); // End Document Ready
     })(jQuery);
+    $(document).ready(function() {
+      $(".collapsible").collapsible();
+    });
   }
 
   ngOnInit() {
