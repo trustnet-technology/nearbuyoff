@@ -208,6 +208,17 @@
           </div>
         </div>
       </div>
+      <div id="mob-recom-vendor" class="col s4" *ngFor="let itemy of recommProd">
+        <div id="gradientCard" class="card">
+          <div class="card-image">
+            <img id="vendor-cat-img" src="{{ itemy.photoURL }}" />
+            <span id="vendor-cat-title" class="card-title gradient">{{ itemy.title }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+
     </div>
 
     <div class="row " style="padding-top: 4%">
@@ -273,7 +284,7 @@
         </div>
       </div>
     </div>
-    <div class="row " style="padding-bottom: 7%;">
+    <div class="row " style="padding-bottom: 7%;margin-bottom: 0px">
       <hr id="hr2" />
       <h6 class="center" style="font-family: 'Oswald', sans-serif;">
         T-Shirts

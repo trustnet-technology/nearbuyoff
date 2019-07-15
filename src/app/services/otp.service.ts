@@ -15,14 +15,14 @@ export class OtpService {
   private getOtpUrl = "https://2factor.in/API/V1";
   constructor(private http: HttpClient) {}
 
-  getOTP(phoneNo: string): Observable<OtpModel> {
+  getOTP(phoneNo: string): Observable<OtpModel[]> {
     const url = `${this.getOtpUrl}/${this.apiKey}/SMS/+91${phoneNo}/AUTOGEN`;
-    return this.http.get<OtpModel>(url);
+    return this.http.get<OtpModel[]>(url);
   }
-  sendOTP(otpVal: string, sessionID: string): Observable<OtpModel> {
+  sendOTP(otpVal: string, sessionID: string): Observable<OtpModel[]> {
     const url = `${this.getOtpUrl}/${
       this.apiKey
     }/SMS/VERIFY/${sessionID}/${otpVal}`;
-    return this.http.get<OtpModel>(url);
+    return this.http.get<OtpModel[]>(url);
   }
 }

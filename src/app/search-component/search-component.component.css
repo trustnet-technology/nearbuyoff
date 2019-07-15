@@ -18,7 +18,7 @@
 }
 #bt-pre-book {
   height: 54px;
-  line-height: 51px;
+  line-height: 27px;
   font-size: 12px;
   font-weight: bolder;
   padding: 0 14px;
@@ -67,7 +67,7 @@
   #bt-pre-book {
     height: 35px;
     line-height: 18px;
-    font-size: 14px;
+    font-size: 9px;
     font-weight: bolder;
   }
   #mob-srch-rslt {

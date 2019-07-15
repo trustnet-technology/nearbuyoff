@@ -86,6 +86,24 @@ export class VendorDetailComponent implements OnInit, AfterViewInit {
       9871,
       7891,
       10
+    ),
+    new ProductModel(
+      65,
+      "Blazers",
+      "something",
+      "../../assets/beanSuit.jpg",
+      9871,
+      7891,
+      10
+    ),
+    new ProductModel(
+      65,
+      "Suits",
+      "something",
+      "../../assets/suits.jpg",
+      9871,
+      7891,
+      10
     )
   ];
   mobJeans: ProductModel[] = [];

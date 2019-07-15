@@ -1,3 +1,6 @@
+#recent-add-mob {
+  display: none;
+}
 .card .card-title.hidden {
   text-indent: -9999px;
 }
@@ -59,4 +62,73 @@ hr {
     rgba(0, 0, 0, 0.8) 100%
   );
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#007db9e8', endColorstr='#cc000000',GradientType=0 );
+}
+@media (min-width: 320px) and (max-width: 480px) {
+  #recent-add-norm {
+    display: none;
+  }
+  #recent-add-mob {
+    display: block;
+  }
+  hr {
+    width: 10%;
+    height: 6px;
+    border: none;
+    background-color: black;
+  }
+  h5 {
+    font-family: "Oswald", sans-serif;
+    font-size: 23px;
+    font-weight: bolder;
+    line-height: 10%;
+    padding-bottom: 5%;
+    padding-top: 2%;
+  }
+  #bt-connect-shop {
+    padding: 0px 10px;
+    height: 26px;
+    line-height: 26px;
+    font-size: 9px;
+    font-weight: bolder;
+  }
+  #recent-add-mob .card .card-content {
+    font-size: 8px;
+    padding: 13px;
+  }
+  .card .card-image .card-badge .material-icons {
+    position: relative;
+    margin-right: 8px;
+    top: 4px;
+  }
+  .material-icons {
+    font-size: 15px;
+  }
+  .card .card-image .card-title {
+    padding: 14px;
+  }
+  .card .card-image .card-badge {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    text-align: left;
+    text-transform: uppercase;
+    font-size: 0.5em;
+    padding: 0.2em 24px 0.8em 24px;
+    color: #fff;
+    z-index: 2;
+  }
+  .card .card-action {
+    padding: 8px 4px;
+  }
+  #recent-add-title-mob {
+    padding-top: 8px;
+    padding-right: 8px;
+    padding-left: 8px;
+    padding-bottom: 24px;
+    font-size: 12px;
+    font-weight: bolder;
+  }
+  .row .col {
+    padding: 0.3rem;
+  }
 }

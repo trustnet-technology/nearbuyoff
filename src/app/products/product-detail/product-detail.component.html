@@ -1,4 +1,5 @@
 <div *ngIf="product; else second" style="background-color: #f2f3f4 ;font-family:  'Oswald', sans-serif;">
+  <app-menubar></app-menubar>
   <div class="container">
     <div id="productRow" class="row">
       <div
@@ -48,11 +49,18 @@
           <div class="col s2">
             <a
               id="social-dropdown"
-            data-target="services-social-dropdown"
-              class=" dropdown-button btn-floating btn-large waves-effect waves-light  blue darken-4"
+              class=" btn-floating btn-large waves-effect waves-light  blue darken-4"
               ><i class="material-icons">share</i></a
             >
           </div>
+          <div class="col s2" id="soc-share" style="display: none">
+           <a class="btn btn-social-icon btn-facebook" shareButton="facebook">
+            <span class="fa fa-facebook"></span>
+          </a>
+           <a class="btn btn-social-icon green" shareButton="whatsapp">
+            <span class="fa fa-whatsapp"></span>
+          </a>
+          </div> 
         </div>
         <button id="bt-sellers" class="btn btn-large center modal-trigger" data-target="modal-buyers">Select from +3 shops</button>
       </div> 
@@ -222,7 +230,7 @@
           <div id="gradientCard" class="card">
             <div class="card-image">
               <img 
-                src="../../../assets/etautzembed.jpg" height=270
+              id="also-buy-img" src="../../../assets/etautzembed.jpg" 
               />
               <span class="card-title gradient">Suits</span>
             </div>
@@ -232,7 +240,7 @@
           <div id="gradientCard" class="card">
             <div class="card-image">
               <img 
-                src="../../../assets/etautzembed1.jpg" height=270
+                id="also-buy-img" src="../../../assets/etautzembed1.jpg"
               />
               <span class="card-title gradient">Coats</span>
             </div>
@@ -242,7 +250,7 @@
           <div id="gradientCard" class="card">
             <div class="card-image">
               <img 
-                src="../../../assets/myargallery.jpg" height=270
+              id="also-buy-img" src="../../../assets/myargallery.jpg" 
               />
               <span class="card-title gradient">Women Suits</span>
             </div>
@@ -252,7 +260,7 @@
           <div id="gradientCard" class="card">
             <div class="card-image">
               <img 
-                src="../../../assets/myargallery1.jpg" height=270
+              id="also-buy-img" src="../../../assets/myargallery1.jpg" 
               />
               <span class="card-title gradient">Jackets (Women)</span>
             </div>
@@ -262,7 +270,7 @@
           <div id="gradientCard" class="card">
             <div class="card-image">
               <img 
-                src="../../../assets/etautzembed.jpg" height=270
+              id="also-buy-img" src="../../../assets/etautzembed.jpg"
               />
               <span class="card-title gradient">Outfits</span>
             </div>
@@ -272,25 +280,73 @@
           <div id="gradientCard" class="card">
             <div class="card-image">
               <img 
-                src="../../../assets/theorygallery.jpg" height=270
+              id="also-buy-img" src="../../../assets/theorygallery.jpg"
               />
               <span class="card-title gradient">Formal Wear</span>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="row" id="mob-rcmd-prods">
-      <div class="col s6">
-        <div class="card"></div>
+      <div class="row" id="mob-recom-prods">
+        <div class="col s4" id="mob-col-recom">
+          <div id="gradientCard" class="card">
+            <div class="card-image">
+              <img 
+              id="also-buy-img" src="../../../assets/theorygallery.jpg"
+              />
+              <span id="recom-prod-title" class="card-title gradient">Formal Wear</span>
+            </div>
+          </div>
+        </div>
+        <div class="col s4" id="mob-col-recom"><div id="gradientCard" class="card">
+          <div class="card-image">
+            <img 
+            id="also-buy-img" src="../../../assets/etautzembed.jpg"
+            />
+            <span id="recom-prod-title" class="card-title gradient">Outfits</span>
+          </div>
+        </div></div>
+        <div class="col s4" id="mob-col-recom"><div id="gradientCard" class="card">
+          <div class="card-image">
+            <img 
+            id="also-buy-img" src="../../../assets/myargallery1.jpg" 
+            />
+            <span id="recom-prod-title" class="card-title gradient">Jackets (Women)</span>
+          </div>
+        </div></div>
+        <div class="col s4" id="mob-col-recom"><div id="gradientCard" class="card">
+          <div class="card-image">
+            <img 
+            id="also-buy-img" src="../../../assets/myargallery.jpg" 
+            />
+            <span id="recom-prod-title" class="card-title gradient">Women Suits</span>
+          </div>
+        </div></div>
+        <div class="col s4" id="mob-col-recom"> <div id="gradientCard" class="card">
+          <div class="card-image">
+            <img 
+              id="also-buy-img" src="../../../assets/etautzembed1.jpg"
+            />
+            <span id="recom-prod-title" class="card-title gradient">Coats</span>
+          </div>
+        </div></div>
+        <div class="col s4" id="mob-col-recom"><div id="gradientCard" class="card">
+          <div class="card-image">
+            <img 
+            id="also-buy-img" src="../../../assets/myargallery.jpg" 
+            />
+            <span id="recom-prod-title" class="card-title gradient">Women Suits</span>
+          </div>
+        </div></div>
       </div>
     </div>
   </div>
 </div>
 <div id="modal-buyers" class="modal">
   <div class="modal-content">
+      <div class="modal-close right"><i class="material-icons">close</i></div>
     <div class="row">
-      <div class="col s12 m4 l7 card" style="padding-top:1%;padding-bottom: 1%;margin-right: 2%">
+      <div id="mapcol" class="col s12 m4 l7 card" style="padding-top:1%;padding-bottom: 1%;margin-right: 2%">
         <agm-map [latitude]="lat" [longitude]="lng">
           <agm-marker
             *ngFor="let position of positions"
@@ -313,7 +369,7 @@
                   style="width:65px"
                 />
               </td>
-              <a routerLink="/product/93/seller"><td>
+              <a routerLink="/product/93/seller" routerLinkActive="active"><td>
                 <h5>Seller1</h5>
                 <p style="color:grey">5th Block, Kormangala</p>
                 <div class="rate">
@@ -331,27 +387,27 @@
               </td></a>
               <td>
                 <div *ngIf="product; else secpro">
-                    <a class="waves-effect waves-light btn green" routerLink="/product/{{ product.productID }}/seller">Buy Now</a>
+                    <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product.productID }}/seller">Buy Now</a>
                     <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" style="margin-top: 4%" >Connect</a>
                     <h5><s style="color:grey;font-size: 18px">₹{{ product.mrp }}</s> ₹{{ product.mrp }}</h5>
                 </div>
                 <ng-template #secpro>
                   <div *ngIf="product2; else thirdpro">
-                    <a class="waves-effect waves-light btn green" routerLink="/product/{{ product2.productID }}/seller">Buy Now</a>
+                    <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product2.productID }}/seller">Buy Now</a>
                     <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" style="margin-top: 4%" >Connect</a>
                     <h5><s style="color:grey;font-size: 18px">₹{{ product2.mrp }}</s> ₹{{ product2.mrp }}</h5>
                   </div>
                   </ng-template>
                   <ng-template #thirdpro>
                       <div *ngIf="product3; else fourpro">
-                        <a class="waves-effect waves-light btn green" routerLink="/product/{{ product3.productID }}/seller">Buy Now</a>
+                        <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product3.productID }}/seller">Buy Now</a>
                         <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" style="margin-top: 4%" >Connect</a>
                         <h5><s style="color:grey;font-size: 18px">₹{{ product3.mrp }}</s> ₹{{ product3.mrp }}</h5>
                       </div>
                       </ng-template>
                       <ng-template #fourpro>
                           <div *ngIf="product4">
-                            <a class="waves-effect waves-light btn green" routerLink="/product/{{ product4.productID }}/seller">Buy Now</a>
+                            <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product4.productID }}/seller">Buy Now</a>
                             <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" style="margin-top: 4%" >Connect</a>
                             <h5><s style="color:grey;font-size: 18px">₹{{ product4.mrp }}</s> ₹{{ product4.mrp }}</h5>
                           </div>
@@ -368,7 +424,7 @@
                   style="width:65px"
                 />
               </td>
-              <a routerLink="/product/93/seller"><td>
+              <a class="modal-close" routerLink="/product/93/seller"><td>
                 <h5>Seller2</h5>
                 <p style="color:grey">8th Block, Kormangala</p>
                 <div class="rate">
@@ -386,27 +442,27 @@
               </td></a>
              <td>
                   <div *ngIf="product; else secpro">
-                      <a class="waves-effect waves-light btn green" routerLink="/product/{{ product.productID }}/seller">Buy Now</a>
+                      <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product.productID }}/seller">Buy Now</a>
                       <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" style="margin-top: 4%" >Connect</a>
                       <h5><s style="color:grey;font-size: 18px">₹{{ product.mrp }}</s> ₹{{ product.mrp }}</h5>
                   </div>
                   <ng-template #secpro>
                     <div *ngIf="product2; else thirdpro">
-                      <a class="waves-effect waves-light btn green" routerLink="/product/{{ product2.productID }}/seller">Buy Now</a>
+                      <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product2.productID }}/seller">Buy Now</a>
                       <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" style="margin-top: 4%" >Connect</a>
                       <h5><s style="color:grey;font-size: 18px">₹{{ product2.mrp }}</s> ₹{{ product2.mrp }}</h5>
                     </div>
                     </ng-template>
                     <ng-template #thirdpro>
                         <div *ngIf="product3; else fourpro">
-                          <a class="waves-effect waves-light btn green" routerLink="/product/{{ product3.productID }}/seller">Buy Now</a>
+                          <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product3.productID }}/seller">Buy Now</a>
                           <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" style="margin-top: 4%" >Connect</a>
                           <h5><s style="color:grey;font-size: 18px">₹{{ product3.mrp }}</s> ₹{{ product3.mrp }}</h5>
                         </div>
                         </ng-template>
                         <ng-template #fourpro>
                             <div *ngIf="product4">
-                              <a class="waves-effect waves-light btn green" routerLink="/product/{{ product4.productID }}/seller">Buy Now</a>
+                              <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product4.productID }}/seller">Buy Now</a>
                               <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" style="margin-top: 4%" >Connect</a>
                               <h5><s style="color:grey;font-size: 18px">₹{{ product4.mrp }}</s> ₹{{ product4.mrp }}</h5>
                             </div>
@@ -422,7 +478,7 @@
                   style="width:65px"
                 />
               </td>
-              <a routerLink="/product/93/seller"><td>
+              <a class="modal-close" routerLink="/product/93/seller"><td>
                 <h5>Seller3</h5>
                 <p style="color:grey">6th Block, Kormangala</p>
                 <div class="rate">
@@ -440,27 +496,27 @@
               </td></a>
               <td>
                   <div *ngIf="product; else secpro">
-                      <a class="waves-effect waves-light btn green" routerLink="/product/{{ product.productID }}/seller">Buy Now</a>
+                      <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product.productID }}/seller">Buy Now</a>
                       <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" style="margin-top: 4%" >Connect</a>
                       <h5><s style="color:grey;font-size: 18px">₹{{ product.mrp }}</s> ₹{{ product.mrp }}</h5>
                   </div>
                   <ng-template #secpro>
                     <div *ngIf="product2; else thirdpro">
-                      <a class="waves-effect waves-light btn green" routerLink="/product/{{ product2.productID }}/seller">Buy Now</a>
+                      <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product2.productID }}/seller">Buy Now</a>
                       <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" style="margin-top: 4%" >Connect</a>
                       <h5><s style="color:grey;font-size: 18px">₹{{ product2.mrp }}</s> ₹{{ product2.mrp }}</h5>
                     </div>
                     </ng-template>
                     <ng-template #thirdpro>
                         <div *ngIf="product3; else fourpro">
-                          <a class="waves-effect waves-light btn green" routerLink="/product/{{ product3.productID }}/seller">Buy Now</a>
+                          <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product3.productID }}/seller">Buy Now</a>
                           <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" style="margin-top: 4%" >Connect</a>
                           <h5><s style="color:grey;font-size: 18px">₹{{ product3.mrp }}</s> ₹{{ product3.mrp }}</h5>
                         </div>
                         </ng-template>
                         <ng-template #fourpro>
                             <div *ngIf="product4">
-                              <a class="waves-effect waves-light btn green" routerLink="/product/{{ product4.productID }}/seller">Buy Now</a>
+                              <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product4.productID }}/seller">Buy Now</a>
                               <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" style="margin-top: 4%" >Connect</a>
                               <h5><s style="color:grey;font-size: 18px">₹{{ product4.mrp }}</s> ₹{{ product4.mrp }}</h5>
                             </div>
@@ -476,7 +532,7 @@
                   style="width:65px"
                 />
               </td>
-              <a routerLink="/product/93/seller"><td>
+              <a class="modal-close" routerLink="/product/93/seller"><td>
                 <h5>Seller4</h5>
                 <p style="color:grey">6th Block, Kormangala</p>
                 <div class="rate">
@@ -494,27 +550,27 @@
               </td></a>
               <td>
                   <div *ngIf="product; else secpro">
-                      <a class="waves-effect waves-light btn green" routerLink="/product/{{ product.productID }}/seller">Buy Now</a>
+                      <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product.productID }}/seller">Buy Now</a>
                       <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" style="margin-top: 4%" >Connect</a>
                       <h5><s style="color:grey;font-size: 18px">₹{{ product.mrp }}</s> ₹{{ product.mrp }}</h5>
                   </div>
                   <ng-template #secpro>
                     <div *ngIf="product2; else thirdpro">
-                      <a class="waves-effect waves-light btn green" routerLink="/product/{{ product2.productID }}/seller">Buy Now</a>
+                      <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product2.productID }}/seller">Buy Now</a>
                       <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" style="margin-top: 4%" >Connect</a>
                       <h5><s style="color:grey;font-size: 18px">₹{{ product2.mrp }}</s> ₹{{ product2.mrp }}</h5>
                     </div>
                     </ng-template>
                     <ng-template #thirdpro>
                         <div *ngIf="product3; else fourpro">
-                          <a class="waves-effect waves-light btn green" routerLink="/product/{{ product3.productID }}/seller">Buy Now</a>
+                          <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product3.productID }}/seller">Buy Now</a>
                           <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" style="margin-top: 4%" >Connect</a>
                           <h5><s style="color:grey;font-size: 18px">₹{{ product3.mrp }}</s> ₹{{ product3.mrp }}</h5>
                         </div>
                         </ng-template>
                         <ng-template #fourpro>
                             <div *ngIf="product4">
-                              <a class="waves-effect waves-light btn green" routerLink="/product/{{ product4.productID }}/seller">Buy Now</a>
+                              <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product4.productID }}/seller">Buy Now</a>
                               <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" style="margin-top: 4%" >Connect</a>
                               <h5><s style="color:grey;font-size: 18px">₹{{ product4.mrp }}</s> ₹{{ product4.mrp }}</h5>
                             </div>
@@ -543,32 +599,28 @@
        <input #otpTFT placeholder="OTP" id="first_name" type="text" class="validate" style="width: 50%;">
     </div>
           <div class="modal-footer">
-            <a (click)="sendOTP(otpTFT.value,otpDET)" data-target="verified-modal" class="modal-close modal-trigger waves-effect waves-green btn-flat">Submit</a>
+            <a (click)="sendOTP(otpTFT.value,otpMessage.Details)" data-target="verified-modal" class="modal-close modal-trigger waves-effect waves-green btn-flat">Submit</a>
           </div>
         </div>
 
           <div id="verified-modal" class="modal">
               <div class="modal-content">
-                <p>{{otpRecvMessage.Details}}</p>
+                <p *ngIf="otpRecvMessage?.Details == 'OTP Matched'; else secondOtp">
+                  OTP Matched
+                </p>
+                <ng-template #secondOtp>
+                  <p>OTP Mismatched</p>
+                </ng-template>
               </div>
               <div class="modal-footer">
                 <a class="modal-close waves-effect waves-green btn-flat">Close</a>
               </div>
             </div>
 
-<div id="services-social-dropdown" class="dropdown-content row">
-    <ul
-      id="menuDropdownContent"
-      class="vertical-tabs col s3"
-    >
-    <li><a href="#!"> 
-        <fb-like></fb-like></a>
-      </li> 
-      <li><a href="#!">  <linkedin-share></linkedin-share> </a></li> 
-    </ul>
-  </div>
+
 <ng-template #second>
   <div *ngIf="product2; else third" style="background-color: #f2f3f4 ;font-family:  'Oswald', sans-serif;">
+    <app-menubar></app-menubar>
     <div class="container">
       <div id="productRow" class="row">
         <div
@@ -623,6 +675,14 @@
                 ><i class="material-icons">share</i></a
               >
             </div>
+            <div class="col s2" id="soc-share" style="display: none">
+              <a class="btn btn-social-icon btn-facebook" shareButton="facebook">
+               <span class="fa fa-facebook"></span>
+             </a>
+              <a class="btn btn-social-icon green" shareButton="whatsapp">
+               <span class="fa fa-whatsapp"></span>
+             </a>
+             </div> 
           </div>
           <button class="btn btn-large center modal-trigger" id="bt-sellers" data-target="modal-buyers">Select from +3 shops</button>
         </div> 
@@ -639,7 +699,7 @@
             <div id="gradientCard" class="card">
               <div class="card-image">
                 <img 
-                  src="../../../assets/etautzembed.jpg" height=270
+                id="also-buy-img" src="../../../assets/etautzembed.jpg" 
                 />
                 <span class="card-title gradient">Suits</span>
               </div>
@@ -649,7 +709,7 @@
             <div id="gradientCard" class="card">
               <div class="card-image">
                 <img 
-                  src="../../../assets/etautzembed1.jpg" height=270
+                  id="also-buy-img" src="../../../assets/etautzembed1.jpg"
                 />
                 <span class="card-title gradient">Coats</span>
               </div>
@@ -659,7 +719,7 @@
             <div id="gradientCard" class="card">
               <div class="card-image">
                 <img 
-                  src="../../../assets/myargallery.jpg" height=270
+                id="also-buy-img" src="../../../assets/myargallery.jpg" 
                 />
                 <span class="card-title gradient">Women Suits</span>
               </div>
@@ -669,7 +729,7 @@
             <div id="gradientCard" class="card">
               <div class="card-image">
                 <img 
-                  src="../../../assets/myargallery1.jpg" height=270
+                id="also-buy-img" src="../../../assets/myargallery1.jpg" 
                 />
                 <span class="card-title gradient">Jackets (Women)</span>
               </div>
@@ -679,7 +739,7 @@
             <div id="gradientCard" class="card">
               <div class="card-image">
                 <img 
-                  src="../../../assets/etautzembed.jpg" height=270
+                id="also-buy-img" src="../../../assets/etautzembed.jpg"
                 />
                 <span class="card-title gradient">Outfits</span>
               </div>
@@ -689,12 +749,64 @@
             <div id="gradientCard" class="card">
               <div class="card-image">
                 <img 
-                  src="../../../assets/theorygallery.jpg" height=270
+                id="also-buy-img" src="../../../assets/theorygallery.jpg"
                 />
                 <span class="card-title gradient">Formal Wear</span>
               </div>
             </div>
           </div>
+        </div>
+        <div class="row" id="mob-recom-prods">
+          <div class="col s4" id="mob-col-recom">
+            <div id="gradientCard" class="card">
+              <div class="card-image">
+                <img 
+                id="also-buy-img" src="../../../assets/theorygallery.jpg"
+                />
+                <span id="recom-prod-title" class="card-title gradient">Formal Wear</span>
+              </div>
+            </div>
+          </div>
+          <div class="col s4" id="mob-col-recom"><div id="gradientCard" class="card">
+            <div class="card-image">
+              <img 
+              id="also-buy-img" src="../../../assets/etautzembed.jpg"
+              />
+              <span id="recom-prod-title" class="card-title gradient">Outfits</span>
+            </div>
+          </div></div>
+          <div class="col s4" id="mob-col-recom"><div id="gradientCard" class="card">
+            <div class="card-image">
+              <img 
+              id="also-buy-img" src="../../../assets/myargallery1.jpg" 
+              />
+              <span id="recom-prod-title" class="card-title gradient">Jackets (Women)</span>
+            </div>
+          </div></div>
+          <div class="col s4" id="mob-col-recom"><div id="gradientCard" class="card">
+            <div class="card-image">
+              <img 
+              id="also-buy-img" src="../../../assets/myargallery.jpg" 
+              />
+              <span id="recom-prod-title" class="card-title gradient">Women Suits</span>
+            </div>
+          </div></div>
+          <div class="col s4" id="mob-col-recom"> <div id="gradientCard" class="card">
+            <div class="card-image">
+              <img 
+                id="also-buy-img" src="../../../assets/etautzembed1.jpg"
+              />
+              <span id="recom-prod-title" class="card-title gradient">Coats</span>
+            </div>
+          </div></div>
+          <div class="col s4" id="mob-col-recom"><div id="gradientCard" class="card">
+            <div class="card-image">
+              <img 
+              id="also-buy-img" src="../../../assets/myargallery.jpg" 
+              />
+              <span id="recom-prod-title" class="card-title gradient">Women Suits</span>
+            </div>
+          </div></div>
         </div>
       </div>
     </div>
@@ -702,7 +814,8 @@
   </ng-template>
   <ng-template #third>
       <div *ngIf="product3; else fourth" style="background-color: #f2f3f4 ;font-family:  'Oswald', sans-serif;">
-          <div class="container">
+        <app-menubar></app-menubar>  
+        <div class="container">
             <div id="productRow" class="row">
               <div
               id="img-container"
@@ -756,6 +869,14 @@
                       ><i class="material-icons">share</i></a
                     >
                   </div>
+                  <div class="col s2" id="soc-share" style="display: none">
+                    <a class="btn btn-social-icon btn-facebook" shareButton="facebook">
+                     <span class="fa fa-facebook"></span>
+                   </a>
+                    <a class="btn btn-social-icon green" shareButton="whatsapp">
+                     <span class="fa fa-whatsapp"></span>
+                   </a>
+                   </div> 
                 </div>
                 <button class="btn btn-large center modal-trigger" id="bt-sellers" data-target="modal-buyers">Select from +3 shops</button>
               </div> 
@@ -772,7 +893,7 @@
                   <div id="gradientCard" class="card">
                     <div class="card-image">
                       <img 
-                        src="../../../assets/etautzembed.jpg" height=270
+                      id="also-buy-img" src="../../../assets/etautzembed.jpg" 
                       />
                       <span class="card-title gradient">Suits</span>
                     </div>
@@ -782,7 +903,7 @@
                   <div id="gradientCard" class="card">
                     <div class="card-image">
                       <img 
-                        src="../../../assets/etautzembed1.jpg" height=270
+                        id="also-buy-img" src="../../../assets/etautzembed1.jpg"
                       />
                       <span class="card-title gradient">Coats</span>
                     </div>
@@ -792,7 +913,7 @@
                   <div id="gradientCard" class="card">
                     <div class="card-image">
                       <img 
-                        src="../../../assets/myargallery.jpg" height=270
+                      id="also-buy-img" src="../../../assets/myargallery.jpg" 
                       />
                       <span class="card-title gradient">Women Suits</span>
                     </div>
@@ -802,7 +923,7 @@
                   <div id="gradientCard" class="card">
                     <div class="card-image">
                       <img 
-                        src="../../../assets/myargallery1.jpg" height=270
+                      id="also-buy-img" src="../../../assets/myargallery1.jpg" 
                       />
                       <span class="card-title gradient">Jackets (Women)</span>
                     </div>
@@ -812,7 +933,7 @@
                   <div id="gradientCard" class="card">
                     <div class="card-image">
                       <img 
-                        src="../../../assets/etautzembed.jpg" height=270
+                      id="also-buy-img" src="../../../assets/etautzembed.jpg"
                       />
                       <span class="card-title gradient">Outfits</span>
                     </div>
@@ -822,12 +943,64 @@
                   <div id="gradientCard" class="card">
                     <div class="card-image">
                       <img 
-                        src="../../../assets/theorygallery.jpg" height=270
+                      id="also-buy-img" src="../../../assets/theorygallery.jpg"
                       />
                       <span class="card-title gradient">Formal Wear</span>
                     </div>
                   </div>
                 </div>
+              </div>
+              <div class="row" id="mob-recom-prods">
+                <div class="col s4" id="mob-col-recom">
+                  <div id="gradientCard" class="card">
+                    <div class="card-image">
+                      <img 
+                      id="also-buy-img" src="../../../assets/theorygallery.jpg"
+                      />
+                      <span id="recom-prod-title" class="card-title gradient">Formal Wear</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col s4" id="mob-col-recom"><div id="gradientCard" class="card">
+                  <div class="card-image">
+                    <img 
+                    id="also-buy-img" src="../../../assets/etautzembed.jpg"
+                    />
+                    <span id="recom-prod-title" class="card-title gradient">Outfits</span>
+                  </div>
+                </div></div>
+                <div class="col s4" id="mob-col-recom"><div id="gradientCard" class="card">
+                  <div class="card-image">
+                    <img 
+                    id="also-buy-img" src="../../../assets/myargallery1.jpg" 
+                    />
+                    <span id="recom-prod-title" class="card-title gradient">Jackets (Women)</span>
+                  </div>
+                </div></div>
+                <div class="col s4" id="mob-col-recom"><div id="gradientCard" class="card">
+                  <div class="card-image">
+                    <img 
+                    id="also-buy-img" src="../../../assets/myargallery.jpg" 
+                    />
+                    <span id="recom-prod-title" class="card-title gradient">Women Suits</span>
+                  </div>
+                </div></div>
+                <div class="col s4" id="mob-col-recom"> <div id="gradientCard" class="card">
+                  <div class="card-image">
+                    <img 
+                      id="also-buy-img" src="../../../assets/etautzembed1.jpg"
+                    />
+                    <span id="recom-prod-title" class="card-title gradient">Coats</span>
+                  </div>
+                </div></div>
+                <div class="col s4" id="mob-col-recom"><div id="gradientCard" class="card">
+                  <div class="card-image">
+                    <img 
+                    id="also-buy-img" src="../../../assets/myargallery.jpg" 
+                    />
+                    <span id="recom-prod-title" class="card-title gradient">Women Suits</span>
+                  </div>
+                </div></div>
               </div>
             </div>
           </div>
@@ -835,7 +1008,8 @@
   </ng-template>
   <ng-template #fourth>
       <div *ngIf="product4" style="background-color: #f2f3f4 ;font-family:  'Oswald', sans-serif;">
-          <div class="container">
+        <app-menubar></app-menubar>  
+        <div class="container">
             <div id="productRow" class="row">
               <div
               id="img-container"  
@@ -889,6 +1063,14 @@
                       ><i class="material-icons">share</i></a
                     >
                   </div>
+                  <div class="col s2" id="soc-share" style="display: none">
+                    <a class="btn btn-social-icon btn-facebook" shareButton="facebook">
+                     <span class="fa fa-facebook"></span>
+                   </a>
+                    <a class="btn btn-social-icon green" shareButton="whatsapp">
+                     <span class="fa fa-whatsapp"></span>
+                   </a>
+                   </div> 
                 </div>
                 <button class="btn btn-large center modal-trigger" id="bt-sellers" data-target="modal-buyers">Select from +3 shops</button>
               </div> 
@@ -905,7 +1087,7 @@
                   <div id="gradientCard" class="card">
                     <div class="card-image">
                       <img 
-                        src="../../../assets/etautzembed.jpg" height=270
+                      id="also-buy-img" src="../../../assets/etautzembed.jpg" 
                       />
                       <span class="card-title gradient">Suits</span>
                     </div>
@@ -915,7 +1097,7 @@
                   <div id="gradientCard" class="card">
                     <div class="card-image">
                       <img 
-                        src="../../../assets/etautzembed1.jpg" height=270
+                        id="also-buy-img" src="../../../assets/etautzembed1.jpg"
                       />
                       <span class="card-title gradient">Coats</span>
                     </div>
@@ -925,7 +1107,7 @@
                   <div id="gradientCard" class="card">
                     <div class="card-image">
                       <img 
-                        src="../../../assets/myargallery.jpg" height=270
+                      id="also-buy-img" src="../../../assets/myargallery.jpg" 
                       />
                       <span class="card-title gradient">Women Suits</span>
                     </div>
@@ -935,7 +1117,7 @@
                   <div id="gradientCard" class="card">
                     <div class="card-image">
                       <img 
-                        src="../../../assets/myargallery1.jpg" height=270
+                      id="also-buy-img" src="../../../assets/myargallery1.jpg" 
                       />
                       <span class="card-title gradient">Jackets (Women)</span>
                     </div>
@@ -945,7 +1127,7 @@
                   <div id="gradientCard" class="card">
                     <div class="card-image">
                       <img 
-                        src="../../../assets/etautzembed.jpg" height=270
+                      id="also-buy-img" src="../../../assets/etautzembed.jpg"
                       />
                       <span class="card-title gradient">Outfits</span>
                     </div>
@@ -955,12 +1137,64 @@
                   <div id="gradientCard" class="card">
                     <div class="card-image">
                       <img 
-                        src="../../../assets/theorygallery.jpg" height=270
+                      id="also-buy-img" src="../../../assets/theorygallery.jpg"
                       />
                       <span class="card-title gradient">Formal Wear</span>
                     </div>
                   </div>
                 </div>
+              </div>
+              <div class="row" id="mob-recom-prods">
+                <div class="col s4" id="mob-col-recom">
+                  <div id="gradientCard" class="card">
+                    <div class="card-image">
+                      <img 
+                      id="also-buy-img" src="../../../assets/theorygallery.jpg"
+                      />
+                      <span id="recom-prod-title" class="card-title gradient">Formal Wear</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col s4" id="mob-col-recom"><div id="gradientCard" class="card">
+                  <div class="card-image">
+                    <img 
+                    id="also-buy-img" src="../../../assets/etautzembed.jpg"
+                    />
+                    <span id="recom-prod-title" class="card-title gradient">Outfits</span>
+                  </div>
+                </div></div>
+                <div class="col s4" id="mob-col-recom"><div id="gradientCard" class="card">
+                  <div class="card-image">
+                    <img 
+                    id="also-buy-img" src="../../../assets/myargallery1.jpg" 
+                    />
+                    <span id="recom-prod-title" class="card-title gradient">Jackets (Women)</span>
+                  </div>
+                </div></div>
+                <div class="col s4" id="mob-col-recom"><div id="gradientCard" class="card">
+                  <div class="card-image">
+                    <img 
+                    id="also-buy-img" src="../../../assets/myargallery.jpg" 
+                    />
+                    <span id="recom-prod-title" class="card-title gradient">Women Suits</span>
+                  </div>
+                </div></div>
+                <div class="col s4" id="mob-col-recom"> <div id="gradientCard" class="card">
+                  <div class="card-image">
+                    <img 
+                      id="also-buy-img" src="../../../assets/etautzembed1.jpg"
+                    />
+                    <span id="recom-prod-title" class="card-title gradient">Coats</span>
+                  </div>
+                </div></div>
+                <div class="col s4" id="mob-col-recom"><div id="gradientCard" class="card">
+                  <div class="card-image">
+                    <img 
+                    id="also-buy-img" src="../../../assets/myargallery.jpg" 
+                    />
+                    <span id="recom-prod-title" class="card-title gradient">Women Suits</span>
+                  </div>
+                </div></div>
               </div>
             </div>
           </div>

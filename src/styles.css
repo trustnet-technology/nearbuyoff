@@ -1,2 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 @import url("https://fonts.googleapis.com/css?family=Roboto|Oswald:700&display=swap");
+/* @import "../node_modules/@ngx-share/button/themes/default/default-theme.css"; */
+@import url("https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-social@5.1.1/bootstrap-social.css");

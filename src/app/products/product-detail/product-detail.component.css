@@ -1,7 +1,7 @@
 #productRow {
   padding: 3%;
 }
-#mob-rcmd-prods {
+#mob-recom-prods {
   display: none;
 }
 #img-container {
@@ -16,6 +16,11 @@
   max-width: 100%;
   object-fit: cover;
   background-size: contain;
+}
+#also-buy-img {
+  width: 225px;
+  height: 270px;
+  max-width: 100%;
 }
 .product-description {
   border-bottom: 1px solid #e1e8ee;
@@ -104,8 +109,8 @@ hr {
   height: 295px;
 }
 #recommCarousel {
-  height: 274px;
-  width: 300px;
+  height: fit-content;
+  width: fit-content;
   padding-bottom: 3%;
   object-fit: cover;
   background-size: contain;
@@ -117,6 +122,7 @@ hr {
 }
 #productPageCarousel {
   padding-bottom: 2%;
+  overflow: visible;
 }
 /* Ratings Thing */
 
@@ -182,6 +188,20 @@ div.explanation {
   font-family: inherit;
 }
 @media (min-width: 320px) and (max-width: 480px) {
+  #modal-buyers.modal .modal-content {
+    padding: 16px;
+  }
+  #productPageCarousel {
+    display: none;
+  }
+  #mob-recom-prods {
+    display: block;
+  }
+  #also-buy-img {
+    width: 125px;
+    height: 145px;
+    max-width: 100%;
+  }
   #productImage {
     height: 300px;
     width: 300px;
@@ -191,10 +211,17 @@ div.explanation {
     padding-bottom: 1.5%;
     background-size: contain;
   }
+  #mapcol {
+    display: none;
+  }
   #bt-sellers {
     width: 100%;
     font-size: 20px;
     font-family: inherit;
+  }
+  #recom-prod-title {
+    padding: 13px;
+    font-size: 20px;
   }
   h4 {
     font-size: 2rem;
@@ -210,6 +237,42 @@ div.explanation {
     font-size: 23px;
     font-weight: bolder;
     line-height: 10%;
-    padding-bottom: 2%;
+    padding-bottom: 6%;
+  }
+
+  .rate {
+    float: left;
+    height: 46px;
+    /* padding: 30px; */
+  }
+  .rate:not(:checked) > input {
+    position: absolute;
+    top: -9999px;
+  }
+  .rate:not(:checked) > label {
+    float: right;
+    width: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 14px;
+    color: #ccc;
+  }
+  .rate:not(:checked) > label:before {
+    content: "★ ";
+  }
+  .rate > input:checked ~ label {
+    color: #ffc700;
+  }
+  .rate:not(:checked) > label:hover,
+  .rate:not(:checked) > label:hover ~ label {
+    color: #deb217;
+  }
+  .rate > input:checked + label:hover,
+  .rate > input:checked + label:hover ~ label,
+  .rate > input:checked ~ label:hover,
+  .rate > input:checked ~ label:hover ~ label,
+  .rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
   }
 }

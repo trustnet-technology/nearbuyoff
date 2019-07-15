@@ -39,7 +39,7 @@
         style="width: 145px;font-family:  'Oswald', sans-serif;"
         class="center"
       >
-        <a routerLink="/menu/{{ mItem.name }}">
+        <a routerLink="/search">
           <b>{{ mItem.name }}</b>
         </a>
       </li>
@@ -49,12 +49,6 @@
 
 <ul class="sidenav" id="mobile-nav">
   <li *ngFor="let mItem of mItems">
-    <a routerLink="/menu/{{ mItem.name }}">{{ mItem.name }}</a>
+    <a routerLink="/search">{{ mItem.name }}</a>
   </li>
 </ul>
-<app-sel-city-modal></app-sel-city-modal>
-<app-slider></app-slider>
-<div>
-  <app-card-slider></app-card-slider>
-  <app-other-cards></app-other-cards>
-</div>

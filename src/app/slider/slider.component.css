@@ -35,7 +35,14 @@ a.middle-indicator-text {
 .indicators {
   visibility: hidden;
 }
-#mainCarousel {
-  height: 290px;
+#mainCarousel.carousel {
+  height: 300px;
   min-height: 100%;
+  object-fit: cover;
+}
+@media (min-width: 320px) and (max-width: 480px) {
+  #mainCarousel {
+    height: 200px;
+    max-height: 100%;
+  }
 }

@@ -3,8 +3,10 @@ import { ActivatedRoute } from "@angular/router";
 import { Location } from "@angular/common";
 import { ProductService } from "../../services/product.service";
 import { ProductModel } from "../../models/productModel";
-import { OtpService } from "src/app/services/otp.service";
-import { OtpModel } from "src/app/models/otp-model";
+import { OtpService } from "../../services/otp.service";
+import { OtpModel } from "../../models/otp-model";
+import { isVisible } from "ng-lazyload-image/src/scroll-preset/preset";
+// import { IShareButtons } from "@ngx-share/core";
 declare var $: any;
 @Component({
   selector: "app-product-detail",
@@ -19,8 +21,8 @@ export class ProductDetailComponent implements OnInit {
   product4: ProductModel;
   lat: 34.052235;
   lng: -118.243683;
-  otpMessage: OtpModel;
-  otpRecvMessage: OtpModel;
+  otpMessage: any;
+  otpRecvMessage: any;
   otpDET: string;
   phoneDET: string;
   positions = [
@@ -73,6 +75,11 @@ export class ProductDetailComponent implements OnInit {
     $(document).ready(function() {
       $(".materialboxed").materialbox();
     });
+    jQuery(document).ready(function() {
+      jQuery("#social-dropdown").on("click", function(event) {
+        jQuery("#soc-share").toggle();
+      });
+    });
     (function($) {
       $(function() {
         $("#social-dropdown").dropdown({
@@ -122,14 +129,20 @@ export class ProductDetailComponent implements OnInit {
   getOTP(phoneNo: string): void {
     this.otpService
       .getOTP(phoneNo)
-      .subscribe(otpMessage => (this.otpMessage = otpMessage));
+      .subscribe(
+        (otpMessage: OtpModel[]) => (this.otpMessage = { ...otpMessage })
+      );
+    // console.log(this.otpMessage);
     // this.otpDET = this.otpMessage.Details;
   }
-  sendOTP(otpVal: string): void {
+  sendOTP(otpVal: string, getOTPDet: string): void {
     this.otpService
-      .sendOTP(otpVal, this.otpMessage.Details)
-      .subscribe(otpRecvMessage => (this.otpRecvMessage = otpRecvMessage));
+      .sendOTP(otpVal, getOTPDet)
+      .subscribe(
+        (otpRecvMessage: OtpModel[]) =>
+          (this.otpRecvMessage = { ...otpRecvMessage })
+      );
     // this.phoneDET = this.otpRecvMessage.Details;
-    console.log(this.otpMessage.Details);
+    // console.log(this.otpMessage.Details);
   }
 }

@@ -18,11 +18,12 @@ import { VendorDetailComponent } from "./vendor-detail/vendor-detail.component";
 import { AgmCoreModule } from "@agm/core";
 import { SearchComponentComponent } from "./search-component/search-component.component";
 import { RatingComponent } from "./rating/rating.component";
+import { ShareModule } from "@ngx-share/core";
+import { OtpService } from "./services/otp.service";
 import {
   LazyLoadImageModule,
   intersectionObserverPreset
 } from "ng-lazyload-image";
-import { JwSocialButtonsModule } from "jw-angular-social-buttons";
 import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
@@ -46,13 +47,13 @@ import { HttpClientModule } from "@angular/common/http";
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    JwSocialButtonsModule,
+    ShareModule,
     LazyLoadImageModule.forRoot({ preset: intersectionObserverPreset }),
     AgmCoreModule.forRoot({
       apiKey: "AIzaSyCYNp-l4jwhbrjwO6w7rA3s92mv4u5Vwrk"
     })
   ],
-  providers: [],
+  providers: [OtpService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
