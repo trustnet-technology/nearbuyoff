@@ -347,12 +347,13 @@
       <div class="modal-close right"><i class="material-icons">close</i></div>
     <div class="row">
       <div id="mapcol" class="col s12 m4 l7 card" style="padding-top:1%;padding-bottom: 1%;margin-right: 2%">
-        <agm-map [latitude]="lat" [longitude]="lng">
-          <agm-marker
-            *ngFor="let position of positions"
-            [latitude]="position.post_latitude"
-            [longitude]="position.post_longitude">
-          </agm-marker>
+        <agm-map [latitude]="plat" [longitude]="plng">
+          <agm-direction
+          *ngIf="dir"  
+          [origin]="dir.origin"
+            [destination]="dir.destination"
+            [renderOptions]="dir.renderOptions">
+          </agm-direction>
         </agm-map>
       </div>
       <div class="card col s12 m4 l4" id="productSellerDetails">
@@ -360,7 +361,7 @@
           <thead>
           </thead>
           <tbody>
-            <tr>
+            <tr (click)="selectDir()">
               <td>
                 <img
                   class="circle z-depth-1 responsive-img"
@@ -387,35 +388,35 @@
               </td></a>
               <td>
                 <div *ngIf="product; else secpro">
-                    <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product.productID }}/seller">Buy Now</a>
-                    <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" style="margin-top: 4%" >Connect</a>
-                    <h5><s style="color:grey;font-size: 18px">₹{{ product.mrp }}</s> ₹{{ product.mrp }}</h5>
+                  <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" >Connect</a>
+                  <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product.productID }}/seller" style="margin-top: 4%">View Details</a>
+                  <h5><s style="color:grey;font-size: 18px">₹{{ product.mrp }}</s> ₹{{ product.mrp }}</h5>
+              </div>
+              <ng-template #secpro>
+                <div *ngIf="product2; else thirdpro">
+                  <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp"  >Connect</a>
+                  <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product2.productID }}/seller" style="margin-top: 4%">View Details</a>
+                  <h5><s style="color:grey;font-size: 18px">₹{{ product2.mrp }}</s> ₹{{ product2.mrp }}</h5>
                 </div>
-                <ng-template #secpro>
-                  <div *ngIf="product2; else thirdpro">
-                    <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product2.productID }}/seller">Buy Now</a>
-                    <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" style="margin-top: 4%" >Connect</a>
-                    <h5><s style="color:grey;font-size: 18px">₹{{ product2.mrp }}</s> ₹{{ product2.mrp }}</h5>
-                  </div>
-                  </ng-template>
-                  <ng-template #thirdpro>
-                      <div *ngIf="product3; else fourpro">
-                        <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product3.productID }}/seller">Buy Now</a>
-                        <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" style="margin-top: 4%" >Connect</a>
-                        <h5><s style="color:grey;font-size: 18px">₹{{ product3.mrp }}</s> ₹{{ product3.mrp }}</h5>
-                      </div>
-                      </ng-template>
-                      <ng-template #fourpro>
-                          <div *ngIf="product4">
-                            <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product4.productID }}/seller">Buy Now</a>
-                            <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" style="margin-top: 4%" >Connect</a>
-                            <h5><s style="color:grey;font-size: 18px">₹{{ product4.mrp }}</s> ₹{{ product4.mrp }}</h5>
-                          </div>
-                          </ng-template>
+                </ng-template>
+                <ng-template #thirdpro>
+                    <div *ngIf="product3; else fourpro">
+                      <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp">Connect</a>
+                      <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product3.productID }}/seller" style="margin-top: 4%">View Details</a>
+                      <h5><s style="color:grey;font-size: 18px">₹{{ product3.mrp }}</s> ₹{{ product3.mrp }}</h5>
+                    </div>
+                    </ng-template>
+                    <ng-template #fourpro>
+                        <div *ngIf="product4">
+                          <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp"  >Connect</a>
+                          <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product4.productID }}/seller" style="margin-top: 4%">View Details</a>
+                          <h5><s style="color:grey;font-size: 18px">₹{{ product4.mrp }}</s> ₹{{ product4.mrp }}</h5>
+                        </div>
+                        </ng-template>
                   
               </td>
             </tr>
-            <tr>
+            <tr (click)="selectDir2()">
               <td>
                 <img
                   class="circle z-depth-1 responsive-img"
@@ -441,35 +442,35 @@
                 </div>
               </td></a>
              <td>
-                  <div *ngIf="product; else secpro">
-                      <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product.productID }}/seller">Buy Now</a>
-                      <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" style="margin-top: 4%" >Connect</a>
-                      <h5><s style="color:grey;font-size: 18px">₹{{ product.mrp }}</s> ₹{{ product.mrp }}</h5>
+              <div *ngIf="product; else secpro">
+                <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" >Connect</a>
+                <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product.productID }}/seller" style="margin-top: 4%">View Details</a>
+                <h5><s style="color:grey;font-size: 18px">₹{{ product.mrp }}</s> ₹{{ product.mrp }}</h5>
+            </div>
+            <ng-template #secpro>
+              <div *ngIf="product2; else thirdpro">
+                <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp"  >Connect</a>
+                <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product2.productID }}/seller" style="margin-top: 4%">View Details</a>
+                <h5><s style="color:grey;font-size: 18px">₹{{ product2.mrp }}</s> ₹{{ product2.mrp }}</h5>
+              </div>
+              </ng-template>
+              <ng-template #thirdpro>
+                  <div *ngIf="product3; else fourpro">
+                    <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp">Connect</a>
+                    <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product3.productID }}/seller" style="margin-top: 4%">View Details</a>
+                    <h5><s style="color:grey;font-size: 18px">₹{{ product3.mrp }}</s> ₹{{ product3.mrp }}</h5>
                   </div>
-                  <ng-template #secpro>
-                    <div *ngIf="product2; else thirdpro">
-                      <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product2.productID }}/seller">Buy Now</a>
-                      <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" style="margin-top: 4%" >Connect</a>
-                      <h5><s style="color:grey;font-size: 18px">₹{{ product2.mrp }}</s> ₹{{ product2.mrp }}</h5>
-                    </div>
-                    </ng-template>
-                    <ng-template #thirdpro>
-                        <div *ngIf="product3; else fourpro">
-                          <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product3.productID }}/seller">Buy Now</a>
-                          <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" style="margin-top: 4%" >Connect</a>
-                          <h5><s style="color:grey;font-size: 18px">₹{{ product3.mrp }}</s> ₹{{ product3.mrp }}</h5>
-                        </div>
-                        </ng-template>
-                        <ng-template #fourpro>
-                            <div *ngIf="product4">
-                              <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product4.productID }}/seller">Buy Now</a>
-                              <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" style="margin-top: 4%" >Connect</a>
-                              <h5><s style="color:grey;font-size: 18px">₹{{ product4.mrp }}</s> ₹{{ product4.mrp }}</h5>
-                            </div>
-                            </ng-template>
+                  </ng-template>
+                  <ng-template #fourpro>
+                      <div *ngIf="product4">
+                        <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp"  >Connect</a>
+                        <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product4.productID }}/seller" style="margin-top: 4%">View Details</a>
+                        <h5><s style="color:grey;font-size: 18px">₹{{ product4.mrp }}</s> ₹{{ product4.mrp }}</h5>
+                      </div>
+                      </ng-template>
               </td>
             </tr>
-            <tr>
+            <tr (click)="selectDir3()">
                 <td>
                 <img
                   class="circle z-depth-1 responsive-img"
@@ -495,35 +496,35 @@
                 </div>
               </td></a>
               <td>
-                  <div *ngIf="product; else secpro">
-                      <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product.productID }}/seller">Buy Now</a>
-                      <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" style="margin-top: 4%" >Connect</a>
-                      <h5><s style="color:grey;font-size: 18px">₹{{ product.mrp }}</s> ₹{{ product.mrp }}</h5>
-                  </div>
-                  <ng-template #secpro>
-                    <div *ngIf="product2; else thirdpro">
-                      <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product2.productID }}/seller">Buy Now</a>
-                      <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" style="margin-top: 4%" >Connect</a>
-                      <h5><s style="color:grey;font-size: 18px">₹{{ product2.mrp }}</s> ₹{{ product2.mrp }}</h5>
+                <div *ngIf="product; else secpro">
+                  <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" >Connect</a>
+                  <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product.productID }}/seller" style="margin-top: 4%">View Details</a>
+                  <h5><s style="color:grey;font-size: 18px">₹{{ product.mrp }}</s> ₹{{ product.mrp }}</h5>
+              </div>
+              <ng-template #secpro>
+                <div *ngIf="product2; else thirdpro">
+                  <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp"  >Connect</a>
+                  <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product2.productID }}/seller" style="margin-top: 4%">View Details</a>
+                  <h5><s style="color:grey;font-size: 18px">₹{{ product2.mrp }}</s> ₹{{ product2.mrp }}</h5>
+                </div>
+                </ng-template>
+                <ng-template #thirdpro>
+                    <div *ngIf="product3; else fourpro">
+                      <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp">Connect</a>
+                      <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product3.productID }}/seller" style="margin-top: 4%">View Details</a>
+                      <h5><s style="color:grey;font-size: 18px">₹{{ product3.mrp }}</s> ₹{{ product3.mrp }}</h5>
                     </div>
                     </ng-template>
-                    <ng-template #thirdpro>
-                        <div *ngIf="product3; else fourpro">
-                          <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product3.productID }}/seller">Buy Now</a>
-                          <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" style="margin-top: 4%" >Connect</a>
-                          <h5><s style="color:grey;font-size: 18px">₹{{ product3.mrp }}</s> ₹{{ product3.mrp }}</h5>
+                    <ng-template #fourpro>
+                        <div *ngIf="product4">
+                          <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp"  >Connect</a>
+                          <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product4.productID }}/seller" style="margin-top: 4%">View Details</a>
+                          <h5><s style="color:grey;font-size: 18px">₹{{ product4.mrp }}</s> ₹{{ product4.mrp }}</h5>
                         </div>
                         </ng-template>
-                        <ng-template #fourpro>
-                            <div *ngIf="product4">
-                              <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product4.productID }}/seller">Buy Now</a>
-                              <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" style="margin-top: 4%" >Connect</a>
-                              <h5><s style="color:grey;font-size: 18px">₹{{ product4.mrp }}</s> ₹{{ product4.mrp }}</h5>
-                            </div>
-                            </ng-template>
               </td>
-            </tr>
-            <tr>
+            </tr >
+            <tr (click)="selectDir4()">
               <td>
                 <img
                   class="circle z-depth-1 responsive-img"
@@ -549,32 +550,32 @@
                 </div>
               </td></a>
               <td>
-                  <div *ngIf="product; else secpro">
-                      <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product.productID }}/seller">Buy Now</a>
-                      <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" style="margin-top: 4%" >Connect</a>
-                      <h5><s style="color:grey;font-size: 18px">₹{{ product.mrp }}</s> ₹{{ product.mrp }}</h5>
-                  </div>
-                  <ng-template #secpro>
-                    <div *ngIf="product2; else thirdpro">
-                      <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product2.productID }}/seller">Buy Now</a>
-                      <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" style="margin-top: 4%" >Connect</a>
-                      <h5><s style="color:grey;font-size: 18px">₹{{ product2.mrp }}</s> ₹{{ product2.mrp }}</h5>
+                <div *ngIf="product; else secpro">
+                  <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" >Connect</a>
+                  <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product.productID }}/seller" style="margin-top: 4%">View Details</a>
+                  <h5><s style="color:grey;font-size: 18px">₹{{ product.mrp }}</s> ₹{{ product.mrp }}</h5>
+              </div>
+              <ng-template #secpro>
+                <div *ngIf="product2; else thirdpro">
+                  <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp"  >Connect</a>
+                  <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product2.productID }}/seller" style="margin-top: 4%">View Details</a>
+                  <h5><s style="color:grey;font-size: 18px">₹{{ product2.mrp }}</s> ₹{{ product2.mrp }}</h5>
+                </div>
+                </ng-template>
+                <ng-template #thirdpro>
+                    <div *ngIf="product3; else fourpro">
+                      <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp">Connect</a>
+                      <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product3.productID }}/seller" style="margin-top: 4%">View Details</a>
+                      <h5><s style="color:grey;font-size: 18px">₹{{ product3.mrp }}</s> ₹{{ product3.mrp }}</h5>
                     </div>
                     </ng-template>
-                    <ng-template #thirdpro>
-                        <div *ngIf="product3; else fourpro">
-                          <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product3.productID }}/seller">Buy Now</a>
-                          <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" style="margin-top: 4%" >Connect</a>
-                          <h5><s style="color:grey;font-size: 18px">₹{{ product3.mrp }}</s> ₹{{ product3.mrp }}</h5>
+                    <ng-template #fourpro>
+                        <div *ngIf="product4">
+                          <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp"  >Connect</a>
+                          <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product4.productID }}/seller" style="margin-top: 4%">View Details</a>
+                          <h5><s style="color:grey;font-size: 18px">₹{{ product4.mrp }}</s> ₹{{ product4.mrp }}</h5>
                         </div>
                         </ng-template>
-                        <ng-template #fourpro>
-                            <div *ngIf="product4">
-                              <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product4.productID }}/seller">Buy Now</a>
-                              <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" style="margin-top: 4%" >Connect</a>
-                              <h5><s style="color:grey;font-size: 18px">₹{{ product4.mrp }}</s> ₹{{ product4.mrp }}</h5>
-                            </div>
-                            </ng-template>
               </td>
             </tr>
           </tbody>

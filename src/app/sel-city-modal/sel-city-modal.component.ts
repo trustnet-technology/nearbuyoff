@@ -9,6 +9,7 @@ declare var $: any;
 export class SelCityModalComponent implements OnInit {
   selectedDay: string = "";
   options: {};
+  category: string;
   constructor() {}
 
   ngOnInit() {
@@ -20,9 +21,10 @@ export class SelCityModalComponent implements OnInit {
     // $(window).load(function() {
     //   $("#modal1").modal("show");
     // });
-    //   selectChangeHandler (event: any) {
-    //     //update the ui
-    //     this.selectedDay = event.target.value;
-    // }
+  }
+  selectChangeHandler(event: any) {
+    //update the ui
+    this.category = event.target.value;
+    localStorage.setItem("currentCity", this.category);
   }
 }

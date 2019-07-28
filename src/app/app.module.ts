@@ -17,6 +17,7 @@ import { AgmCoreModule } from "@agm/core";
 import { SearchComponentComponent } from "./search-component/search-component.component";
 import { RatingComponent } from "./rating/rating.component";
 import { ShareModule } from "@ngx-share/core";
+import { AgmDirectionModule } from "agm-direction";
 import { OtpService } from "./services/otp.service";
 import {
   LazyLoadImageModule,
@@ -48,8 +49,9 @@ import { HttpClientModule } from "@angular/common/http";
     ShareModule,
     LazyLoadImageModule.forRoot({ preset: intersectionObserverPreset }),
     AgmCoreModule.forRoot({
-      apiKey: "AIzaSyCYNp-l4jwhbrjwO6w7rA3s92mv4u5Vwrk"
-    })
+      apiKey: "AIzaSyCPq73ZhDozL2oRl9jfqO_4xZpBMOCJA84"
+    }),
+    AgmDirectionModule
   ],
   providers: [OtpService],
   bootstrap: [AppComponent]

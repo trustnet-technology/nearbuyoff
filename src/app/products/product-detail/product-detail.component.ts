@@ -19,29 +19,18 @@ export class ProductDetailComponent implements OnInit {
   product2: ProductModel;
   product3: ProductModel;
   product4: ProductModel;
-  lat: 34.052235;
-  lng: -118.243683;
+  plat: any;
+  plng: any;
   otpMessage: any;
   otpRecvMessage: any;
   otpDET: string;
   phoneDET: string;
-  positions = [
-    {
-      post_country: "Los Angeles",
-      post_latitude: 34.052235,
-      post_longitude: -118.243683
-    },
-    {
-      post_country: "Santa Monica",
-      post_latitude: 34.024212,
-      post_longitude: -118.496475
-    },
-    {
-      post_country: "Redondo Beach",
-      post_latitude: 33.849182,
-      post_longitude: -118.388405
-    }
-  ];
+  public dir: {
+    origin: { lat: any; lng: any };
+    destination: { lat: any; lng: any };
+    renderOptions: { polylineOptions: { strokeColor: "#f00" } };
+  };
+  public;
 
   constructor(
     private route: ActivatedRoute,
@@ -94,11 +83,54 @@ export class ProductDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.dir = {
+      origin: { lat: 12.9344758, lng: 77.6192442 },
+      destination: { lat: 12.9763946, lng: 77.5992796 },
+      renderOptions: { polylineOptions: { strokeColor: "#f00" } }
+    };
+    console.log(this.dir);
+    if (navigator) {
+      navigator.geolocation.getCurrentPosition(pos => {
+        this.plat = +pos.coords.latitude;
+        this.plng = +pos.coords.longitude;
+      });
+    } else {
+      this.plat = 12.972442;
+      this.plng = 77.580643;
+    }
     this.jquery_code();
     this.getProduct();
     this.getProduct2();
     this.getProduct3();
     this.getProduct4();
+  }
+  selectDir() {
+    this.dir = {
+      origin: { lat: 12.9344758, lng: 77.6192442 },
+      destination: { lat: 12.9763946, lng: 77.5992796 },
+      renderOptions: { polylineOptions: { strokeColor: "#f00" } }
+    };
+  }
+  selectDir2() {
+    this.dir = {
+      origin: { lat: 12.9344758, lng: 77.6192442 },
+      destination: { lat: 12.9399071, lng: 77.6201755 },
+      renderOptions: { polylineOptions: { strokeColor: "#f00" } }
+    };
+  }
+  selectDir3() {
+    this.dir = {
+      origin: { lat: 12.9344758, lng: 77.6192442 },
+      destination: { lat: 12.9368682, lng: 77.6180538 },
+      renderOptions: { polylineOptions: { strokeColor: "#f00" } }
+    };
+  }
+  selectDir4() {
+    this.dir = {
+      origin: { lat: 12.9344758, lng: 77.6192442 },
+      destination: { lat: 12.912491, lng: 77.6422287 },
+      renderOptions: { polylineOptions: { strokeColor: "#f00" } }
+    };
   }
 
   getProduct(): void {
