@@ -50,13 +50,17 @@
       </ul>
       <ul class="left hide-on-med-and-down">
         <li>
-          <a class="modal-trigger" data-target="#modal1">
+          <a
+            id="bt-sel-city"
+            class="dropdown-button"
+            data-target="sel-city-dropdown"
+          >
             <i class="material-icons" style="color:white">my_location</i>
           </a>
         </li>
 
         <!-- <li>
-          <a
+          <a                                
             id="notifications-dropdown"
             class="dropdown-button"
             data-target="services3-dropdown"
@@ -164,26 +168,42 @@
   </ul>
 </div>
 <!-- Select City Modal -->
-<!-- <div id="modal1" class="modal">
-  <div class="modal-content" style="font-family:  'Oswald', sans-serif;">
+<div id="sel-city-modal" class="modal">
+  <div class="modal-content">
     <h4>Select City</h4>
     <label>Available Cities</label>
-    <select class="browser-default">
+    <select
+      required
+      name="category"
+      class="browser-default form-control"
+      [(ngModel)]="category"
+      id="select1"
+      name="select1"
+      (change)="selectChangeHandler($event)"
+    >
       <option value="" disabled selected>Choose your option</option>
-      <option value="1">Delhi</option>
-      <option value="2">Bangalore</option>
-      <option value="3">Chennai</option>
-      <option value="4">Ahemdabad</option>
-      <option value="5">Indore</option>
-      <option value="6">Kolkata</option>
+      <option value="Delhi">Delhi</option>
+      <option value="Dehradun">Dehradun</option>
+      <option value="Bangalore">Bangalore</option>
+      <option value="Gurgaon">Gurgaon</option>
+      <option value="Muzaffarnagar">Muzaffarnagar</option>
     </select>
   </div>
   <div class="modal-footer">
-    <a class=" modal-action modal-close waves-effect waves-green btn-flat"
-      >Select
+    <a
+      class="modal-close waves-effect waves-green btn-flat"
+      (click)="whenCitySelected()"
+    >
+      Select
+    </a>
+    <a
+      class="modal-close waves-effect waves-red btn-flat"
+      (click)="noCitySelected()"
+    >
+      Close
     </a>
   </div>
-</div> -->
+</div>
 <!-- Profile Dropdown Menu -->
 <div id="services2-dropdown" class="dropdown-content row">
   <ul class="vertical-tabs">
@@ -195,5 +215,17 @@
 <div id="services3-dropdown" class="dropdown-content row">
   <ul class="vertical-tabs">
     <li><a href="">No new Notifications</a></li>
+  </ul>
+</div>
+<div id="sel-city-dropdown" class="dropdown-content row">
+  <ul class="vertical-tabs">
+    <li>
+      <a
+        class="modal-trigger"
+        style="font-size: 10px"
+        data-target="sel-city-modal"
+        >Current City:<br /><b>{{ citySelected?.city }}</b></a
+      >
+    </li>
   </ul>
 </div>

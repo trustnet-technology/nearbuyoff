@@ -9,7 +9,6 @@ import { CardSliderComponent } from "./card-slider/card-slider.component";
 import { FooterComponent } from "./footer/footer.component";
 import { MenubarComponent } from "./menubar/menubar.component";
 import { OtherCardsComponent } from "./other-cards/other-cards.component";
-import { SelCityModalComponent } from "./sel-city-modal/sel-city-modal.component";
 import { CardComponent } from "./card/card.component";
 import { ProductDetailComponent } from "./products/product-detail/product-detail.component";
 import { VendorDetailComponent } from "./vendor-detail/vendor-detail.component";
@@ -34,7 +33,6 @@ import { HttpClientModule } from "@angular/common/http";
     FooterComponent,
     MenubarComponent,
     OtherCardsComponent,
-    SelCityModalComponent,
     CardComponent,
     ProductDetailComponent,
     VendorDetailComponent,

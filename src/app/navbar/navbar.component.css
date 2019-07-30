@@ -45,6 +45,9 @@ nav .left .imgProfil a {
 #services2-dropdown {
   width: 100%;
 }
+#sel-city-dropdown {
+  width: 100%;
+}
 .vertical-tab-target {
   display: none;
 }

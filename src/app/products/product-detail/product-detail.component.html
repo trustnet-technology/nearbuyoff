@@ -347,13 +347,18 @@
       <div class="modal-close right"><i class="material-icons">close</i></div>
     <div class="row">
       <div id="mapcol" class="col s12 m4 l7 card" style="padding-top:1%;padding-bottom: 1%;margin-right: 2%">
-        <agm-map [latitude]="plat" [longitude]="plng">
+        <agm-map [latitude]="plat" [longitude]="plng" [zoom]="12">
+          <div *ngIf="count === 1;else marker">
           <agm-direction
-          *ngIf="dir"  
+          *ngIf="dir"
           [origin]="dir.origin"
             [destination]="dir.destination"
             [renderOptions]="dir.renderOptions">
           </agm-direction>
+        </div>
+        <ng-template #marker>
+          <agm-marker *ngFor="let mark of markers" [latitude]="mark.lat" [longitude]="mark.lng" [agmFitBounds]="true"></agm-marker>
+        </ng-template>
         </agm-map>
       </div>
       <div class="card col s12 m4 l4" id="productSellerDetails">
@@ -361,7 +366,7 @@
           <thead>
           </thead>
           <tbody>
-            <tr (click)="selectDir()">
+            <tr [ngClass]="{'font-bolder':selectedItem1==true}" (click)="selectDir()">
               <td>
                 <img
                   class="circle z-depth-1 responsive-img"
@@ -370,7 +375,7 @@
                   style="width:65px"
                 />
               </td>
-              <a routerLink="/product/93/seller" routerLinkActive="active"><td>
+              <td>
                 <h5>Seller1</h5>
                 <p style="color:grey">5th Block, Kormangala</p>
                 <div class="rate">
@@ -385,7 +390,7 @@
                   <input type="radio" id="star1" name="rate" value="1" />
                   <label for="star1" title="text">1 star</label>
                 </div>
-              </td></a>
+              </td>
               <td>
                 <div *ngIf="product; else secpro">
                   <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" >Connect</a>
@@ -416,7 +421,7 @@
                   
               </td>
             </tr>
-            <tr (click)="selectDir2()">
+            <tr  [ngClass]="{'font-bolder':selectedItem2==true}" (click)="selectDir2()">
               <td>
                 <img
                   class="circle z-depth-1 responsive-img"
@@ -425,7 +430,7 @@
                   style="width:65px"
                 />
               </td>
-              <a class="modal-close" routerLink="/product/93/seller"><td>
+             <td>
                 <h5>Seller2</h5>
                 <p style="color:grey">8th Block, Kormangala</p>
                 <div class="rate">
@@ -440,7 +445,7 @@
                   <input type="radio" id="star1" name="rate" value="1" />
                   <label for="star1" title="text">1 star</label>
                 </div>
-              </td></a>
+              </td>
              <td>
               <div *ngIf="product; else secpro">
                 <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" >Connect</a>
@@ -470,7 +475,7 @@
                       </ng-template>
               </td>
             </tr>
-            <tr (click)="selectDir3()">
+            <tr  [ngClass]="{'font-bolder':selectedItem3==true}" (click)="selectDir3()">
                 <td>
                 <img
                   class="circle z-depth-1 responsive-img"
@@ -479,7 +484,7 @@
                   style="width:65px"
                 />
               </td>
-              <a class="modal-close" routerLink="/product/93/seller"><td>
+              <td>
                 <h5>Seller3</h5>
                 <p style="color:grey">6th Block, Kormangala</p>
                 <div class="rate">
@@ -494,7 +499,7 @@
                   <input type="radio" id="star1" name="rate" value="1" />
                   <label for="star1" title="text">1 star</label>
                 </div>
-              </td></a>
+              </td>
               <td>
                 <div *ngIf="product; else secpro">
                   <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" >Connect</a>
@@ -524,7 +529,7 @@
                         </ng-template>
               </td>
             </tr >
-            <tr (click)="selectDir4()">
+            <tr  [ngClass]="{'font-bolder':selectedItem4==true}" (click)="selectDir4()">
               <td>
                 <img
                   class="circle z-depth-1 responsive-img"
@@ -533,7 +538,7 @@
                   style="width:65px"
                 />
               </td>
-              <a class="modal-close" routerLink="/product/93/seller"><td>
+              <td>
                 <h5>Seller4</h5>
                 <p style="color:grey">6th Block, Kormangala</p>
                 <div class="rate">
@@ -548,7 +553,7 @@
                   <input type="radio" id="star1" name="rate" value="1" />
                   <label for="star1" title="text">1 star</label>
                 </div>
-              </td></a>
+              </td>
               <td>
                 <div *ngIf="product; else secpro">
                   <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" >Connect</a>
@@ -690,7 +695,6 @@
       </div> 
       </div>
     </div>
-    
     <div id="otherSellerscont">
       <div id="recommProductsSlider">
         <hr />
