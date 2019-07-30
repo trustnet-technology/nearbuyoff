@@ -47,7 +47,7 @@ import { HttpClientModule } from "@angular/common/http";
     ShareModule,
     LazyLoadImageModule.forRoot({ preset: intersectionObserverPreset }),
     AgmCoreModule.forRoot({
-      apiKey: "AIzaSyCPq73ZhDozL2oRl9jfqO_4xZpBMOCJA84"
+      apiKey: "Enter Google API Key Here"
     }),
     AgmDirectionModule
   ],
