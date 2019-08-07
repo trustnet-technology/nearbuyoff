@@ -1,0 +1,12 @@
+.tabs {
+  margin-top: 5%;
+}
+#test1 {
+  margin-top: 5%;
+}
+#test2 {
+  margin-top: 5%;
+}
+.tabs .indicator {
+  background-color: #a1dd70;
+}

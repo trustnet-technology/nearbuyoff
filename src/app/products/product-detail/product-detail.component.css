@@ -60,20 +60,6 @@
   font-weight: 300;
   margin-right: 20px;
 }
-
-.cart-btn {
-  display: inline-block;
-  background-color: #7dc855;
-  border-radius: 6px;
-  font-size: 16px;
-  color: #ffffff;
-  text-decoration: none;
-  padding: 12px 30px;
-  transition: all 0.5s;
-}
-.cart-btn:hover {
-  background-color: #64af3d;
-}
 #span1 {
   color: #86939e;
 }
@@ -186,10 +172,26 @@ div.explanation {
   width: 40%;
   height: auto;
 }
-#bt-sellers {
+#bt-sellers,
+#bt-add-to-cart,
+#bt-order-now {
   width: 100%;
-  font-size: 30px;
+  font-size: 0.9em;
   font-family: inherit;
+  padding: 0 15px;
+  line-height: 20px;
+}
+#buy-options-row {
+  margin-bottom: 0em;
+}
+#connect-col {
+  padding-right: 0em;
+}
+#onow-col {
+  padding: 0em;
+}
+#add-to-col {
+  padding-left: 0em;
 }
 @media (min-width: 320px) and (max-width: 480px) {
   #modal-buyers.modal .modal-content {

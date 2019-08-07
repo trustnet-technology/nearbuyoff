@@ -7,6 +7,8 @@ declare var $: any;
   styleUrls: ["./search-component.component.css"]
 })
 export class SearchComponentComponent implements OnInit {
+  category: string;
+  subcategory: string[];
   constructor() {}
 
   jquery_code() {
@@ -53,6 +55,8 @@ export class SearchComponentComponent implements OnInit {
 
   ngOnInit() {
     this.jquery_code();
+    this.category = "Apparel";
+    this.subcategory = ["Jeans", "T-Shirts", "Sweatshirts", "Sneakers"];
     // var slider = document.getElementById("test-slider");
     // noUiSlider.create(slider, {
     //   start: [20, 80],
@@ -67,5 +71,27 @@ export class SearchComponentComponent implements OnInit {
     //     decimals: 0
     //   })
     // });
+  }
+  onItemChange() {
+    console.log(" Value is : ", this.category);
+    if (this.category == "Apparel") {
+      this.subcategory = ["Jeans", "T-Shirts", "Sweatshirts", "Sneakers"];
+    } else if (this.category == "Home Appliances") {
+      this.subcategory = [
+        "Gaming Consoles",
+        "TV & HTs",
+        "Washing Machine",
+        "Speakers"
+      ];
+    } else if (this.category == "Decor") {
+      this.subcategory = ["Curtains", "Pillows", "Wallpapers", "Showpieces"];
+    } else if (this.category == "Grocery") {
+      this.subcategory = [
+        "Dressings & Sauces",
+        "Dairy Products",
+        "Fruits",
+        "Frozen Food"
+      ];
+    }
   }
 }

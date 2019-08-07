@@ -23,6 +23,9 @@ import {
   intersectionObserverPreset
 } from "ng-lazyload-image";
 import { HttpClientModule } from "@angular/common/http";
+import { LoginSignupComponent } from './login-signup/login-signup.component';
+import { CustomerOrdersComponent } from './customer-orders/customer-orders.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +40,10 @@ import { HttpClientModule } from "@angular/common/http";
     ProductDetailComponent,
     VendorDetailComponent,
     SearchComponentComponent,
-    RatingComponent
+    RatingComponent,
+    LoginSignupComponent,
+    CustomerOrdersComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +53,7 @@ import { HttpClientModule } from "@angular/common/http";
     ShareModule,
     LazyLoadImageModule.forRoot({ preset: intersectionObserverPreset }),
     AgmCoreModule.forRoot({
-      apiKey: "Enter Google API Key Here"
+      apiKey: "AIzaSyCPq73ZhDozL2oRl9jfqO_4xZpBMOCJA84"
     }),
     AgmDirectionModule
   ],

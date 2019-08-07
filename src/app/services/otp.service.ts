@@ -11,7 +11,7 @@ const httpOptions = {
   providedIn: "root"
 })
 export class OtpService {
-  private apiKey = "Enter OTP Service API key";
+  private apiKey = "848e70c6-acaf-11e9-ade6-0200cd936042";
   private getOtpUrl = "https://2factor.in/API/V1";
   constructor(private http: HttpClient) {}
 

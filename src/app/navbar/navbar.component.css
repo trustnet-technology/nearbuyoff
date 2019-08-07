@@ -39,7 +39,7 @@ nav .left .imgProfil a {
 }
 .dropdown-content.row {
   overflow: visible;
-  width: 80%;
+  width: 100%;
   height: auto;
 }
 #services2-dropdown {
@@ -58,6 +58,7 @@ nav .left .imgProfil a {
 }
 .vertical-tabs li a {
   color: black !important;
+  width: 100%;
 }
 
 .brand-logo {

@@ -4,6 +4,7 @@ import { ProductService } from "../../services/product.service";
 import { ProductModel } from "../../models/productModel";
 import { OtpService } from "../../services/otp.service";
 import { OtpModel } from "../../models/otp-model";
+import * as M from "materialize-css";
 import { isVisible } from "ng-lazyload-image/src/scroll-preset/preset";
 declare var $: any;
 @Component({
@@ -87,6 +88,9 @@ export class ProductDetailComponent implements OnInit {
         });
       });
     })(jQuery);
+    $(document).ready(function() {
+      $("#cart-modal").modal();
+    });
   }
 
   ngOnInit(): void {
@@ -198,5 +202,10 @@ export class ProductDetailComponent implements OnInit {
         (otpRecvMessage: OtpModel[]) =>
           (this.otpRecvMessage = { ...otpRecvMessage })
       );
+  }
+  addProductToCart() {
+    var toastHTML =
+      '<span>Product Added to Cart</span><button class="btn-flat toast-action modal-trigger" data-target="cart-modal">View Cart</button>';
+    M.toast({ html: toastHTML });
   }
 }

@@ -256,28 +256,37 @@
             <p><b>Category</b></p>
             <p>
               <label>
-                <input name="group1" class="with-gap" type="radio" checked />
+                <input name="group1" class="with-gap" [(ngModel)]="category" value="Apparel" type="radio" [checked]="true" (change)="onItemChange()"/>
                 <span>Apparel</span>
               </label>
             </p>
             <p>
               <label>
-                <input class="with-gap" name="group1" type="radio" />
+                <input class="with-gap" name="group1" [(ngModel)]="category" value="Home Appliances" type="radio" (change)="onItemChange()"/>
                 <span>Home Appliances</span>
               </label>
             </p>
             <p>
               <label>
-                <input class="with-gap" name="group1" type="radio" />
+                <input class="with-gap" name="group1" [(ngModel)]="category" value="Grocery" type="radio" (change)="onItemChange()"/>
                 <span>Grocery</span>
               </label>
             </p>
             <p>
               <label>
-                <input class="with-gap" name="group1" type="radio" />
+                <input class="with-gap" name="group1" [(ngModel)]="category" value="Decor" type="radio" (change)="onItemChange()"/>
                 <span>Decor</span>
               </label>
             </p>
+          </div>
+          <div class="sub-category-filter">
+              <p><b>Sub-Category</b></p>
+              <p *ngFor="let subCat of subcategory">
+                <label>
+                  <input name="group1" class="with-gap" type="radio" checked />
+                  <span>{{subCat}}</span>
+                </label>
+              </p>
           </div>
         </div>
       </div>

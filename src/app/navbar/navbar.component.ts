@@ -1,4 +1,10 @@
-import { Component, OnInit, OnChanges } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  OnChanges,
+  AfterContentInit,
+  AfterViewInit
+} from "@angular/core";
 declare var $: any;
 @Component({
   selector: "app-navbar",
@@ -11,7 +17,7 @@ export class NavbarComponent implements OnInit {
   city: any;
   lat: any;
   lng: any;
-  citySelected = JSON.parse(localStorage.getItem("currentCity"));
+  citySelected = localStorage.getItem("currentCity");
   constructor() {}
 
   jquery_code() {
@@ -70,9 +76,15 @@ export class NavbarComponent implements OnInit {
     $(document).ready(function() {
       $("#sel-city-modal").modal();
     });
+    $(document).ready(function() {
+      $("#cart-modal").modal();
+    });
   }
 
   ngOnInit() {
+    // console.log(this.citySelected);
+    this.citySelected = JSON.parse(localStorage.getItem("currentCity"));
+    // console.log(this.citySelected);
     this.jquery_code();
     if (window.navigator && window.navigator.geolocation) {
       window.navigator.geolocation.getCurrentPosition(
@@ -109,6 +121,7 @@ export class NavbarComponent implements OnInit {
       );
     }
   }
+
   selectChangeHandler(event: any) {
     //update the ui
     this.category = event.target.value;

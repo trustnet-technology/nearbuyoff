@@ -1,5 +1,5 @@
 <div class="navbar-fixed  grey darken-3">
-  <nav>
+  <nav class="megamenu">
     <div class="nav-wrapper grey darken-3">
       <a href="#" class="brand-logo" style="padding-left: 4%;"
         ><img
@@ -10,7 +10,6 @@
           style="margin-top: 7%; margin-right: 4%"
       /></a>
       <a
-        href="#"
         class="sidenav-trigger right"
         data-target="mobile-nav2"
         style="color:white"
@@ -18,11 +17,14 @@
         <i class="material-icons">drag_indicator</i>
       </a>
 
-      <ul class="hide-on-med-and-down" style="padding-left: 15%;">
+      <ul
+        role="menu"
+        class="hide-on-med-and-down megamenu-nav d-flex justify-content-center"
+        style="padding-left: 15%;"
+      >
         <li>
           <a
             id="menu-dropdown"
-            href=""
             class="dropdown-button"
             data-target="services-dropdown"
             style=" color:white;font-family: 'Oswald', sans-serif"
@@ -60,7 +62,7 @@
         </li>
 
         <!-- <li>
-          <a                                
+          <a
             id="notifications-dropdown"
             class="dropdown-button"
             data-target="services3-dropdown"
@@ -69,7 +71,7 @@
             <i class="material-icons" style="color:white">notifications_none</i>
           </a>
         </li> -->
-        <!-- <li class="imgProfil" style="color:white">
+        <li class="imgProfil" style="color:white">
           <a
             id="dropdown-btn-profile"
             href=""
@@ -84,7 +86,7 @@
               style="color:white"
             />
           </a>
-        </li> -->
+        </li>
         <ul id="AccountInfo" class="hidden z-depth-5" style="color:white">
           <li>sdfsdf</li>
           <li>fghfgh</li>
@@ -105,7 +107,7 @@
   <ul
     id="menuDropdownContent"
     class="vertical-tabs col s4"
-    style="font-family:  'Oswald', sans-serif;"
+    style="font-family: 'Oswald', sans-serif;"
   >
     <li>
       <a href="#!" style="font-weight: bolder" data-target="A">Apparel</a>
@@ -204,11 +206,113 @@
     </a>
   </div>
 </div>
+<!--Cart Modal-->
+<div id="cart-modal" class="modal" style="overflow: visible">
+  <div class="modal-content">
+    <div class="row">
+      <div class="col s11">
+        <h4>
+          <i class="material-icons" style="color:green">done_all</i> Added to
+          Cart
+        </h4>
+      </div>
+      <div class="col s1" style="float:right">
+        <i class="material-icons modal-close" style="color:black">clear</i>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s8">
+        <div class="row">
+          <div class="col s5">
+            <img
+              src="https://pbs.twimg.com/profile_images/846659478120366082/K-kZVvT8.jpg"
+              width="170"
+              height="170"
+            />
+          </div>
+          <div class="col s7">
+            <h5 style="font-weight:bolder ">Product Title</h5>
+            <div class="row">
+              <div class="col s5">
+                <p>SIZE: 42</p>
+              </div>
+              <div class="col s7">
+                <p>COLOR: Grey</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s3">
+                <input
+                  id="qty_cart"
+                  type="text"
+                  placeholder="Qty"
+                  class="center"
+                  value="2"
+                />
+                <label for="qty">Quantity</label>
+              </div>
+              <div class="col s9">
+                <div class="row" style="margin-bottom: 0%">
+                  <div class="col s3"><h5>499</h5></div>
+                  <div class="col s4">
+                    <p><s class="grey-text">599</s></p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col s12">
+                    <p>You Save: <b> 900.00 (20%)</b></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col s4">
+        <div class="row">
+          <div class="col s8"><h5>Your Cart</h5></div>
+        </div>
+        <div class="row">
+          <div class="col s6"><h6>Subtotal</h6></div>
+          <div class="col s3 offset-s1"><h6>900</h6></div>
+        </div>
+        <div class="row">
+          <div class="col s12">
+            <a class="green waves-effect waves-light btn" style="width: 100%"
+              >Checkout this Item</a
+            >
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12">
+            <a class="black waves-effect waves-light btn" style="width: 100%"
+              >View All Cart Items</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- Profile Dropdown Menu -->
 <div id="services2-dropdown" class="dropdown-content row">
   <ul class="vertical-tabs">
-    <li><a href="#!" style="font-weight: bolder">View Profile</a></li>
-    <li><a href="#!" style="font-weight: bolder">Edit Profile Photo</a></li>
+    <li>
+      <a
+        class="modal-trigger"
+        data-target="cart-modal"
+        style="font-weight: bolder"
+        >View Cart</a
+      >
+    </li>
+    <li>
+      <a routerLink="/user/profile" style="font-weight: bolder">View Profile</a>
+    </li>
+    <li>
+      <a routerLink="/customer/orders" style="font-weight: bolder">My Orders</a>
+    </li>
+    <li><a routerLink="/auth" style="font-weight: bolder">Login/Sign-Up</a></li>
   </ul>
 </div>
 <!-- Notification Dropdown -->
@@ -222,7 +326,7 @@
     <li>
       <a
         class="modal-trigger"
-        style="font-size: 10px"
+        style="font-size: 12px"
         data-target="sel-city-modal"
         >Current City:<br /><b>{{ citySelected?.city }}</b></a
       >

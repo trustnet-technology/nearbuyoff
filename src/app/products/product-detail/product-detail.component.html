@@ -62,166 +62,18 @@
           </a>
           </div> 
         </div>
-        <button id="bt-sellers" class="btn btn-large center modal-trigger" data-target="modal-buyers">Select from +3 shops</button>
+        <div class="row" id="buy-options-row">
+          <div class="col s4" id="connect-col">
+        <button id="bt-sellers" class="btn btn-large center modal-trigger blue accent-3" data-target="modal-buyers">Connect to +3 shops</button></div>
+      <div class="col s4" id="onow-col"><button id="bt-order-now" class="btn btn-large center modal-trigger purple accent-4" data-target="cart-modal">Order Now</button></div>
+      <div class="col s4" id="add-to-col"><button id="bt-add-to-cart" class="btn btn-large center modal-trigger red accent-2" (click)="addProductToCart()">Add to Cart</button></div>
+      </div>
       </div> 
     </div> 
     </div>
   </div>
 
   <div id="otherSellerscont">
-    <!-- <div class="row" style="padding-top:2%">
-      <hr id="hr2" />
-      <h5 class="center">Choose from sellers</h5>
-      <div class="card col s12 m4 l4 offset-l1" id="productSellerDetails">
-        <table class="highlight">
-          <thead>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <img
-                  class="circle z-depth-1 responsive-img"
-                  src="https://cdn3.iconfinder.com/data/icons/gradient-circle/36/2018-512.png"
-                  alt="profile image"
-                  style="width:65px"
-                />
-              </td>
-              <td>
-                <h5>Seller1</h5>
-                <p style="color:grey">5th Block, Kormangala</p>
-                <div class="rate">
-                  <input type="radio" id="star5" name="rate" value="5" />
-                  <label for="star5" title="text">5 stars</label>
-                  <input type="radio" id="star4" name="rate" value="4" />
-                  <label for="star4" title="text">4 stars</label>
-                  <input type="radio" id="star3" name="rate" value="3" />
-                  <label for="star3" title="text">3 stars</label>
-                  <input type="radio" id="star2" name="rate" value="2" />
-                  <label for="star2" title="text">2 stars</label>
-                  <input type="radio" id="star1" name="rate" value="1" />
-                  <label for="star1" title="text">1 star</label>
-                </div>
-              </td>
-              <td>
-                  <a class="waves-effect waves-light btn green" routerLink="/product/{{ product.productID }}/seller">Book</a>
-                  <h5>₹{{ product.mrp }}</h5>
-                  <p style="color:grey">
-                    <s>₹{{ product.mrp }}</s>
-                  </p>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <img
-                  class="circle z-depth-1 responsive-img"
-                  src="https://cdn3.iconfinder.com/data/icons/gradient-circle/36/2018-512.png"
-                  alt="profile image"
-                  style="width:65px"
-                />
-              </td>
-              <td>
-                <h5>Seller2</h5>
-                <p style="color:grey">8th Block, Kormangala</p>
-                <div class="rate">
-                  <input type="radio" id="star5" name="rate" value="5" />
-                  <label for="star5" title="text">5 stars</label>
-                  <input type="radio" id="star4" name="rate" value="4" />
-                  <label for="star4" title="text">4 stars</label>
-                  <input type="radio" id="star3" name="rate" value="3" />
-                  <label for="star3" title="text">3 stars</label>
-                  <input type="radio" id="star2" name="rate" value="2" />
-                  <label for="star2" title="text">2 stars</label>
-                  <input type="radio" id="star1" name="rate" value="1" />
-                  <label for="star1" title="text">1 star</label>
-                </div>
-              </td>
-              <td>
-                  <a class="waves-effect waves-light btn green" routerLink="/product/{{ product.productID }}/seller">Book</a>
-                <h5>₹{{ product.mrp }}</h5>
-                <p style="color:grey">
-                  <s>₹{{ product.mrp }}</s>
-                </p>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <img
-                  class="circle z-depth-1 responsive-img"
-                  src="https://cdn3.iconfinder.com/data/icons/gradient-circle/36/2018-512.png"
-                  alt="profile image"
-                  style="width:65px"
-                />
-              </td>
-              <td>
-                <h5>Seller3</h5>
-                <p style="color:grey">6th Block, Kormangala</p>
-                <div class="rate">
-                  <input type="radio" id="star5" name="rate" value="5" />
-                  <label for="star5" title="text">5 stars</label>
-                  <input type="radio" id="star4" name="rate" value="4" />
-                  <label for="star4" title="text">4 stars</label>
-                  <input type="radio" id="star3" name="rate" value="3" />
-                  <label for="star3" title="text">3 stars</label>
-                  <input type="radio" id="star2" name="rate" value="2" />
-                  <label for="star2" title="text">2 stars</label>
-                  <input type="radio" id="star1" name="rate" value="1" />
-                  <label for="star1" title="text">1 star</label>
-                </div>
-              </td>
-              <td>
-                  <a class="waves-effect waves-light btn green" routerLink="/product/{{ product.productID }}/seller">Book</a>
-                  <h5>₹{{ product.mrp }}</h5>
-                  <p style="color:grey">
-                    <s>₹{{ product.mrp }}</s>
-                  </p>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <img
-                  class="circle z-depth-1 responsive-img"
-                  src="https://cdn3.iconfinder.com/data/icons/gradient-circle/36/2018-512.png"
-                  alt="profile image"
-                  style="width:65px"
-                />
-              </td>
-              <td>
-                <h5>Seller4</h5>
-                <p style="color:grey">6th Block, Kormangala</p>
-                <div class="rate">
-                  <input type="radio" id="star5" name="rate" value="5" />
-                  <label for="star5" title="text">5 stars</label>
-                  <input type="radio" id="star4" name="rate" value="4" />
-                  <label for="star4" title="text">4 stars</label>
-                  <input type="radio" id="star3" name="rate" value="3" />
-                  <label for="star3" title="text">3 stars</label>
-                  <input type="radio" id="star2" name="rate" value="2" />
-                  <label for="star2" title="text">2 stars</label>
-                  <input type="radio" id="star1" name="rate" value="1" />
-                  <label for="star1" title="text">1 star</label>
-                </div>
-              </td>
-              <td>
-                  <a class="waves-effect waves-light btn green" routerLink="/product/{{ product.productID }}/seller">Book</a>
-                  <h5>₹{{ product.mrp }}</h5>
-                  <p style="color:grey">
-                    <s>₹{{ product.mrp }}</s>
-                  </p>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="col s12 m4 l6 card" style="padding-top:1%;padding-bottom: 1%">
-        <agm-map [latitude]="lat" [longitude]="lng">
-          <agm-marker
-            *ngFor="let position of positions"
-            [latitude]="position.post_latitude"
-            [longitude]="position.post_longitude">
-          </agm-marker>
-        </agm-map>
-      </div>
-    </div> -->
     <div id="recommProductsSlider">
       <hr />
       <h5 class="center">Recommended Products</h5>
@@ -239,7 +91,7 @@
         <div class="carousel-item" id="recommCarousel">
           <div id="gradientCard" class="card">
             <div class="card-image">
-              <img 
+              <img
                 id="also-buy-img" src="../../../assets/etautzembed1.jpg"
               />
               <span class="card-title gradient">Coats</span>
@@ -249,7 +101,7 @@
         <div class="carousel-item" id="recommCarousel">
           <div id="gradientCard" class="card">
             <div class="card-image">
-              <img 
+              <img
               id="also-buy-img" src="../../../assets/myargallery.jpg" 
               />
               <span class="card-title gradient">Women Suits</span>
@@ -395,27 +247,27 @@
                 <div *ngIf="product; else secpro">
                   <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" >Connect</a>
                   <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product.productID }}/seller" style="margin-top: 4%">View Details</a>
-                  <h5><s style="color:grey;font-size: 18px">₹{{ product.mrp }}</s> ₹{{ product.mrp }}</h5>
+                  
               </div>
               <ng-template #secpro>
                 <div *ngIf="product2; else thirdpro">
                   <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp"  >Connect</a>
                   <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product2.productID }}/seller" style="margin-top: 4%">View Details</a>
-                  <h5><s style="color:grey;font-size: 18px">₹{{ product2.mrp }}</s> ₹{{ product2.mrp }}</h5>
+                  
                 </div>
                 </ng-template>
                 <ng-template #thirdpro>
                     <div *ngIf="product3; else fourpro">
                       <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp">Connect</a>
                       <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product3.productID }}/seller" style="margin-top: 4%">View Details</a>
-                      <h5><s style="color:grey;font-size: 18px">₹{{ product3.mrp }}</s> ₹{{ product3.mrp }}</h5>
+                      
                     </div>
                     </ng-template>
                     <ng-template #fourpro>
                         <div *ngIf="product4">
                           <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp"  >Connect</a>
                           <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product4.productID }}/seller" style="margin-top: 4%">View Details</a>
-                          <h5><s style="color:grey;font-size: 18px">₹{{ product4.mrp }}</s> ₹{{ product4.mrp }}</h5>
+                          
                         </div>
                         </ng-template>
                   
@@ -450,27 +302,27 @@
               <div *ngIf="product; else secpro">
                 <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" >Connect</a>
                 <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product.productID }}/seller" style="margin-top: 4%">View Details</a>
-                <h5><s style="color:grey;font-size: 18px">₹{{ product.mrp }}</s> ₹{{ product.mrp }}</h5>
+                
             </div>
             <ng-template #secpro>
               <div *ngIf="product2; else thirdpro">
                 <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp"  >Connect</a>
                 <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product2.productID }}/seller" style="margin-top: 4%">View Details</a>
-                <h5><s style="color:grey;font-size: 18px">₹{{ product2.mrp }}</s> ₹{{ product2.mrp }}</h5>
+                
               </div>
               </ng-template>
               <ng-template #thirdpro>
                   <div *ngIf="product3; else fourpro">
                     <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp">Connect</a>
                     <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product3.productID }}/seller" style="margin-top: 4%">View Details</a>
-                    <h5><s style="color:grey;font-size: 18px">₹{{ product3.mrp }}</s> ₹{{ product3.mrp }}</h5>
+                    
                   </div>
                   </ng-template>
                   <ng-template #fourpro>
                       <div *ngIf="product4">
                         <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp"  >Connect</a>
                         <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product4.productID }}/seller" style="margin-top: 4%">View Details</a>
-                        <h5><s style="color:grey;font-size: 18px">₹{{ product4.mrp }}</s> ₹{{ product4.mrp }}</h5>
+                        
                       </div>
                       </ng-template>
               </td>
@@ -504,27 +356,27 @@
                 <div *ngIf="product; else secpro">
                   <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" >Connect</a>
                   <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product.productID }}/seller" style="margin-top: 4%">View Details</a>
-                  <h5><s style="color:grey;font-size: 18px">₹{{ product.mrp }}</s> ₹{{ product.mrp }}</h5>
+                  
               </div>
               <ng-template #secpro>
                 <div *ngIf="product2; else thirdpro">
                   <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp"  >Connect</a>
                   <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product2.productID }}/seller" style="margin-top: 4%">View Details</a>
-                  <h5><s style="color:grey;font-size: 18px">₹{{ product2.mrp }}</s> ₹{{ product2.mrp }}</h5>
+                  
                 </div>
                 </ng-template>
                 <ng-template #thirdpro>
                     <div *ngIf="product3; else fourpro">
                       <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp">Connect</a>
                       <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product3.productID }}/seller" style="margin-top: 4%">View Details</a>
-                      <h5><s style="color:grey;font-size: 18px">₹{{ product3.mrp }}</s> ₹{{ product3.mrp }}</h5>
+                      
                     </div>
                     </ng-template>
                     <ng-template #fourpro>
                         <div *ngIf="product4">
                           <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp"  >Connect</a>
                           <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product4.productID }}/seller" style="margin-top: 4%">View Details</a>
-                          <h5><s style="color:grey;font-size: 18px">₹{{ product4.mrp }}</s> ₹{{ product4.mrp }}</h5>
+                          
                         </div>
                         </ng-template>
               </td>
@@ -558,27 +410,27 @@
                 <div *ngIf="product; else secpro">
                   <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp" >Connect</a>
                   <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product.productID }}/seller" style="margin-top: 4%">View Details</a>
-                  <h5><s style="color:grey;font-size: 18px">₹{{ product.mrp }}</s> ₹{{ product.mrp }}</h5>
+                  
               </div>
               <ng-template #secpro>
                 <div *ngIf="product2; else thirdpro">
                   <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp"  >Connect</a>
                   <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product2.productID }}/seller" style="margin-top: 4%">View Details</a>
-                  <h5><s style="color:grey;font-size: 18px">₹{{ product2.mrp }}</s> ₹{{ product2.mrp }}</h5>
+                  
                 </div>
                 </ng-template>
                 <ng-template #thirdpro>
                     <div *ngIf="product3; else fourpro">
                       <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp">Connect</a>
                       <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product3.productID }}/seller" style="margin-top: 4%">View Details</a>
-                      <h5><s style="color:grey;font-size: 18px">₹{{ product3.mrp }}</s> ₹{{ product3.mrp }}</h5>
+                      
                     </div>
                     </ng-template>
                     <ng-template #fourpro>
                         <div *ngIf="product4">
                           <a class="waves-effect waves-light btn green darken-4 modal-trigger" data-target="modal-otp"  >Connect</a>
                           <a class="waves-effect waves-light btn green modal-close" routerLink="/product/{{ product4.productID }}/seller" style="margin-top: 4%">View Details</a>
-                          <h5><s style="color:grey;font-size: 18px">₹{{ product4.mrp }}</s> ₹{{ product4.mrp }}</h5>
+                          
                         </div>
                         </ng-template>
               </td>
@@ -589,6 +441,99 @@
     </div>
   </div>
 </div>
+
+
+<div id="cart-modal" class="modal" style="overflow: visible">
+    <div class="modal-content">
+      <div class="row">
+        <div class="col s11">
+          <h4>
+            <i class="material-icons" style="color:green">done_all</i> Added to
+            Cart
+          </h4>
+        </div>
+        <div class="col s1" style="float:right">
+          <i class="material-icons modal-close" style="color:black">clear</i>
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="col s8">
+          <div class="row">
+            <div class="col s5">
+              <img
+                src="https://pbs.twimg.com/profile_images/846659478120366082/K-kZVvT8.jpg"
+                width="170"
+                height="170"
+              />
+            </div>
+            <div class="col s7">
+              <h5 style="font-weight:bolder ">Product Title</h5>
+              <div class="row">
+                <div class="col s5">
+                  <p>SIZE: 42</p>
+                </div>
+                <div class="col s7">
+                  <p>COLOR: Grey</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s3">
+                  <input
+                    id="qty_cart"
+                    type="text"
+                    placeholder="Qty"
+                    class="center"
+                    value="2"
+                  />
+                  <label for="qty">Quantity</label>
+                </div>
+                <div class="col s9">
+                  <div class="row" style="margin-bottom: 0%">
+                    <div class="col s3"><h5>499</h5></div>
+                    <div class="col s4">
+                      <p><s class="grey-text">599</s></p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col s12">
+                      <p>You Save: <b> 900.00 (20%)</b></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col s4">
+          <div class="row">
+            <div class="col s8"><h5>Your Cart</h5></div>
+          </div>
+          <div class="row">
+            <div class="col s6"><h6>Subtotal</h6></div>
+            <div class="col s3 offset-s1"><h6>900</h6></div>
+          </div>
+          <div class="row">
+            <div class="col s12">
+              <a class="green waves-effect waves-light btn" style="width: 100%"
+                >Checkout this Item</a
+              >
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12">
+              <a class="black waves-effect waves-light btn" style="width: 100%"
+                >View All Cart Items</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
 <div id="modal-otp" class="modal" >
     <div class="modal-content">
         <h4>Enter Phone</h4>
@@ -609,12 +554,12 @@
           </div>
         </div>
 
-          <div id="verified-modal" class="modal">
-              <div class="modal-content">
-                <p *ngIf="otpRecvMessage?.Details == 'OTP Matched'; else secondOtp">
+    <div id="verified-modal" class="modal">
+      <div class="modal-content">
+        <p *ngIf="otpRecvMessage?.Details == 'OTP Matched'; else secondOtp">
                   OTP Matched
-                </p>
-                <ng-template #secondOtp>
+        </p>
+      <ng-template #secondOtp>
                   <p>OTP Mismatched</p>
                 </ng-template>
               </div>
@@ -690,7 +635,12 @@
              </a>
              </div> 
           </div>
-          <button class="btn btn-large center modal-trigger" id="bt-sellers" data-target="modal-buyers">Select from +3 shops</button>
+          <div class="row" id="buy-options-row">
+              <div class="col s4" id="connect-col">
+            <button id="bt-sellers" class="btn btn-large center modal-trigger blue accent-3" data-target="modal-buyers">Connect to +3 shops</button></div>
+          <div class="col s4" id="onow-col"><button id="bt-order-now" class="btn btn-large center modal-trigger purple accent-4" data-target="cart-modal">Order Now</button></div>
+          <div class="col s4" id="add-to-col"><button id="bt-add-to-cart" class="btn btn-large center modal-trigger red accent-2" (click)="addProductToCart()">Add to Cart</button></div>
+          </div>
         </div> 
       </div> 
       </div>
@@ -883,7 +833,12 @@
                    </a>
                    </div> 
                 </div>
-                <button class="btn btn-large center modal-trigger" id="bt-sellers" data-target="modal-buyers">Select from +3 shops</button>
+                <div class="row" id="buy-options-row">
+                    <div class="col s4" id="connect-col">
+                  <button id="bt-sellers" class="btn btn-large center modal-trigger blue accent-3" data-target="modal-buyers">Connect to +3 shops</button></div>
+                <div class="col s4" id="onow-col"><button id="bt-order-now" class="btn btn-large center modal-trigger purple accent-4" data-target="cart-modal">Order Now</button></div>
+                <div class="col s4" id="add-to-col"><button id="bt-add-to-cart" class="btn btn-large center modal-trigger red accent-2" (click)="addProductToCart()">Add to Cart</button></div>
+                </div>
               </div> 
             </div> 
             </div>
@@ -1077,7 +1032,12 @@
                    </a>
                    </div> 
                 </div>
-                <button class="btn btn-large center modal-trigger" id="bt-sellers" data-target="modal-buyers">Select from +3 shops</button>
+                <div class="row" id="buy-options-row">
+                    <div class="col s4" id="connect-col">
+                  <button id="bt-sellers" class="btn btn-large center modal-trigger blue accent-3" data-target="modal-buyers">Connect to +3 shops</button></div>
+                <div class="col s4" id="onow-col"><button id="bt-order-now" class="btn btn-large center modal-trigger purple accent-4" data-target="cart-modal">Order Now</button></div>
+                <div class="col s4" id="add-to-col"><button id="bt-add-to-cart" class="btn btn-large center modal-trigger red accent-2" (click)="addProductToCart()">Add to Cart</button></div>
+                </div>
               </div> 
             </div> 
             </div>

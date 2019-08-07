@@ -1,0 +1,23 @@
+#order-details {
+  float: left;
+}
+#current-order .row {
+  margin-top: 5%;
+}
+#bt-current {
+  margin-top: 2%;
+}
+#bt-track {
+  margin-top: 10%;
+  margin-bottom: 4%;
+}
+.btn {
+  width: 100%;
+}
+.highlight.responsive-table {
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+.container .row {
+  margin-top: 3%;
+}
