@@ -3,9 +3,15 @@ import {
   OnInit,
   OnChanges,
   AfterContentInit,
-  AfterViewInit
+  AfterViewInit,
+  NgZone
 } from "@angular/core";
+import { CartItemsService } from "../services/cart-items.service";
+import { CartItemModel } from "../models/cart-item.model";
+// import { google } from "google-maps";
+// import { google } from "@agm/core/services/google-maps-types";
 declare var $: any;
+declare const google: any;
 @Component({
   selector: "app-navbar",
   templateUrl: "./navbar.component.html",
@@ -13,12 +19,17 @@ declare var $: any;
 })
 export class NavbarComponent implements OnInit {
   category: string;
+  cartItems: CartItemModel[];
   geolocationPosition: any;
   city: any;
   lat: any;
   lng: any;
+  address: any;
   citySelected = localStorage.getItem("currentCity");
-  constructor() {}
+  constructor(
+    private cartItemService: CartItemsService,
+    private ngZone: NgZone
+  ) {}
 
   jquery_code() {
     (function($) {
@@ -46,7 +57,18 @@ export class NavbarComponent implements OnInit {
           inDuration: 300,
           outDuration: 225,
           constrainWidth: false,
-          hover: true, // Activate on hover // Displays dropdown below the button
+          hover: true,
+          coverTrigger: false
+        });
+      });
+    })(jQuery);
+    (function($) {
+      $(function() {
+        $("#dropdown-btn-profile-mobile").dropdown({
+          inDuration: 300,
+          outDuration: 225,
+          constrainWidth: false,
+          hover: false, // Activate on hover // Displays dropdown below the button
           coverTrigger: false // Displays dropdown with edge aligned to the left of button
         });
       }); // End Document Ready
@@ -58,6 +80,17 @@ export class NavbarComponent implements OnInit {
           outDuration: 225,
           constrainWidth: false,
           hover: true, // Activate on hover // Displays dropdown below the button
+          coverTrigger: false // Displays dropdown with edge aligned to the left of button
+        });
+      }); // End Document Ready
+    })(jQuery);
+    (function($) {
+      $(function() {
+        $("#bt-sel-city-mobile").dropdown({
+          inDuration: 300,
+          outDuration: 225,
+          constrainWidth: false,
+          hover: false, // Activate on hover // Displays dropdown below the button
           coverTrigger: false // Displays dropdown with edge aligned to the left of button
         });
       }); // End Document Ready
@@ -77,7 +110,7 @@ export class NavbarComponent implements OnInit {
       $("#sel-city-modal").modal();
     });
     $(document).ready(function() {
-      $("#cart-modal").modal();
+      $("#cart-items-modal").modal();
     });
   }
 
@@ -85,12 +118,14 @@ export class NavbarComponent implements OnInit {
     // console.log(this.citySelected);
     this.citySelected = JSON.parse(localStorage.getItem("currentCity"));
     // console.log(this.citySelected);
+    this.getCartItems();
     this.jquery_code();
     if (window.navigator && window.navigator.geolocation) {
       window.navigator.geolocation.getCurrentPosition(
         position => {
           this.geolocationPosition = position;
           console.log(position);
+          console.log("2" + "2");
           this.city = "";
           this.lat = position.coords.latitude;
           this.lng = position.coords.longitude;
@@ -99,6 +134,27 @@ export class NavbarComponent implements OnInit {
             "currentCity",
             JSON.stringify({ city: this.city, lat: this.lat, lng: this.lng })
           );
+          // let geocoder = new google.maps.Geocoder();
+          // let latlng = new google.maps.LatLng(this.lat, this.lng);
+          // let request = {
+          //   latLng: latlng
+          // };
+          // geocoder.geocode(request, (results, status) => {
+          //   if (status == google.maps.GeocoderStatus.OK) {
+          //     if (results[0] != null) {
+          //       this.ngZone.run(() => {
+          //         this.city = results[0].formatted_address;
+          //       }); //<<<=== DOES NOT WORK, when I output this {{ address }} in the html, it's empty
+          //       console.log(this.city); //<<<=== BUT here it Prints the correct value to the console !!!
+          //     } else {
+          //       alert("No address available");
+          //     }
+          //   }
+          // });
+          // localStorage.setItem(
+          //   "currentCity",
+          //   JSON.stringify({ city: this.city, lat: this.lat, lng: this.lng })
+          // );
         },
         error => {
           switch (error.code) {
@@ -120,6 +176,11 @@ export class NavbarComponent implements OnInit {
         }
       );
     }
+  }
+  getCartItems() {
+    this.cartItemService
+      .getCartItems()
+      .subscribe(cartItems => (this.cartItems = cartItems));
   }
 
   selectChangeHandler(event: any) {
@@ -152,7 +213,11 @@ export class NavbarComponent implements OnInit {
     }
     localStorage.setItem(
       "currentCity",
-      JSON.stringify({ city: this.city, lat: this.lat, lng: this.lng })
+      JSON.stringify({
+        city: this.city,
+        lat: this.lat,
+        lng: this.lng
+      })
     );
   }
   noCitySelected() {
@@ -170,5 +235,40 @@ export class NavbarComponent implements OnInit {
   }
   whenCitySelected() {
     this.citySelected = JSON.parse(localStorage.getItem("currentCity"));
+  }
+  public locate() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        position => {
+          this.lat = position.coords.latitude; // Works fine
+          this.lng = position.coords.longitude; // Works fine
+
+          let geocoder = new google.maps.Geocoder();
+          let latlng = new google.maps.LatLng(this.lat, this.lng);
+          let request = {
+            latLng: latlng
+          };
+
+          geocoder.geocode(request, (results, status) => {
+            if (status == google.maps.GeocoderStatus.OK) {
+              if (results[0] != null) {
+                this.address = results[0].formatted_address; //<<<=== DOES NOT WORK, when I output this {{ address }} in the html, it's empty
+                console.log(this.address); //<<<=== BUT here it Prints the correct value to the console !!!
+              } else {
+                alert("No address available");
+              }
+            }
+          });
+        },
+        error => {
+          console.log(
+            "Error code: " +
+              error.code +
+              "<br /> Error message: " +
+              error.message
+          );
+        }
+      );
+    }
   }
 }

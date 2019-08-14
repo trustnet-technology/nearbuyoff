@@ -4,12 +4,22 @@
 #current-order .row {
   margin-top: 5%;
 }
+#all-orders .row {
+  margin-top: 5%;
+}
 #bt-current {
   margin-top: 2%;
+}
+h4 {
+  font-family: inherit;
 }
 #bt-track {
   margin-top: 10%;
   margin-bottom: 4%;
+}
+#current-order img {
+  max-width: 200px;
+  width: 100%;
 }
 .btn {
   width: 100%;
@@ -19,5 +29,30 @@
   margin-bottom: 5%;
 }
 .container .row {
-  margin-top: 3%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+@media (min-width: 320px) and (max-width: 480px) {
+  #bt-current {
+    margin-top: 0%;
+  }
+  #bt-track {
+    margin-top: 0%;
+    margin-bottom: 0%;
+  }
+  #current-order .row {
+    margin-top: 10%;
+    margin-bottom: 10%;
+  }
+  p {
+    font-size: 12px;
+  }
+  .highlight.responsive-table {
+    margin-top: 10%;
+    margin-bottom: 10%;
+  }
+  .container .row {
+    margin-top: 20%;
+    margin-bottom: 20%;
+  }
 }

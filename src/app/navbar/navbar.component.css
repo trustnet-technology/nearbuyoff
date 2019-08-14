@@ -22,6 +22,10 @@ nav .left {
   height: 50px;
 }
 
+#cart-items-modal {
+  max-height: 100%;
+}
+
 nav .left img {
   margin: 17px;
   height: 30px;
@@ -40,9 +44,32 @@ nav .left .imgProfil a {
 .dropdown-content.row {
   overflow: visible;
   width: 100%;
-  height: auto;
+  font-family: "Oswald", sans-serif;
 }
-#services2-dropdown {
+.verticalLine {
+  border-left: thick solid #ff0000;
+}
+.col.l7.m7.s5 h5 {
+  font-weight: bolder;
+  margin-bottom: 0.8em;
+}
+#services-dropdown a {
+  color: black !important;
+  width: 100%;
+}
+#services-dropdown .col.s3 {
+  height: 100%;
+}
+#services-dropdown {
+  height: 22em;
+}
+
+.dropdown-content {
+  left: 0em !important;
+  width: 100% !important;
+}
+#services2-dropdown,
+#services3-dropdown {
   width: 100%;
 }
 #sel-city-dropdown {
@@ -60,7 +87,67 @@ nav .left .imgProfil a {
   color: black !important;
   width: 100%;
 }
-
+.col.s4 > .row {
+  margin-bottom: 0.65em;
+}
+#mobile-options,
+#dropdown-btn-profile-mobile,
+#bt-sel-city-mobile {
+  display: none;
+}
 .brand-logo {
   font-weight: 900;
+}
+.col.l5 img {
+  max-width: 150px;
+  width: 100%;
+}
+@media (min-width: 320px) and (max-width: 480px) {
+  #mobile-options,
+  #dropdown-btn-profile-mobile,
+  #bt-sel-city-mobile {
+    display: block;
+  }
+  #dropdown-btn-profile-mobile img {
+    margin-top: 25%;
+    width: 100%;
+    max-width: 35px;
+    height: 100%;
+  }
+  nav {
+    line-height: 30px;
+  }
+  h4 {
+    font-size: 1.5em;
+  }
+  .card .card-content {
+    padding: 10px;
+  }
+  p {
+    font-size: 10px;
+  }
+  .col.s7 img {
+    width: 100%;
+  }
+  .row {
+    margin-bottom: 10px;
+  }
+  #btn-remove-cart-item {
+    display: none;
+  }
+  .col.l7.m7.s5 h5 {
+    font-weight: bolder;
+    margin-bottom: 0.8em;
+    font-size: 1em;
+  }
+  .col.s3 h5 {
+    font-size: 1em;
+  }
+  .col.s4 > .row {
+    margin-bottom: 0.12em;
+  }
+  .col.s2 h6 {
+    font-size: 0.75em;
+    margin: 0.7666666667rem 0 0.46rem 0.7rem;
+  }
 }

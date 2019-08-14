@@ -205,7 +205,7 @@ export class ProductDetailComponent implements OnInit {
   }
   addProductToCart() {
     var toastHTML =
-      '<span>Product Added to Cart</span><button class="btn-flat toast-action modal-trigger" data-target="cart-modal">View Cart</button>';
+      '<span>Product Added to Cart</span><button class="btn-flat toast-action modal-trigger" data-target="cart-item-modal">View Cart</button>';
     M.toast({ html: toastHTML });
   }
 }

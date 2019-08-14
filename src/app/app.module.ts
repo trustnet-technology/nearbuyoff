@@ -53,7 +53,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     ShareModule,
     LazyLoadImageModule.forRoot({ preset: intersectionObserverPreset }),
     AgmCoreModule.forRoot({
-      apiKey: "Enter API Key here"
+      apiKey: "Enter API key here"
     }),
     AgmDirectionModule
   ],

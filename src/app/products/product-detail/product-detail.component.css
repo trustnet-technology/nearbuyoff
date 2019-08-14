@@ -14,6 +14,10 @@
   width: inherit;
   height: inherit;
 }
+.col.l5.m5.s6 > img {
+  width: 100%;
+  max-width: 170px;
+}
 #productImage {
   height: 400px;
   width: 400px;
@@ -193,7 +197,13 @@ div.explanation {
 #add-to-col {
   padding-left: 0em;
 }
+#mobile-buttons {
+  display: none;
+}
 @media (min-width: 320px) and (max-width: 480px) {
+  #mobile-buttons {
+    display: block;
+  }
   #modal-buyers.modal .modal-content {
     padding: 16px;
   }
@@ -202,6 +212,10 @@ div.explanation {
   }
   #mob-recom-prods {
     display: block;
+  }
+  #btn-view-all,
+  #btn-checkout {
+    display: none;
   }
   #also-buy-img {
     width: 125px;
@@ -219,11 +233,6 @@ div.explanation {
   }
   #mapcol {
     display: none;
-  }
-  #bt-sellers {
-    width: 100%;
-    font-size: 20px;
-    font-family: inherit;
   }
   #recom-prod-title {
     padding: 13px;
@@ -244,6 +253,28 @@ div.explanation {
     font-weight: bolder;
     line-height: 10%;
     padding-bottom: 6%;
+  }
+  .row {
+    margin-bottom: 10px;
+  }
+  #cart-modal h5 {
+    font-size: 1.3em;
+  }
+  #cart-modal p {
+    font-size: 0.6em;
+  }
+  #cart-modal .col.s9 h5 {
+    font-size: 0.9em;
+  }
+  #qty-cart {
+    font-size: 0.8em;
+    height: 1.5em;
+  }
+  .btn {
+    font-size: 7px;
+  }
+  .input-field > label {
+    font-size: 0.7em;
   }
 
   .rate {

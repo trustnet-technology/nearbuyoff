@@ -1,5 +1,5 @@
 <div class="navbar-fixed  grey darken-3">
-  <nav class="megamenu">
+  <nav>
     <div class="nav-wrapper grey darken-3">
       <a href="#" class="brand-logo" style="padding-left: 4%;"
         ><img
@@ -9,13 +9,6 @@
           width="155"
           style="margin-top: 7%; margin-right: 4%"
       /></a>
-      <a
-        class="sidenav-trigger right"
-        data-target="mobile-nav2"
-        style="color:white"
-      >
-        <i class="material-icons">drag_indicator</i>
-      </a>
 
       <ul
         role="menu"
@@ -74,7 +67,23 @@
         <li class="imgProfil" style="color:white">
           <a
             id="dropdown-btn-profile"
-            href=""
+            class="dropdown-button"
+            data-target="services3-dropdown"
+            style="color:white"
+          >
+            <img
+              src="https://i0.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png?fit=256%2C256&quality=100&ssl=1"
+              alt=""
+              class="circle"
+              style="color:white"
+            />
+          </a>
+        </li>
+      </ul>
+      <ul id="mobile-options" style="color:white">
+        <li class="imgProfil" class="right" style="color:white">
+          <a
+            id="dropdown-btn-profile-mobile"
             class="dropdown-button"
             data-target="services2-dropdown"
             style="color:white"
@@ -87,27 +96,73 @@
             />
           </a>
         </li>
-        <ul id="AccountInfo" class="hidden z-depth-5" style="color:white">
-          <li>sdfsdf</li>
-          <li>fghfgh</li>
-          <li>jkjkljkljkl</li>
-          <li>xwcxwcwxcwxc</li>
-        </ul>
-        <!-- <li>
-          <a href="">
-            <i class="material-icons" style="color:white">exit_to_app</i>
+        <li>
+          <a
+            id="bt-sel-city-mobile"
+            class="dropdown-button"
+            data-target="sel-city-dropdown-mobile"
+          >
+            <i class="material-icons" style="color:white">my_location</i>
           </a>
-        </li> -->
+        </li>
       </ul>
     </div>
   </nav>
 </div>
 <!-- Near You Dropdown Menu -->
 <div id="services-dropdown" class="dropdown-content row">
-  <ul
+  <div class="col s3 center black-text row" style="font-size: x-large">
+    Apparel
+    <div class="col s12 grey-text" style="font-size: medium">T-Shirts</div>
+    <div class="col s12 grey-text" style="font-size: medium">Jeans</div>
+    <div class="col s12 grey-text" style="font-size: medium">Sweatshirts</div>
+    <div class="col s12 grey-text" style="font-size: medium">Sneakers</div>
+  </div>
+  <div
+    class="col s3 center grey lighten-4 black-text row"
+    style="font-size: x-large"
+  >
+    Grocery
+    <div class="col s12 grey-text" style="font-size: medium">
+      Dressings & Sauces
+    </div>
+    <div class="col s12 grey-text" style="font-size: medium">
+      Dairy Products
+    </div>
+    <div class="col s12 grey-text" style="font-size: medium">Fruits</div>
+    <div class="col s12 grey-text" style="font-size: medium">Frozen Food</div>
+  </div>
+  <div class="col s3 center black-text row" style="font-size: x-large">
+    Home Appliances
+    <div class="col s12 grey-text" style="font-size: medium">
+      Video Games & Consoles
+    </div>
+    <div class="col s12 grey-text" style="font-size: medium">Speakers</div>
+    <div class="col s12 grey-text" style="font-size: medium">
+      Washing Machines
+    </div>
+    <div class="col s12 grey-text" style="font-size: medium">
+      TV & Home Theatres
+    </div>
+  </div>
+  <div
+    class="col s3 center grey lighten-4 black-text row"
+    style="font-size: x-large"
+  >
+    Decors
+    <div class="col s12 grey-text" style="font-size: medium">Curtains</div>
+    <div class="col s12 grey-text" style="font-size: medium">
+      Pillows & Cushions
+    </div>
+    <div class="col s12 grey-text" style="font-size: medium">Bed Sheets</div>
+    <div class="col s12 grey-text" style="font-size: medium">Wallpapers</div>
+  </div>
+  <!-- <ul
     id="menuDropdownContent"
-    class="vertical-tabs col s4"
-    style="font-family: 'Oswald', sans-serif;"
+    class="vertical-tabs col s8"
+    style="font-family: 'Oswald', sans-serif;"<li><a href="">Curtains</a></li>
+    <li><a href="">Pillows & Cushions</a></li>
+    <li><a href=""></a></li>
   >
     <li>
       <a href="#!" style="font-weight: bolder" data-target="A">Apparel</a>
@@ -121,9 +176,9 @@
       >
     </li>
     <li><a href="#!" style="font-weight: bolder" data-target="D">Decors</a></li>
-  </ul>
+  </ul> -->
 
-  <div id="vtc" class="vertical-tab-content col s8" style="padding: 0"></div>
+  <!-- <div id="vtc" class="vertical-tab-content col s8" style="padding: 0"></div> -->
 </div>
 <!-- Mobile Nav for Navbar -->
 <ul class="sidenav" id="mobile-nav2">
@@ -134,41 +189,6 @@
     <a><i class="material-icons">exit_to_app</i></a>
   </li>
 </ul>
-
-<!-- Inner Dropdown Menu Items -->
-
-<div class="vertical-tab-target" id="A">
-  <ul style="font-family:  'Oswald', sans-serif;">
-    <li><a href="">T-Shirts</a></li>
-    <li><a href="">Sweatshirts</a></li>
-    <li><a href="">Jeans</a></li>
-    <li><a href="">Sneakers</a></li>
-  </ul>
-</div>
-<div class="vertical-tab-target" id="B">
-  <ul style="font-family:  'Oswald', sans-serif;">
-    <li><a href="">Dressings & Sauces</a></li>
-    <li><a href="">Dairy Products</a></li>
-    <li><a href="">Fruits</a></li>
-    <li><a href="">Frozen Food</a></li>
-  </ul>
-</div>
-<div class="vertical-tab-target" id="C">
-  <ul style="font-family:  'Oswald', sans-serif;">
-    <li><a href="">TV & Home Theatres</a></li>
-    <li><a href="">Washing Machines</a></li>
-    <li><a href="">Speakers</a></li>
-    <li><a href="">Video Games & Consoles</a></li>
-  </ul>
-</div>
-<div class="vertical-tab-target" id="D">
-  <ul style="font-family:  'Oswald', sans-serif;">
-    <li><a href="">Curtains</a></li>
-    <li><a href="">Pillows & Cushions</a></li>
-    <li><a href="">Bed Sheets</a></li>
-    <li><a href="">Wallpapers</a></li>
-  </ul>
-</div>
 <!-- Select City Modal -->
 <div id="sel-city-modal" class="modal">
   <div class="modal-content">
@@ -207,13 +227,13 @@
   </div>
 </div>
 <!--Cart Modal-->
-<div id="cart-modal" class="modal" style="overflow: visible">
+<div id="cart-items-modal" class="modal">
   <div class="modal-content">
     <div class="row">
       <div class="col s11">
         <h4>
-          <i class="material-icons" style="color:green">done_all</i> Added to
-          Cart
+          <i class="material-icons" style="color:darkblue">shopping_cart</i> You
+          have 4 items in your Cart
         </h4>
       </div>
       <div class="col s1" style="float:right">
@@ -221,74 +241,66 @@
       </div>
     </div>
 
-    <div class="row">
-      <div class="col s8">
-        <div class="row">
-          <div class="col s5">
-            <img
-              src="https://pbs.twimg.com/profile_images/846659478120366082/K-kZVvT8.jpg"
-              width="170"
-              height="170"
-            />
-          </div>
-          <div class="col s7">
-            <h5 style="font-weight:bolder ">Product Title</h5>
+    <div *ngFor="let cartItem of cartItems" class="card">
+      <div class="row">
+        <div class="card-content">
+          <div class="col s8 m8 l8">
             <div class="row">
-              <div class="col s5">
-                <p>SIZE: 42</p>
-              </div>
-              <div class="col s7">
-                <p>COLOR: Grey</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s3">
-                <input
-                  id="qty_cart"
-                  type="text"
-                  placeholder="Qty"
-                  class="center"
-                  value="2"
+              <div class="col l5 m5 s7">
+                <img
+                  src="https://pbs.twimg.com/profile_images/846659478120366082/K-kZVvT8.jpg"
                 />
-                <label for="qty">Quantity</label>
               </div>
-              <div class="col s9">
-                <div class="row" style="margin-bottom: 0%">
-                  <div class="col s3"><h5>499</h5></div>
-                  <div class="col s4">
-                    <p><s class="grey-text">599</s></p>
+              <div class="col l7 m7 s5">
+                <h5 >
+                  {{ cartItem.productName }}
+                </h5>
+                <div class="row">
+                  <div class="col s5">
+                    <p>SIZE: <b>42</b></p>
+                  </div>
+                  <div class="col s7">
+                    <p>COLOR: <b>Grey</b></p>
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col s12">
-                    <p>You Save: <b> 900.00 (20%)</b></p>
+                  <div class="col s8">
+                    <a
+                      id="btn-remove-cart-item"
+                      class="waves-effect waves-light btn red darken-2"
+                      style="width: 100%"
+                      ><i class="material-icons left">clear</i>Remove</a
+                    >
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="col s4">
-        <div class="row">
-          <div class="col s8"><h5>Your Cart</h5></div>
-        </div>
-        <div class="row">
-          <div class="col s6"><h6>Subtotal</h6></div>
-          <div class="col s3 offset-s1"><h6>900</h6></div>
-        </div>
-        <div class="row">
-          <div class="col s12">
-            <a class="green waves-effect waves-light btn" style="width: 100%"
-              >Checkout this Item</a
-            >
-          </div>
-        </div>
-        <div class="row">
-          <div class="col s12">
-            <a class="black waves-effect waves-light btn" style="width: 100%"
-              >View All Cart Items</a
-            >
+          <div class="col s4">
+            <div class="row">
+              <div class="col s3">
+                <h5>
+                  <b>{{ cartItem.price }}</b>
+                </h5>
+              </div>
+              <div class="col s2">
+                <h6>
+                  <s>{{ cartItem.mrp }}</s>
+                </h6>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s11">
+                <p>
+                  You Save:
+                  <b
+                    >₹{{ cartItem.mrp - cartItem.price }} ({{
+                      cartItem.discount
+                    }}%) </b
+                  >
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -301,7 +313,7 @@
     <li>
       <a
         class="modal-trigger"
-        data-target="cart-modal"
+        data-target="cart-items-modal"
         style="font-weight: bolder"
         >View Cart</a
       >
@@ -313,6 +325,39 @@
       <a routerLink="/customer/orders" style="font-weight: bolder">My Orders</a>
     </li>
     <li><a routerLink="/auth" style="font-weight: bolder">Login/Sign-Up</a></li>
+  </ul>
+</div>
+<!-- xxxxxxxxxxxxxxxxxxxxxxx -->
+<div id="services3-dropdown" class="dropdown-content row">
+  <ul class="vertical-tabs">
+    <li>
+      <a
+        class="modal-trigger"
+        data-target="cart-items-modal"
+        style="font-weight: bolder"
+        >View Cart</a
+      >
+    </li>
+    <li>
+      <a routerLink="/user/profile" style="font-weight: bolder">View Profile</a>
+    </li>
+    <li>
+      <a routerLink="/customer/orders" style="font-weight: bolder">My Orders</a>
+    </li>
+    <li><a routerLink="/auth" style="font-weight: bolder">Login/Sign-Up</a></li>
+  </ul>
+</div>
+<!-- xxxxxxxxxxxxxxxxxxxxxxxxxx -->
+<div id="sel-city-dropdown-mobile" class="dropdown-content row">
+  <ul class="vertical-tabs">
+    <li>
+      <a
+        class="modal-trigger"
+        style="font-size: 12px"
+        data-target="sel-city-modal"
+        >Current City:<br /><b>{{ citySelected?.city }}</b></a
+      >
+    </li>
   </ul>
 </div>
 <!-- Notification Dropdown -->

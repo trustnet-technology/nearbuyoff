@@ -10,3 +10,9 @@
 .tabs .indicator {
   background-color: #a1dd70;
 }
+@media (min-width: 320px) and (max-width: 480px) {
+  #btn-get-otp,
+  #btn-sign-up {
+    width: 100%;
+  }
+}
