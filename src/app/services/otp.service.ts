@@ -11,7 +11,7 @@ const httpOptions = {
   providedIn: "root"
 })
 export class OtpService {
-  private apiKey = "Enter API Key here";
+  private apiKey = "Enter API key here";
   private getOtpUrl = "https://2factor.in/API/V1";
   constructor(private http: HttpClient) {}
 

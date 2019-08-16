@@ -62,6 +62,17 @@
           </a>
           </div> 
         </div>
+        <div class="row">
+          <div class="col s4" style="padding-left: 10%;padding-top: 1%">
+            Seller: {{selectedSeller}}
+          </div>
+          <div class="col s4 ">
+              <a id="color-btn" class="dropdown-trigger btn white black-text" data-target="color-dropdown">Color <i class="material-icons right">arrow_drop_down</i></a>
+            </div>
+            <div class="col s4">
+                <a id="size-btn" class="dropdown-trigger btn white black-text" data-target="size-dropdown">Size <i class="material-icons right">arrow_drop_down</i></a>
+              </div>
+        </div>
         <div class="row" id="buy-options-row">
           <div class="col s4" id="connect-col">
         <button id="bt-sellers" class="btn btn-large center modal-trigger blue accent-3" data-target="modal-buyers">Connect to +3 shops</button></div>
@@ -196,7 +207,8 @@
 </div>
 <div id="modal-buyers" class="modal">
   <div class="modal-content">
-      <div class="modal-close right"><i class="material-icons">close</i></div>
+      <!-- <div class="modal-close right"><i class="material-icons">close</i></div> -->
+      <div class="right"><a class="waves-effect waves-light btn green darken-2 modal-close">Done</a></div>
     <div class="row">
       <div id="mapcol" class="col s12 m4 l7 card" style="padding-top:1%;padding-bottom: 1%;margin-right: 2%">
         <agm-map [latitude]="plat" [longitude]="plng" [zoom]="12">
@@ -537,7 +549,26 @@
     </div>
   </div>
 
-
+  <ul id="color-dropdown" class='dropdown-content'>
+      <li><a class="red-text" href=""><i class="material-icons red">fiber_manual_record</i>Red</a></li>
+      <li><a class="green-text" href=""><i class="material-icons green">fiber_manual_record</i>Green</a></li>
+      <li><a class="blue-text" href=""><i class="material-icons blue">fiber_manual_record</i>Blue</a></li>
+  </ul>
+  <ul id="size-dropdown" class="black-text dropdown-content">
+      <li><a class="black-text" href="">S</a></li>
+      <li><a class="black-text" href="">L</a></li>
+      <li><a class="black-text" href="">M</a></li>
+  </ul>
+  <ul id="qty-dropdown" class="black-text dropdown-content">
+      <li><a class="black-text" href="">1</a></li>
+      <li><a class="black-text" href="">2</a></li>
+      <li><a class="black-text" href="">3</a></li>
+  </ul>
+  <ul id="size-grocery-dropdown" class="black-text dropdown-content">
+      <li><a class="black-text" href="">300g</a></li>
+      <li><a class="black-text" href="">600g</a></li>
+      <li><a class="black-text" href="">900g</a></li>
+  </ul>
 
 <div id="modal-otp" class="modal" >
     <div class="modal-content">
@@ -640,6 +671,14 @@
              </a>
              </div> 
           </div>
+          <div class="row">
+              <div class="col s4" style="padding-left: 10%;padding-top: 1%">
+                  Seller: {{selectedSeller}}
+                </div>
+              <div class="col s4 ">
+                  <a id="qty-btn" class="dropdown-trigger btn white black-text" data-target="qty-dropdown">Qty<i class="material-icons right">arrow_drop_down</i></a>
+                </div>
+            </div>
           <div class="row" id="buy-options-row">
               <div class="col s4" id="connect-col">
             <button id="bt-sellers" class="btn btn-large center modal-trigger blue accent-3" data-target="modal-buyers">Connect to +3 shops</button></div>
@@ -838,6 +877,17 @@
                    </a>
                    </div> 
                 </div>
+                <div class="row">
+                    <div class="col s4" style="padding-left: 10%;padding-top: 1%">
+                        Seller: {{selectedSeller}}
+                      </div>
+                    <div class="col s4 ">
+                        <a id="qty-btn" class="dropdown-trigger btn white black-text" data-target="qty-dropdown">Qty<i class="material-icons right">arrow_drop_down</i></a>
+                    </div>
+                    <div class="col s4">
+                        <a id="size-grocery-btn" class="dropdown-trigger btn white black-text" data-target="size-grocery-dropdown">Size<i class="material-icons right">arrow_drop_down</i></a>
+                    </div>
+                  </div>
                 <div class="row" id="buy-options-row">
                     <div class="col s4" id="connect-col">
                   <button id="bt-sellers" class="btn btn-large center modal-trigger blue accent-3" data-target="modal-buyers">Connect to +3 shops</button></div>
@@ -1036,6 +1086,17 @@
                      <span class="fa fa-whatsapp"></span>
                    </a>
                    </div> 
+                </div>
+                <div class="row">
+                    <div class="col s4" style="padding-left: 10%;padding-top: 1%">
+                        Seller: {{selectedSeller}}
+                      </div>
+                  <div class="col s4">
+                     <a id="qty-btn" class="dropdown-trigger btn white black-text" data-target="qty-dropdown">Qty<i class="material-icons right">arrow_drop_down</i></a>
+                  </div>
+                  <div class="col s4">
+                      <a id="color-btn" class="dropdown-trigger btn white black-text" data-target="color-dropdown">Color <i class="material-icons right">arrow_drop_down</i></a>
+                    </div>
                 </div>
                 <div class="row" id="buy-options-row">
                     <div class="col s4" id="connect-col">

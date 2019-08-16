@@ -8,6 +8,7 @@ import {
 } from "@angular/core";
 import { CartItemsService } from "../services/cart-items.service";
 import { CartItemModel } from "../models/cart-item.model";
+import { MapsAPILoader } from "@agm/core";
 // import { google } from "google-maps";
 // import { google } from "@agm/core/services/google-maps-types";
 declare var $: any;
@@ -17,19 +18,29 @@ declare const google: any;
   templateUrl: "./navbar.component.html",
   styleUrls: ["./navbar.component.css"]
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, AfterViewInit {
   category: string;
   cartItems: CartItemModel[];
   geolocationPosition: any;
-  city: any;
+  city: string;
   lat: any;
+  bounds: any;
   lng: any;
   address: any;
   citySelected = localStorage.getItem("currentCity");
   constructor(
     private cartItemService: CartItemsService,
-    private ngZone: NgZone
-  ) {}
+    private ngZone: NgZone,
+    private mapsAPILoader: MapsAPILoader
+  ) {
+    this.mapsAPILoader.load().then(() => {
+      this.bounds = new google.maps.LatLngBounds(
+        new google.maps.LatLng(51.130739, -0.868052), // SW
+        new google.maps.LatLng(51.891257, 0.559417) // NE
+      );
+      console.log(this.bounds);
+    });
+  }
 
   jquery_code() {
     (function($) {
@@ -120,6 +131,8 @@ export class NavbarComponent implements OnInit {
     // console.log(this.citySelected);
     this.getCartItems();
     this.jquery_code();
+  }
+  ngAfterViewInit() {
     if (window.navigator && window.navigator.geolocation) {
       window.navigator.geolocation.getCurrentPosition(
         position => {
@@ -130,31 +143,34 @@ export class NavbarComponent implements OnInit {
           this.lat = position.coords.latitude;
           this.lng = position.coords.longitude;
           console.log(this.city, this.lat);
-          localStorage.setItem(
-            "currentCity",
-            JSON.stringify({ city: this.city, lat: this.lat, lng: this.lng })
-          );
-          // let geocoder = new google.maps.Geocoder();
-          // let latlng = new google.maps.LatLng(this.lat, this.lng);
-          // let request = {
-          //   latLng: latlng
-          // };
-          // geocoder.geocode(request, (results, status) => {
-          //   if (status == google.maps.GeocoderStatus.OK) {
-          //     if (results[0] != null) {
-          //       this.ngZone.run(() => {
-          //         this.city = results[0].formatted_address;
-          //       }); //<<<=== DOES NOT WORK, when I output this {{ address }} in the html, it's empty
-          //       console.log(this.city); //<<<=== BUT here it Prints the correct value to the console !!!
-          //     } else {
-          //       alert("No address available");
-          //     }
-          //   }
-          // });
           // localStorage.setItem(
           //   "currentCity",
           //   JSON.stringify({ city: this.city, lat: this.lat, lng: this.lng })
           // );
+          let geocoder = new google.maps.Geocoder();
+          let latlng = new google.maps.LatLng(this.lat, this.lng);
+          let request = {
+            latLng: latlng
+          };
+          console.log(geocoder);
+          geocoder.geocode(request, (results, status) => {
+            if (status == google.maps.GeocoderStatus.OK) {
+              this.ngZone.run(() => {
+                this.city = results[0].formatted_address;
+                console.log(results[0]);
+                console.log(this.city);
+                localStorage.setItem(
+                  "currentCity",
+                  JSON.stringify({
+                    city: this.city.slice(0, 9),
+                    lat: this.lat,
+                    lng: this.lng
+                  })
+                );
+              });
+            }
+          });
+          console.log(this.city);
         },
         error => {
           switch (error.code) {
@@ -235,40 +251,5 @@ export class NavbarComponent implements OnInit {
   }
   whenCitySelected() {
     this.citySelected = JSON.parse(localStorage.getItem("currentCity"));
-  }
-  public locate() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        position => {
-          this.lat = position.coords.latitude; // Works fine
-          this.lng = position.coords.longitude; // Works fine
-
-          let geocoder = new google.maps.Geocoder();
-          let latlng = new google.maps.LatLng(this.lat, this.lng);
-          let request = {
-            latLng: latlng
-          };
-
-          geocoder.geocode(request, (results, status) => {
-            if (status == google.maps.GeocoderStatus.OK) {
-              if (results[0] != null) {
-                this.address = results[0].formatted_address; //<<<=== DOES NOT WORK, when I output this {{ address }} in the html, it's empty
-                console.log(this.address); //<<<=== BUT here it Prints the correct value to the console !!!
-              } else {
-                alert("No address available");
-              }
-            }
-          });
-        },
-        error => {
-          console.log(
-            "Error code: " +
-              error.code +
-              "<br /> Error message: " +
-              error.message
-          );
-        }
-      );
-    }
   }
 }

@@ -1,0 +1,36 @@
+.col.l5 img {
+  max-width: 150px;
+  width: 100%;
+}
+@media (min-width: 320px) and (max-width: 480px) {
+  #btn-remove-cart-item {
+    display: none;
+  }
+  .col.l7.m7.s5 h5 {
+    font-weight: bolder;
+    margin-bottom: 0.8em;
+    font-size: 1em;
+  }
+  .col.s3 h5 {
+    font-size: 1em;
+  }
+  .col.s4 > .row {
+    margin-bottom: 0.12em;
+  }
+  .col.s2 h6 {
+    font-size: 0.75em;
+    margin: 0.7666666667rem 0 0.46rem 0.7rem;
+  }
+  .row {
+    margin-bottom: 10px;
+  }
+  h4 {
+    font-size: 1.5em;
+  }
+  .card .card-content {
+    padding: 10px;
+  }
+  p {
+    font-size: 10px;
+  }
+}

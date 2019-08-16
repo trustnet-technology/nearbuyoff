@@ -200,6 +200,7 @@ div.explanation {
 #mobile-buttons {
   display: none;
 }
+
 @media (min-width: 320px) and (max-width: 480px) {
   #mobile-buttons {
     display: block;
@@ -275,6 +276,13 @@ div.explanation {
   }
   .input-field > label {
     font-size: 0.7em;
+  }
+  .input-field > #qty {
+    font-size: 0.5em;
+  }
+  input[type="text"]:not(.browser-default) {
+    margin: 15px 0 0 0;
+    height: 2em;
   }
 
   .rate {

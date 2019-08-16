@@ -29,6 +29,7 @@ export class ProductDetailComponent implements OnInit {
   selectedItem2: boolean;
   selectedItem3: boolean;
   selectedItem4: boolean;
+  selectedSeller: string;
   markers = [
     { lat: 12.9763946, lng: 77.5992796 },
     { lat: 12.9399071, lng: 77.6201755 },
@@ -91,6 +92,50 @@ export class ProductDetailComponent implements OnInit {
     $(document).ready(function() {
       $("#cart-modal").modal();
     });
+    (function($) {
+      $(function() {
+        $("#color-btn").dropdown({
+          inDuration: 300,
+          outDuration: 225,
+          constrainWidth: false,
+          hover: false,
+          coverTrigger: false
+        });
+      });
+    })(jQuery);
+    (function($) {
+      $(function() {
+        $("#size-btn").dropdown({
+          inDuration: 300,
+          outDuration: 225,
+          constrainWidth: false,
+          hover: false,
+          coverTrigger: false
+        });
+      });
+    })(jQuery);
+    (function($) {
+      $(function() {
+        $("#qty-btn").dropdown({
+          inDuration: 300,
+          outDuration: 225,
+          constrainWidth: false,
+          hover: false,
+          coverTrigger: false
+        });
+      });
+    })(jQuery);
+    (function($) {
+      $(function() {
+        $("#size-grocery-btn").dropdown({
+          inDuration: 300,
+          outDuration: 225,
+          constrainWidth: false,
+          hover: false,
+          coverTrigger: false
+        });
+      });
+    })(jQuery);
   }
 
   ngOnInit(): void {
@@ -99,6 +144,7 @@ export class ProductDetailComponent implements OnInit {
     this.selectedItem2 = false;
     this.selectedItem3 = false;
     this.selectedItem4 = false;
+    this.selectedSeller = "Seller 1";
     this.dir = {
       origin: { lat: 12.9344758, lng: 77.6192442 },
       destination: { lat: 12.9763946, lng: 77.5992796 },
@@ -119,6 +165,7 @@ export class ProductDetailComponent implements OnInit {
     this.selectedItem2 = false;
     this.selectedItem3 = false;
     this.selectedItem4 = false;
+    this.selectedSeller = "Seller 1";
     this.count = 1;
     this.dir = {
       origin: { lat: 12.9344758, lng: 77.6192442 },
@@ -131,6 +178,7 @@ export class ProductDetailComponent implements OnInit {
     this.selectedItem2 = true;
     this.selectedItem3 = false;
     this.selectedItem4 = false;
+    this.selectedSeller = "Seller 2";
     this.count = 1;
     this.dir = {
       origin: { lat: 12.9344758, lng: 77.6192442 },
@@ -143,6 +191,7 @@ export class ProductDetailComponent implements OnInit {
     this.selectedItem2 = false;
     this.selectedItem3 = true;
     this.selectedItem4 = false;
+    this.selectedSeller = "Seller 4";
     this.count = 1;
     this.dir = {
       origin: { lat: 12.9344758, lng: 77.6192442 },
@@ -155,6 +204,7 @@ export class ProductDetailComponent implements OnInit {
     this.selectedItem2 = false;
     this.selectedItem3 = false;
     this.selectedItem4 = true;
+    this.selectedSeller = "Seller 4";
     this.count = 1;
     this.dir = {
       origin: { lat: 12.9344758, lng: 77.6192442 },

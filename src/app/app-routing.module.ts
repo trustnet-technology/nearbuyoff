@@ -8,6 +8,7 @@ import { SliderComponent } from "./slider/slider.component";
 import { LoginSignupComponent } from "./login-signup/login-signup.component";
 import { CustomerOrdersComponent } from "./customer-orders/customer-orders.component";
 import { UserProfileComponent } from "./user-profile/user-profile.component";
+import { CartComponent } from "./cart/cart.component";
 
 const routes: Routes = [
   { path: "search", component: SearchComponentComponent },
@@ -17,7 +18,8 @@ const routes: Routes = [
   { path: "product/:productID/seller", component: VendorDetailComponent },
   { path: "auth", component: LoginSignupComponent },
   { path: "customer/orders", component: CustomerOrdersComponent },
-  { path: "user/profile", component: UserProfileComponent }
+  { path: "user/profile", component: UserProfileComponent },
+  { path: "cart/view", component: CartComponent }
 ];
 
 @NgModule({

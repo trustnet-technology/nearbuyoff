@@ -26,6 +26,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { LoginSignupComponent } from './login-signup/login-signup.component';
 import { CustomerOrdersComponent } from './customer-orders/customer-orders.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     RatingComponent,
     LoginSignupComponent,
     CustomerOrdersComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

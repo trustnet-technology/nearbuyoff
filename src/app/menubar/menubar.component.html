@@ -12,7 +12,6 @@
           name="search"
           (input)="search(searchBox.value)"
         />
-        <!---->
         <label class="label-icon" for="search">
           <a routerLink="/search">
             <i id="icon-search" class="material-icons">search</i></a
@@ -21,18 +20,6 @@
         <i class="material-icons">close</i>
       </div>
     </form>
-    <!-- class="sidenav-trigger" action="" method="post" -->
-    <!-- <div class="col s2">
-        <form>
-          <div class="input-field">
-            <input id="search" type="search" required />
-            <label class="label-icon" for="search"
-              ><i class="material-icons">search</i></label
-            >
-            <i class="material-icons">close</i>
-          </div>
-        </form>
-      </div> -->
     <ul id="nav-mobile" class="container hide-on-med-and-down center">
       <li
         *ngFor="let mItem of mItems"
@@ -48,7 +35,21 @@
 </nav>
 
 <ul class="sidenav" id="mobile-nav">
-  <li *ngFor="let mItem of mItems">
-    <a routerLink="/search">{{ mItem.name }}</a>
+  <li>
+    <ul class="collapsible collapsible-accordion">
+      <li *ngFor="let mItem of mItems">
+        <a class="collapsible-header"
+          >{{ mItem.name
+          }}<i class="material-icons right">arrow_drop_down</i></a
+        >
+        <div class="collapsible-body">
+          <ul>
+            <li *ngFor="let child of mItem.children">
+              <a routerLink="/search">{{ child }}</a>
+            </li>
+          </ul>
+        </div>
+      </li>
+    </ul>
   </li>
 </ul>
