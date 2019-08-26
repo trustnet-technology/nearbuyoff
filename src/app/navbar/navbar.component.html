@@ -64,7 +64,11 @@
             <i class="material-icons" style="color:white">notifications_none</i>
           </a>
         </li> -->
-        <li class="imgProfil" style="color:white">
+        <li
+          *ngIf="loggedIn === 1; else loggedOut"
+          class="imgProfil"
+          style="color:white"
+        >
           <a
             id="dropdown-btn-profile"
             class="dropdown-button"
@@ -79,6 +83,16 @@
             />
           </a>
         </li>
+        <ng-template #loggedOut>
+          <li
+            class="btn btn-waves"
+            style="color:white"
+            style="margin-top:10%;"
+            routerLink="/auth"
+          >
+            Log In
+          </li>
+        </ng-template>
       </ul>
       <ul id="mobile-options" style="color:white">
         <li class="imgProfil" class="right" style="color:white">
@@ -319,7 +333,7 @@
     <li>
       <a routerLink="/customer/orders" style="font-weight: bolder">My Orders</a>
     </li>
-    <li><a routerLink="/auth" style="font-weight: bolder">Login/Sign-Up</a></li>
+    <li><a (click)="logout()" style="font-weight: bolder">Logout</a></li>
   </ul>
 </div>
 <!-- xxxxxxxxxxxxxxxxxxxxxxx -->
@@ -334,7 +348,7 @@
     <li>
       <a routerLink="/customer/orders" style="font-weight: bolder">My Orders</a>
     </li>
-    <li><a routerLink="/auth" style="font-weight: bolder">Login/Sign-Up</a></li>
+    <li><a (click)="logout()" style="font-weight: bolder">Logout</a></li>
   </ul>
 </div>
 <!-- xxxxxxxxxxxxxxxxxxxxxxxxxx -->

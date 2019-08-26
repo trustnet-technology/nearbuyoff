@@ -1,0 +1,20 @@
+.container {
+  margin-top: 5%;
+}
+h5 {
+  font-family: "Oswald", sans-serif;
+  font-size: 30px;
+  font-weight: bolder;
+  margin-bottom: 3%;
+}
+.pagination {
+  margin-bottom: 5%;
+}
+@media (min-width: 320px) and (max-width: 480px) {
+  .row .col {
+    padding: 0 0.3em;
+  }
+  h5 {
+    font-size: 20px;
+  }
+}

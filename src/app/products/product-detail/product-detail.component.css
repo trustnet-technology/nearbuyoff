@@ -4,9 +4,10 @@
 #mob-recom-prods {
   display: none;
 }
+.font-bolder,
 .font-bolder h5 {
   font-weight: bolder;
-  color: darkblue;
+  background-color: #eeefe7;
 }
 #img-container {
   padding-top: 1.5%;
@@ -135,7 +136,7 @@ hr {
   overflow: hidden;
   white-space: nowrap;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 15px;
   color: #ccc;
 }
 .rate:not(:checked) > label:before {

@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import * as M from "materialize-css";
 declare var $: any;
+import { Options } from "ng5-slider";
+
 @Component({
   selector: "app-search-component",
   templateUrl: "./search-component.component.html",
@@ -8,6 +10,11 @@ declare var $: any;
 })
 export class SearchComponentComponent implements OnInit {
   category: string;
+  value: number = 100;
+  options: Options = {
+    floor: 0,
+    ceil: 10000
+  };
   subcategory: string[];
   constructor() {}
 

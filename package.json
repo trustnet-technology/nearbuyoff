@@ -32,6 +32,7 @@
     "jw-angular-social-buttons": "^1.0.0",
     "materialize-css": "^1.0.0",
     "ng-lazyload-image": "^6.0.0",
+    "ng5-slider": "^1.2.4",
     "ngx-page-scroll": "^6.0.2",
     "ngx-page-scroll-core": "^6.0.2",
     "rxjs": "~6.3.3",

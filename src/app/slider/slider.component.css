@@ -35,6 +35,11 @@ a.middle-indicator-text {
 .indicators {
   visibility: hidden;
 }
+h2 {
+  font-family: "Oswald", sans-serif;
+  font-size: 5em;
+  font-weight: bolder;
+}
 #mainCarousel.carousel {
   height: 300px;
   min-height: 100%;

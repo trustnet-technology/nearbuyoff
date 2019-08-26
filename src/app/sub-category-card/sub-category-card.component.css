@@ -1,0 +1,6 @@
+.card-image {
+  height: 165px;
+  max-width: 100%;
+  object-fit: cover;
+  background-size: contain;
+}

@@ -1,23 +1,23 @@
 <div class="card">
   <div class="card-image">
-    <img
+    <img id="product-card-image" src="{{ cardContent.imageUrl }}" />
+    <!-- <img
       id="product-card-image"
-      [lazyLoad]="cardContent.photoURL"
+      [lazyLoad]="cardContent.imageUrl"
       [defaultImage]="mainLazyImage"
       [useSrcset]="true"
-    />
-    <span class="discount-label">-{{ cardContent.discount }}%</span>
+    /> -->
+    <span class="discount-label">-5%</span>
     <span class="card-title gradient truncate"
-      ><b>{{ cardContent.title }}</b></span
+      ><b>{{ cardContent.prductTitle }}</b></span
     >
   </div>
   <div class="card-content">
-    <p id="headCard">{{ cardContent.desc }}</p>
+    <p id="headCard">{{ cardContent.description }}</p>
     <p id="op">
       <b>Price: </b>
-
       <s class="grey-text">₹ {{ cardContent.mrp }}</s>
-      <b> ₹ {{ cardContent.price }}</b>
+      <b> ₹ {{ cardContent.minPrice }}</b>
     </p>
 
     <!-- <p>Discount: {{ cardContent.discount }} %</p> -->

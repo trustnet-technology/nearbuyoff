@@ -5,6 +5,17 @@
   padding-top: 1%;
   /* padding: 30px; */
 }
+ng5-slider .ng5-slider .ng5-slider-pointer {
+  width: 1.5em;
+  height: 1.5em;
+  top: -0.5em;
+}
+ng5-slider .ng5-slider .ng5-slider-pointer:after ng5-slider-pointer:after {
+  width: 1.5em;
+  height: 1.5em;
+  top: 0.5em;
+  left: 0.5em;
+}
 .rate:not(:checked) > input {
   position: absolute;
   top: -9999px;

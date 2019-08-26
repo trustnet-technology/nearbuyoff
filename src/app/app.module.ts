@@ -23,10 +23,13 @@ import {
   intersectionObserverPreset
 } from "ng-lazyload-image";
 import { HttpClientModule } from "@angular/common/http";
-import { LoginSignupComponent } from './login-signup/login-signup.component';
-import { CustomerOrdersComponent } from './customer-orders/customer-orders.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
-import { CartComponent } from './cart/cart.component';
+import { LoginSignupComponent } from "./login-signup/login-signup.component";
+import { CustomerOrdersComponent } from "./customer-orders/customer-orders.component";
+import { UserProfileComponent } from "./user-profile/user-profile.component";
+import { CartComponent } from "./cart/cart.component";
+import { ProductGridComponent } from "./product-grid/product-grid.component";
+import { Ng5SliderModule } from "ng5-slider";
+import { SubCategoryCardComponent } from './sub-category-card/sub-category-card.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +48,9 @@ import { CartComponent } from './cart/cart.component';
     LoginSignupComponent,
     CustomerOrdersComponent,
     UserProfileComponent,
-    CartComponent
+    CartComponent,
+    ProductGridComponent,
+    SubCategoryCardComponent
   ],
   imports: [
     BrowserModule,
@@ -53,9 +58,10 @@ import { CartComponent } from './cart/cart.component';
     FormsModule,
     HttpClientModule,
     ShareModule,
+    Ng5SliderModule,
     LazyLoadImageModule.forRoot({ preset: intersectionObserverPreset }),
     AgmCoreModule.forRoot({
-      apiKey: "Enter API key here"
+      apiKey: "enter API key here"
     }),
     AgmDirectionModule
   ],

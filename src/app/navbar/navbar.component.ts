@@ -9,6 +9,8 @@ import {
 import { CartItemsService } from "../services/cart-items.service";
 import { CartItemModel } from "../models/cart-item.model";
 import { MapsAPILoader } from "@agm/core";
+import { UserControlsService } from "../services/user-controls.service";
+import { Router } from "@angular/router";
 // import { google } from "google-maps";
 // import { google } from "@agm/core/services/google-maps-types";
 declare var $: any;
@@ -18,20 +20,27 @@ declare const google: any;
   templateUrl: "./navbar.component.html",
   styleUrls: ["./navbar.component.css"]
 })
-export class NavbarComponent implements OnInit, AfterViewInit {
+export class NavbarComponent implements OnInit, AfterViewInit, OnChanges {
   category: string;
   cartItems: CartItemModel[];
+  cartITems: any;
   geolocationPosition: any;
+  userId: string = "U1212";
   city: string;
   lat: any;
   bounds: any;
   lng: any;
+
+  loggedIn: number;
+  userLog: any;
   address: any;
   citySelected = localStorage.getItem("currentCity");
   constructor(
     private cartItemService: CartItemsService,
     private ngZone: NgZone,
-    private mapsAPILoader: MapsAPILoader
+    private mapsAPILoader: MapsAPILoader,
+    private userControls: UserControlsService,
+    private router: Router
   ) {
     this.mapsAPILoader.load().then(() => {
       this.bounds = new google.maps.LatLngBounds(
@@ -124,13 +133,23 @@ export class NavbarComponent implements OnInit, AfterViewInit {
       $("#cart-items-modal").modal();
     });
   }
+  ngOnChanges() {
+    this.userLog = JSON.parse(localStorage.getItem("authUser"));
+    console.log(this.userLog.tokenType);
+    if (this.userLog.tokenType == "Bearer") {
+      this.loggedIn = 1;
+      console.log(this.loggedIn);
+    } else {
+      this.loggedIn = 0;
+    }
+  }
 
   ngOnInit() {
     // console.log(this.citySelected);
+    this.jquery_code();
     this.citySelected = JSON.parse(localStorage.getItem("currentCity"));
     // console.log(this.citySelected);
     this.getCartItems();
-    this.jquery_code();
   }
   ngAfterViewInit() {
     if (window.navigator && window.navigator.geolocation) {
@@ -194,6 +213,10 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     }
   }
   getCartItems() {
+    this.userControls.viewCart(this.userId).subscribe(cartITems => {
+      this.cartITems = cartITems;
+      console.log(cartITems);
+    });
     this.cartItemService
       .getCartItems()
       .subscribe(cartItems => (this.cartItems = cartItems));
@@ -251,5 +274,11 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   }
   whenCitySelected() {
     this.citySelected = JSON.parse(localStorage.getItem("currentCity"));
+  }
+  logout() {
+    localStorage.removeItem("authUser");
+    M.toast({ html: "Logged Out" });
+    this.loggedIn = 0;
+    this.ngOnInit();
   }
 }

@@ -11,7 +11,46 @@
         </div>
         <div class="collapsible-body">
           <ul id="subColl" class="collapsible">
-            <li>
+              <li>
+                  <div class="collapsible-header">
+                    <i class="material-icons">place</i>Category<i
+                      class="material-icons align-right"
+                      >keyboard_arrow_down
+                    </i>
+                  </div>
+                  <div class="collapsible-body">
+                    <span>
+                        <div class="cateogory-filter">
+                            <p><b>Category</b></p>
+                            <p>
+                              <label>
+                                <input name="group1" class="with-gap" [(ngModel)]="category" value="Apparel" type="radio" [checked]="true" (change)="onItemChange()"/>
+                                <span>Apparel</span>
+                              </label>
+                            </p>
+                            <p>
+                              <label>
+                                <input class="with-gap" name="group1" [(ngModel)]="category" value="Home Appliances" type="radio" (change)="onItemChange()"/>
+                                <span>Home Appliances</span>
+                              </label>
+                            </p>
+                            <p>
+                              <label>
+                                <input class="with-gap" name="group1" [(ngModel)]="category" value="Grocery" type="radio" (change)="onItemChange()"/>
+                                <span>Grocery</span>
+                              </label>
+                            </p>
+                            <p>
+                              <label>
+                                <input class="with-gap" name="group1" [(ngModel)]="category" value="Decor" type="radio" (change)="onItemChange()"/>
+                                <span>Decor</span>
+                              </label>
+                            </p>
+                          </div>
+                    </span>
+                  </div>
+                </li>
+            <!-- <li>
               <div class="collapsible-header">
                 <i class="material-icons">place</i>Location<i
                   class="material-icons align-right"
@@ -28,8 +67,8 @@
                     style="padding-top: 5%;margin-bottom: 5%; height:1rem;margin-left: 3%; margin-right: 10%"
                 /></span>
               </div>
-            </li>
-            <li>
+            </li> -->
+            <!-- <li>
               <div class="collapsible-header">
                 <i class="material-icons">directions_car</i>Distance/Speed<i
                   class="material-icons align-right"
@@ -69,7 +108,7 @@
                   </p></span
                 >
               </div>
-            </li>
+            </li> -->
             <li>
               <div class="collapsible-header">
                 <i class="material-icons">money</i>Price<i
@@ -78,8 +117,9 @@
                 </i>
               </div>
               <div class="collapsible-body">
-                <span
-                  ><p>
+                <span style="margin-top: 5%"
+                  ><ng5-slider [(value)]="value" [options]="options"></ng5-slider>
+                  <!-- <p>
                     <label>
                       <input
                         name="group1"
@@ -138,8 +178,8 @@
                         </div>
                       </span>
                     </label>
-                  </p></span
-                >
+                  </p> -->
+                </span>
               </div>
             </li>
           </ul>
@@ -160,7 +200,7 @@
           <div class="clear-all" style="text-align: center;font-weight: bolder">
             <a routerLink=""><p>Clear all filters</p></a>
           </div>
-          <div class="location-filter">
+          <!-- <div class="location-filter">
             <p><b>Your Location</b></p>
             <input
               id="location"
@@ -169,8 +209,8 @@
               placeholder="e.g. HSR Layout"
               style="margin-bottom: 5%; height:1rem;margin-left: 3%; margin-right: 10%"
             />
-          </div>
-          <div class="location-filter">
+          </div> -->
+          <!-- <div class="location-filter">
             <p><b>Distance/Speed</b></p>
             <p>
               <label>
@@ -196,10 +236,10 @@
                 <span>Within 60 mins</span>
               </label>
             </p>
-          </div>
+          </div> -->
           <div class="price-filter">
             <p><b>Price</b></p>
-            <p>
+            <!-- <p>
               <label>
                 <input name="group1" class="with-gap" type="radio" checked />
                 <span>Any</span>
@@ -250,7 +290,8 @@
                   </div>
                 </span>
               </label>
-            </p>
+            </p> -->
+            <ng5-slider [(value)]="value" [options]="options"></ng5-slider>
           </div>
           <div class="cateogory-filter">
             <p><b>Category</b></p>
@@ -318,7 +359,7 @@
                 class="btn btn-large"
                 >View Details</a
               ><br />
-              <div class="row" style="padding-top: 10%">
+              <!-- <div class="row" style="padding-top: 10%">
                 <div
                   class="col s2 offset-s2"
                   style="margin-top:4%;margin-right:1%"
@@ -332,7 +373,7 @@
                     height="30"
                   />
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
@@ -354,7 +395,7 @@
             </div>
             <div class="col s2" style="padding-top:5%;">
               <a id="bt-pre-book" class="btn btn-large">View Details</a><br />
-              <div class="row" style="padding-top: 10%">
+              <!-- <div class="row" style="padding-top: 10%">
                   <div
                     class="col s2 offset-s2"
                     style="margin-top:4%;margin-right:1%"
@@ -368,7 +409,7 @@
                       height="30"
                     />
                   </div>
-                </div>
+                </div> -->
             </div>
           </div>
         </div>
@@ -395,7 +436,7 @@
             </div>
             <div class="col s2 " style="padding-top:5%;">
               <a id="bt-pre-book" class="btn btn-large">View Details</a><br />
-              <div class="row" style="padding-top: 10%">
+              <!-- <div class="row" style="padding-top: 10%">
                   <div
                     class="col s2 offset-s2"
                     style="margin-top:4%;margin-right:1%"
@@ -409,7 +450,7 @@
                       height="30"
                     />
                   </div>
-                </div>
+                </div> -->
             </div>
           </div>
         </div>
@@ -436,7 +477,7 @@
             </div>
             <div class="col s2 " style="padding-top:5%;">
               <a id="bt-pre-book" class="btn btn-large">View Details</a><br />
-              <div class="row" style="padding-top: 10%">
+              <!-- <div class="row" style="padding-top: 10%">
                   <div
                     class="col s2 offset-s2"
                     style="margin-top:4%;margin-right:1%"
@@ -450,7 +491,7 @@
                       height="30"
                     />
                   </div>
-                </div>
+                </div> -->
             </div>
           </div>
         </div>
@@ -477,7 +518,7 @@
             </div>
             <div class="col s2 " style="padding-top:5%;">
               <a  id="bt-pre-book" class="btn btn-large">View Details</a><br />
-              <div class="row" style="padding-top: 10%">
+              <!-- <div class="row" style="padding-top: 10%">
                   <div
                     class="col s2 offset-s2"
                     style="margin-top:4%;margin-right:1%"
@@ -491,7 +532,7 @@
                       height="30"
                     />
                   </div>
-                </div>
+                </div> -->
             </div>
           </div>
         </div>
@@ -518,7 +559,7 @@
             </div>
             <div class="col s2 " style="padding-top:5%;">
               <a id="bt-pre-book" class="btn btn-large">View Details</a><br />
-              <div class="row" style="padding-top: 10%">
+              <!-- <div class="row" style="padding-top: 10%">
                   <div
                     class="col s2 offset-s2"
                     style="margin-top:4%;margin-right:1%"
@@ -532,7 +573,7 @@
                       height="30"
                     />
                   </div>
-                </div>
+                </div> -->
             </div>
           </div>
         </div>
@@ -558,7 +599,7 @@
             </div>
             <div class="col s2 " style="padding-top:5%;">
               <a id="bt-pre-book" class="btn btn-large">View Details</a><br />
-              <div class="row" style="padding-top: 10%">
+              <!-- <div class="row" style="padding-top: 10%">
                   <div
                     class="col s2 offset-s2"
                     style="margin-top:4%;margin-right:1%"
@@ -572,7 +613,7 @@
                       height="30"
                     />
                   </div>
-                </div>
+                </div> -->
             </div>
           </div>
         </div>
@@ -592,7 +633,7 @@
           </div>
           <div class="col s3" style="padding-top: 4%">
             <a id="bt-pre-book" class="btn">View Details</a>
-            <div class="row" style="margin-top:25%">
+            <!-- <div class="row" style="margin-top:25%">
               <div class="col s2 ">
                 <img
                   src="../../assets/cirlceGreenWalk.png"
@@ -601,7 +642,7 @@
                 />
               </div>
               <div class="col s2"><b>5KM</b></div>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -620,7 +661,7 @@
             </div>
             <div class="col s3" style="padding-top: 4%">
               <a id="bt-pre-book" class="btn">View Details</a>
-              <div class="row" style="margin-top:25%">
+              <!-- <div class="row" style="margin-top:25%">
                 <div class="col s2 ">
                   <img
                     src="../../assets/cirlceGreenWalk.png"
@@ -629,7 +670,7 @@
                   />
                 </div>
                 <div class="col s2"><b>5KM</b></div>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
@@ -648,7 +689,7 @@
               </div>
               <div class="col s3" style="padding-top: 4%">
                 <a id="bt-pre-book" class="btn">View Details</a>
-                <div class="row" style="margin-top:25%">
+                <!-- <div class="row" style="margin-top:25%">
                   <div class="col s2 ">
                     <img
                       src="../../assets/cirlceGreenWalk.png"
@@ -657,7 +698,7 @@
                     />
                   </div>
                   <div class="col s2"><b>5KM</b></div>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>
@@ -676,7 +717,7 @@
                 </div>
                 <div class="col s3" style="padding-top: 4%">
                   <a id="bt-pre-book" class="btn">View Details</a>
-                  <div class="row" style="margin-top:25%">
+                  <!-- <div class="row" style="margin-top:25%">
                     <div class="col s2 ">
                       <img
                         src="../../assets/cirlceGreenWalk.png"
@@ -685,7 +726,7 @@
                       />
                     </div>
                     <div class="col s2"><b>5KM</b></div>
-                  </div>
+                  </div> -->
                 </div>
               </div>
             </div>
@@ -704,7 +745,7 @@
                   </div>
                   <div class="col s3" style="padding-top: 4%">
                     <a id="bt-pre-book" class="btn">View Details</a>
-                    <div class="row" style="margin-top:25%">
+                    <!-- <div class="row" style="margin-top:25%">
                       <div class="col s2 ">
                         <img
                           src="../../assets/cirlceGreenWalk.png"
@@ -713,7 +754,7 @@
                         />
                       </div>
                       <div class="col s2"><b>5KM</b></div>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
               </div>
@@ -732,7 +773,7 @@
                     </div>
                     <div class="col s3" style="padding-top: 4%">
                       <a id="bt-pre-book" class="btn">View Details</a>
-                      <div class="row" style="margin-top:25%">
+                      <!-- <div class="row" style="margin-top:25%">
                         <div class="col s2 ">
                           <img
                             src="../../assets/cirlceGreenWalk.png"
@@ -741,7 +782,7 @@
                           />
                         </div>
                         <div class="col s2"><b>5KM</b></div>
-                      </div>
+                      </div> -->
                     </div>
                   </div>
                 </div>

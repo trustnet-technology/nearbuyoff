@@ -2,6 +2,8 @@ import { Component, OnInit, AfterViewInit } from "@angular/core";
 import * as M from "materialize-css";
 import { ProductModel } from "../models/productModel";
 import { ProductService } from "../services/product.service";
+import { delay, filter } from "rxjs/operators";
+
 declare var $: any;
 @Component({
   selector: "app-card-slider",
@@ -18,6 +20,11 @@ export class CardSliderComponent implements OnInit, AfterViewInit {
     noWrap: false
   };
   mainLazyImage = "https://picsum.photos/id/777/12/8";
+  subCategories: any;
+  electronics: any[] = [];
+  apparels: any[] = [];
+  decors: any[] = [];
+  grocery: any[] = [];
   products: ProductModel[];
   products2: ProductModel[];
   mobProducts: ProductModel[] = [];
@@ -94,6 +101,7 @@ export class CardSliderComponent implements OnInit, AfterViewInit {
   constructor(private productService: ProductService) {}
 
   ngOnInit() {
+    this.getSubCategories();
     this.getProducts();
     this.getProducts2();
     this.getProducts3();
@@ -116,10 +124,37 @@ export class CardSliderComponent implements OnInit, AfterViewInit {
     });
   }
   ngAfterViewInit() {
-    var elems3 = document.querySelectorAll("#mz1");
+    // var elems3 = document.querySelectorAll("#mz1");
     var elems4 = document.querySelectorAll("#carousel-flat");
-    var instances3 = M.Carousel.init(elems3, this.options);
+    // var instances3 = M.Carousel.init(elems3, this.options);
     var instances4 = M.Carousel.init(elems4, this.options);
+  }
+  initCarousel() {
+    // timeout needed, otherwise navigation won't work.
+    setTimeout(() => {
+      let elems = document.querySelectorAll(".carousel");
+      let instances = M.Carousel.init(elems, this.options);
+    }, 100);
+  }
+  getSubCategories() {
+    this.productService
+      .getProductsSubcategories()
+      .pipe(delay(2000))
+      .subscribe(subCategories => {
+        this.subCategories = subCategories;
+        for (let i = 0; i < subCategories.length; i++) {
+          if (subCategories[i].categoryName === "Electronics") {
+            this.electronics.push(subCategories[i]);
+          } else if (subCategories[i].categoryName === "Apparels") {
+            this.apparels.push(subCategories[i]);
+          } else if (subCategories[i].categoryName === "Decor") {
+            this.decors.push(subCategories[i]);
+          } else if (subCategories[i].categoryName === "Grocery") {
+            this.grocery.push(subCategories[i]);
+          }
+        }
+        console.log(this.electronics);
+      });
   }
 
   getProducts(): void {
