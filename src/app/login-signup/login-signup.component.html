@@ -14,7 +14,7 @@
       <div class="row">
         <div class="input-field col l6 m6 s10 offset-l3 offset-m3">
           <i class="material-icons prefix ">mail</i>
-          <input id="icon_telephone" type="tel" class="validate" #email />
+          <input id="icon_telephone" type="tel" class="validate" #emailu />
           <!-- [(ngModel)]="email" [(ngModel)]="password" -->
           <label for="icon_telephone">Email</label>
         </div>
@@ -29,7 +29,7 @@
           <a
             id="btn-get-otp"
             class="waves-effect waves-light btn black"
-            (click)="logIn(email.value, passwd.value)"
+            (click)="logIn(emailu.value, passwd.value)"
             >Login</a
           >
         </div>

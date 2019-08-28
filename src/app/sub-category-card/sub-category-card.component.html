@@ -1,8 +1,13 @@
 <div id="gradientCard" class="card">
   <div class="card-image">
-    <img src="{{ subCatContent.imageURL }}" />
+    <img src="{{ mainImg }}" />
     <!-- [useSrcset]="true"
       [defaultImage]="mainLazyImage" -->
-    <span class="card-title gradient">{{ subCatContent.categoryName }}</span>
+    <span class="card-title gradient"
+      >{{ subCatContent.categoryName }}
+      <p class="price-text">
+        Starting from <b>₹{{ subCatContent.minPrice }}</b>
+      </p></span
+    >
   </div>
 </div>

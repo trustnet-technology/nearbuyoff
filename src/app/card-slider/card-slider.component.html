@@ -2,7 +2,7 @@
 <div id="csliderDiv">
   <hr />
   <h5 id="apparel" class="center">Home Appliances</h5>
-  <a class="btn right black" routerLink="/category">
+  <a class="btn right black" routerLink="/category/C123">
     View All<i class="material-icons right" style="margin-top: 5%">
       arrow_forward
     </i>
@@ -55,7 +55,7 @@
 <div id="csliderDiv">
   <hr />
   <h5 class="center">Apparels</h5>
-  <a class="btn right black" routerLink="/category/subcategory/all">
+  <a class="btn right black" routerLink="/category/1">
     View All<i class="material-icons right" style="margin-top: 5%"
       >arrow_forward</i
     ></a
@@ -88,32 +88,12 @@
   <hr />
   <h5 class="center">Grocery</h5>
 
-  <a class="btn right black" routerLink="/category/subcategory/all">
+  <a class="btn right black" routerLink="/category/4">
     View All<i class="material-icons right" style="margin-top: 5%"
       >arrow_forward</i
     ></a
   >
   <div class="carousel" id="mz1">
-    <div class="left" id="leftDiv">
-      <a
-        href="Previo"
-        class="movePrevCarousel middle-indicator-text waves-effect waves-light content-indicator"
-        id="movPrevCarou"
-      >
-        <i class="material-icons left  middle-indicator-text">chevron_left </i>
-      </a>
-    </div>
-    <div class="right" id="rightDiv">
-      <a
-        href="Siguiente"
-        class="moveNextCarousel middle-indicator-text waves-effect waves-light content-indicator"
-        id="movNxtCarou"
-      >
-        <i class="material-icons right middle-indicator-text">
-          chevron_right
-        </i>
-      </a>
-    </div>
     <div *ngFor="let subccategory of grocery; let i = index; let last = last">
       <!-- *ngIf="subccategory.categoryName === 'Electronics'" -->
       <a
@@ -140,32 +120,12 @@
 <div id="csliderDiv" class="">
   <hr />
   <h5 class="center">Decors</h5>
-  <a class="btn right black" routerLink="/category/subcategory/all">
+  <a class="btn right black" routerLink="/category/2">
     View All<i class="material-icons right" style="margin-top: 5%"
       >arrow_forward</i
     ></a
   >
   <div class="carousel" id="mz1">
-    <div class="left" id="leftDiv">
-      <a
-        href="Previo"
-        class="movePrevCarousel middle-indicator-text waves-effect waves-light content-indicator"
-        id="movPrevCarou"
-      >
-        <i class="material-icons left  middle-indicator-text">chevron_left </i>
-      </a>
-    </div>
-    <div class="right" id="rightDiv">
-      <a
-        href="Siguiente"
-        class="moveNextCarousel middle-indicator-text waves-effect waves-light content-indicator"
-        id="movNxtCarou"
-      >
-        <i class="material-icons right middle-indicator-text">
-          chevron_right
-        </i>
-      </a>
-    </div>
     <div *ngFor="let subccategory of decors; let i = index; let last = last">
       <!-- *ngIf="subccategory.categoryName === 'Electronics'" -->
       <a

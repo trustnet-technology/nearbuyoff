@@ -61,7 +61,7 @@ import { SubCategoryCardComponent } from './sub-category-card/sub-category-card.
     Ng5SliderModule,
     LazyLoadImageModule.forRoot({ preset: intersectionObserverPreset }),
     AgmCoreModule.forRoot({
-      apiKey: "enter API key here"
+      apiKey: "AIzaSyCPq73ZhDozL2oRl9jfqO_4xZpBMOCJA84"
     }),
     AgmDirectionModule
   ],

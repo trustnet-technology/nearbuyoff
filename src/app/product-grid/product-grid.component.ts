@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ProductModel } from "../models/productModel";
 import { ProductService } from "../services/product.service";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: "app-product-grid",
@@ -10,21 +10,37 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class ProductGridComponent implements OnInit {
   products: any;
-  products3: any;
+  subCategories: any;
   subCatID: any;
+  subCatContent1: any;
   constructor(
     private productService: ProductService,
-    private route: ActivatedRoute
-  ) {}
-
-  ngOnInit() {
-    this.getProducts();
-    this.getProductGrid();
-    
+    private route: ActivatedRoute,
+    private router: Router
+  ) {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
 
-  getProductGrid(): void {
+  ngOnInit() {
+    this.subCatContent1 = {
+      mainURL: "sss",
+      subategoryId: "string",
+      imageURL: "string",
+      desc: "string",
+      categoryName: "string",
+      mrp: "number",
+      minPrice: "number",
+      discount: "number"
+    };
     const subCategoryID = this.route.snapshot.paramMap.get("subategoryId");
+    const categoryID = this.route.snapshot.paramMap.get("categoryId");
+    if (subCategoryID != null) {
+      this.getProductGrid(subCategoryID);
+    } else if (categoryID != null) {
+      this.subCategoryGrid(categoryID);
+    }
+  }
+  getProductGrid(subCategoryID: string) {
     console.log(subCategoryID);
     this.subCatID = subCategoryID;
     this.productService
@@ -37,14 +53,11 @@ export class ProductGridComponent implements OnInit {
         error => console.log(error)
       );
   }
-  subCategoryGrid(){
-    const categoryID = this.route.snapshot.paramMap.get("categoryId");
-    this.productService.getProductsOfCategory(categoryID).subscribe(products=>{this.products=products;})
-  }
-
-  getProducts() {
+  subCategoryGrid(categoryID: string) {
     this.productService
-      .getProducts()
-      .subscribe(products3 => (this.products3 = products3));
+      .getProductsOfCategory(categoryID)
+      .subscribe(subCategories => {
+        this.subCategories = subCategories;
+      });
   }
 }

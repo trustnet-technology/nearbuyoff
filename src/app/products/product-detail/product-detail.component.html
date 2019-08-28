@@ -1,4 +1,4 @@
-<div *ngIf="productM; else second" style="background-color: #f2f3f4 ;font-family:  'Oswald', sans-serif;">
+<div style="background-color: #f2f3f4 ;font-family:  'Oswald', sans-serif;">
   <app-menubar></app-menubar>
   <div class="container">
     <div id="productRow" class="row">
@@ -6,13 +6,13 @@
         id="img-container"
         class="col s12 m4 l5 card"
       >
-      <img class="materialboxed" id="productImage" src="{{productM.imageUrl}}" />
+      <img class="materialboxed" id="productImage" src="{{productM?.imageUrl}}" />
       <!--  [lazyLoad]="productM.imageUrl"  [defaultImage]="mainLazyImage" [useSrcset]="true"  -->
       </div>
       <div class="col s12 m4 l6"  style="padding-left: 2.5%">
         <div class="row card" >
           <div class="col s7">
-            <h4>{{ productM.prductTitle }}</h4> 
+            <h4>{{ productM?.prductTitle }}</h4> 
           </div>
           <div class="col s5" style="padding-top:6%;">
             <h6 class="blue-grey-text"><b class="black-text">Category:</b> Grocery</h6>
@@ -41,11 +41,11 @@
         <div class="row">
           <div class="col s3 offset-s2">
             <h5 id="span1">
-              <s>₹{{ productM.mrp }}</s>
+              <s>₹{{ productM?.mrp }}</s>
             </h5>
           </div>
           <div class="col s3 center">
-            <h5>₹{{ productM.minPrice }}</h5>
+            <h5>₹{{ productM?.minPrice }}</h5>
           </div>
           <div class="col s2">
             <a
@@ -67,30 +67,28 @@
           <div class="col s4" style="padding-left: 10%;padding-top: 1%">
             Seller: {{selectedSeller}}
           </div>
-          <div class="col s4 input-field">
+        </div>
+        <!-- <div class="row" style="margin-left:0.25em">
+          <div class="col s5 input-field">
               <select id="selectedTest">
                   <option value="" disabled selected>Choose your option</option>
-                  <option value="1" selected>Option 1</option>
-                  <option value="2">Option 2</option>
-                  <option value="3">Option 3</option>
+                  <option *ngFor="let item of colors" value="{{item}}" >{{item}}</option>
                 </select>
                 <label>Color Select</label>
             </div>
-            <div class="col s4 input-field">
-                <select >
+            <div class="col s5 input-field">
+                <select id="selected2Test">
                     <option value="" disabled selected>Choose your option</option>
-                    <option value="1" selected>Option 1</option>
-                    <option value="2">Option 2</option>
-                    <option value="3">Option 3</option>
+                    <option *ngFor="let item of size" value="{{item}}" >{{item.value}}</option>
                   </select>
                   <label>Size Select</label>
               </div>
-        </div>
+            </div> -->
         <div class="row" id="buy-options-row">
           <div class="col s4" id="connect-col">
-        <button id="bt-sellers" class="btn btn-large center modal-trigger cyan darken-1" data-target="modal-buyers">Connect to +3 shops</button></div>
+        <button id="bt-sellers" class="btn btn-large center modal-trigger cyan darken-1" data-target="modal-buyers">Connect to +{{numSellers}} shops</button></div>
       <div class="col s4" id="onow-col"><button id="bt-order-now" class="btn btn-large center modal-trigger cyan darken-3" data-target="cart-modal" >Order Now</button></div>
-      <div class="col s4" id="add-to-col"><button id="bt-add-to-cart" class="btn btn-large center modal-trigger cyan darken-1" (click)="addProductToCart()">Add to Cart</button></div>
+      <div class="col s4" id="add-to-col"><button id="bt-add-to-cart" class="btn btn-large center cyan darken-1" (click)="addProductToCart()">Add to Cart</button></div>
       </div>
       </div> 
     </div> 
@@ -101,70 +99,21 @@
     <div id="recommProductsSlider">
       <hr />
       <h5 class="center">Recommended Products</h5>
-      <div class="carousel" id="productPageCarousel">
-        <div class="carousel-item" id="recommCarousel">
+      <div class="row" id="productPageCarousel">
+        <div *ngFor="let prod of recommProds;let i = index; let last = last" class="col s4" id="recommCarousel">  
           <div id="gradientCard" class="card">
             <div class="card-image">
               <img 
               id="also-buy-img" src="../../../assets/etautzembed.jpg" 
               />
-              <span class="card-title gradient">Suits</span>
+              <span class="card-title gradient">{{prod.productName}}</span>
             </div>
           </div>
-        </div>
-        <div class="carousel-item" id="recommCarousel">
-          <div id="gradientCard" class="card">
-            <div class="card-image">
-              <img
-                id="also-buy-img" src="../../../assets/etautzembed1.jpg"
-              />
-              <span class="card-title gradient">Coats</span>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item" id="recommCarousel">
-          <div id="gradientCard" class="card">
-            <div class="card-image">
-              <img
-              id="also-buy-img" src="../../../assets/myargallery.jpg"
-              />
-              <span class="card-title gradient">Women Suits</span>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item" id="recommCarousel">
-          <div id="gradientCard" class="card">
-            <div class="card-image">
-              <img
-              id="also-buy-img" src="../../../assets/myargallery1.jpg"
-              />
-              <span class="card-title gradient">Jackets (Women)</span>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item" id="recommCarousel">
-          <div id="gradientCard" class="card">
-            <div class="card-image">
-              <img
-              id="also-buy-img" src="../../../assets/etautzembed.jpg"
-              />
-              <span class="card-title gradient">Outfits</span>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item" id="recommCarousel">
-          <div id="gradientCard" class="card">
-            <div class="card-image">
-              <img
-              id="also-buy-img" src="../../../assets/theorygallery.jpg"
-              />
-              <span class="card-title gradient">Formal Wear</span>
-            </div>
-          </div>
-        </div>
+          <!-- <ng-container *ngIf="last">{{ initCarousel() }}</ng-container> -->
+        </div> 
       </div>
       <div class="row" id="mob-recom-prods">
-        <div *ngFor="let prod of recommProds" class="col s4" id="mob-col-recom">
+        <div *ngFor="let prod of recommProds;let i = index; let last = last" class="col s4" id="mob-col-recom">
           <div id="gradientCard" class="card">
             <div class="card-image">
               <img
@@ -173,47 +122,8 @@
               <span id="recom-prod-title" class="card-title gradient">{{prod.productName}}</span>
             </div>
           </div>
-        </div>
-        <div class="col s4" id="mob-col-recom"><div id="gradientCard" class="card">
-          <div class="card-image">
-            <img
-            id="also-buy-img" src="../../../assets/etautzembed.jpg"
-            />
-            <span id="recom-prod-title" class="card-title gradient">Outfits</span>
-          </div>
-        </div></div>
-        <div class="col s4" id="mob-col-recom"><div id="gradientCard" class="card">
-          <div class="card-image">
-            <img
-            id="also-buy-img" src="../../../assets/myargallery1.jpg"
-            />
-            <span id="recom-prod-title" class="card-title gradient">Jackets (Women)</span>
-          </div>
-        </div></div>
-        <div class="col s4" id="mob-col-recom"><div id="gradientCard" class="card">
-          <div class="card-image">
-            <img 
-            id="also-buy-img" src="../../../assets/myargallery.jpg" 
-            />
-            <span id="recom-prod-title" class="card-title gradient">Women Suits</span>
-          </div>
-        </div></div>
-        <div class="col s4" id="mob-col-recom"> <div id="gradientCard" class="card">
-          <div class="card-image">
-            <img 
-              id="also-buy-img" src="../../../assets/etautzembed1.jpg"
-            />
-            <span id="recom-prod-title" class="card-title gradient">Coats</span>
-          </div>
-        </div></div>
-        <div class="col s4" id="mob-col-recom"><div id="gradientCard" class="card">
-          <div class="card-image">
-            <img 
-            id="also-buy-img" src="../../../assets/myargallery.jpg" 
-            />
-            <span id="recom-prod-title" class="card-title gradient">Women Suits</span>
-          </div>
-        </div></div>
+          <!-- <ng-container *ngIf="last">{{ initCarousel() }}</ng-container> -->
+        </div>        
       </div>
     </div>
   </div>
@@ -537,7 +447,7 @@
           </div>
           <div class="row">
             <div class="col s12">
-              <a id="btn-checkout" class="green waves-effect waves-light btn" style="width: 100%"
+              <a (click)="orderNow()" id="btn-checkout" class="green waves-effect waves-light btn" style="width: 100%"
                 >Checkout this Item</a
               >
             </div>
@@ -616,631 +526,3 @@
                 <a class="modal-close waves-effect waves-green btn-flat">Close</a>
               </div>
             </div> -->
-
-
-<ng-template #second>
-  <div *ngIf="product2; else third" style="background-color: #f2f3f4 ;font-family:  'Oswald', sans-serif;">
-    <app-menubar></app-menubar>
-    <div class="container">
-      <div id="productRow" class="row">
-        <div
-        id="img-container"
-          class="col s12 m4 l5 card"
-        >
-        <img class="materialboxed" [lazyLoad]="product2.photoURL" id="productImage" [defaultImage]="mainLazyImage" [useSrcset]="true" />
-        </div>
-        <div class="col s12 m4 l6"  style="padding-left: 2.5%">
-          <div class="row card" >
-            <div class="col s7">
-              <h4>{{ product2.title }}</h4> 
-            </div>
-            <div class="col s5" style="padding-top:6%;">
-              <h6 class="blue-grey-text"><b class="black-text">Category:</b> Grocery</h6>
-            </div>
-            <div class="divider"></div>
-          </div>
-          <div class="row card">
-            <div class="row">
-              <div class="col s10 offset-s1" style="padding-top: 2%">
-                <h6><b>Product Description:</b></h6>
-              </div>  
-            </div>
-            <div class="row">
-          <div class="col s10 offset-s1" style="font-family: 'Roboto', sans-serif;">
-              
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-                reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur.
-              
-            </div>
-          </div>
-        
-          <div class="row">
-            <div class="col s3 offset-s2">
-              <h5 id="span1">
-                <s>₹{{ product2.mrp }}</s>
-              </h5>
-            </div>
-            <div class="col s3 center">
-              <h5>₹{{ product2.price }}</h5>
-            </div>
-            <div class="col s2">
-              <a
-                id="social-dropdown"
-              data-target="services-social-dropdown"
-                class=" dropdown-button btn-floating btn-large waves-effect waves-light  blue darken-4"
-                ><i class="material-icons">share</i></a
-              >
-            </div>
-            <div class="col s2" id="soc-share" style="display: none">
-              <a class="btn btn-social-icon btn-facebook" shareButton="facebook">
-               <span class="fa fa-facebook"></span>
-             </a>
-              <a class="btn btn-social-icon green" shareButton="whatsapp">
-               <span class="fa fa-whatsapp"></span>
-             </a>
-             </div> 
-          </div>
-          <div class="row">
-              <div class="col s4" style="padding-left: 10%;padding-top: 1%">
-                  Seller: {{selectedSeller}}
-                </div>
-              <div class="col s4 ">
-                  <a id="qty-btn" class="dropdown-trigger btn white black-text" data-target="qty-dropdown">Qty<i class="material-icons right">arrow_drop_down</i></a>
-                </div>
-            </div>
-          <div class="row" id="buy-options-row">
-              <div class="col s4" id="connect-col">
-            <button id="bt-sellers" class="btn btn-large center modal-trigger blue accent-3" data-target="modal-buyers">Connect to +3 shops</button></div>
-          <div class="col s4" id="onow-col"><button id="bt-order-now" class="btn btn-large center modal-trigger purple accent-4" data-target="cart-modal">Order Now</button></div>
-          <div class="col s4" id="add-to-col"><button id="bt-add-to-cart" class="btn btn-large center modal-trigger red accent-2" (click)="addProductToCart()">Add to Cart</button></div>
-          </div>
-        </div> 
-      </div> 
-      </div>
-    </div>
-    <div id="otherSellerscont">
-      <div id="recommProductsSlider">
-        <hr />
-        <h5 class="center">Recommended Products</h5>
-        <div class="carousel" id="productPageCarousel">
-          <div class="carousel-item" id="recommCarousel">
-            <div id="gradientCard" class="card">
-              <div class="card-image">
-                <img 
-                id="also-buy-img" src="../../../assets/etautzembed.jpg" 
-                />
-                <span class="card-title gradient">Suits</span>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item" id="recommCarousel">
-            <div id="gradientCard" class="card">
-              <div class="card-image">
-                <img 
-                  id="also-buy-img" src="../../../assets/etautzembed1.jpg"
-                />
-                <span class="card-title gradient">Coats</span>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item" id="recommCarousel">
-            <div id="gradientCard" class="card">
-              <div class="card-image">
-                <img 
-                id="also-buy-img" src="../../../assets/myargallery.jpg" 
-                />
-                <span class="card-title gradient">Women Suits</span>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item" id="recommCarousel">
-            <div id="gradientCard" class="card">
-              <div class="card-image">
-                <img 
-                id="also-buy-img" src="../../../assets/myargallery1.jpg" 
-                />
-                <span class="card-title gradient">Jackets (Women)</span>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item" id="recommCarousel">
-            <div id="gradientCard" class="card">
-              <div class="card-image">
-                <img 
-                id="also-buy-img" src="../../../assets/etautzembed.jpg"
-                />
-                <span class="card-title gradient">Outfits</span>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item" id="recommCarousel">
-            <div id="gradientCard" class="card">
-              <div class="card-image">
-                <img 
-                id="also-buy-img" src="../../../assets/theorygallery.jpg"
-                />
-                <span class="card-title gradient">Formal Wear</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row" id="mob-recom-prods">
-          <div class="col s4" id="mob-col-recom">
-            <div id="gradientCard" class="card">
-              <div class="card-image">
-                <img 
-                id="also-buy-img" src="../../../assets/theorygallery.jpg"
-                />
-                <span id="recom-prod-title" class="card-title gradient">Formal Wear</span>
-              </div>
-            </div>
-          </div>
-          <div class="col s4" id="mob-col-recom"><div id="gradientCard" class="card">
-            <div class="card-image">
-              <img 
-              id="also-buy-img" src="../../../assets/etautzembed.jpg"
-              />
-              <span id="recom-prod-title" class="card-title gradient">Outfits</span>
-            </div>
-          </div></div>
-          <div class="col s4" id="mob-col-recom"><div id="gradientCard" class="card">
-            <div class="card-image">
-              <img 
-              id="also-buy-img" src="../../../assets/myargallery1.jpg" 
-              />
-              <span id="recom-prod-title" class="card-title gradient">Jackets (Women)</span>
-            </div>
-          </div></div>
-          <div class="col s4" id="mob-col-recom"><div id="gradientCard" class="card">
-            <div class="card-image">
-              <img 
-              id="also-buy-img" src="../../../assets/myargallery.jpg" 
-              />
-              <span id="recom-prod-title" class="card-title gradient">Women Suits</span>
-            </div>
-          </div></div>
-          <div class="col s4" id="mob-col-recom"> <div id="gradientCard" class="card">
-            <div class="card-image">
-              <img 
-                id="also-buy-img" src="../../../assets/etautzembed1.jpg"
-              />
-              <span id="recom-prod-title" class="card-title gradient">Coats</span>
-            </div>
-          </div></div>
-          <div class="col s4" id="mob-col-recom"><div id="gradientCard" class="card">
-            <div class="card-image">
-              <img 
-              id="also-buy-img" src="../../../assets/myargallery.jpg" 
-              />
-              <span id="recom-prod-title" class="card-title gradient">Women Suits</span>
-            </div>
-          </div></div>
-        </div>
-      </div>
-    </div>
-  </div>        
-  </ng-template>
-  <ng-template #third>
-      <div *ngIf="product3; else fourth" style="background-color: #f2f3f4 ;font-family:  'Oswald', sans-serif;">
-        <app-menubar></app-menubar>  
-        <div class="container">
-            <div id="productRow" class="row">
-              <div
-              id="img-container"
-                class="col s12 m4 l5 card"
-              >
-              <img class="materialboxed" [lazyLoad]="product3.photoURL" id="productImage" [defaultImage]="mainLazyImage" [useSrcset]="true" />
-              </div>
-              <div class="col s12 m4 l6"  style="padding-left: 2.5%">
-                <div class="row card" >
-                  <div class="col s7">
-                    <h4>{{ product3.title }}</h4> 
-                  </div>
-                  <div class="col s5" style="padding-top:6%;">
-                    <h6 class="blue-grey-text"><b class="black-text">Category:</b> Grocery</h6>
-                  </div>
-                  <div class="divider"></div>
-                </div>
-                <div class="row card">
-                  <div class="row">
-                    <div class="col s10 offset-s1" style="padding-top: 2%">
-                      <h6><b>Product Description:</b></h6>
-                    </div>  
-                  </div>
-                  <div class="row">
-                <div class="col s10 offset-s1" style="font-family: 'Roboto', sans-serif;">
-                    
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                      eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                      enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                      nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-                      reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                      nulla pariatur.
-                    
-                  </div>
-                </div>
-              
-                <div class="row">
-                  <div class="col s3 offset-s2">
-                    <h5 id="span1">
-                      <s>₹{{ product3.mrp }}</s>
-                    </h5>
-                  </div>
-                  <div class="col s3 center">
-                    <h5>₹{{ product3.price }}</h5>
-                  </div>
-                  <div class="col s2">
-                    <a
-                      id="social-dropdown"
-                    data-target="services-social-dropdown"
-                      class=" dropdown-button btn-floating btn-large waves-effect waves-light  blue darken-4"
-                      ><i class="material-icons">share</i></a
-                    >
-                  </div>
-                  <div class="col s2" id="soc-share" style="display: none">
-                    <a class="btn btn-social-icon btn-facebook" shareButton="facebook">
-                     <span class="fa fa-facebook"></span>
-                   </a>
-                    <a class="btn btn-social-icon green" shareButton="whatsapp">
-                     <span class="fa fa-whatsapp"></span>
-                   </a>
-                   </div> 
-                </div>
-                <div class="row">
-                    <div class="col s4" style="padding-left: 10%;padding-top: 1%">
-                        Seller: {{selectedSeller}}
-                      </div>
-                    <div class="col s4 ">
-                        <a id="qty-btn" class="dropdown-trigger btn white black-text" data-target="qty-dropdown">Qty<i class="material-icons right">arrow_drop_down</i></a>
-                    </div>
-                    <div class="col s4">
-                        <a id="size-grocery-btn" class="dropdown-trigger btn white black-text" data-target="size-grocery-dropdown">Size<i class="material-icons right">arrow_drop_down</i></a>
-                    </div>
-                  </div>
-                <div class="row" id="buy-options-row">
-                    <div class="col s4" id="connect-col">
-                  <button id="bt-sellers" class="btn btn-large center modal-trigger blue accent-3" data-target="modal-buyers">Connect to +3 shops</button></div>
-                <div class="col s4" id="onow-col"><button id="bt-order-now" class="btn btn-large center modal-trigger purple accent-4" data-target="cart-modal">Order Now</button></div>
-                <div class="col s4" id="add-to-col"><button id="bt-add-to-cart" class="btn btn-large center modal-trigger red accent-2" (click)="addProductToCart()">Add to Cart</button></div>
-                </div>
-              </div> 
-            </div> 
-            </div>
-          </div>
-          
-          <div id="otherSellerscont">
-            <div id="recommProductsSlider">
-              <hr />
-              <h5 class="center">Recommended Products</h5>
-              <div class="carousel" id="productPageCarousel">
-                <div class="carousel-item" id="recommCarousel">
-                  <div id="gradientCard" class="card">
-                    <div class="card-image">
-                      <img 
-                      id="also-buy-img" src="../../../assets/etautzembed.jpg" 
-                      />
-                      <span class="card-title gradient">Suits</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="carousel-item" id="recommCarousel">
-                  <div id="gradientCard" class="card">
-                    <div class="card-image">
-                      <img 
-                        id="also-buy-img" src="../../../assets/etautzembed1.jpg"
-                      />
-                      <span class="card-title gradient">Coats</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="carousel-item" id="recommCarousel">
-                  <div id="gradientCard" class="card">
-                    <div class="card-image">
-                      <img 
-                      id="also-buy-img" src="../../../assets/myargallery.jpg" 
-                      />
-                      <span class="card-title gradient">Women Suits</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="carousel-item" id="recommCarousel">
-                  <div id="gradientCard" class="card">
-                    <div class="card-image">
-                      <img 
-                      id="also-buy-img" src="../../../assets/myargallery1.jpg" 
-                      />
-                      <span class="card-title gradient">Jackets (Women)</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="carousel-item" id="recommCarousel">
-                  <div id="gradientCard" class="card">
-                    <div class="card-image">
-                      <img 
-                      id="also-buy-img" src="../../../assets/etautzembed.jpg"
-                      />
-                      <span class="card-title gradient">Outfits</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="carousel-item" id="recommCarousel">
-                  <div id="gradientCard" class="card">
-                    <div class="card-image">
-                      <img 
-                      id="also-buy-img" src="../../../assets/theorygallery.jpg"
-                      />
-                      <span class="card-title gradient">Formal Wear</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row" id="mob-recom-prods">
-                <div class="col s4" id="mob-col-recom">
-                  <div id="gradientCard" class="card">
-                    <div class="card-image">
-                      <img 
-                      id="also-buy-img" src="../../../assets/theorygallery.jpg"
-                      />
-                      <span id="recom-prod-title" class="card-title gradient">Formal Wear</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="col s4" id="mob-col-recom"><div id="gradientCard" class="card">
-                  <div class="card-image">
-                    <img 
-                    id="also-buy-img" src="../../../assets/etautzembed.jpg"
-                    />
-                    <span id="recom-prod-title" class="card-title gradient">Outfits</span>
-                  </div>
-                </div></div>
-                <div class="col s4" id="mob-col-recom"><div id="gradientCard" class="card">
-                  <div class="card-image">
-                    <img 
-                    id="also-buy-img" src="../../../assets/myargallery1.jpg" 
-                    />
-                    <span id="recom-prod-title" class="card-title gradient">Jackets (Women)</span>
-                  </div>
-                </div></div>
-                <div class="col s4" id="mob-col-recom"><div id="gradientCard" class="card">
-                  <div class="card-image">
-                    <img 
-                    id="also-buy-img" src="../../../assets/myargallery.jpg" 
-                    />
-                    <span id="recom-prod-title" class="card-title gradient">Women Suits</span>
-                  </div>
-                </div></div>
-                <div class="col s4" id="mob-col-recom"> <div id="gradientCard" class="card">
-                  <div class="card-image">
-                    <img 
-                      id="also-buy-img" src="../../../assets/etautzembed1.jpg"
-                    />
-                    <span id="recom-prod-title" class="card-title gradient">Coats</span>
-                  </div>
-                </div></div>
-                <div class="col s4" id="mob-col-recom"><div id="gradientCard" class="card">
-                  <div class="card-image">
-                    <img 
-                    id="also-buy-img" src="../../../assets/myargallery.jpg" 
-                    />
-                    <span id="recom-prod-title" class="card-title gradient">Women Suits</span>
-                  </div>
-                </div></div>
-              </div>
-            </div>
-          </div>
-        </div> 
-  </ng-template>
-  <ng-template #fourth>
-      <div *ngIf="product4" style="background-color: #f2f3f4 ;font-family:  'Oswald', sans-serif;">
-        <app-menubar></app-menubar>  
-        <div class="container">
-            <div id="productRow" class="row">
-              <div
-              id="img-container"  
-              class="col s12 m4 l5 card"
-              >
-              <img class="materialboxed" [lazyLoad]="product4.photoURL" id="productImage" [defaultImage]="mainLazyImage" [useSrcset]="true" />
-              </div>
-              <div class="col s12 m4 l6"  style="padding-left: 2.5%">
-                <div class="row card" >
-                  <div class="col s7">
-                    <h4>{{ product4.title }}</h4> 
-                  </div>
-                  <div class="col s5" style="padding-top:6%;">
-                    <h6 class="blue-grey-text"><b class="black-text">Category:</b> Grocery</h6>
-                  </div>
-                  <div class="divider"></div>
-                </div>
-                <div class="row card">
-                  <div class="row">
-                    <div class="col s10 offset-s1" style="padding-top: 2%">
-                      <h6><b>Product Description:</b></h6>
-                    </div>  
-                  </div>
-                  <div class="row">
-                <div class="col s10 offset-s1" style="font-family: 'Roboto', sans-serif;">
-                    
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                      eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                      enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                      nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-                      reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                      nulla pariatur.
-                    
-                  </div>
-                </div>
-              
-                <div class="row">
-                  <div class="col s3 offset-s2">
-                    <h5 id="span1">
-                      <s>₹{{ product4.mrp }}</s>
-                    </h5>
-                  </div>
-                  <div class="col s3 center">
-                    <h5>₹{{ product4.price }}</h5>
-                  </div>
-                  <div class="col s2">
-                    <a
-                      id="social-dropdown"
-                    data-target="services-social-dropdown"
-                      class=" dropdown-button btn-floating btn-large waves-effect waves-light  blue darken-4"
-                      ><i class="material-icons">share</i></a
-                    >
-                  </div>
-                  <div class="col s2" id="soc-share" style="display: none">
-                    <a class="btn btn-social-icon btn-facebook" shareButton="facebook">
-                     <span class="fa fa-facebook"></span>
-                   </a>
-                    <a class="btn btn-social-icon green" shareButton="whatsapp">
-                     <span class="fa fa-whatsapp"></span>
-                   </a>
-                   </div> 
-                </div>
-                <div class="row">
-                    <div class="col s4" style="padding-left: 10%;padding-top: 1%">
-                        Seller: {{selectedSeller}}
-                      </div>
-                  <div class="col s4">
-                     <a id="qty-btn" class="dropdown-trigger btn white black-text" data-target="qty-dropdown">Qty<i class="material-icons right">arrow_drop_down</i></a>
-                  </div>
-                  <div class="col s4">
-                      <a id="color-btn" class="dropdown-trigger btn white black-text" data-target="color-dropdown">Color <i class="material-icons right">arrow_drop_down</i></a>
-                    </div>
-                </div>
-                <div class="row" id="buy-options-row">
-                    <div class="col s4" id="connect-col">
-                  <button id="bt-sellers" class="btn btn-large center modal-trigger blue accent-3" data-target="modal-buyers">Connect to +3 shops</button></div>
-                <div class="col s4" id="onow-col"><button id="bt-order-now" class="btn btn-large center modal-trigger purple accent-4" data-target="cart-modal">Order Now</button></div>
-                <div class="col s4" id="add-to-col"><button id="bt-add-to-cart" class="btn btn-large center modal-trigger red accent-2" (click)="addProductToCart()">Add to Cart</button></div>
-                </div>
-              </div> 
-            </div> 
-            </div>
-          </div>
-          
-          <div id="otherSellerscont">
-            <div id="recommProductsSlider">
-              <hr />
-              <h5 class="center">Recommended Products</h5>
-              <div class="carousel" id="productPageCarousel">
-                <div class="carousel-item" id="recommCarousel">
-                  <div id="gradientCard" class="card">
-                    <div class="card-image">
-                      <img 
-                      id="also-buy-img" src="../../../assets/etautzembed.jpg" 
-                      />
-                      <span class="card-title gradient">Suits</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="carousel-item" id="recommCarousel">
-                  <div id="gradientCard" class="card">
-                    <div class="card-image">
-                      <img 
-                        id="also-buy-img" src="../../../assets/etautzembed1.jpg"
-                      />
-                      <span class="card-title gradient">Coats</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="carousel-item" id="recommCarousel">
-                  <div id="gradientCard" class="card">
-                    <div class="card-image">
-                      <img 
-                      id="also-buy-img" src="../../../assets/myargallery.jpg" 
-                      />
-                      <span class="card-title gradient">Women Suits</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="carousel-item" id="recommCarousel">
-                  <div id="gradientCard" class="card">
-                    <div class="card-image">
-                      <img 
-                      id="also-buy-img" src="../../../assets/myargallery1.jpg" 
-                      />
-                      <span class="card-title gradient">Jackets (Women)</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="carousel-item" id="recommCarousel">
-                  <div id="gradientCard" class="card">
-                    <div class="card-image">
-                      <img 
-                      id="also-buy-img" src="../../../assets/etautzembed.jpg"
-                      />
-                      <span class="card-title gradient">Outfits</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="carousel-item" id="recommCarousel">
-                  <div id="gradientCard" class="card">
-                    <div class="card-image">
-                      <img 
-                      id="also-buy-img" src="../../../assets/theorygallery.jpg"
-                      />
-                      <span class="card-title gradient">Formal Wear</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row" id="mob-recom-prods">
-                <div class="col s4" id="mob-col-recom">
-                  <div id="gradientCard" class="card">
-                    <div class="card-image">
-                      <img 
-                      id="also-buy-img" src="../../../assets/theorygallery.jpg"
-                      />
-                      <span id="recom-prod-title" class="card-title gradient">Formal Wear</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="col s4" id="mob-col-recom"><div id="gradientCard" class="card">
-                  <div class="card-image">
-                    <img 
-                    id="also-buy-img" src="../../../assets/etautzembed.jpg"
-                    />
-                    <span id="recom-prod-title" class="card-title gradient">Outfits</span>
-                  </div>
-                </div></div>
-                <div class="col s4" id="mob-col-recom"><div id="gradientCard" class="card">
-                  <div class="card-image">
-                    <img 
-                    id="also-buy-img" src="../../../assets/myargallery1.jpg" 
-                    />
-                    <span id="recom-prod-title" class="card-title gradient">Jackets (Women)</span>
-                  </div>
-                </div></div>
-                <div class="col s4" id="mob-col-recom"><div id="gradientCard" class="card">
-                  <div class="card-image">
-                    <img 
-                    id="also-buy-img" src="../../../assets/myargallery.jpg" 
-                    />
-                    <span id="recom-prod-title" class="card-title gradient">Women Suits</span>
-                  </div>
-                </div></div>
-                <div class="col s4" id="mob-col-recom"> <div id="gradientCard" class="card">
-                  <div class="card-image">
-                    <img 
-                      id="also-buy-img" src="../../../assets/etautzembed1.jpg"
-                    />
-                    <span id="recom-prod-title" class="card-title gradient">Coats</span>
-                  </div>
-                </div></div>
-                <div class="col s4" id="mob-col-recom"><div id="gradientCard" class="card">
-                  <div class="card-image">
-                    <img 
-                    id="also-buy-img" src="../../../assets/myargallery.jpg" 
-                    />
-                    <span id="recom-prod-title" class="card-title gradient">Women Suits</span>
-                  </div>
-                </div></div>
-              </div>
-            </div>
-          </div>
-        </div> 
-  </ng-template>

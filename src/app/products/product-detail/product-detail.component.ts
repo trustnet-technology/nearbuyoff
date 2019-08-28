@@ -1,5 +1,11 @@
-import { Component, OnInit, Input, AfterViewInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import {
+  Component,
+  OnInit,
+  Input,
+  AfterViewInit,
+  OnChanges
+} from "@angular/core";
+import { ActivatedRoute, Router } from "@angular/router";
 import { ProductService } from "../../services/product.service";
 import { ProductModel } from "../../models/productModel";
 import { OtpService } from "../../services/otp.service";
@@ -7,7 +13,8 @@ import { OtpModel } from "../../models/otp-model";
 import * as M from "materialize-css";
 import { isVisible } from "ng-lazyload-image/src/scroll-preset/preset";
 import { UserControlsService } from "src/app/services/user-controls.service";
-import { AddToCartModel } from "src/app/models/user.model";
+import { AddToCartModel, OrderNowModel } from "src/app/models/user.model";
+import { delay, filter } from "rxjs/operators";
 declare var $: any;
 @Component({
   selector: "app-product-detail",
@@ -22,18 +29,27 @@ export class ProductDetailComponent implements OnInit {
       }
     }
   };
+  options2 = {
+    dist: 0,
+    shift: 0,
+    padding: 20,
+    indicators: false,
+    numVisible: -14,
+    noWrap: false
+  };
 
   mainLazyImage = "https://picsum.photos/id/777/12/8";
   product: ProductModel;
-  product2: ProductModel;
-  product3: ProductModel;
-  product4: ProductModel;
   productMain: any;
   productM: any;
   productId: any;
   productAttr: any;
 
+  userLog: any;
+  loggedIn: number;
+
   recommProds: any;
+  numSellers: number;
 
   userId: string = "U1212";
   prodAttrId: string = "PA1043";
@@ -42,6 +58,7 @@ export class ProductDetailComponent implements OnInit {
   isActive: string = "true";
 
   color: any;
+  colors: any;
   size: any;
   weight: any;
 
@@ -73,19 +90,13 @@ export class ProductDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private productService: ProductService,
     private otpService: OtpService,
-    private userControls: UserControlsService
-  ) {}
+    private userControls: UserControlsService,
+    private router: Router
+  ) {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+  }
 
   jquery_code() {
-    $(document).ready(function() {
-      $("#productPageCarousel").carousel({
-        dist: 0,
-        shift: 0,
-        padding: 60,
-        indicators: false,
-        numVisible: -14
-      });
-    });
     $(document).ready(function() {
       $("#modal-buyers").modal();
     });
@@ -106,74 +117,30 @@ export class ProductDetailComponent implements OnInit {
         jQuery("#soc-share").toggle();
       });
     });
-    (function($) {
-      $(function() {
-        $("#social-dropdown").dropdown({
-          inDuration: 300,
-          outDuration: 225,
-          constrainWidth: false,
-          hover: true,
-          coverTrigger: false
-        });
-      });
-    })(jQuery);
     $(document).ready(function() {
       $("#cart-modal").modal();
     });
-    // (function($) {
-    //   $(function() {
-    //     $("#color-btn").dropdown({
-    //       inDuration: 300,
-    //       outDuration: 225,
-    //       constrainWidth: false,
-    //       hover: false,
-    //       coverTrigger: false
-    //     });
-    //   });
-    // })(jQuery);
-    // (function($) {
-    //   $(function() {
-    //     $("#size-btn").dropdown({
-    //       inDuration: 300,
-    //       outDuration: 225,
-    //       constrainWidth: false,
-    //       hover: false,
-    //       coverTrigger: false
-    //     });
-    //   });
-    // })(jQuery);
-    // (function($) {
-    //   $(function() {
-    //     $("#qty-btn").dropdown({
-    //       inDuration: 300,
-    //       outDuration: 225,
-    //       constrainWidth: false,
-    //       hover: false,
-    //       coverTrigger: false
-    //     });
-    //   });
-    // })(jQuery);
-    // (function($) {
-    //   $(function() {
-    //     $("#size-grocery-btn").dropdown({
-    //       inDuration: 300,
-    //       outDuration: 225,
-    //       constrainWidth: false,
-    //       hover: false,
-    //       coverTrigger: false
-    //     });
-    //   });
-    // })(jQuery);
-    // $(document).ready(function() {
-    //   $("#selectedTest").formSelect();
-    // });
+    $(document).ready(function() {
+      $("#selectedTest").formSelect();
+    });
+    $(document).ready(function() {
+      $("#selected2Test").formSelect();
+    });
   }
 
   ngOnInit() {
-    // var elem = document.querySelector("select");
-    // var instance = M.FormSelect.init(elem, this.options);
     this.jquery_code();
     this.count = 0;
+    this.loggedIn = 0;
+    // this.route.params.subscribe(res => {});
+    this.userLog = JSON.parse(localStorage.getItem("authUser"));
+    try {
+      if (this.userLog.tokenType == "Bearer") {
+        this.loggedIn = 1;
+      }
+    } catch (error) {
+      this.loggedIn = 0;
+    }
     this.selectedItem1 = false;
     this.selectedItem2 = false;
     this.selectedItem3 = false;
@@ -192,9 +159,7 @@ export class ProductDetailComponent implements OnInit {
     // this.getProduct();
     this.getProductDetail();
     this.getProductAttributes();
-    this.getProduct2();
-    this.getProduct3();
-    this.getProduct4();
+    this.getRecomProducts();
   }
 
   log() {
@@ -270,6 +235,13 @@ export class ProductDetailComponent implements OnInit {
       error => console.log(error)
     );
   }
+  initCarousel() {
+    // timeout needed, otherwise navigation won't work.
+    setTimeout(() => {
+      let elems = document.querySelectorAll(".carousel");
+      let instances = M.Carousel.init(elems, this.options2);
+    }, 400);
+  }
   getProductAttributes() {
     const productID = this.route.snapshot.paramMap.get("productId");
     this.color = new Set();
@@ -287,41 +259,46 @@ export class ProductDetailComponent implements OnInit {
           console.log(attributes[i].productAttribute.color);
         }
         console.log(this.color);
+        this.colors = Array.from(this.color.values());
+        for (var item of attributes) {
+          this.numSellers = item.productSellers.length;
+          console.log(item);
+        }
       });
   }
   getRecomProducts() {
     const subCategoryID = this.route.snapshot.paramMap.get("subategoryId");
-    this.productService.getProductsOfSubCategory(subCategoryID).subscribe(
-      success => {
-        this.recommProds = success;
-      },
-      error => console.log(error)
-    );
-  }
-
-  // getProduct(): void {
-  //   const productID = +this.route.snapshot.paramMap.get("productID");
-  //   this.productService
-  //     .getProduct(productID)
-  //     .subscribe(product => {this.product = product;product.find( product=>)});
-  // }
-  getProduct2(): void {
-    const productID = +this.route.snapshot.paramMap.get("productID");
     this.productService
-      .getProduct2(productID)
-      .subscribe(product2 => (this.product2 = product2));
+      .getProductsOfSubCategory(subCategoryID)
+      .pipe(delay(2000))
+      .subscribe(
+        success => {
+          this.recommProds = success.slice(0, 5);
+          console.log(this.recommProds);
+        },
+        error => console.log(error)
+      );
   }
-  getProduct3(): void {
-    const productID = +this.route.snapshot.paramMap.get("productID");
-    this.productService
-      .getProduct3(productID)
-      .subscribe(product3 => (this.product3 = product3));
-  }
-  getProduct4(): void {
-    const productID = +this.route.snapshot.paramMap.get("productID");
-    this.productService
-      .getProduct4(productID)
-      .subscribe(product4 => (this.product4 = product4));
+  orderNow() {
+    this.userLog = JSON.parse(localStorage.getItem("authUser"));
+    if (this.loggedIn == 0) {
+      var toastHTML = "Please Login first";
+      M.toast({ html: toastHTML });
+    } else if (this.loggedIn == 1) {
+      var toastHTML = "Order Placed Successfully";
+      let action: OrderNowModel = {
+        userId: "U81828",
+        productAttributeId: "PA1043",
+        productSellerId: "PS1043",
+        quantity: "2",
+        statue: "Clear",
+        orderPaymentMode: "card"
+      };
+      this.userControls.order(action).subscribe(success => {
+        success;
+        M.toast({ html: toastHTML });
+      });
+    }
   }
 
   getOTP(phoneNo: string): void {
@@ -340,21 +317,25 @@ export class ProductDetailComponent implements OnInit {
       );
   }
   addProductToCart() {
-    var toastHTML =
-      '<span>Product Added to Cart</span><button class="btn-flat toast-action modal-trigger" data-target="cart-item-modal">View Cart</button>';
-    let cartBody: AddToCartModel = {
-      userId: this.userId,
-      productAttributeId: this.prodAttrId,
-      productSellerId: this.prodSellId,
-      quantity: this.quant,
-      isActive: this.isActive
-    };
-    this.userControls.addToCart(cartBody).subscribe(
-      success => {
-        console.log(success.isActive);
-        M.toast({ html: toastHTML });
-      },
-      error => console.log(error)
-    );
+    if (this.loggedIn === 0) {
+      var toastHTML = "Please Login first";
+      M.toast({ html: toastHTML });
+    } else if (this.loggedIn === 1) {
+      var toastHTML = "<span>Product Added to Cart</span>";
+      let cartBody: AddToCartModel = {
+        userId: this.userId,
+        productAttributeId: this.prodAttrId,
+        productSellerId: this.prodSellId,
+        quantity: this.quant,
+        isActive: this.isActive
+      };
+      this.userControls.addToCart(cartBody).subscribe(
+        success => {
+          console.log(success.isActive);
+          M.toast({ html: toastHTML });
+        },
+        error => console.log(error)
+      );
+    }
   }
 }

@@ -17,8 +17,7 @@ export class SubCategoryCardComponent implements OnInit {
     discount: number;
   };
   constructor() {}
-  mainImg =
-    "https://s3.amazonaws.com/com.nearbyoff.landingpage/assets/veshalka.jpg";
+  mainImg = "https://i.redd.it/zyebk2uhb1j31.jpg";
   mainLazyImage = "https://picsum.photos/id/777/12/8";
   ngOnInit() {}
 }

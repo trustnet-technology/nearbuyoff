@@ -1,5 +1,5 @@
 #mz1.carousel {
-  height: 300px;
+  height: 13em;
 }
 #products-mob-apparel {
   display: none;
@@ -13,8 +13,8 @@
   width: 340px;
 }
 #mz1 .carousel-item {
-  height: 287px;
-  width: 294px;
+  height: 10.5em;
+  width: 18.375em;
 }
 
 #csliderDiv {

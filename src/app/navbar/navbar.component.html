@@ -65,7 +65,7 @@
           </a>
         </li> -->
         <li
-          *ngIf="loggedIn === 1; else loggedOut"
+          *ngIf="isLoggedIn; else loggedOut"
           class="imgProfil"
           style="color:white"
         >
@@ -125,18 +125,15 @@
 </div>
 <!-- Near You Dropdown Menu -->
 <div id="services-dropdown" class="dropdown-content row">
-  <div class="col s3 center black-text row" style="font-size: x-large">
-    Apparel
+  <div class="col s3 center black-text row">
+    <a style="font-size: x-large" routerLink="/category/1">Apparel</a>
     <div class="col s12 grey-text" style="font-size: medium">T-Shirts</div>
     <div class="col s12 grey-text" style="font-size: medium">Jeans</div>
     <div class="col s12 grey-text" style="font-size: medium">Sweatshirts</div>
     <div class="col s12 grey-text" style="font-size: medium">Sneakers</div>
   </div>
-  <div
-    class="col s3 center grey lighten-4 black-text row"
-    style="font-size: x-large"
-  >
-    Grocery
+  <div class="col s3 center grey lighten-4 black-text row">
+    <a style="font-size: x-large" routerLink="/category/4">Grocery</a>
     <div class="col s12 grey-text" style="font-size: medium">
       Dressings & Sauces
     </div>
@@ -146,8 +143,10 @@
     <div class="col s12 grey-text" style="font-size: medium">Fruits</div>
     <div class="col s12 grey-text" style="font-size: medium">Frozen Food</div>
   </div>
-  <div class="col s3 center black-text row" style="font-size: x-large">
-    Home Appliances
+  <div class="col s3 center black-text row">
+    <a style="font-size: x-large" routerLink="/category/C123"
+      >Home Appliances</a
+    >
     <div class="col s12 grey-text" style="font-size: medium">
       Video Games & Consoles
     </div>
@@ -159,11 +158,8 @@
       TV & Home Theatres
     </div>
   </div>
-  <div
-    class="col s3 center grey lighten-4 black-text row"
-    style="font-size: x-large"
-  >
-    Decors
+  <div class="col s3 center grey lighten-4 black-text row">
+    <a style="font-size: x-large" routerLink="/category/2">Decors</a>
     <div class="col s12 grey-text" style="font-size: medium">Curtains</div>
     <div class="col s12 grey-text" style="font-size: medium">
       Pillows & Cushions

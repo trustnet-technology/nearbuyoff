@@ -4,6 +4,7 @@ import { SignInModel } from "../models/sign-in.model";
 import * as M from "materialize-css";
 import { Router } from "@angular/router";
 import { SignUpModel } from "../models/sign-up.model";
+import { ExchangeService } from "../services/exchange.service";
 
 @Component({
   selector: "app-login-signup",
@@ -13,7 +14,16 @@ import { SignUpModel } from "../models/sign-up.model";
 export class LoginSignupComponent implements OnInit {
   email: string;
   password: string;
-  constructor(private authService: AuthService, private router: Router) {}
+  isLoggedIn: boolean;
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private isLog: ExchangeService
+  ) {
+    this.isLog.isUserLoggedIn.subscribe(value => {
+      this.isLoggedIn = value;
+    });
+  }
   jquery_code() {
     $(document).ready(function() {
       $(".tabs").tabs();
@@ -30,7 +40,9 @@ export class LoginSignupComponent implements OnInit {
     };
     this.authService.signIn(value).subscribe(
       success => {
+        console.log(success);
         localStorage.setItem("authUser", JSON.stringify(success));
+        this.isLog.isUserLoggedIn.next(true);
         this.router.navigate(["home"]);
       },
       error =>

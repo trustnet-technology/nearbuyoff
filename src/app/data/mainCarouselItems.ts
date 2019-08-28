@@ -18,31 +18,31 @@ export const MAINCAROUSELITEMS: MainCarouselModel[] = [
   {
     heading: "Grocery",
     color: "../../assets/madridsubzi.jpg",
-    desc: "Gus Fring",
+    url: "/category/4",
     numSt: "Third"
   },
   {
     heading: "Food Shops",
     color: "../../assets/lassi.jpg",
-    desc: "Mike Ehrmantraut",
+    url: "/category/4",
     numSt: "Fourth"
   },
   {
     heading: "Supermarkets",
     color: "../../assets/troll.jpg",
-    desc: "Mike Ehrmantraut",
+    url: "/category/4",
     numSt: "Fourth"
   },
   {
     heading: "Buy Clocks",
     color: "../../assets/clocks.jpg",
-    desc: "Mike Ehrmantraut",
+    url: "/category/C123",
     numSt: "Fourth"
   },
   {
     heading: "Buy T-Shirts",
     color: "../../assets/shirtssat.jpg",
-    desc: "Mike Ehrmantraut",
+    url: "/category/1",
     numSt: "Fourth"
   }
 ];

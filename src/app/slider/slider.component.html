@@ -26,7 +26,7 @@
     </div>
   </div>
   <div *ngFor="let samImg of mainImages">
-    <a class="carousel-item"
+    <a routerLink="{{ samImg.url }}" class="carousel-item"
       ><h2 class="white-text">{{ samImg.heading }}</h2>
       <img
         class="parallax"

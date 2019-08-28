@@ -11,6 +11,7 @@ declare var $: any;
 export class SliderComponent implements OnInit {
   mainImages: MainCarouselModel[];
   options = { fullWidth: true, indicators: false };
+  options2 = { responsiveThreshold: 0 };
   mainLazyImage = "https://picsum.photos/id/777/12/8";
 
   constructor(private mainCarouselItemsService: MainCarouselItemsService) {}
@@ -29,14 +30,12 @@ export class SliderComponent implements OnInit {
       e.stopPropagation();
       $("#mainCarousel").carousel("prev");
     });
-
-    $(document).ready(function() {
-      $(".parallax").parallax();
-    });
   }
   ngAfterViewInit() {
     var elems = document.querySelectorAll("#mainCarousel");
     var instances = M.Carousel.init(elems, this.options);
+    // var elems2 = document.querySelectorAll(".parallax");
+    // var instances2 = M.Parallax.init(elems2, this.options2);
   }
   getMainCarouselItems(): void {
     this.mainImages = this.mainCarouselItemsService.getMainCarouselItems();

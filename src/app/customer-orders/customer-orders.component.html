@@ -9,20 +9,22 @@
       </ul>
     </div>
     <div id="current-order" class="col s12">
-      <div class="row grey lighten-4">
+      <div *ngFor="let item of currentOrders" class="row grey lighten-4">
         <div class="col l4 m4 s5">
-          <img src="{{ orderItems[0].imageURL }}" />
+          <img
+            src="https://ae01.alicdn.com/kf/HTB1tIyMinXYBeNkHFrdq6AiuVXaO/Summer-New-Men-Skinny-Jeans-Fashion-2019-Slim-Fit-Casual-Ripped-Jeans-Men-Personality-Star-Print.jpg_640x640.jpg"
+          />
         </div>
         <div id="order-details" class="col l4 m4 s7">
           <div class="row">
             <div class="col s12">
-              <h4>{{ orderItems[0].id }}</h4>
+              <h4>{{ item.userOrderId }}</h4>
             </div>
             <div class="col l6 m6 s6 offset-l3 offset-m3">
-              <p>{{ orderItems[0].date }}</p>
+              <p>{{ item.productAttributeId }}</p>
             </div>
             <div class="col l6 m6 s6 offset-l3 offset-m3">
-              <p>{{ orderItems[0].status }}</p>
+              <p>{{ item.productSellerId }}</p>
             </div>
           </div>
         </div>
@@ -45,15 +47,19 @@
         <thead>
           <tr>
             <th>Order ID</th>
-            <th>Order Date</th>
+            <!-- <th>Order Date</th> -->
+            <th>Seller ID</th>
+            <th>Quantity</th>
             <th>Status</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let order of orderItems">
-            <td>{{ order.id }}</td>
-            <td>{{ order.date }}</td>
-            <td>{{ order.status }}</td>
+          <tr *ngFor="let order of orderAPItems">
+            <td>{{ order.userOrderId }}</td>
+            <!-- <td>{{ order.date }}</td> -->
+            <td>{{ order.productSellerId }}</td>
+            <td>{{ order.quantity }}</td>
+            <td>{{ order.statue }}</td>
           </tr>
         </tbody>
       </table>

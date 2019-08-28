@@ -11,6 +11,7 @@ import { UserControlsService } from "../services/user-controls.service";
 export class CustomerOrdersComponent implements OnInit {
   orderItems: OrderItemsModel[];
   orderAPItems: any;
+  currentOrders: any;
   constructor(
     private orderItemsService: OrderItemsService,
     private userService: UserControlsService
@@ -23,11 +24,12 @@ export class CustomerOrdersComponent implements OnInit {
   }
   ngOnInit() {
     this.jquery_code();
-    // this.getOrderItems();
+    this.getOrderItems();
   }
-  getOrderItems(userId: string) {
-    this.userService.viewOrders(userId).subscribe(success => {
+  getOrderItems() {
+    this.userService.viewOrders("U81828").subscribe(success => {
       this.orderAPItems = success;
+      this.currentOrders = success.slice(0, 3);
     });
     // this.orderItemsService
     //   .getOrderItems()

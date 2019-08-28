@@ -102,10 +102,6 @@ export class CardSliderComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.getSubCategories();
-    this.getProducts();
-    this.getProducts2();
-    this.getProducts3();
-    this.getProducts4();
     this.getMobProducts();
     this.getMobProducts2();
     this.getMobProducts3();
@@ -124,13 +120,10 @@ export class CardSliderComponent implements OnInit, AfterViewInit {
     });
   }
   ngAfterViewInit() {
-    // var elems3 = document.querySelectorAll("#mz1");
     var elems4 = document.querySelectorAll("#carousel-flat");
-    // var instances3 = M.Carousel.init(elems3, this.options);
     var instances4 = M.Carousel.init(elems4, this.options);
   }
   initCarousel() {
-    // timeout needed, otherwise navigation won't work.
     setTimeout(() => {
       let elems = document.querySelectorAll(".carousel");
       let instances = M.Carousel.init(elems, this.options);
@@ -155,27 +148,6 @@ export class CardSliderComponent implements OnInit, AfterViewInit {
         }
         console.log(this.electronics);
       });
-  }
-
-  getProducts(): void {
-    this.productService
-      .getProducts()
-      .subscribe(products => (this.products = products));
-  }
-  getProducts2(): void {
-    this.productService
-      .getProducts2()
-      .subscribe(products2 => (this.products2 = products2));
-  }
-  getProducts3(): void {
-    this.productService
-      .getProducts3()
-      .subscribe(products3 => (this.products3 = products3));
-  }
-  getProducts4(): void {
-    this.productService
-      .getProducts4()
-      .subscribe(products4 => (this.products4 = products4));
   }
   getMobProducts(): void {
     this.productService

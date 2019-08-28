@@ -35,6 +35,9 @@ a.middle-indicator-text {
 .indicators {
   visibility: hidden;
 }
+.parallax-container {
+  height: 300px;
+}
 h2 {
   font-family: "Oswald", sans-serif;
   font-size: 5em;
@@ -49,5 +52,8 @@ h2 {
   #mainCarousel {
     height: 200px;
     max-height: 100%;
+  }
+  .parallax-container {
+    height: 200px;
   }
 }

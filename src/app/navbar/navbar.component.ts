@@ -10,7 +10,8 @@ import { CartItemsService } from "../services/cart-items.service";
 import { CartItemModel } from "../models/cart-item.model";
 import { MapsAPILoader } from "@agm/core";
 import { UserControlsService } from "../services/user-controls.service";
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
+import { ExchangeService } from "../services/exchange.service";
 // import { google } from "google-maps";
 // import { google } from "@agm/core/services/google-maps-types";
 declare var $: any;
@@ -20,7 +21,7 @@ declare const google: any;
   templateUrl: "./navbar.component.html",
   styleUrls: ["./navbar.component.css"]
 })
-export class NavbarComponent implements OnInit, AfterViewInit, OnChanges {
+export class NavbarComponent implements OnInit, AfterViewInit {
   category: string;
   cartItems: CartItemModel[];
   cartITems: any;
@@ -31,6 +32,7 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnChanges {
   bounds: any;
   lng: any;
 
+  isLoggedIn: boolean;
   loggedIn: number;
   userLog: any;
   address: any;
@@ -40,8 +42,14 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnChanges {
     private ngZone: NgZone,
     private mapsAPILoader: MapsAPILoader,
     private userControls: UserControlsService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute,
+    private isLog: ExchangeService
   ) {
+    this.isLog.isUserLoggedIn.subscribe(value => {
+      this.isLoggedIn = value;
+    });
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.mapsAPILoader.load().then(() => {
       this.bounds = new google.maps.LatLngBounds(
         new google.maps.LatLng(51.130739, -0.868052), // SW
@@ -133,22 +141,18 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnChanges {
       $("#cart-items-modal").modal();
     });
   }
-  ngOnChanges() {
-    this.userLog = JSON.parse(localStorage.getItem("authUser"));
-    console.log(this.userLog.tokenType);
-    if (this.userLog.tokenType == "Bearer") {
-      this.loggedIn = 1;
-      console.log(this.loggedIn);
-    } else {
-      this.loggedIn = 0;
-    }
-  }
 
   ngOnInit() {
-    // console.log(this.citySelected);
     this.jquery_code();
+    this.userLog = JSON.parse(localStorage.getItem("authUser"));
+    try {
+      if (this.userLog.tokenType == "Bearer") {
+        this.loggedIn = 1;
+      }
+    } catch (error) {
+      this.loggedIn = 0;
+    }
     this.citySelected = JSON.parse(localStorage.getItem("currentCity"));
-    // console.log(this.citySelected);
     this.getCartItems();
   }
   ngAfterViewInit() {
@@ -278,6 +282,8 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnChanges {
   logout() {
     localStorage.removeItem("authUser");
     M.toast({ html: "Logged Out" });
+    this.router.navigate(["home"]);
+    this.isLog.isUserLoggedIn.next(false);
     this.loggedIn = 0;
     this.ngOnInit();
   }
