@@ -45,8 +45,13 @@ export class LoginSignupComponent implements OnInit {
         this.isLog.isUserLoggedIn.next(true);
         this.router.navigate(["home"]);
       },
-      error =>
-        M.toast({ html: "<span>" + error.message + "</span>", classes: "red" })
+      error => {
+        M.toast({
+          html: "<span>Oops! An unknown error occured</span>",
+          classes: "red"
+        });
+        console.log(error);
+      }
     );
   }
   signUp(
@@ -69,8 +74,13 @@ export class LoginSignupComponent implements OnInit {
         M.toast({ html: "Signed Up Successfully", classes: "green darken-1" });
         this.ngOnInit();
       },
-      error =>
-        M.toast({ html: "<span>" + error.message + "</span>", classes: "red" })
+      error => {
+        M.toast({
+          html: "<span>Oops!! An unknown error occured</span>",
+          classes: "red"
+        });
+        console.log(error);
+      }
     );
   }
 }

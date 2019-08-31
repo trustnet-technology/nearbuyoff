@@ -4,16 +4,16 @@ export const ITEMSMENU: MenuModel[] = [
   {
     name: "APPARELS",
     children: ["T-Shirts", "Jeans", "Sweatshirts", "Sneakers"],
-    categoryID: "1"
+    categoryID: "CAT01"
   },
   {
     name: "GROCERY",
-    categoryID: "4",
+    categoryID: "CAT03",
     children: ["Dressings & Sauces", "Dairy Products", "Fruits", "Frozen Food"]
   },
   {
     name: "HOME APPLIANCES",
-    categoryID: "C123",
+    categoryID: "CAT02",
     children: [
       "Video Games & Consoles",
       "Speakers",
@@ -23,7 +23,7 @@ export const ITEMSMENU: MenuModel[] = [
   },
   {
     name: "DECOR",
-    categoryID: "2",
+    categoryID: "CAT04",
     children: ["Curtains", "Pillows & Cushions", "Bed-Sheets", "Wallpapers"]
   }
 ];

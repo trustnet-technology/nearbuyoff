@@ -25,6 +25,7 @@ export class CardSliderComponent implements OnInit, AfterViewInit {
   apparels: any[] = [];
   decors: any[] = [];
   grocery: any[] = [];
+  grocery2: any[] = [];
   products: ProductModel[];
   products2: ProductModel[];
   mobProducts: ProductModel[] = [];
@@ -130,24 +131,22 @@ export class CardSliderComponent implements OnInit, AfterViewInit {
     }, 100);
   }
   getSubCategories() {
-    this.productService
-      .getProductsSubcategories()
-      .pipe(delay(2000))
-      .subscribe(subCategories => {
-        this.subCategories = subCategories;
-        for (let i = 0; i < subCategories.length; i++) {
-          if (subCategories[i].categoryName === "Electronics") {
-            this.electronics.push(subCategories[i]);
-          } else if (subCategories[i].categoryName === "Apparels") {
-            this.apparels.push(subCategories[i]);
-          } else if (subCategories[i].categoryName === "Decor") {
-            this.decors.push(subCategories[i]);
-          } else if (subCategories[i].categoryName === "Grocery") {
-            this.grocery.push(subCategories[i]);
-          }
+    this.productService.getProductsSubcategories().subscribe(subCategories => {
+      this.subCategories = subCategories;
+      for (let i = 0; i < subCategories.length; i++) {
+        if (subCategories[i].categoryName === "Home Appliances") {
+          this.electronics.push(subCategories[i]);
+        } else if (subCategories[i].categoryName === "Apparels") {
+          this.apparels.push(subCategories[i]);
+        } else if (subCategories[i].categoryName === "Decor") {
+          this.decors.push(subCategories[i]);
+        } else if (subCategories[i].categoryName === "Grocery") {
+          this.grocery.push(subCategories[i]);
         }
-        console.log(this.electronics);
-      });
+      }
+      this.grocery2 = this.grocery.slice(0, 4);
+      console.log(this.electronics);
+    });
   }
   getMobProducts(): void {
     this.productService

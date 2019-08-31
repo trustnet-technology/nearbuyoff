@@ -3,7 +3,7 @@ import { Routes, RouterModule } from "@angular/router";
 import { ProductDetailComponent } from "./products/product-detail/product-detail.component";
 import { MenubarComponent } from "./menubar/menubar.component";
 import { VendorDetailComponent } from "./vendor-detail/vendor-detail.component";
-import { SearchComponentComponent } from "./search-component/search-component.component";
+import { SearchComponent } from "./search/search.component";
 import { SliderComponent } from "./slider/slider.component";
 import { LoginSignupComponent } from "./login-signup/login-signup.component";
 import { CustomerOrdersComponent } from "./customer-orders/customer-orders.component";
@@ -12,14 +12,20 @@ import { CartComponent } from "./cart/cart.component";
 import { ProductGridComponent } from "./product-grid/product-grid.component";
 
 const routes: Routes = [
-  { path: "search", component: SearchComponentComponent },
+  {
+    path: "search/:productName",
+    component: SearchComponent
+  },
   { path: "home", component: SliderComponent },
   { path: "", redirectTo: "/home", pathMatch: "full" },
   {
     path: "subcategory/:subategoryId/:productId",
     component: ProductDetailComponent
   },
-  { path: "product/:productId/seller", component: VendorDetailComponent },
+  {
+    path: "seller/:sellerId",
+    component: VendorDetailComponent
+  },
   { path: "auth", component: LoginSignupComponent },
   { path: "customer/orders", component: CustomerOrdersComponent },
   { path: "user/profile", component: UserProfileComponent },

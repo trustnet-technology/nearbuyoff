@@ -15,6 +15,7 @@ import { isVisible } from "ng-lazyload-image/src/scroll-preset/preset";
 import { UserControlsService } from "src/app/services/user-controls.service";
 import { AddToCartModel, OrderNowModel } from "src/app/models/user.model";
 import { delay, filter } from "rxjs/operators";
+import { PostLeadModel } from "src/app/models/post-lead.model";
 declare var $: any;
 @Component({
   selector: "app-product-detail",
@@ -132,13 +133,14 @@ export class ProductDetailComponent implements OnInit {
     this.jquery_code();
     this.count = 0;
     this.loggedIn = 0;
-    // this.route.params.subscribe(res => {});
     this.userLog = JSON.parse(localStorage.getItem("authUser"));
     try {
+      this.userId = this.userLog.user.userId;
       if (this.userLog.tokenType == "Bearer") {
         this.loggedIn = 1;
       }
     } catch (error) {
+      this.userId = "";
       this.loggedIn = 0;
     }
     this.selectedItem1 = false;
@@ -156,7 +158,6 @@ export class ProductDetailComponent implements OnInit {
     this.plng = 77.580643;
     console.log(this.plat, this.plng);
 
-    // this.getProduct();
     this.getProductDetail();
     this.getProductAttributes();
     this.getRecomProducts();
@@ -235,13 +236,6 @@ export class ProductDetailComponent implements OnInit {
       error => console.log(error)
     );
   }
-  initCarousel() {
-    // timeout needed, otherwise navigation won't work.
-    setTimeout(() => {
-      let elems = document.querySelectorAll(".carousel");
-      let instances = M.Carousel.init(elems, this.options2);
-    }, 400);
-  }
   getProductAttributes() {
     const productID = this.route.snapshot.paramMap.get("productId");
     this.color = new Set();
@@ -268,31 +262,27 @@ export class ProductDetailComponent implements OnInit {
   }
   getRecomProducts() {
     const subCategoryID = this.route.snapshot.paramMap.get("subategoryId");
-    this.productService
-      .getProductsOfSubCategory(subCategoryID)
-      .pipe(delay(2000))
-      .subscribe(
-        success => {
-          this.recommProds = success.slice(0, 5);
-          console.log(this.recommProds);
-        },
-        error => console.log(error)
-      );
+    this.productService.getProductsOfSubCategory(subCategoryID).subscribe(
+      success => {
+        this.recommProds = success.slice(0, 5);
+        console.log(this.recommProds);
+      },
+      error => console.log(error)
+    );
   }
-  orderNow() {
-    this.userLog = JSON.parse(localStorage.getItem("authUser"));
+  orderNow(quantity: string) {
     if (this.loggedIn == 0) {
       var toastHTML = "Please Login first";
       M.toast({ html: toastHTML });
     } else if (this.loggedIn == 1) {
       var toastHTML = "Order Placed Successfully";
       let action: OrderNowModel = {
-        userId: "U81828",
+        userId: this.userId,
         productAttributeId: "PA1043",
         productSellerId: "PS1043",
-        quantity: "2",
+        quantity: quantity,
         statue: "Clear",
-        orderPaymentMode: "card"
+        orderPaymentMode: "Credit Card"
       };
       this.userControls.order(action).subscribe(success => {
         success;
@@ -337,5 +327,27 @@ export class ProductDetailComponent implements OnInit {
         error => console.log(error)
       );
     }
+  }
+  viewAllCart() {
+    if (this.loggedIn === 0) {
+      var toastHTML = "Please Login first";
+      M.toast({ html: toastHTML });
+    } else if (this.loggedIn === 1) {
+      this.router.navigate(["cart/view"]);
+    }
+  }
+  postLeads() {
+    let itemz: PostLeadModel = {
+      product_id: "",
+      product_variant_id: "",
+      user_id: this.userId,
+      quantity: 0,
+      contact_no: 0,
+      customer_name: "",
+      vendor_id: ""
+    };
+    this.userControls
+      .postLead(itemz)
+      .subscribe(success => console.log(success), error => console.log(error));
   }
 }

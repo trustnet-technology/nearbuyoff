@@ -12,6 +12,8 @@ export class CustomerOrdersComponent implements OnInit {
   orderItems: OrderItemsModel[];
   orderAPItems: any;
   currentOrders: any;
+  userId: string;
+  userLog: any;
   constructor(
     private orderItemsService: OrderItemsService,
     private userService: UserControlsService
@@ -23,11 +25,13 @@ export class CustomerOrdersComponent implements OnInit {
     });
   }
   ngOnInit() {
+    this.userLog = JSON.parse(localStorage.getItem("authUser"));
+    this.userId = this.userLog.user.userId;
     this.jquery_code();
-    this.getOrderItems();
+    this.getOrderItems(this.userId);
   }
-  getOrderItems() {
-    this.userService.viewOrders("U81828").subscribe(success => {
+  getOrderItems(userID: string) {
+    this.userService.viewOrders(userID).subscribe(success => {
       this.orderAPItems = success;
       this.currentOrders = success.slice(0, 3);
     });

@@ -2,52 +2,24 @@
 <div id="csliderDiv">
   <hr />
   <h5 id="apparel" class="center">Home Appliances</h5>
-  <a class="btn right black" routerLink="/category/C123">
-    View All<i class="material-icons right" style="margin-top: 5%">
-      arrow_forward
-    </i>
-  </a>
-  <div class="carousel" id="mz1">
-    <!-- <div class="left" id="leftDiv">
-      <a
-        href="Previo"
-        class="movePrevCarousel middle-indicator-text waves-effect waves-light content-indicator"
-        id="movPrevCarou"
-      >
-        <i class="material-icons left  middle-indicator-text">chevron_left </i>
-      </a>
-    </div>
-    <div class="right" id="rightDiv">
-      <a
-        href="Siguiente"
-        class="moveNextCarousel middle-indicator-text waves-effect waves-light content-indicator"
-        id="movNxtCarou"
-      >
-        <i class="material-icons right middle-indicator-text">
-          chevron_right
-        </i>
-      </a>
-    </div> -->
+  <div class="row">
+    <a class="btn right black" routerLink="/category/CAT02">
+      View All<i class="material-icons right" style="margin-top: 5%">
+        arrow_forward
+      </i>
+    </a>
+  </div>
+  <div class="row">
     <div
       *ngFor="let subccategory of electronics; let i = index; let last = last"
     >
-      <!-- *ngIf="subccategory.categoryName === 'Electronics'" -->
       <a
-        class="carousel-item"
+        class="col s3"
         routerLink="/subcategory/{{ subccategory.subategoryId }}"
       >
-        <!--  -->
         <app-sub-category-card
           [subCatContent]="subccategory"
         ></app-sub-category-card>
-        <ng-container *ngIf="last">{{ initCarousel() }}</ng-container>
-      </a>
-    </div>
-  </div>
-  <div class="row" id="products-mob-apparel">
-    <div *ngFor="let subccategory of subCategories" class="col s4">
-      <a routerLink="/subcategory/{{ subccategory.subategoryId }}">
-        <app-card [cardContent]="subccategory"></app-card>
       </a>
     </div>
   </div>
@@ -55,23 +27,22 @@
 <div id="csliderDiv">
   <hr />
   <h5 class="center">Apparels</h5>
-  <a class="btn right black" routerLink="/category/1">
-    View All<i class="material-icons right" style="margin-top: 5%"
-      >arrow_forward</i
-    ></a
-  >
-  <div class="carousel" id="mz1">
+  <div class="row">
+    <a class="btn right black" routerLink="/category/CAT01">
+      View All<i class="material-icons right" style="margin-top: 5%"
+        >arrow_forward</i
+      ></a
+    >
+  </div>
+  <div class="row">
     <div *ngFor="let subccategory of apparels; let i = index; let last = last">
-      <!-- *ngIf="subccategory.categoryName === 'Electronics'" -->
       <a
-        class="carousel-item"
+        class="col s3"
         routerLink="/subcategory/{{ subccategory.subategoryId }}"
       >
-        <!--  -->
         <app-sub-category-card
           [subCatContent]="subccategory"
         ></app-sub-category-card>
-        <ng-container *ngIf="last">{{ initCarousel() }}</ng-container>
       </a>
     </div>
   </div>
@@ -87,24 +58,22 @@
 <div id="csliderDiv">
   <hr />
   <h5 class="center">Grocery</h5>
-
-  <a class="btn right black" routerLink="/category/4">
-    View All<i class="material-icons right" style="margin-top: 5%"
-      >arrow_forward</i
-    ></a
-  >
-  <div class="carousel" id="mz1">
-    <div *ngFor="let subccategory of grocery; let i = index; let last = last">
-      <!-- *ngIf="subccategory.categoryName === 'Electronics'" -->
+  <div class="row">
+    <a class="btn right black" routerLink="/category/CAT03">
+      View All<i class="material-icons right" style="margin-top: 5%"
+        >arrow_forward</i
+      ></a
+    >
+  </div>
+  <div class="row">
+    <div *ngFor="let subccategory of grocery2; let i = index; let last = last">
       <a
-        class="carousel-item"
+        class="col s3"
         routerLink="/subcategory/{{ subccategory.subategoryId }}"
       >
-        <!--  -->
         <app-sub-category-card
           [subCatContent]="subccategory"
         ></app-sub-category-card>
-        <ng-container *ngIf="last">{{ initCarousel() }}</ng-container>
       </a>
     </div>
   </div>
@@ -120,23 +89,22 @@
 <div id="csliderDiv" class="">
   <hr />
   <h5 class="center">Decors</h5>
-  <a class="btn right black" routerLink="/category/2">
-    View All<i class="material-icons right" style="margin-top: 5%"
-      >arrow_forward</i
-    ></a
-  >
-  <div class="carousel" id="mz1">
+  <div class="row">
+    <a class="btn right black" routerLink="/category/CAT04">
+      View All<i class="material-icons right" style="margin-top: 5%"
+        >arrow_forward</i
+      ></a
+    >
+  </div>
+  <div class="row">
     <div *ngFor="let subccategory of decors; let i = index; let last = last">
-      <!-- *ngIf="subccategory.categoryName === 'Electronics'" -->
       <a
-        class="carousel-item"
+        class="col s3"
         routerLink="/subcategory/{{ subccategory.subategoryId }}"
       >
-        <!--  -->
         <app-sub-category-card
           [subCatContent]="subccategory"
         ></app-sub-category-card>
-        <ng-container *ngIf="last">{{ initCarousel() }}</ng-container>
       </a>
     </div>
   </div>

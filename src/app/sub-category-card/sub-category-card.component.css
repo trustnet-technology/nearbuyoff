@@ -4,11 +4,14 @@
   object-fit: cover;
   background-size: contain;
 }
+#sub-category-image {
+  height: 14em;
+}
 .card .card-image .card-title.flow-text {
   font-size: inherit;
 }
 .card .card-image .card-title.gradient {
-  padding-top: 64px;
+  padding-top: 4em;
   display: block;
   width: 100%;
   background-color: rgba(0, 0, 0, 0);
@@ -21,13 +24,37 @@
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#007db9e8', endColorstr='#cc000000',GradientType=0 );
 }
 #gradientCard {
-  border-radius: 15px;
+  border-radius: 0.938em;
   overflow: hidden;
   font-family: "Oswald", sans-serif;
 }
 .price-text {
-  font-size: 12px;
+  font-size: 0.75em;
 }
 .card .card-image .card-title {
-  padding: 15px;
+  padding: 0.938em;
+}
+@media (min-width: 320px) and (max-width: 480px) {
+  .card-image {
+    height: 7em;
+    max-width: 100%;
+    object-fit: cover;
+    background-size: contain;
+  }
+  #sub-category-image {
+    height: 7em;
+  }
+  .price-text {
+    font-size: 0.563em;
+    margin-block-start: 0em;
+  }
+  .card .card-image .card-title {
+    padding: 0.5em;
+  }
+  #gradientCard {
+    border-radius: 0.625em;
+  }
+  .card .card-image .card-title.gradient {
+    font-size: 1.125em;
+  }
 }

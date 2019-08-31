@@ -21,7 +21,7 @@
         <div class="row">
           <div class="col s3 m3 l3 offset-l2">
             <span class="card-title grey-text text-darken-4">
-              Seller Name
+              {{ vendorDetails?.sellerName }}
             </span>
             <div class="rate">
               <input type="radio" id="star5" name="rate" value="5" />
@@ -37,11 +37,15 @@
             </div>
           </div>
           <div class="col s2 m2 l2 center-align">
-            <h6 class="grey-text text-darken-4">9:30AM-5:30PM</h6>
+            <h6 class="grey-text text-darken-4">
+              {{ vendorDetails?.openingHour }}-{{ vendorDetails?.closingHour }}
+            </h6>
             <p class="medium-small grey-text">Opening Hours</p>
           </div>
           <div class="col s3 center-align">
-            <h6 class="grey-text text-darken-4">+91 7128218122</h6>
+            <h6 class="grey-text text-darken-4">
+              +91 {{ vendorDetails?.contactNumber }}
+            </h6>
             <p class="medium-small grey-text">Contact Number</p>
           </div>
           <div class="col s2 center-align">
@@ -208,18 +212,22 @@
           </div>
         </div>
       </div>
-      <div id="mob-recom-vendor" class="col s4" *ngFor="let itemy of recommProd">
+      <div
+        id="mob-recom-vendor"
+        class="col s4"
+        *ngFor="let itemy of recommProd"
+      >
         <div id="gradientCard" class="card">
           <div class="card-image">
             <img id="vendor-cat-img" src="{{ itemy.photoURL }}" />
-            <span id="vendor-cat-title" class="card-title gradient">{{ itemy.title }}</span>
+            <span id="vendor-cat-title" class="card-title gradient">{{
+              itemy.title
+            }}</span>
           </div>
         </div>
       </div>
     </div>
-    <div class="row">
-
-    </div>
+    <div class="row"></div>
 
     <div class="row " style="padding-top: 4%">
       <hr />

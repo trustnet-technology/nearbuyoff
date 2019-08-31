@@ -13,7 +13,7 @@ import { CardComponent } from "./card/card.component";
 import { ProductDetailComponent } from "./products/product-detail/product-detail.component";
 import { VendorDetailComponent } from "./vendor-detail/vendor-detail.component";
 import { AgmCoreModule } from "@agm/core";
-import { SearchComponentComponent } from "./search-component/search-component.component";
+import { SearchComponent } from "./search/search.component";
 import { RatingComponent } from "./rating/rating.component";
 import { ShareModule } from "@ngx-share/core";
 import { AgmDirectionModule } from "agm-direction";
@@ -29,7 +29,7 @@ import { UserProfileComponent } from "./user-profile/user-profile.component";
 import { CartComponent } from "./cart/cart.component";
 import { ProductGridComponent } from "./product-grid/product-grid.component";
 import { Ng5SliderModule } from "ng5-slider";
-import { SubCategoryCardComponent } from './sub-category-card/sub-category-card.component';
+import { SubCategoryCardComponent } from "./sub-category-card/sub-category-card.component";
 
 @NgModule({
   declarations: [
@@ -43,7 +43,7 @@ import { SubCategoryCardComponent } from './sub-category-card/sub-category-card.
     CardComponent,
     ProductDetailComponent,
     VendorDetailComponent,
-    SearchComponentComponent,
+    SearchComponent,
     RatingComponent,
     LoginSignupComponent,
     CustomerOrdersComponent,
@@ -61,7 +61,7 @@ import { SubCategoryCardComponent } from './sub-category-card/sub-category-card.
     Ng5SliderModule,
     LazyLoadImageModule.forRoot({ preset: intersectionObserverPreset }),
     AgmCoreModule.forRoot({
-      apiKey: "AIzaSyCPq73ZhDozL2oRl9jfqO_4xZpBMOCJA84"
+      apiKey: "Enter API key Here"
     }),
     AgmDirectionModule
   ],

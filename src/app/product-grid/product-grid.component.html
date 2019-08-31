@@ -1,27 +1,15 @@
 <app-menubar></app-menubar>
 <div class="container">
-  <h5>Apparel > Jeans</h5>
-  <div class="row">
-    <div class="col s4">
-      <app-sub-category-card
-        [subCatContent]="subCatContent1"
-      ></app-sub-category-card>
+  <!-- <nav>
+    <div class="nav-wrapper">
+      <div class="col s12">
+        <a href="#!" class="breadcrumb">First</a>
+        <a href="#!" class="breadcrumb">Second</a>
+        <a href="#!" class="breadcrumb">Third</a>
+      </div>
     </div>
-    <div class="col s4">
-      <app-sub-category-card
-        [subCatContent]="subCatContent1"
-      ></app-sub-category-card>
-    </div>
-    <div class="col s4">
-      <app-sub-category-card
-        [subCatContent]="subCatContent1"
-      ></app-sub-category-card>
-    </div>
-  </div>
+  </nav> -->
   <div *ngIf="products" class="row">
-    <app-sub-category-card
-      [subCatContent]="subCatContent1"
-    ></app-sub-category-card>
     <div *ngFor="let product of products" class="col s4 m4 l3">
       <a
         routerLink="/subcategory/{{ product.subCategoryId }}/{{
@@ -33,9 +21,6 @@
     </div>
   </div>
   <div *ngIf="subCategories" class="row">
-    <app-sub-category-card
-      [subCatContent]="subCatContent1"
-    ></app-sub-category-card>
     <div *ngFor="let subCategory of subCategories" class="col s6 m6 l4">
       <a routerLink="/subcategory/{{ subCategory.subategoryId }}">
         <app-sub-category-card

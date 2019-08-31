@@ -33,7 +33,7 @@
               type="search"
               placeholder="Search"
               name="search"
-              (input)="search(searchBox.value)"
+              (keydown.enter)="search($event)"
             />
             <!---->
             <label class="label-icon" for="search">
@@ -77,7 +77,6 @@
           >
             <img
               src="https://i0.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png?fit=256%2C256&quality=100&ssl=1"
-              alt=""
               class="circle"
               style="color:white"
             />
@@ -126,14 +125,14 @@
 <!-- Near You Dropdown Menu -->
 <div id="services-dropdown" class="dropdown-content row">
   <div class="col s3 center black-text row">
-    <a style="font-size: x-large" routerLink="/category/1">Apparel</a>
+    <a style="font-size: x-large" routerLink="/category/CAT01">Apparel</a>
     <div class="col s12 grey-text" style="font-size: medium">T-Shirts</div>
     <div class="col s12 grey-text" style="font-size: medium">Jeans</div>
     <div class="col s12 grey-text" style="font-size: medium">Sweatshirts</div>
     <div class="col s12 grey-text" style="font-size: medium">Sneakers</div>
   </div>
   <div class="col s3 center grey lighten-4 black-text row">
-    <a style="font-size: x-large" routerLink="/category/4">Grocery</a>
+    <a style="font-size: x-large" routerLink="/category/CAT03">Grocery</a>
     <div class="col s12 grey-text" style="font-size: medium">
       Dressings & Sauces
     </div>
@@ -144,7 +143,7 @@
     <div class="col s12 grey-text" style="font-size: medium">Frozen Food</div>
   </div>
   <div class="col s3 center black-text row">
-    <a style="font-size: x-large" routerLink="/category/C123"
+    <a style="font-size: x-large" routerLink="/category/CAT02"
       >Home Appliances</a
     >
     <div class="col s12 grey-text" style="font-size: medium">
@@ -159,7 +158,7 @@
     </div>
   </div>
   <div class="col s3 center grey lighten-4 black-text row">
-    <a style="font-size: x-large" routerLink="/category/2">Decors</a>
+    <a style="font-size: x-large" routerLink="/category/CAT04">Decors</a>
     <div class="col s12 grey-text" style="font-size: medium">Curtains</div>
     <div class="col s12 grey-text" style="font-size: medium">
       Pillows & Cushions
@@ -167,28 +166,6 @@
     <div class="col s12 grey-text" style="font-size: medium">Bed Sheets</div>
     <div class="col s12 grey-text" style="font-size: medium">Wallpapers</div>
   </div>
-  <!-- <ul
-    id="menuDropdownContent"
-    class="vertical-tabs col s8"
-    style="font-family: 'Oswald', sans-serif;"<li><a href="">Curtains</a></li>
-    <li><a href="">Pillows & Cushions</a></li>
-    <li><a href=""></a></li>
-  >
-    <li>
-      <a href="#!" style="font-weight: bolder" data-target="A">Apparel</a>
-    </li>
-    <li>
-      <a href="#!" style="font-weight: bolder" data-target="B">Grocery</a>
-    </li>
-    <li>
-      <a href="#!" style="font-weight: bolder" data-target="C"
-        >Home Appliances</a
-      >
-    </li>
-    <li><a href="#!" style="font-weight: bolder" data-target="D">Decors</a></li>
-  </ul> -->
-
-  <!-- <div id="vtc" class="vertical-tab-content col s8" style="padding: 0"></div> -->
 </div>
 <!-- Mobile Nav for Navbar -->
 <ul class="sidenav" id="mobile-nav2">
@@ -363,7 +340,16 @@
 <!-- Notification Dropdown -->
 <div id="services3-dropdown" class="dropdown-content row">
   <ul class="vertical-tabs">
-    <li><a href="">No new Notifications</a></li>
+    <li>
+      <a routerLink="/cart/view" style="font-weight: bolder">View Cart</a>
+    </li>
+    <li>
+      <a routerLink="/user/profile" style="font-weight: bolder">View Profile</a>
+    </li>
+    <li>
+      <a routerLink="/customer/orders" style="font-weight: bolder">My Orders</a>
+    </li>
+    <li><a (click)="logout()" style="font-weight: bolder">Logout</a></li>
   </ul>
 </div>
 <div id="sel-city-dropdown" class="dropdown-content row">

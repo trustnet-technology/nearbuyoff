@@ -11,17 +11,20 @@ import { UserControlsService } from "../services/user-controls.service";
 export class CartComponent implements OnInit {
   cartItems: CartItemModel[];
   cartITems: any;
-  userId: string = "U1212";
+  userId: string;
+  userLog: any;
   constructor(
     private userControls: UserControlsService,
     private cartItemService: CartItemsService
   ) {}
 
   ngOnInit() {
-    this.getCartItems();
+    this.userLog = JSON.parse(localStorage.getItem("authUser"));
+    this.userId = this.userLog.user.userId;
+    this.getCartItems(this.userId);
   }
-  getCartItems() {
-    this.userControls.viewCart(this.userId).subscribe(cartITems => {
+  getCartItems(userID: string) {
+    this.userControls.viewCart(userID).subscribe(cartITems => {
       this.cartITems = cartITems;
       console.log(cartITems);
     });

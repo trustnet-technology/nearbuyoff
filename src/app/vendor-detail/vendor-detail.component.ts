@@ -4,6 +4,8 @@ declare var $: any;
 import { ProductModel } from "../models/productModel";
 import { ProductService } from "../services/product.service";
 import * as M from "materialize-css";
+import { VendorService } from "../services/vendor.service";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: "app-vendor-detail",
@@ -23,6 +25,7 @@ export class VendorDetailComponent implements OnInit, AfterViewInit {
   name = "Angular 7";
   lat: any;
   lng: any;
+  vendorDetails: any;
   recommProd: ProductModel[] = [
     new ProductModel(
       65,
@@ -305,13 +308,19 @@ export class VendorDetailComponent implements OnInit, AfterViewInit {
     )
   ];
 
-  constructor(private productService: ProductService) {
+  constructor(
+    private productService: ProductService,
+    private vendorDetail: VendorService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {
     if (navigator) {
       navigator.geolocation.getCurrentPosition(pos => {
         this.lat = +pos.coords.latitude;
         this.lng = +pos.coords.longitude;
       });
     }
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
   ngOnInit() {
     // this.getApparels();
@@ -319,6 +328,14 @@ export class VendorDetailComponent implements OnInit, AfterViewInit {
     this.mobJeans = this.jeans.slice(0, 6);
     this.mobSs = this.sweatshirts.slice(0, 6);
     this.mobTs = this.tshirts.slice(0, 6);
+    this.getVendorDetails();
+  }
+  getVendorDetails() {
+    const sellerID = this.route.snapshot.paramMap.get("sellerId");
+    this.vendorDetail.getVendorDetail(sellerID).subscribe(vendorDetails => {
+      this.vendorDetails = vendorDetails;
+      console.log(this.vendorDetails);
+    });
   }
   ngAfterViewInit() {
     var elems9 = document.querySelectorAll("#vendorProductSlider");

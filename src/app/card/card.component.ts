@@ -24,5 +24,7 @@ export class CardComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    // this.cardContent.description.slice(0, 15);
+  }
 }

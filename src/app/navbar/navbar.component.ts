@@ -48,6 +48,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   ) {
     this.isLog.isUserLoggedIn.subscribe(value => {
       this.isLoggedIn = value;
+      this.jquery_code();
     });
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.mapsAPILoader.load().then(() => {
@@ -58,7 +59,6 @@ export class NavbarComponent implements OnInit, AfterViewInit {
       console.log(this.bounds);
     });
   }
-
   jquery_code() {
     (function($) {
       $(function() {
@@ -147,10 +147,10 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     this.userLog = JSON.parse(localStorage.getItem("authUser"));
     try {
       if (this.userLog.tokenType == "Bearer") {
-        this.loggedIn = 1;
+        this.isLoggedIn = true;
       }
     } catch (error) {
-      this.loggedIn = 0;
+      this.isLoggedIn = false;
     }
     this.citySelected = JSON.parse(localStorage.getItem("currentCity"));
     this.getCartItems();
@@ -224,6 +224,10 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     this.cartItemService
       .getCartItems()
       .subscribe(cartItems => (this.cartItems = cartItems));
+  }
+  search(event) {
+    this.router.navigate(["search/" + event.target.value]);
+    //  event.target.value;
   }
 
   selectChangeHandler(event: any) {
