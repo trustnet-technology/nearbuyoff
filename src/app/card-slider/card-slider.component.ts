@@ -22,18 +22,13 @@ export class CardSliderComponent implements OnInit, AfterViewInit {
   mainLazyImage = "https://picsum.photos/id/777/12/8";
   subCategories: any;
   electronics: any[] = [];
+  electronics2: any[] = [];
   apparels: any[] = [];
+  apparels2: any[] = [];
   decors: any[] = [];
+  decors2: any[] = [];
   grocery: any[] = [];
   grocery2: any[] = [];
-  products: ProductModel[];
-  products2: ProductModel[];
-  mobProducts: ProductModel[] = [];
-  mobProducts2: ProductModel[] = [];
-  mobProducts3: ProductModel[] = [];
-  mobProducts4: ProductModel[] = [];
-  products3: ProductModel[];
-  products4: ProductModel[];
   products5: ProductModel[] = [
     new ProductModel(
       65,
@@ -103,10 +98,6 @@ export class CardSliderComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.getSubCategories();
-    this.getMobProducts();
-    this.getMobProducts2();
-    this.getMobProducts3();
-    this.getMobProducts4();
     $("#movNxtCarou").click(function(e) {
       e.preventDefault();
       e.stopPropagation();
@@ -133,10 +124,11 @@ export class CardSliderComponent implements OnInit, AfterViewInit {
   getSubCategories() {
     this.productService.getProductsSubcategories().subscribe(subCategories => {
       this.subCategories = subCategories;
+      console.log(subCategories);
       for (let i = 0; i < subCategories.length; i++) {
         if (subCategories[i].categoryName === "Home Appliances") {
           this.electronics.push(subCategories[i]);
-        } else if (subCategories[i].categoryName === "Apparels") {
+        } else if (subCategories[i].categoryName === "Apparel") {
           this.apparels.push(subCategories[i]);
         } else if (subCategories[i].categoryName === "Decor") {
           this.decors.push(subCategories[i]);
@@ -145,33 +137,10 @@ export class CardSliderComponent implements OnInit, AfterViewInit {
         }
       }
       this.grocery2 = this.grocery.slice(0, 4);
+      this.electronics2 = this.electronics.slice(0, 4);
+      this.decors2 = this.decors.slice(0, 4);
+      this.apparels2 = this.apparels.slice(0, 4);
       console.log(this.electronics);
     });
-  }
-  getMobProducts(): void {
-    this.productService
-      .getProducts()
-      .subscribe(mobProducts => (this.mobProducts = mobProducts.slice(0, 6)));
-  }
-  getMobProducts2(): void {
-    this.productService
-      .getProducts2()
-      .subscribe(
-        mobProducts2 => (this.mobProducts2 = mobProducts2.slice(0, 6))
-      );
-  }
-  getMobProducts3(): void {
-    this.productService
-      .getProducts3()
-      .subscribe(
-        mobProducts3 => (this.mobProducts3 = mobProducts3.slice(0, 6))
-      );
-  }
-  getMobProducts4(): void {
-    this.productService
-      .getProducts4()
-      .subscribe(
-        mobProducts4 => (this.mobProducts4 = mobProducts4.slice(0, 6))
-      );
   }
 }

@@ -37,7 +37,7 @@
             />
             <!---->
             <label class="label-icon" for="search">
-              <a routerLink="/search"> <i class="material-icons">search</i></a>
+              <i class="material-icons">search</i>
             </label>
             <i class="material-icons">close</i>
           </div>
@@ -83,18 +83,24 @@
           </a>
         </li>
         <ng-template #loggedOut>
-          <li
-            class="btn btn-waves"
-            style="color:white"
-            style="margin-top:10%;"
-            routerLink="/auth"
-          >
-            Log In
+          <li>
+            <a
+              id="some-dropdown"
+              routerLink="/auth"
+              class="right"
+              style=" color:white;font-family: 'Oswald', sans-serif"
+              ><b>Log In</b>
+            </a>
           </li>
         </ng-template>
       </ul>
       <ul id="mobile-options" style="color:white">
-        <li class="imgProfil" class="right" style="color:white">
+        <li
+          *ngIf="isLoggedIn; else loggedMOut"
+          class="imgProfil"
+          class="right"
+          style="color:white"
+        >
           <a
             id="dropdown-btn-profile-mobile"
             class="dropdown-button"
@@ -103,12 +109,21 @@
           >
             <img
               src="https://i0.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png?fit=256%2C256&quality=100&ssl=1"
-              alt=""
               class="circle"
               style="color:white"
             />
           </a>
         </li>
+        <ng-template #loggedMOut>
+          <li style="margin-top: 4%" class="right">
+            <a
+              id="some-dropdown"
+              routerLink="/auth"
+              style=" color:white;font-family: 'Oswald', sans-serif"
+              ><b>Log In</b>
+            </a>
+          </li>
+        </ng-template>
         <li>
           <a
             id="bt-sel-city-mobile"
@@ -125,46 +140,80 @@
 <!-- Near You Dropdown Menu -->
 <div id="services-dropdown" class="dropdown-content row">
   <div class="col s3 center black-text row">
-    <a style="font-size: x-large" routerLink="/category/CAT01">Apparel</a>
-    <div class="col s12 grey-text" style="font-size: medium">T-Shirts</div>
-    <div class="col s12 grey-text" style="font-size: medium">Jeans</div>
-    <div class="col s12 grey-text" style="font-size: medium">Sweatshirts</div>
-    <div class="col s12 grey-text" style="font-size: medium">Sneakers</div>
+    <a style="font-size: x-large" routerLink="/category/APPA">Apparel</a>
+    <div class="col s12 grey-text" style="font-size: medium">
+      <a style="font-size: medium" routerLink="/subcategory/T-S">T-Shirts </a>
+    </div>
+    <div class="col s12 grey-text" style="font-size: medium">
+      <a style="font-size: medium" routerLink="/subcategory/JEA">Jeans </a>
+    </div>
+    <div class="col s12 grey-text" style="font-size: medium">
+      <a style="font-size: medium" routerLink="/subcategory/SWE"
+        >Sweatshirts
+      </a>
+    </div>
+    <div class="col s12 grey-text" style="font-size: medium">
+      <a style="font-size: medium" routerLink="/subcategory/SNE">Sneakers </a>
+    </div>
   </div>
   <div class="col s3 center grey lighten-4 black-text row">
-    <a style="font-size: x-large" routerLink="/category/CAT03">Grocery</a>
+    <a style="font-size: x-large" routerLink="/category/GROC">Grocery</a>
     <div class="col s12 grey-text" style="font-size: medium">
-      Dressings & Sauces
+      <a style="font-size: medium" routerLink="/subcategory/DRE"
+        >Dressings & Sauces</a
+      >
     </div>
     <div class="col s12 grey-text" style="font-size: medium">
-      Dairy Products
+      <a style="font-size: medium" routerLink="/subcategory/DAI"
+        >Dairy Products</a
+      >
     </div>
-    <div class="col s12 grey-text" style="font-size: medium">Fruits</div>
-    <div class="col s12 grey-text" style="font-size: medium">Frozen Food</div>
+    <div class="col s12 grey-text" style="font-size: medium">
+      <a style="font-size: medium" routerLink="/subcategory/FRU">Fruits </a>
+    </div>
+    <div class="col s12 grey-text" style="font-size: medium">
+      <a style="font-size: medium" routerLink="/subcategory/FRO">Frozen Food</a>
+    </div>
   </div>
   <div class="col s3 center black-text row">
-    <a style="font-size: x-large" routerLink="/category/CAT02"
+    <a style="font-size: x-large" routerLink="/category/HOME"
       >Home Appliances</a
     >
     <div class="col s12 grey-text" style="font-size: medium">
-      Video Games & Consoles
-    </div>
-    <div class="col s12 grey-text" style="font-size: medium">Speakers</div>
-    <div class="col s12 grey-text" style="font-size: medium">
-      Washing Machines
+      <a style="font-size: medium" routerLink="/subcategory/VID"
+        >Video Games & Consoles</a
+      >
     </div>
     <div class="col s12 grey-text" style="font-size: medium">
-      TV & Home Theatres
+      <a style="font-size: medium" routerLink="/subcategory/SPE">Speakers</a>
+    </div>
+    <div class="col s12 grey-text" style="font-size: medium">
+      <a style="font-size: medium" routerLink="/subcategory/WAS"
+        >Washing Machines</a
+      >
+    </div>
+    <div class="col s12 grey-text" style="font-size: medium">
+      <a style="font-size: medium" routerLink="/subcategory/TV "
+        >TV & Home Theatres</a
+      >
     </div>
   </div>
   <div class="col s3 center grey lighten-4 black-text row">
-    <a style="font-size: x-large" routerLink="/category/CAT04">Decors</a>
-    <div class="col s12 grey-text" style="font-size: medium">Curtains</div>
+    <a style="font-size: x-large" routerLink="/category/DECO">Decors</a>
     <div class="col s12 grey-text" style="font-size: medium">
-      Pillows & Cushions
+      <a style="font-size: medium" routerLink="/subcategory/CUR">Curtains</a>
     </div>
-    <div class="col s12 grey-text" style="font-size: medium">Bed Sheets</div>
-    <div class="col s12 grey-text" style="font-size: medium">Wallpapers</div>
+    <div class="col s12 grey-text" style="font-size: medium">
+      <a style="font-size: medium" routerLink="/subcategory/PIL"
+        >Pillows & Cushions</a
+      >
+    </div>
+    <div class="col s12 grey-text" style="font-size: medium">
+      <a style="font-size: medium" routerLink="/subcategory/BED">Bed Sheets</a>
+    </div>
+    <div class="col s12 grey-text" style="font-size: medium">
+      <a style="font-size: medium" routerLink="/subcategory/WAL">Wallpapers</a>
+    </div>
   </div>
 </div>
 <!-- Mobile Nav for Navbar -->

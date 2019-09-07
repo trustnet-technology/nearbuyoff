@@ -1,69 +1,71 @@
-<div class="container">
-  <div class="row">
-    <div class="col s11">
-      <h4>
-        <i class="material-icons" style="color:darkblue">shopping_cart</i> You
-        have {{ cartITems?.length }} items in your Cart
-      </h4>
+<div style="background-color: #f2f3f4 ;">
+  <div class="container">
+    <div class="row" style="margin-bottom: 0%; padding: 5px">
+      <div class="col s11">
+        <h4>
+          <i class="material-icons" style="color:darkblue">shopping_cart</i> You
+          have {{ cartITems?.length }} items in your Cart
+        </h4>
+      </div>
     </div>
-  </div>
 
-  <div *ngFor="let cartItem of cartITems" class="card">
-    <div class="row">
-      <div class="card-content">
-        <div class="col s8 m8 l8">
-          <div class="row">
-            <div class="col l5 m5 s7">
-              <img
-                src="https://pbs.twimg.com/profile_images/846659478120366082/K-kZVvT8.jpg"
-              />
-            </div>
-            <div class="col l7 m7 s5">
-              <h5>
-                {{ cartItem.userCartId }}
-              </h5>
-              <div class="row">
-                <div class="col s5">
-                  <p>SIZE: <b>42</b></p>
-                </div>
-                <div class="col s7">
-                  <p>
-                    Attribute Id: <b>{{ cartItem.productAttributeId }}</b>
-                  </p>
-                </div>
+    <div *ngFor="let cartItem of cartITems" class="card">
+      <div class="row" style="margin-bottom: 0%">
+        <div class="card-content">
+          <div class="col s8 m8 l8">
+            <div class="row">
+              <div class="col l5 m5 s7">
+                <img
+                  src="https://pbs.twimg.com/profile_images/846659478120366082/K-kZVvT8.jpg"
+                />
               </div>
-              <div class="row">
-                <div class="col s8">
-                  <a
-                    id="btn-remove-cart-item"
-                    class="waves-effect waves-light btn red darken-2"
-                    style="width: 100%"
-                    ><i class="material-icons left">clear</i>Remove</a
-                  >
+              <div class="col l7 m7 s5">
+                <h5>
+                  {{ cartItem.userCartId }}
+                </h5>
+                <div class="row">
+                  <div class="col s5">
+                    <p>SIZE: <b>42</b></p>
+                  </div>
+                  <div class="col s7">
+                    <p id="attr-id">
+                      Attribute Id: <b>{{ cartItem.productAttributeId }}</b>
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col s8">
+                    <a
+                      id="btn-remove-cart-item"
+                      class="waves-effect waves-light btn red darken-2"
+                      style="width: 100%"
+                      ><i class="material-icons left">clear</i>Remove</a
+                    >
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="col s4">
-          <div class="row">
-            <div class="col s3">
-              <h5>
-                <b>600</b>
-              </h5>
+          <div class="col s4">
+            <div class="row">
+              <div class="col s3">
+                <h5>
+                  <b>600</b>
+                </h5>
+              </div>
+              <div class="col s2">
+                <h6>
+                  <s>999</s>
+                </h6>
+              </div>
             </div>
-            <div class="col s2">
-              <h6>
-                <s>999</s>
-              </h6>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col s11">
-              <p>
-                You Save:
-                <b>₹300 (10%) </b>
-              </p>
+            <div class="row">
+              <div class="col s11">
+                <p>
+                  You Save:
+                  <b>₹300 (10%) </b>
+                </p>
+              </div>
             </div>
           </div>
         </div>

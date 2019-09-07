@@ -55,7 +55,7 @@
         </div>
       </div>
     </div>
-    <div class="row" id="rowBelowMainCard">
+    <div class="row" id="rowBelowMainCard" style="margin-bottom:0%">
       <div class="col s12 m4 l8">
         <div class="row">
           <div class="card">
@@ -148,7 +148,7 @@
             <agm-map [latitude]="lat" [longitude]="lng">
               <agm-marker [latitude]="lat" [longitude]="lng"> </agm-marker>
             </agm-map>
-            <h6>5th Block Kormangala, Bangalore, Karnataka</h6>
+            <h6>{{ vendorDetails?.address }}</h6>
           </div>
         </div>
       </div>
@@ -195,7 +195,7 @@
       </div>
 
     </div> -->
-    <div class="row">
+    <!-- <div class="row">
       <hr />
       <h5 class="center">Recommended Products by this Seller</h5>
       <div class="carousel" id="mz2">
@@ -226,18 +226,16 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="row"></div>
-
-    <div class="row " style="padding-top: 4%">
+    </div> -->
+    <!-- <div class="row " style="padding-top: 4%">
       <hr />
       <h5 class="center">More Products by this seller</h5>
 
       <hr id="hr2" />
       <h6 class="center" style="font-family: 'Oswald', sans-serif;">Jeans</h6>
 
-      <div class="carousel" id="vendorProductSlider">
-        <!-- <div class="left" id="leftDiv">
+      <div class="carousel" id="vendorProductSlider"> -->
+    <!-- <div class="left" id="leftDiv">
           <a
             href="Previo"
             class="movePrevCarousel middle-indicator-text waves-effect waves-light content-indicator"
@@ -259,7 +257,7 @@
             </i>
           </a>
         </div> -->
-        <div *ngFor="let apparel of jeans" class="carousel-item ">
+    <!-- <div *ngFor="let apparel of jeans" class="carousel-item ">
           <app-card [cardContent]="apparel"> </app-card>
         </div>
       </div>
@@ -270,18 +268,18 @@
           </a>
         </div>
       </div>
-    </div>
+    </div> -->
 
-    <div class="row">
+    <!-- <div class="row">
       <hr id="hr2" />
       <h6 class="center" style="font-family: 'Oswald', sans-serif;">
         Sweatshirts
       </h6>
       <div class="carousel" id="vendorProductSlider">
         <div *ngFor="let apparel of sweatshirts" class="carousel-item ">
-          <!-- <a routerLink="/product/{{ apparel.productID }}"> -->
+          <a routerLink="/product/{{ apparel.productID }}">
           <app-card [cardContent]="apparel"> </app-card>
-          <!-- </a> -->
+          </a>
         </div>
       </div>
       <div class="row" id="products-mob-vendor">
@@ -291,17 +289,17 @@
           </a>
         </div>
       </div>
-    </div>
-    <div class="row " style="padding-bottom: 7%;margin-bottom: 0px">
+    </div> -->
+    <!-- <div class="row " style="padding-bottom: 7%;margin-bottom: 0px">
       <hr id="hr2" />
       <h6 class="center" style="font-family: 'Oswald', sans-serif;">
         T-Shirts
       </h6>
       <div class="carousel" id="vendorProductSlider">
         <div *ngFor="let apparel of tshirts" class="carousel-item ">
-          <!-- <a routerLink="/product/{{ apparel.productID }}"> -->
+          <a routerLink="/product/{{ apparel.productID }}">
           <app-card [cardContent]="apparel"> </app-card>
-          <!-- </a> -->
+          </a>
         </div>
       </div>
       <div class="row" id="products-mob-vendor">
@@ -311,7 +309,7 @@
           </a>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <!-- <div class="row"> -->
     <!-- <div class="col s4 offset-s8" style="padding-top: 10px">

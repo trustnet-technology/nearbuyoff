@@ -29,6 +29,7 @@ import { UserProfileComponent } from "./user-profile/user-profile.component";
 import { CartComponent } from "./cart/cart.component";
 import { ProductGridComponent } from "./product-grid/product-grid.component";
 import { Ng5SliderModule } from "ng5-slider";
+import { SelectDropDownModule } from "ngx-select-dropdown";
 import { SubCategoryCardComponent } from "./sub-category-card/sub-category-card.component";
 
 @NgModule({
@@ -59,9 +60,10 @@ import { SubCategoryCardComponent } from "./sub-category-card/sub-category-card.
     HttpClientModule,
     ShareModule,
     Ng5SliderModule,
+    SelectDropDownModule,
     LazyLoadImageModule.forRoot({ preset: intersectionObserverPreset }),
     AgmCoreModule.forRoot({
-      apiKey: "Enter API key Here"
+      apiKey: "AIzaSyCPq73ZhDozL2oRl9jfqO_4xZpBMOCJA84"
     }),
     AgmDirectionModule
   ],

@@ -3,7 +3,7 @@
   <hr />
   <h5 id="apparel" class="center">Home Appliances</h5>
   <div class="row">
-    <a class="btn right black" routerLink="/category/CAT02">
+    <a class="btn right black" routerLink="/category/HOME">
       View All<i class="material-icons right" style="margin-top: 5%">
         arrow_forward
       </i>
@@ -11,15 +11,14 @@
   </div>
   <div class="row">
     <div
-      *ngFor="let subccategory of electronics; let i = index; let last = last"
+      *ngFor="let subccategory of electronics2; let i = index; let last = last"
     >
       <a
-        class="col s3"
+        class="col l3 m3 s6"
         routerLink="/subcategory/{{ subccategory.subategoryId }}"
       >
-        <app-sub-category-card
-          [subCatContent]="subccategory"
-        ></app-sub-category-card>
+        <app-sub-category-card [subCatContent]="subccategory">
+        </app-sub-category-card>
       </a>
     </div>
   </div>
@@ -28,28 +27,21 @@
   <hr />
   <h5 class="center">Apparels</h5>
   <div class="row">
-    <a class="btn right black" routerLink="/category/CAT01">
+    <a class="btn right black" routerLink="/category/APPA">
       View All<i class="material-icons right" style="margin-top: 5%"
         >arrow_forward</i
       ></a
     >
   </div>
   <div class="row">
-    <div *ngFor="let subccategory of apparels; let i = index; let last = last">
+    <div *ngFor="let subccategory of apparels2; let i = index; let last = last">
       <a
-        class="col s3"
+        class="col l3 m3 s6"
         routerLink="/subcategory/{{ subccategory.subategoryId }}"
       >
         <app-sub-category-card
           [subCatContent]="subccategory"
         ></app-sub-category-card>
-      </a>
-    </div>
-  </div>
-  <div class="row" id="products-mob-apparel">
-    <div *ngFor="let mobApparel of mobProducts2" class="col s4">
-      <a routerLink="/product/{{ mobApparel.productID }}">
-        <app-card [cardContent]="mobApparel"></app-card>
       </a>
     </div>
   </div>
@@ -59,7 +51,7 @@
   <hr />
   <h5 class="center">Grocery</h5>
   <div class="row">
-    <a class="btn right black" routerLink="/category/CAT03">
+    <a class="btn right black" routerLink="/category/GROC">
       View All<i class="material-icons right" style="margin-top: 5%"
         >arrow_forward</i
       ></a
@@ -68,19 +60,12 @@
   <div class="row">
     <div *ngFor="let subccategory of grocery2; let i = index; let last = last">
       <a
-        class="col s3"
+        class="col l3 m3 s6"
         routerLink="/subcategory/{{ subccategory.subategoryId }}"
       >
         <app-sub-category-card
           [subCatContent]="subccategory"
         ></app-sub-category-card>
-      </a>
-    </div>
-  </div>
-  <div class="row" id="products-mob-apparel">
-    <div *ngFor="let mobApparel of mobProducts3" class="col s4">
-      <a routerLink="/product/{{ mobApparel.productID }}">
-        <app-card [cardContent]="mobApparel"></app-card>
       </a>
     </div>
   </div>
@@ -90,28 +75,21 @@
   <hr />
   <h5 class="center">Decors</h5>
   <div class="row">
-    <a class="btn right black" routerLink="/category/CAT04">
+    <a class="btn right black" routerLink="/category/DECO">
       View All<i class="material-icons right" style="margin-top: 5%"
         >arrow_forward</i
       ></a
     >
   </div>
   <div class="row">
-    <div *ngFor="let subccategory of decors; let i = index; let last = last">
+    <div *ngFor="let subccategory of decors2; let i = index; let last = last">
       <a
-        class="col s3"
+        class="col l3 m3 s6"
         routerLink="/subcategory/{{ subccategory.subategoryId }}"
       >
         <app-sub-category-card
           [subCatContent]="subccategory"
         ></app-sub-category-card>
-      </a>
-    </div>
-  </div>
-  <div class="row" id="products-mob-apparel">
-    <div *ngFor="let mobApparel of mobProducts4" class="col s4">
-      <a routerLink="/product/{{ mobApparel.productID }}">
-        <app-card [cardContent]="mobApparel"></app-card>
       </a>
     </div>
   </div>

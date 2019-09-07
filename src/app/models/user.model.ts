@@ -12,4 +12,10 @@ export interface OrderNowModel {
   quantity: string;
   statue: string;
   orderPaymentMode: string;
+  contactNumber: string;
+  productSellerName: string;
+  productName: string;
+  productId: string;
+  price: string;
+  createdDate: string;
 }

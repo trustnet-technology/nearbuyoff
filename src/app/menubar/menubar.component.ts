@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { MenuModel } from "../models/menuModel";
 import * as M from "materialize-css";
 import { MenuItemsService } from "../services/menu-items.service";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: "app-menubar",
@@ -12,7 +13,11 @@ export class MenubarComponent implements OnInit {
   mItems: MenuModel[];
   options = {};
 
-  constructor(private menuItemsService: MenuItemsService) {}
+  constructor(
+    private menuItemsService: MenuItemsService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
     this.getMenuItems();
@@ -23,5 +28,9 @@ export class MenubarComponent implements OnInit {
   }
   getMenuItems(): void {
     this.mItems = this.menuItemsService.getMenuItems();
+  }
+  search(event) {
+    this.router.navigate(["search/" + event.target.value]);
+    //  event.target.value;
   }
 }

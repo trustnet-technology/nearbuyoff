@@ -13,15 +13,15 @@
     <div id="test1" class="col s12">
       <div class="row">
         <div class="input-field col l6 m6 s10 offset-l3 offset-m3">
-          <i class="material-icons prefix ">mail</i>
-          <input id="icon_telephone" type="tel" class="validate" #emailu />
+          <i class="material-icons prefix">mail</i>
+          <input id="icon_mail" type="text" class="validate" #emailu />
           <!-- [(ngModel)]="email" [(ngModel)]="password" -->
-          <label for="icon_telephone">Email</label>
+          <label for="icon_mail">Email</label>
         </div>
         <div class="input-field col l6 m6 s10 offset-l3 offset-m3">
-          <i class="material-icons prefix ">phone</i>
-          <input id="icon_telephone" type="password" class="validate" #passwd />
-          <label for="icon_telephone">Password</label>
+          <i class="material-icons prefix">input</i>
+          <input id="icon_password" type="password" class="validate" #passwd />
+          <label for="icon_password">Password</label>
         </div>
         <div
           class="input-field col l6 m6 s9 offset-l3 offset-m3 offset-s1 center"
@@ -43,35 +43,36 @@
           <label for="icon_telephone">Phone Number</label>
         </div>
         <div class="input-field col l6 m6 s10 offset-l3 offset-m3">
-          <i class="material-icons prefix">account_circle</i>
-          <input id="icon_telephone" type="tel" class="validate" #name />
-          <label for="icon_telephone">Name</label>
+          <i class="material-icons prefix">short_text</i>
+          <input id="icon_nm" type="text" class="validate" #name />
+          <label for="icon_nm">Name</label>
         </div>
         <div class="input-field col l6 m6 s10 offset-l3 offset-m3">
-          <i class="material-icons prefix">account_circle</i>
-          <input id="icon_telephone" type="tel" class="validate" #username />
-          <label for="icon_telephone">Username</label>
+          <i class="material-icons prefix">format_underlined</i>
+          <input id="icon_usrnm" type="text" class="validate" #username />
+          <label for="icon_usrnm">Username</label>
         </div>
         <div class="input-field col l6 m6 s10 offset-l3 offset-m3">
-          <i class="material-icons prefix">home</i>
-          <input id="icon_telephone" type="tel" class="validate" #email />
-          <label for="icon_telephone">Email</label>
+          <i class="material-icons prefix">email</i>
+          <input id="icon_email" type="text" class="validate" #email />
+          <label for="icon_email">Email</label>
         </div>
         <div class="input-field col l6 m6 s10 offset-l3 offset-m3">
-          <i class="material-icons prefix">home</i>
+          <i class="material-icons prefix">input</i>
           <input
-            id="icon_telephone"
+            id="icon_pswd"
             type="password"
             class="validate"
             #password
           />
-          <label for="icon_telephone">Password</label>
+          <label for="icon_pswd">Password</label>
         </div>
         <div
           class="input-field col l6 m6 s9 offset-l3 offset-m3 offset-s1 center"
         >
           <a
             id="btn-sign-up"
+            routerLink="/auth"
             (click)="
               signUp(
                 name.value,

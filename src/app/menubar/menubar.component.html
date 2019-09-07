@@ -10,7 +10,7 @@
           id="search"
           type="search"
           name="search"
-          (input)="search(searchBox.value)"
+          (keydown.enter)="search($event)"
         />
         <label class="label-icon" for="search">
           <a routerLink="/search">
@@ -45,7 +45,7 @@
         <div class="collapsible-body">
           <ul>
             <li *ngFor="let child of mItem.children">
-              <a routerLink="/search">{{ child }}</a>
+              <a routerLink="/subcategory/{{ child.url }}">{{ child.name }}</a>
             </li>
           </ul>
         </div>

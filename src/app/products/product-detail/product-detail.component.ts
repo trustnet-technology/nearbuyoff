@@ -30,6 +30,18 @@ export class ProductDetailComponent implements OnInit {
       }
     }
   };
+  config = {
+    displayKey: "description", //if objects array passed which key to be displayed defaults to description
+    search: false, //true/false for the search functionlity defaults to false,
+    height: "auto", //height of the list so that if there are more no of items it can show a scroll defaults to auto. With auto height scroll will never appear
+    placeholder: "Select", // text to be displayed when no item is selected defaults to Select,
+    customComparator: () => {}, // a custom function using which user wants to sort the items. default is undefined and Array.sort() will be used in that case,
+    limitTo: 5, // a number thats limits the no of options displayed in the UI similar to angular's limitTo pipe
+    moreText: "more", // text to be displayed whenmore than one items are selected like Option 1 + 5 more
+    noResultsFound: "No results found!", // text to be displayed when no items are found while searching
+    searchPlaceholder: "Search", // label thats displayed in search input,
+    searchOnKey: "name" // key on which search should be performed this will be selective search. if undefined this will be extensive search on all keys
+  };
   options2 = {
     dist: 0,
     shift: 0,
@@ -50,9 +62,11 @@ export class ProductDetailComponent implements OnInit {
   loggedIn: number;
 
   recommProds: any;
-  numSellers: number;
+  numSellers: number[] = [];
 
   userId: string = "U1212";
+  contactNum: string;
+  userName: string;
   prodAttrId: string = "PA1043";
   prodSellId: string = "PS1043";
   quant: string = "12";
@@ -60,20 +74,23 @@ export class ProductDetailComponent implements OnInit {
 
   color: any;
   colors: any;
+  colorz: string[] = [];
   size: any;
   weight: any;
 
+  productAttr0: any;
+
   plat: any;
   plng: any;
+  slat: any;
+  slng: any;
+  location: any;
+
   otpMessage: any;
   count: number;
   otpRecvMessage: any;
   otpDET: string;
   phoneDET: string;
-  selectedItem1: boolean;
-  selectedItem2: boolean;
-  selectedItem3: boolean;
-  selectedItem4: boolean;
   selectedSeller: string;
   markers = [
     { lat: 12.9763946, lng: 77.5992796 },
@@ -122,10 +139,12 @@ export class ProductDetailComponent implements OnInit {
       $("#cart-modal").modal();
     });
     $(document).ready(function() {
-      $("#selectedTest").formSelect();
+      $("#selectedTest")
+        .not(".disabled")
+        .formSelect();
     });
     $(document).ready(function() {
-      $("#selected2Test").formSelect();
+      $("#pymt-select").formSelect();
     });
   }
 
@@ -134,19 +153,22 @@ export class ProductDetailComponent implements OnInit {
     this.count = 0;
     this.loggedIn = 0;
     this.userLog = JSON.parse(localStorage.getItem("authUser"));
+    this.location = JSON.parse(localStorage.getItem("currentCity"));
     try {
       this.userId = this.userLog.user.userId;
+      this.contactNum = this.userLog.user.phoneNum;
+      this.userName = this.userLog.user.firstName;
+      this.slat = this.location.lat;
+      this.slng = this.location.lng;
       if (this.userLog.tokenType == "Bearer") {
         this.loggedIn = 1;
       }
     } catch (error) {
       this.userId = "";
       this.loggedIn = 0;
+      this.slat = "10";
+      this.slng = "20";
     }
-    this.selectedItem1 = false;
-    this.selectedItem2 = false;
-    this.selectedItem3 = false;
-    this.selectedItem4 = false;
     this.selectedSeller = "PS1043";
     this.dir = {
       origin: { lat: 12.9344758, lng: 77.6192442 },
@@ -159,104 +181,65 @@ export class ProductDetailComponent implements OnInit {
     console.log(this.plat, this.plng);
 
     this.getProductDetail();
-    this.getProductAttributes();
+    this.getProductAttributes(this.slat, this.slng);
     this.getRecomProducts();
   }
 
-  log() {
-    console.log("logging");
-  }
-  selectDir() {
-    this.selectedItem1 = true;
-    this.selectedItem2 = false;
-    this.selectedItem3 = false;
-    this.selectedItem4 = false;
-    this.selectedSeller = "PS1043";
+  selectSeller(event, sellerInfo) {
+    this.location = JSON.parse(localStorage.getItem("currentCity"));
+    this.selectedSeller = sellerInfo.productSellerId;
+    this.slat = this.location.lat;
+    this.slng = this.location.lng;
     this.count = 1;
     this.dir = {
-      origin: { lat: 12.9344758, lng: 77.6192442 },
-      destination: { lat: 12.9763946, lng: 77.5992796 },
+      origin: { lat: Number(this.slat), lng: Number(this.slng) },
+      destination: { lat: Number(sellerInfo.lat), lng: Number(sellerInfo.lon) },
       renderOptions: { polylineOptions: { strokeColor: "#f00" } }
     };
   }
-  selectDir2() {
-    this.selectedItem1 = false;
-    this.selectedItem2 = true;
-    this.selectedItem3 = false;
-    this.selectedItem4 = false;
-    this.selectedSeller = "PS1043";
-    this.count = 1;
-    this.dir = {
-      origin: { lat: 12.9344758, lng: 77.6192442 },
-      destination: { lat: 12.9399071, lng: 77.6201755 },
-      renderOptions: { polylineOptions: { strokeColor: "#f00" } }
-    };
-  }
-  selectDir3() {
-    this.selectedItem1 = false;
-    this.selectedItem2 = false;
-    this.selectedItem3 = true;
-    this.selectedItem4 = false;
-    this.selectedSeller = "PS1043";
-    this.count = 1;
-    this.dir = {
-      origin: { lat: 12.9344758, lng: 77.6192442 },
-      destination: { lat: 12.9368682, lng: 77.6180538 },
-      renderOptions: { polylineOptions: { strokeColor: "#f00" } }
-    };
-  }
-  selectDir4() {
-    this.selectedItem1 = false;
-    this.selectedItem2 = false;
-    this.selectedItem3 = false;
-    this.selectedItem4 = true;
-    this.selectedSeller = "PS1043";
-    this.count = 1;
-    this.dir = {
-      origin: { lat: 12.9344758, lng: 77.6192442 },
-      destination: { lat: 12.912491, lng: 77.6422287 },
-      renderOptions: { polylineOptions: { strokeColor: "#f00" } }
-    };
-  }
+  // destination: { lat: 12.9763946, lng: 77.5992796 }
+  // destination: { lat: 12.9399071, lng: 77.6201755 }
+  // destination: { lat: 12.9368682, lng: 77.6180538 }
+  // destination: { lat: 12.912491, lng: 77.6422287 }
+
   getProductDetail() {
     const productID = this.route.snapshot.paramMap.get("productId");
     this.productId = productID;
     const subCategoryID = this.route.snapshot.paramMap.get("subategoryId");
-    console.log(subCategoryID, productID);
     this.productService.getProductsOfSubCategory(subCategoryID).subscribe(
       products => {
         this.productMain = products;
+        console.log(products);
         for (let i = 0; i < products.length; i++) {
           if (this.productMain[i].productId === productID) {
             this.productM = this.productMain[i];
           }
         }
-        console.log(this.productM);
       },
       error => console.log(error)
     );
   }
-  getProductAttributes() {
+  getProductAttributes(lat: string, lng: string) {
     const productID = this.route.snapshot.paramMap.get("productId");
     this.color = new Set();
     this.weight = new Set();
     this.size = new Set();
     this.productService
-      .getProductDetails(productID, "1", "2")
+      .getProductDetails(productID, lat, lng)
       .subscribe(attributes => {
         this.productAttr = attributes;
-        console.log(attributes.length);
+        console.log(attributes);
         for (let i = 0; i < attributes.length; i++) {
+          if (i === 0) {
+            this.productAttr0 = attributes[i];
+          }
           this.color.add(attributes[i].productAttribute.color);
           this.size.add(attributes[i].productAttribute.color);
           this.weight.add(attributes[i].productAttribute.color);
-          console.log(attributes[i].productAttribute.color);
         }
-        console.log(this.color);
-        this.colors = Array.from(this.color.values());
+        this.colorz = Array.from(this.color);
         for (var item of attributes) {
-          this.numSellers = item.productSellers.length;
-          console.log(item);
+          this.numSellers.push(item.productSellers.length);
         }
       });
   }
@@ -265,7 +248,6 @@ export class ProductDetailComponent implements OnInit {
     this.productService.getProductsOfSubCategory(subCategoryID).subscribe(
       success => {
         this.recommProds = success.slice(0, 5);
-        console.log(this.recommProds);
       },
       error => console.log(error)
     );
@@ -275,19 +257,32 @@ export class ProductDetailComponent implements OnInit {
       var toastHTML = "Please Login first";
       M.toast({ html: toastHTML });
     } else if (this.loggedIn == 1) {
-      var toastHTML = "Order Placed Successfully";
-      let action: OrderNowModel = {
-        userId: this.userId,
-        productAttributeId: "PA1043",
-        productSellerId: "PS1043",
-        quantity: quantity,
-        statue: "Clear",
-        orderPaymentMode: "Credit Card"
-      };
-      this.userControls.order(action).subscribe(success => {
-        success;
+      if (this.numSellers[0] > 0) {
+        const productID = this.route.snapshot.paramMap.get("productId");
+        var toastHTML = "Order Placed Successfully";
+        let action: OrderNowModel = {
+          userId: this.userId,
+          productAttributeId: this.productAttr0.productAttribute
+            .productAttributeId,
+          productSellerId: this.productAttr0.productSellers[0].sellerId,
+          quantity: quantity,
+          statue: "Order Placed",
+          orderPaymentMode: "COD (Cash on Delivery)",
+          createdDate: String(Date.now()),
+          contactNumber: this.contactNum,
+          productName: this.productM.productName,
+          productId: productID,
+          productSellerName: this.productAttr0.productSellers[0].sellerName,
+          price: this.productAttr0.productAttribute.mrp
+        };
+        this.userControls.order(action).subscribe(success => {
+          success;
+          M.toast({ html: toastHTML });
+        });
+      } else {
+        var toastHTML = "No Sellers Available. Please Try Later";
         M.toast({ html: toastHTML });
-      });
+      }
     }
   }
 
@@ -311,21 +306,27 @@ export class ProductDetailComponent implements OnInit {
       var toastHTML = "Please Login first";
       M.toast({ html: toastHTML });
     } else if (this.loggedIn === 1) {
-      var toastHTML = "<span>Product Added to Cart</span>";
-      let cartBody: AddToCartModel = {
-        userId: this.userId,
-        productAttributeId: this.prodAttrId,
-        productSellerId: this.prodSellId,
-        quantity: this.quant,
-        isActive: this.isActive
-      };
-      this.userControls.addToCart(cartBody).subscribe(
-        success => {
-          console.log(success.isActive);
-          M.toast({ html: toastHTML });
-        },
-        error => console.log(error)
-      );
+      if (this.numSellers[0] > 0) {
+        var toastHTML = "<span>Product Added to Cart</span>";
+        let cartBody: AddToCartModel = {
+          userId: this.userId,
+          productAttributeId: this.productAttr0.productAttribute
+            .productAttributeId,
+          productSellerId: this.productAttr0.productSellers[0].productSellerId,
+          quantity: "2",
+          isActive: "Yes"
+        };
+        this.userControls.addToCart(cartBody).subscribe(
+          success => {
+            console.log(success.isActive);
+            M.toast({ html: toastHTML });
+          },
+          error => console.log(error)
+        );
+      } else {
+        var toastHTML = "No Sellers Available. Please Try Later";
+        M.toast({ html: toastHTML });
+      }
     }
   }
   viewAllCart() {
@@ -336,18 +337,29 @@ export class ProductDetailComponent implements OnInit {
       this.router.navigate(["cart/view"]);
     }
   }
-  postLeads() {
-    let itemz: PostLeadModel = {
-      product_id: "",
-      product_variant_id: "",
-      user_id: this.userId,
-      quantity: 0,
-      contact_no: 0,
-      customer_name: "",
-      vendor_id: ""
-    };
-    this.userControls
-      .postLead(itemz)
-      .subscribe(success => console.log(success), error => console.log(error));
+  postLeads(sellerInfo, quantity: string) {
+    const productID = this.route.snapshot.paramMap.get("productId");
+    if (this.loggedIn === 0) {
+      var toastHTML = "Please Login first";
+      M.toast({ html: toastHTML });
+    } else if (this.loggedIn === 1) {
+      let itemz: PostLeadModel = {
+        product_id: productID,
+        product_variant_id: sellerInfo.productAttributeId,
+        user_id: this.userId,
+        quantity: Number(quantity),
+        contact_no: Number(this.contactNum),
+        customer_name: this.userName,
+        vendor_id: sellerInfo.sellerId
+      };
+      this.userControls.postLead(itemz).subscribe(
+        success => {
+          M.toast({ html: "Notfication sent to seller." });
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    }
   }
 }

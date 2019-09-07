@@ -1,13 +1,20 @@
 #productRow {
   padding: 3%;
 }
-#mob-recom-prods {
-  display: none;
-}
 .font-bolder,
 .font-bolder h5 {
   font-weight: bolder;
   background-color: #eeefe7;
+}
+#cart-modal .row {
+  margin-bottom: 0.625em;
+}
+#mob-recom-prods.row {
+  margin-bottom: 0px;
+}
+#seller-name-td h5 {
+  display: contents;
+  overflow: hidden;
 }
 #img-container {
   padding-top: 1.5%;
@@ -29,7 +36,6 @@
 #also-buy-img {
   width: 225px;
   height: 270px;
-  max-width: 100%;
 }
 .product-description {
   border-bottom: 1px solid #e1e8ee;
@@ -72,7 +78,7 @@ agm-map {
   height: 483px;
 }
 h5 {
-  padding-bottom: 4%;
+  padding-bottom: 2%;
 }
 hr {
   width: 10%;
@@ -100,20 +106,8 @@ hr {
   border-radius: 15px;
   overflow: hidden;
 }
-.carousel {
-  height: 295px;
-}
 #recommCarousel {
-  height: fit-content;
-  width: fit-content;
   padding-bottom: 3%;
-  object-fit: cover;
-  background-size: contain;
-}
-#recommProductsSlider {
-  height: 100%;
-  padding-bottom: 8%;
-  padding-top: 2%;
 }
 #productPageCarousel {
   padding-bottom: 2%;
@@ -209,11 +203,23 @@ div.explanation {
   #modal-buyers.modal .modal-content {
     padding: 16px;
   }
+  #cart-modal .row {
+    margin-bottom: 0.325em;
+  }
   #productPageCarousel {
     display: none;
   }
   #mob-recom-prods {
     display: block;
+  }
+  .input-field.col.s4 {
+    font-size: 0.8em;
+  }
+  td {
+    text-align: center;
+  }
+  #seller-name-td {
+    padding-left: 5%;
   }
   #btn-view-all,
   #btn-checkout {
@@ -259,18 +265,20 @@ div.explanation {
   .row {
     margin-bottom: 10px;
   }
-  #cart-modal h5 {
-    font-size: 1.3em;
-  }
   #cart-modal p {
     font-size: 0.6em;
   }
   #cart-modal .col.s9 h5 {
     font-size: 0.9em;
   }
-  #qty-cart {
+  /* #qty-cart {
     font-size: 0.8em;
     height: 1.5em;
+  } */
+  #qty-label {
+    top: 1em;
+    left: 0em;
+    font-size: 0.7em;
   }
   .btn {
     font-size: 7px;

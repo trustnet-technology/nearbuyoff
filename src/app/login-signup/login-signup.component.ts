@@ -72,7 +72,7 @@ export class LoginSignupComponent implements OnInit {
     this.authService.signUp(value).subscribe(
       success => {
         M.toast({ html: "Signed Up Successfully", classes: "green darken-1" });
-        this.ngOnInit();
+        this.router.navigate(["home"]);
       },
       error => {
         M.toast({

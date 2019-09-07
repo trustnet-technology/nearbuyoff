@@ -3,27 +3,42 @@ import { MenuModel } from "../models/menuModel";
 export const ITEMSMENU: MenuModel[] = [
   {
     name: "APPARELS",
-    children: ["T-Shirts", "Jeans", "Sweatshirts", "Sneakers"],
-    categoryID: "CAT01"
+    children: [
+      { name: "T-Shirts", url: "T-S" },
+      { name: "Jeans", url: "JEA" },
+      { name: "Sweatshirts", url: "SWE" },
+      { name: "Sneakers", url: "SNE" }
+    ],
+    categoryID: "APPA"
   },
   {
     name: "GROCERY",
-    categoryID: "CAT03",
-    children: ["Dressings & Sauces", "Dairy Products", "Fruits", "Frozen Food"]
+    categoryID: "GROC",
+    children: [
+      { name: "Dressings & Sauces", url: "DRE" },
+      { name: "Dairy Products", url: "DAI" },
+      { name: "Fruits", url: "FRU" },
+      { name: "Frozen Food", url: "FRO" }
+    ]
   },
   {
     name: "HOME APPLIANCES",
-    categoryID: "CAT02",
+    categoryID: "HOME",
     children: [
-      "Video Games & Consoles",
-      "Speakers",
-      "Washing Machines",
-      "TV & Home Theaters"
+      { name: "Video Games & Consoles", url: "VID" },
+      { name: "Speakers", url: "SPE" },
+      { name: "Washing Machines", url: "WAS" },
+      { name: "TV & Home Theaters", url: "TV " }
     ]
   },
   {
     name: "DECOR",
-    categoryID: "CAT04",
-    children: ["Curtains", "Pillows & Cushions", "Bed-Sheets", "Wallpapers"]
+    categoryID: "DECO",
+    children: [
+      { name: "Curtains", url: "CUR" },
+      { name: "Pillows & Cushions", url: "PIL" },
+      { name: "Bed-Sheets", url: "BED" },
+      { name: "Wallpapers", url: "WAL" }
+    ]
   }
 ];

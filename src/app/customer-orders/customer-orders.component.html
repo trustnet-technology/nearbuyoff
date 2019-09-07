@@ -1,68 +1,80 @@
-<div class="container">
-  <div class="row">
-    <div class="col s12">
-      <ul class="tabs">
-        <li class="tab col l4 m4 s6 offset-l2 offset-m2">
-          <a class="active" href="#current-order">Current Order</a>
-        </li>
-        <li class="tab col l4 m4 s6"><a href="#all-orders">All Orders</a></li>
-      </ul>
-    </div>
-    <div id="current-order" class="col s12">
-      <div *ngFor="let item of currentOrders" class="row grey lighten-4">
-        <div class="col l4 m4 s5">
-          <img
-            src="https://ae01.alicdn.com/kf/HTB1tIyMinXYBeNkHFrdq6AiuVXaO/Summer-New-Men-Skinny-Jeans-Fashion-2019-Slim-Fit-Casual-Ripped-Jeans-Men-Personality-Star-Print.jpg_640x640.jpg"
-          />
-        </div>
-        <div id="order-details" class="col l4 m4 s7">
-          <div class="row">
-            <div class="col s12">
-              <h4>{{ item.userOrderId }}</h4>
-            </div>
-            <div class="col l6 m6 s6 offset-l3 offset-m3">
-              <p>{{ item.productAttributeId }}</p>
-            </div>
-            <div class="col l6 m6 s6 offset-l3 offset-m3">
-              <p>{{ item.productSellerId }}</p>
+<div style="background-color: #f2f3f4 ;">
+  <div class="container">
+    <div class="row">
+      <div class="col s12" style="padding:0px;">
+        <ul class="tabs">
+          <li class="tab col l4 m4 s6 offset-l2 offset-m2">
+            <a class="active" href="#current-order">Current Order</a>
+          </li>
+          <li class="tab col l4 m4 s6"><a href="#all-orders">All Orders</a></li>
+        </ul>
+      </div>
+      <div id="current-order" class="col s12">
+        <div *ngFor="let item of currentOrders" class="card row">
+          <div class="col l4 m4 s5">
+            <img
+              src="https://ae01.alicdn.com/kf/HTB1tIyMinXYBeNkHFrdq6AiuVXaO/Summer-New-Men-Skinny-Jeans-Fashion-2019-Slim-Fit-Casual-Ripped-Jeans-Men-Personality-Star-Print.jpg_640x640.jpg"
+            />
+          </div>
+          <div id="order-details" class="col l4 m4 s7">
+            <div class="row">
+              <div class="col s12">
+                <h4>{{ item.userOrderId }}</h4>
+              </div>
+              <div class="col l6 m6 s6 offset-l3 offset-m3">
+                <p>{{ item.statue }}</p>
+              </div>
+              <div class="col l6 m6 s6 offset-l3 offset-m3">
+                <p>
+                  Seller:<a routerLink="/seller/{{ item.productSellerId }}">
+                    {{ item.productSellerName }}</a
+                  >
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col l3 m3 offset-l1 offset-m1 s12">
-          <div class="row">
-            <div class="col l12 m12 s6" id="bt-track">
-              <a class="waves-effect waves-light btn">Track Order</a>
-            </div>
-            <div class="col l12 m12 s6" id="bt-current">
-              <a class="waves-effect waves-light btn red darken-2"
-                >Cancel Order</a
-              >
+          <div class="col l3 m3 offset-l1 offset-m1 s12">
+            <div class="row">
+              <div class="col l12 m12 s6" id="bt-track">
+                <a class="waves-effect waves-light btn">Track Order</a>
+              </div>
+              <div class="col l12 m12 s6" id="bt-current">
+                <a class="waves-effect waves-light btn red darken-2"
+                  >Cancel Order</a
+                >
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div id="all-orders" class="col s12">
-      <table class="highlight responsive-table centered">
-        <thead>
-          <tr>
-            <th>Order ID</th>
-            <!-- <th>Order Date</th> -->
-            <th>Seller ID</th>
-            <th>Quantity</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let order of orderAPItems">
-            <td>{{ order.userOrderId }}</td>
-            <!-- <td>{{ order.date }}</td> -->
-            <td>{{ order.productSellerId }}</td>
-            <td>{{ order.quantity }}</td>
-            <td>{{ order.statue }}</td>
-          </tr>
-        </tbody>
-      </table>
+      <div id="all-orders" class="col s12">
+        <table class="highlight responsive-table centered">
+          <thead>
+            <tr>
+              <th>Order ID</th>
+              <th>Order Date</th>
+              <th>Product Name</th>
+              <th>Seller Name</th>
+              <th>Quantity</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let order of orderAPItems">
+              <td>{{ order.userOrderId }}</td>
+              <td>{{ order.createdDate | date: "yyyy-MM-dd" }}</td>
+              <td>{{ order.productName }}</td>
+              <td>
+                <a routerLink="/seller/{{ order.productSellerId }}">{{
+                  order.productSellerName
+                }}</a>
+              </td>
+              <td>{{ order.quantity }}</td>
+              <td>{{ order.statue }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>

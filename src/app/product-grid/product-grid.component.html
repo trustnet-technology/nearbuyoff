@@ -1,6 +1,7 @@
 <app-menubar></app-menubar>
-<div class="container">
-  <!-- <nav>
+<div style="background-color: #f2f3f4 ;font-family:  'Oswald', sans-serif; ">
+  <div id="grid-container" class="container">
+    <!-- <nav>
     <div class="nav-wrapper">
       <div class="col s12">
         <a href="#!" class="breadcrumb">First</a>
@@ -9,27 +10,27 @@
       </div>
     </div>
   </nav> -->
-  <div *ngIf="products" class="row">
-    <div *ngFor="let product of products" class="col s4 m4 l3">
-      <a
-        routerLink="/subcategory/{{ product.subCategoryId }}/{{
-          product.productId
-        }}"
-      >
-        <app-card [cardContent]="product"></app-card>
-      </a>
+    <div *ngIf="products" class="row">
+      <div *ngFor="let product of products" class="col s4 m4 l3">
+        <a
+          routerLink="/subcategory/{{ product.subCategoryId }}/{{
+            product.productId
+          }}"
+        >
+          <app-card [cardContent]="product"></app-card>
+        </a>
+      </div>
     </div>
-  </div>
-  <div *ngIf="subCategories" class="row">
-    <div *ngFor="let subCategory of subCategories" class="col s6 m6 l4">
-      <a routerLink="/subcategory/{{ subCategory.subategoryId }}">
-        <app-sub-category-card
-          [subCatContent]="subCategory"
-        ></app-sub-category-card>
-      </a>
+    <div *ngIf="subCategories" class="row">
+      <div *ngFor="let subCategory of subCategories" class="col s6 m6 l4">
+        <a routerLink="/subcategory/{{ subCategory.subategoryId }}">
+          <app-sub-category-card
+            [subCatContent]="subCategory"
+          ></app-sub-category-card>
+        </a>
+      </div>
     </div>
-  </div>
-  <!-- <ul class="center pagination">
+    <!-- <ul class="center pagination">
     <li class="disabled ">
       <a href="#!"><i class="material-icons">chevron_left</i></a>
     </li>
@@ -42,4 +43,5 @@
       <a href="#!"><i class="material-icons">chevron_right</i></a>
     </li>
   </ul> -->
+  </div>
 </div>

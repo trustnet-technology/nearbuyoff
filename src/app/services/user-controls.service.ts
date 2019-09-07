@@ -59,6 +59,7 @@ export class UserControlsService {
       .pipe(catchError(this.formatErrors));
   }
   private formatErrors(error: any) {
+    console.log(error.error);
     return throwError(error.error);
   }
 }

@@ -10,7 +10,7 @@ declare var $: any;
 })
 export class SliderComponent implements OnInit {
   mainImages: MainCarouselModel[];
-  options = { fullWidth: true, indicators: false };
+  options = { fullWidth: true, indicators: false, height: 300 };
   options2 = { responsiveThreshold: 0 };
   mainLazyImage = "https://picsum.photos/id/777/12/8";
 
@@ -21,21 +21,21 @@ export class SliderComponent implements OnInit {
     $("#mainCarouselNext").click(function(e) {
       e.preventDefault();
       e.stopPropagation();
-      $("#mainCarousel").carousel("next");
+      $(".carousel").carousel("next");
     });
 
     // move prev carousel
     $("#mainCarouselPrev").click(function(e) {
       e.preventDefault();
       e.stopPropagation();
-      $("#mainCarousel").carousel("prev");
+      $(".carousel").carousel("prev");
     });
   }
   ngAfterViewInit() {
-    var elems = document.querySelectorAll("#mainCarousel");
+    var elems = document.querySelectorAll(".carousel");
     var instances = M.Carousel.init(elems, this.options);
     // var elems2 = document.querySelectorAll(".parallax");
-    // var instances2 = M.Parallax.init(elems2, this.options2);
+    // var instances2 = M.Parallax  .init(elems2, this.options2);
   }
   getMainCarouselItems(): void {
     this.mainImages = this.mainCarouselItemsService.getMainCarouselItems();

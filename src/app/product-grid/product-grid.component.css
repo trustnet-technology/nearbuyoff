@@ -1,4 +1,10 @@
-.container {
+#grid-container {
+  min-height: calc(100vh);
+  padding-top: 3em;
+  /* background-color: white; */
+}
+#grid-container .row {
+  margin-bottom: 0%;
 }
 h5 {
   font-family: "Oswald", sans-serif;

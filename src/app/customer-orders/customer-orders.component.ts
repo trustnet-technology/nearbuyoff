@@ -33,7 +33,8 @@ export class CustomerOrdersComponent implements OnInit {
   getOrderItems(userID: string) {
     this.userService.viewOrders(userID).subscribe(success => {
       this.orderAPItems = success;
-      this.currentOrders = success.slice(0, 3);
+      this.currentOrders = success.slice(0, 4);
+      console.log(success);
     });
     // this.orderItemsService
     //   .getOrderItems()

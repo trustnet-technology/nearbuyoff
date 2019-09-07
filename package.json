@@ -21,6 +21,7 @@
     "@angular/platform-browser": "~7.2.0",
     "@angular/platform-browser-dynamic": "~7.2.0",
     "@angular/router": "~7.2.0",
+    "@ng-select/ng-select": "^2.20.5",
     "@ngx-share/core": "^7.1.2",
     "@types/googlemaps": "^3.37.3",
     "@types/materialize-css": "^1.0.6",
@@ -35,6 +36,7 @@
     "ng5-slider": "^1.2.4",
     "ngx-page-scroll": "^6.0.2",
     "ngx-page-scroll-core": "^6.0.2",
+    "ngx-select-dropdown": "^1.1.0",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"

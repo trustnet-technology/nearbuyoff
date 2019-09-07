@@ -1,9 +1,9 @@
 <section id="recent-add-norm" style="margin-top:5%; margin-bottom: 8%">
   <div class="row">
     <hr />
-    <h5 class="center">Recently Added Shops</h5>
+    <h5 class="center">Recently Added Sellers</h5>
 
-    <div class="col s12 m4 l4">
+    <div class="col s12 m4 l4" *ngFor="let seller of recentVendors">
       <div class="card">
         <div class="card-image">
           <img
@@ -13,7 +13,7 @@
           /><span class="card-badge green"
             ><i class="material-icons">school</i>New!!</span
           >
-          <span class="card-title">The Grocer's Basket</span>
+          <span class="card-title">{{ seller.sellerName }}</span>
         </div>
         <div class="card-content">
           <p>
@@ -27,65 +27,7 @@
             class="btn waves-effect waves-light black"
             type="submit"
             name="action"
-            routerLink="/product/93/seller"
-          >
-            Connect to Shop<i class="material-icons right">send</i>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <div class="col s12 m4 l4">
-      <div class="card">
-        <div class="card-image">
-          <img src="../../assets/chairResto.jpg" />
-          <span class="card-badge green"
-            ><i class="material-icons">school</i>New!!</span
-          >
-          <span class="card-title">Sanoop Provision Store</span>
-        </div>
-        <div class="card-content">
-          <p>
-            I am a very simple card. I am good at containing small bits of
-            information. I am convenient because I require little markup to use
-            effectively.
-          </p>
-        </div>
-        <div class="card-action">
-          <button
-            class="btn waves-effect waves-light black"
-            type="submit"
-            name="action"
-            routerLink="/product/93/seller"
-          >
-            Connect to Shop<i class="material-icons right">send</i>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <div class="col s12 m4 l4">
-      <div class="card">
-        <div class="card-image">
-          <img src="../../assets/dish.jpg" />
-          <span class="card-badge green"
-            ><i class="material-icons">school</i>New!!</span
-          >
-          <span class="card-title">Minimart</span>
-        </div>
-        <div class="card-content">
-          <p>
-            I am a very simple card. I am good at containing small bits of
-            information. I am convenient because I require little markup to use
-            effectively.
-          </p>
-        </div>
-        <div class="card-action">
-          <button
-            class="btn waves-effect waves-light black"
-            type="submit"
-            name="action"
-            routerLink="/product/93/seller"
+            routerLink="/seller/{{ seller.sellerId }}"
           >
             Connect to Shop<i class="material-icons right">send</i>
           </button>
@@ -99,7 +41,7 @@
     <hr />
     <h5 class="center">Recently Added Shops</h5>
 
-    <div class="col s4">
+    <div *ngFor="let seller of recentVendors" class="col s4">
       <div class="card">
         <div class="card-image">
           <img
@@ -109,7 +51,9 @@
           /><span class="card-badge green"
             ><i class="material-icons">school</i>New!!</span
           >
-          <span id="recent-add-title-mob" class="card-title">The Grocer's Basket</span>
+          <span id="recent-add-title-mob" class="card-title">{{
+            seller.sellerName
+          }}</span>
         </div>
         <div class="card-content">
           <p>
@@ -124,67 +68,7 @@
             class="btn waves-effect waves-light black"
             type="submit"
             name="action"
-            routerLink="/product/93/seller"
-          >
-            Connect to Shop<i class="material-icons right">send</i>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <div class="col s4">
-      <div class="card">
-        <div class="card-image">
-          <img src="../../assets/chairResto.jpg" />
-          <span class="card-badge green"
-            ><i class="material-icons">school</i>New!!</span
-          >
-          <span id="recent-add-title-mob" class="card-title">Sanoop Provision Store</span>
-        </div>
-        <div class="card-content">
-          <p>
-            I am a very simple card. I am good at containing small bits of
-            information. I am convenient because I require little markup to use
-            effectively.
-          </p>
-        </div>
-        <div class="card-action">
-          <button
-            id="bt-connect-shop"
-            class="btn waves-effect waves-light black"
-            type="submit"
-            name="action"
-            routerLink="/product/93/seller"
-          >
-            Connect to Shop<i class="material-icons right">send</i>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <div class="col s4">
-      <div class="card">
-        <div class="card-image">
-          <img src="../../assets/dish.jpg" />
-          <span class="card-badge green"
-            ><i class="material-icons">school</i>New!!</span
-          >
-          <span id="recent-add-title-mob" class="card-title">Minimart</span>
-        </div>
-        <div class="card-content">
-          <p>
-            I am a very simple card. I am good at containing small bits of
-            information. I am convenient because I require little markup to use
-            effectively.
-          </p>
-        </div>
-        <div class="card-action">
-          <button
-            id="bt-connect-shop"
-            class="btn waves-effect waves-light black"
-            type="submit"
-            name="action"
-            routerLink="/product/93/seller"
+            routerLink="/seller/{{ seller.sellerId }}"
           >
             Connect to Shop<i class="material-icons right">send</i>
           </button>
