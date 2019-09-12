@@ -4,6 +4,7 @@ declare var $: any;
 import { Options } from "ng5-slider";
 import { SearchService } from "../services/search.service";
 import { ActivatedRoute, Router } from "@angular/router";
+import { StarRatingComponent } from "ng-starrating";
 
 @Component({
   selector: "app-search",
@@ -75,6 +76,16 @@ export class SearchComponent implements OnInit {
     this.subcategory = ["Jeans", "T-Shirts", "Sweatshirts", "Sneakers"];
     const productName = this.route.snapshot.paramMap.get("productName");
     this.getSearchReslts(productName);
+  }
+  onRate($event: {
+    oldValue: number;
+    newValue: number;
+    starRating: StarRatingComponent;
+  }) {
+    alert(`Old Value:${$event.oldValue}, 
+      New Value: ${$event.newValue}, 
+      Checked Color: ${$event.starRating.checkedcolor}, 
+      Unchecked Color: ${$event.starRating.uncheckedcolor}`);
   }
   onItemChange() {
     console.log(" Value is : ", this.category);

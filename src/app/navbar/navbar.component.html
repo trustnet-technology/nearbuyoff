@@ -25,13 +25,13 @@
             ><i class="material-icons right">arrow_drop_down</i></a
           >
         </li>
-        <form action="" method="post" autocomplete="off">
+        <form method="post" autocomplete="off">
           <div class="input-field" style="margin-left:-18%; color:black">
             <input
               #searchBox
               id="search"
               type="search"
-              placeholder="Search"
+              placeholder="Search Products, Services...."
               name="search"
               (keydown.enter)="search($event)"
             />
@@ -45,13 +45,12 @@
       </ul>
       <ul class="left hide-on-med-and-down">
         <li>
-          <a
-            id="bt-sel-city"
-            class="dropdown-button"
-            data-target="sel-city-dropdown"
-          >
+          <a class="modal-trigger" data-target="sel-city-modal">
             <i class="material-icons" style="color:white">my_location</i>
           </a>
+        </li>
+        <li style="color:white">
+          {{ citySelected?.city }}
         </li>
 
         <!-- <li>
@@ -139,9 +138,9 @@
 </div>
 <!-- Near You Dropdown Menu -->
 <div id="services-dropdown" class="dropdown-content row">
-  <div class="col s3 center black-text row">
-    <a style="font-size: x-large" routerLink="/category/APPA">Apparel</a>
-    <div class="col s12 grey-text" style="font-size: medium">
+  <div class="col s3 center row">
+    <a id="tiz" style="font-size: x-large" routerLink="/category/APPA">Apparel</a>
+    <div class="col s12" style="font-size: medium">
       <a style="font-size: medium" routerLink="/subcategory/T-S">T-Shirts </a>
     </div>
     <div class="col s12 grey-text" style="font-size: medium">
@@ -157,7 +156,7 @@
     </div>
   </div>
   <div class="col s3 center grey lighten-4 black-text row">
-    <a style="font-size: x-large" routerLink="/category/GROC">Grocery</a>
+    <a id="tiz" style="font-size: x-large" routerLink="/category/GROC">Grocery</a>
     <div class="col s12 grey-text" style="font-size: medium">
       <a style="font-size: medium" routerLink="/subcategory/DRE"
         >Dressings & Sauces</a
@@ -176,7 +175,7 @@
     </div>
   </div>
   <div class="col s3 center black-text row">
-    <a style="font-size: x-large" routerLink="/category/HOME"
+    <a id="tiz" style="font-size: x-large" routerLink="/category/HOME"
       >Home Appliances</a
     >
     <div class="col s12 grey-text" style="font-size: medium">
@@ -199,7 +198,7 @@
     </div>
   </div>
   <div class="col s3 center grey lighten-4 black-text row">
-    <a style="font-size: x-large" routerLink="/category/DECO">Decors</a>
+    <a id="tiz" style="font-size: x-large" routerLink="/category/DECO">Decors</a>
     <div class="col s12 grey-text" style="font-size: medium">
       <a style="font-size: medium" routerLink="/subcategory/CUR">Curtains</a>
     </div>

@@ -6,12 +6,14 @@
           <li class="tab col l4 m4 s6 offset-l2 offset-m2">
             <a class="active" href="#current-order">Current Order</a>
           </li>
-          <li class="tab col l4 m4 s6"><a href="#all-orders">All Orders</a></li>
+          <li class="tab col l4 m4 s6">
+            <a href="#all-orders">Past Orders</a>
+          </li>
         </ul>
       </div>
       <div id="current-order" class="col s12">
-        <div *ngFor="let item of currentOrders" class="card row">
-          <div class="col l4 m4 s5">
+        <div *ngFor="let item of orderAPItems" class="card row">
+          <div *ngIf="item.statue === 'Order Placed'" class="col l4 m4 s5">
             <img
               src="https://ae01.alicdn.com/kf/HTB1tIyMinXYBeNkHFrdq6AiuVXaO/Summer-New-Men-Skinny-Jeans-Fashion-2019-Slim-Fit-Casual-Ripped-Jeans-Men-Personality-Star-Print.jpg_640x640.jpg"
             />
@@ -19,14 +21,18 @@
           <div id="order-details" class="col l4 m4 s7">
             <div class="row">
               <div class="col s12">
-                <h4>{{ item.userOrderId }}</h4>
+                <h4>{{ item.productName }}</h4>
               </div>
-              <div class="col l6 m6 s6 offset-l3 offset-m3">
-                <p>{{ item.statue }}</p>
+              <div class="col l12 m12 s6">
+                <p><b>Status: </b>{{ item.statue }}</p>
               </div>
-              <div class="col l6 m6 s6 offset-l3 offset-m3">
+              <div class="col l12 m12 s6">
+                <p><b>Order ID: </b>{{ item.userOrderId }}</p>
+              </div>
+              <div class="col l12 m6 s6 ">
                 <p>
-                  Seller:<a routerLink="/seller/{{ item.productSellerId }}">
+                  <b>Seller: </b>
+                  <a routerLink="/seller/{{ item.productSellerId }}">
                     {{ item.productSellerName }}</a
                   >
                 </p>

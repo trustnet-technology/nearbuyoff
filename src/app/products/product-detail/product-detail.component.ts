@@ -16,6 +16,7 @@ import { UserControlsService } from "src/app/services/user-controls.service";
 import { AddToCartModel, OrderNowModel } from "src/app/models/user.model";
 import { delay, filter } from "rxjs/operators";
 import { PostLeadModel } from "src/app/models/post-lead.model";
+import { StarRatingComponent } from "ng-starrating";
 declare var $: any;
 @Component({
   selector: "app-product-detail",
@@ -64,13 +65,20 @@ export class ProductDetailComponent implements OnInit {
   recommProds: any;
   numSellers: number[] = [];
 
-  userId: string = "U1212";
+  userId: string;
   contactNum: string;
   userName: string;
+  address: string;
   prodAttrId: string = "PA1043";
   prodSellId: string = "PS1043";
   quant: string = "12";
   isActive: string = "true";
+  deliveryCharges: number;
+  productPricz: number;
+  formType: number;
+  loggedInFt: number;
+
+  qty: string;
 
   color: any;
   colors: any;
@@ -119,13 +127,13 @@ export class ProductDetailComponent implements OnInit {
       $("#modal-buyers").modal();
     });
     $(document).ready(function() {
+      $("#modal-inquire").modal();
+    });
+    $(document).ready(function() {
       $("#modal-otp").modal();
     });
     $(document).ready(function() {
       $("#modal-verify").modal();
-    });
-    $(document).ready(function() {
-      $("#verified-modal").modal();
     });
     $(document).ready(function() {
       $(".materialboxed").materialbox();
@@ -152,22 +160,32 @@ export class ProductDetailComponent implements OnInit {
     this.jquery_code();
     this.count = 0;
     this.loggedIn = 0;
+    this.qty = "1";
+    this.deliveryCharges = 50;
     this.userLog = JSON.parse(localStorage.getItem("authUser"));
     this.location = JSON.parse(localStorage.getItem("currentCity"));
     try {
       this.userId = this.userLog.user.userId;
       this.contactNum = this.userLog.user.phoneNum;
       this.userName = this.userLog.user.firstName;
+      this.address = this.userLog.user.address;
       this.slat = this.location.lat;
       this.slng = this.location.lng;
       if (this.userLog.tokenType == "Bearer") {
         this.loggedIn = 1;
+        this.formType = 1;
+        this.loggedInFt = 0;
       }
     } catch (error) {
       this.userId = "";
+      this.userName = "";
+      this.contactNum = "";
+      this.address = "";
       this.loggedIn = 0;
       this.slat = "10";
       this.slng = "20";
+      this.formType = 1;
+      this.loggedInFt = -1;
     }
     this.selectedSeller = "PS1043";
     this.dir = {
@@ -197,6 +215,16 @@ export class ProductDetailComponent implements OnInit {
       renderOptions: { polylineOptions: { strokeColor: "#f00" } }
     };
   }
+  onRate($event: {
+    oldValue: number;
+    newValue: number;
+    starRating: StarRatingComponent;
+  }) {
+    console.log(`Old Value:${$event.oldValue}, 
+      New Value: ${$event.newValue}, 
+      Checked Color: ${$event.starRating.checkedcolor}, 
+      Unchecked Color: ${$event.starRating.uncheckedcolor}`);
+  }
   // destination: { lat: 12.9763946, lng: 77.5992796 }
   // destination: { lat: 12.9399071, lng: 77.6201755 }
   // destination: { lat: 12.9368682, lng: 77.6180538 }
@@ -213,6 +241,7 @@ export class ProductDetailComponent implements OnInit {
         for (let i = 0; i < products.length; i++) {
           if (this.productMain[i].productId === productID) {
             this.productM = this.productMain[i];
+            this.productPricz = Number(this.productM.minPrice);
           }
         }
       },
@@ -245,44 +274,48 @@ export class ProductDetailComponent implements OnInit {
   }
   getRecomProducts() {
     const subCategoryID = this.route.snapshot.paramMap.get("subategoryId");
+    const productID = this.route.snapshot.paramMap.get("productId");
     this.productService.getProductsOfSubCategory(subCategoryID).subscribe(
       success => {
+        for (var i = 0; i < success.length; i++) {
+          if (success[i].productId == productID) {
+            success.splice(i, 1);
+          }
+        }
         this.recommProds = success.slice(0, 5);
       },
       error => console.log(error)
     );
   }
   orderNow(quantity: string) {
-    if (this.loggedIn == 0) {
-      var toastHTML = "Please Login first";
-      M.toast({ html: toastHTML });
-    } else if (this.loggedIn == 1) {
-      if (this.numSellers[0] > 0) {
-        const productID = this.route.snapshot.paramMap.get("productId");
-        var toastHTML = "Order Placed Successfully";
-        let action: OrderNowModel = {
-          userId: this.userId,
-          productAttributeId: this.productAttr0.productAttribute
-            .productAttributeId,
-          productSellerId: this.productAttr0.productSellers[0].sellerId,
-          quantity: quantity,
-          statue: "Order Placed",
-          orderPaymentMode: "COD (Cash on Delivery)",
-          createdDate: String(Date.now()),
-          contactNumber: this.contactNum,
-          productName: this.productM.productName,
-          productId: productID,
-          productSellerName: this.productAttr0.productSellers[0].sellerName,
-          price: this.productAttr0.productAttribute.mrp
-        };
-        this.userControls.order(action).subscribe(success => {
+    if (this.numSellers[0] > 0) {
+      const productID = this.route.snapshot.paramMap.get("productId");
+      var toastHTML = "Order Placed Successfully";
+      let action: OrderNowModel = {
+        userId: this.userId,
+        productAttributeId: this.productAttr0.productAttribute
+          .productAttributeId,
+        productSellerId: this.productAttr0.productSellers[0].sellerId,
+        quantity: quantity,
+        statue: "Order Placed",
+        orderPaymentMode: "COD (Cash on Delivery)",
+        createdDate: String(Date.now()),
+        contactNumber: this.contactNum,
+        productName: this.productM.productName,
+        productId: productID,
+        productSellerName: this.productAttr0.productSellers[0].sellerName,
+        price: this.productAttr0.productAttribute.mrp
+      };
+      this.userControls.order(action).subscribe(
+        success => {
           success;
           M.toast({ html: toastHTML });
-        });
-      } else {
-        var toastHTML = "No Sellers Available. Please Try Later";
-        M.toast({ html: toastHTML });
-      }
+        },
+        error => M.toast({ html: error, classes: "red" })
+      );
+    } else {
+      var toastHTML = "No Sellers Available. Please Try Later";
+      M.toast({ html: toastHTML });
     }
   }
 
@@ -290,16 +323,36 @@ export class ProductDetailComponent implements OnInit {
     this.otpService
       .getOTP(phoneNo)
       .subscribe(
-        (otpMessage: OtpModel[]) => (this.otpMessage = { ...otpMessage })
+        (otpMessage: OtpModel) => (this.otpMessage = { ...otpMessage })
       );
   }
-  sendOTP(otpVal: string, getOTPDet: string): void {
-    this.otpService
-      .sendOTP(otpVal, getOTPDet)
-      .subscribe(
-        (otpRecvMessage: OtpModel[]) =>
-          (this.otpRecvMessage = { ...otpRecvMessage })
-      );
+  changeForm(phoneNo: string) {
+    this.formType = 2;
+    this.getOTP(phoneNo);
+  }
+  goBack() {
+    this.formType = 1;
+  }
+  sendOTP(otpVal: string, getOTPDet: string, quantity: string): void {
+    this.otpService.sendOTP(otpVal, getOTPDet).subscribe(
+      (otpRecvMessage: OtpModel) => {
+        this.otpRecvMessage = otpRecvMessage;
+        if (otpRecvMessage.Details == "OTP Matched") {
+          var toastHTML = "OTP Matched";
+          M.toast({ html: toastHTML });
+          this.orderNow(this.qty);
+          this.formType = 3;
+          // $("#modal-inquire").modal("close");
+        } else {
+          var toastHTML = "OTP Does not Match";
+          M.toast({ html: toastHTML });
+        }
+      },
+      error => M.toast({ html: error.error.Details })
+    );
+  }
+  rstOrder() {
+    this.formType = 1;
   }
   addProductToCart() {
     if (this.loggedIn === 0) {
@@ -313,7 +366,7 @@ export class ProductDetailComponent implements OnInit {
           productAttributeId: this.productAttr0.productAttribute
             .productAttributeId,
           productSellerId: this.productAttr0.productSellers[0].productSellerId,
-          quantity: "2",
+          quantity: this.qty,
           isActive: "Yes"
         };
         this.userControls.addToCart(cartBody).subscribe(
@@ -335,6 +388,14 @@ export class ProductDetailComponent implements OnInit {
       M.toast({ html: toastHTML });
     } else if (this.loggedIn === 1) {
       this.router.navigate(["cart/view"]);
+    }
+  }
+  viewOrders() {
+    if (this.loggedIn === 0) {
+      var toastHTML = "Please Login first";
+      M.toast({ html: toastHTML });
+    } else if (this.loggedIn === 1) {
+      this.router.navigate(["customer/orders"]);
     }
   }
   postLeads(sellerInfo, quantity: string) {

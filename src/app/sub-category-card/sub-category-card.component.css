@@ -1,11 +1,7 @@
-.card-image {
-  height: 14em;
-  max-width: 100%;
-  object-fit: cover;
-  background-size: contain;
-}
 #sub-category-image {
-  height: 14em;
+  min-height: 15em;
+  max-height: 22em;
+  object-fit: cover;
 }
 .card .card-image .card-title.flow-text {
   font-size: inherit;

@@ -22,6 +22,7 @@ import {
   LazyLoadImageModule,
   intersectionObserverPreset
 } from "ng-lazyload-image";
+import { RatingModule } from "ng-starrating";
 import { HttpClientModule } from "@angular/common/http";
 import { LoginSignupComponent } from "./login-signup/login-signup.component";
 import { CustomerOrdersComponent } from "./customer-orders/customer-orders.component";
@@ -57,6 +58,7 @@ import { SubCategoryCardComponent } from "./sub-category-card/sub-category-card.
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    RatingModule,
     HttpClientModule,
     ShareModule,
     Ng5SliderModule,

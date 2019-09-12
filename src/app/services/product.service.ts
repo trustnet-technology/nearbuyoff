@@ -8,20 +8,32 @@ import {
   PRODUCTS4
 } from "../data/productItems";
 import { HttpHeaders, HttpClient, HttpParams } from "@angular/common/http";
-import { catchError } from "rxjs/operators";
+import { map, catchError, publishReplay, refCount } from "rxjs/operators";
 import { ProductSubCatModel } from "../models/product-subCat.model";
 import { environment } from "src/environments/environment";
+import { SubCategoryModel } from "../models/sub-category.model";
 @Injectable({
   providedIn: "root"
 })
 export class ProductService {
+  configs: Observable<SubCategoryModel[]>;
   constructor(private http: HttpClient) {}
 
-  getProductsSubcategories(): Observable<any> {
+  getProductsSubcategories(): Observable<SubCategoryModel[]> {
     const path = "/nearby/getSubCatOfCategories";
-    return this.http
-      .get(`${environment.base_url}${path}`)
-      .pipe(catchError(this.formatErrors));
+    console.log(this.configs);
+    if (!this.configs) {
+      this.configs = this.http
+        .get<SubCategoryModel[]>(`${environment.base_url}${path}`)
+        .pipe(
+          map(data => data),
+          publishReplay(),
+          refCount()
+        );
+      console.log(this.configs);
+    }
+    console.log(this.configs);
+    return this.configs;
   }
   getProductsOfCategory(categoryID: string): Observable<any> {
     const path = "/nearby/getSubCatOfCategory";
@@ -62,32 +74,6 @@ export class ProductService {
       })
       .pipe(catchError(this.formatErrors));
   }
-  getProducts(): Observable<ProductModel[]> {
-    return of(PRODUCTS);
-  }
-  getProducts2(): Observable<ProductModel[]> {
-    return of(PRODUCTS2);
-  }
-  getProducts3(): Observable<ProductModel[]> {
-    return of(PRODUCTS3);
-  }
-  getProducts4(): Observable<ProductModel[]> {
-    return of(PRODUCTS4);
-  }
-
-  getProduct(productID: number): Observable<ProductModel> {
-    return of(PRODUCTS.find(product => product.productID === productID));
-  }
-  getProduct2(productID: number): Observable<ProductModel> {
-    return of(PRODUCTS2.find(product2 => product2.productID === productID));
-  }
-  getProduct3(productID: number): Observable<ProductModel> {
-    return of(PRODUCTS3.find(product3 => product3.productID === productID));
-  }
-  getProduct4(productID: number): Observable<ProductModel> {
-    return of(PRODUCTS4.find(product4 => product4.productID === productID));
-  }
-
   private formatErrors(error: any) {
     return throwError(error.error);
   }

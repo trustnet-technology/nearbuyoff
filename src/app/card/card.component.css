@@ -1,6 +1,6 @@
 .card {
-  width: 11.25em;
-  height: 17.188em;
+  /* width: 14.25em; */
+  /* height: 18.188em; */
   max-height: 100%;
 }
 #op {
@@ -52,13 +52,13 @@
   padding-left: 12px;
 }
 .card-image {
-  height: 165px;
+  height: 14em;
   max-width: 100%;
-  object-fit: cover;
   background-size: contain;
 }
 #product-card-image {
-  height: 165px;
+  height: 14em;
+  object-fit: contain;
 }
 #distance-image {
   height: 20px;
@@ -85,8 +85,8 @@
 }
 @media (min-width: 320px) and (max-width: 480px) {
   .card {
-    width: 139px;
-    height: 189px;
+    width: 8.69em;
+    height: 10.938em;
     max-height: 100%;
     max-width: 100%;
   }

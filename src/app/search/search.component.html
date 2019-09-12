@@ -393,38 +393,49 @@
         </div>
       </div>
       <div class="col s9 hide-on-med-and-down">
-        <div *ngFor="let product of searchRes" class="card">
-          <div class="row">
-            <div class="col s3" style="padding-top:1.5%">
-              <img
-                class="materialboxed"
-                id="srch-img"
-                src="{{ product.imageUrl }}"
-              />
-            </div>
-            <div class="col s4">
-              <h4>
-                <b>{{ product.productName }}</b>
-              </h4>
-              <p style="color:grey">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore
-              </p>
-            </div>
-            <div class="col s3" style="padding-top: 3%">
-              <h6><b>Category: Apparel</b></h6>
-              <app-rating></app-rating>
-            </div>
-            <div class="col s2" style="padding-top:5%;">
-              <a
-                id="bt-pre-book"
-                class="btn btn-large"
-                routerLink="/subcategory/{{ product.subCategoryId }}/{{
-                  product.productId
-                }}"
-                >View Details</a
-              ><br />
-              <!-- <div class="row" style="padding-top: 10%">
+        <div *ngFor="let product of searchRes">
+          <a
+            routerLink="/subcategory/{{ product.subCategoryId }}/{{
+              product.productId
+            }}"
+            ><div class="row card">
+              <div class="col s3" style="padding-top:1.5%">
+                <img
+                  class="materialboxed"
+                  id="srch-img"
+                  src="{{ product.imageUrl }}"
+                />
+              </div>
+              <div class="col s4">
+                <h4 class="black-text">
+                  <b>{{ product.productName }}</b>
+                </h4>
+              </div>
+              <div class="col s3" style="padding-top: 3%">
+                <!-- <h6><b>Category: Apparel</b></h6> -->
+                <h6>
+                  <b>MSP: ₹{{ product.minPrice }}</b>
+                </h6>
+                <star-rating
+                  value="5"
+                  checkedcolor="gold"
+                  uncheckedcolor="grey"
+                  size="24px"
+                  readonly="false"
+                  (rate)="onRate($event)"
+                ></star-rating>
+                <!-- <app-rating [rate]="5"></app-rating> -->
+              </div>
+              <div class="col s2" style="padding-top:5%;">
+                <a
+                  id="bt-pre-book"
+                  class="btn btn-large"
+                  routerLink="/subcategory/{{ product.subCategoryId }}/{{
+                    product.productId
+                  }}"
+                  >View Details</a
+                ><br />
+                <!-- <div class="row" style="padding-top: 10%">
                   <div
                     class="col s2 offset-s2"
                     style="margin-top:4%;margin-right:1%"
@@ -439,8 +450,9 @@
                     />
                   </div>
                 </div> -->
-            </div>
-          </div>
+              </div>
+            </div></a
+          >
         </div>
       </div>
       <div *ngFor="let product of searchRes" class="card" id="mob-srch-rslt">

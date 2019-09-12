@@ -5,6 +5,9 @@
   padding-top: 1%;
   /* padding: 30px; */
 }
+.card {
+  padding: 1em;
+}
 ng5-slider .ng5-slider .ng5-slider-pointer {
   width: 1.5em;
   height: 1.5em;

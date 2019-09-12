@@ -3,7 +3,7 @@
 }
 .font-bolder,
 .font-bolder h5 {
-  font-weight: bolder;
+  /* font-weight: bolder; */
   background-color: #eeefe7;
 }
 #cart-modal .row {
@@ -22,7 +22,7 @@
   width: inherit;
   height: inherit;
 }
-.col.l5.m5.s6 > img {
+.col.s12 > img {
   width: 100%;
   max-width: 170px;
 }
@@ -73,6 +73,7 @@
 }
 #span1 {
   color: #86939e;
+  display: inline;
 }
 agm-map {
   height: 483px;
@@ -85,6 +86,9 @@ hr {
   height: 6px;
   border: none;
   background-color: black;
+}
+td a {
+  display: block;
 }
 .card .card-image .card-title.flow-text {
   font-size: inherit;
@@ -150,9 +154,13 @@ hr {
 .rate > label:hover ~ input:checked ~ label {
   color: #c59b08;
 }
-#modal-buyers {
+#modal-buyers,
+#cart-modal {
   max-height: 100% !important;
   width: 90% !important;
+}
+#modal-inquire {
+  max-height: 100% !important;
 }
 div.explanation {
   width: 40%;
