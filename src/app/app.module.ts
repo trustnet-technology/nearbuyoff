@@ -65,7 +65,7 @@ import { SubCategoryCardComponent } from "./sub-category-card/sub-category-card.
     SelectDropDownModule,
     LazyLoadImageModule.forRoot({ preset: intersectionObserverPreset }),
     AgmCoreModule.forRoot({
-      apiKey: "AIzaSyCPq73ZhDozL2oRl9jfqO_4xZpBMOCJA84"
+      apiKey: "Enter API key Here"
     }),
     AgmDirectionModule
   ],
