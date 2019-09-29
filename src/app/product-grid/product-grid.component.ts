@@ -11,6 +11,9 @@ import { ActivatedRoute, Router } from "@angular/router";
 export class ProductGridComponent implements OnInit {
   products: any;
   subCategories: any;
+  subCatBreadCrumb: string;
+  catBreadCrumb: string;
+  catID: string;
   subCatID: any;
   subCatContent1: any;
   constructor(
@@ -22,6 +25,36 @@ export class ProductGridComponent implements OnInit {
   }
 
   ngOnInit() {
+    const category: { key: string; value: string }[] = [
+      { key: "APPA", value: "Apparel" },
+      { key: "HOME", value: "Home Appliances" },
+      { key: "DECO", value: "Decors" },
+      { key: "GROC", value: "Grocery" }
+    ];
+    const subCategory: { key: string; value: string }[] = [
+      { key: "JEA", value: "Jeans" },
+      { key: "SNE", value: "Sneakers" },
+      { key: "SWE", value: "Sweatshirts" },
+      { key: "T-S", value: "T-Shirts" },
+      { key: "DAI", value: "Dairy Products" },
+      { key: "DRE", value: "Dressing & Sauces" },
+      { key: "FRO", value: "Frozen Food" },
+      { key: "FRU", value: "Fruits" },
+      { key: "TV ", value: "TV & Home Theatres" },
+      { key: "SPE", value: "Speakers" },
+      { key: "VID", value: "Video Games & Consoles" },
+      { key: "WAS", value: "Washing Machines" },
+      { key: "BED", value: "Bed Sheets" },
+      { key: "PIL", value: "Pillows & Cushions" },
+      { key: "WAL", value: "Wallpapers" },
+      { key: "CUR", value: "Curtains" }
+    ];
+    $(document).ready(function() {
+      $("#sort-select").formSelect();
+    });
+    $(document).ready(function() {
+      $("#price-select").formSelect();
+    });
     this.subCatContent1 = {
       mainURL: "sss",
       subategoryId: "string",
@@ -36,8 +69,24 @@ export class ProductGridComponent implements OnInit {
     const categoryID = this.route.snapshot.paramMap.get("categoryId");
     if (subCategoryID != null) {
       this.getProductGrid(subCategoryID);
+      for (var item of category) {
+        if (item.key === categoryID) {
+          this.catBreadCrumb = item.value;
+          this.catID = item.key;
+        }
+      }
+      for (var item of subCategory) {
+        if (item.key === subCategoryID) {
+          this.subCatBreadCrumb = item.value;
+        }
+      }
     } else if (categoryID != null) {
       this.subCategoryGrid(categoryID);
+      for (var item of category) {
+        if (item.key === categoryID) {
+          this.catBreadCrumb = item.value;
+        }
+      }
     }
   }
   getProductGrid(subCategoryID: string) {
@@ -57,6 +106,7 @@ export class ProductGridComponent implements OnInit {
     this.productService
       .getProductsOfCategory(categoryID)
       .subscribe(subCategories => {
+        console.log(subCategories);
         this.subCategories = subCategories;
       });
   }

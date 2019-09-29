@@ -1,43 +1,14 @@
 <app-menubar></app-menubar>
-<div class="carousel carousel-slider center z-depth-1-half parallax-container">
-  <div class="carousel-fixed-item center middle-indicator">
-    <div class="left">
-      <a
-        id="mainCarouselPrev"
-        href="Previo"
-        class="movePrevCarousel middle-indicator-text waves-effect waves-light content-indicator"
-      >
-        <i class="material-icons left  middle-indicator-text">chevron_left </i>
-      </a>
-    </div>
-    <div class="right">
-      <a
-        id="mainCarouselNext"
-        href="Siguiente"
-        class=" moveNextCarousel middle-indicator-text waves-effect waves-light content-indicator"
-      >
-        <i class="material-icons right middle-indicator-text">
-          chevron_right
-        </i>
-      </a>
-    </div>
-  </div>
-  <div *ngFor="let samImg of mainImages">
-    <a routerLink="{{ samImg.url }}" class="carousel-item"
-      ><h2 class="white-text">{{ samImg.heading }}</h2>
-      <img
-        class="parallax"
-        [defaultImage]="mainLazyImage"
-        [lazyLoad]="samImg.color"
-        [useSrcset]="true"
-        style="width:100%;
-             height:100%;
-            object-fit: cover;
-            overflow: hidden;"
-    /></a>
-    <!-- <p class="white-text">{{ samImg.desc }}This is your first panel</p> -->
-  </div>
-</div>
+<slideshow
+  [height]="'300px'"
+  [minHeight]="'200px'"
+  [autoPlay]="true"
+  [showArrows]="true"
+  [imageUrls]="mainImages"
+  [lazyLoad]="false"
+  [autoPlayWaitForLazyLoad]="false"
+>
+</slideshow>
 <div>
   <app-card-slider></app-card-slider>
   <app-other-cards></app-other-cards>

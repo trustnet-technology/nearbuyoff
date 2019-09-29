@@ -1,6 +1,6 @@
 #sub-category-image {
   min-height: 15em;
-  max-height: 22em;
+  max-height: 15em;
   object-fit: cover;
 }
 .card .card-image .card-title.flow-text {

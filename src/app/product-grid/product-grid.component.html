@@ -1,16 +1,36 @@
 <app-menubar></app-menubar>
 <div style="background-color: #f2f3f4 ;font-family:  'Oswald', sans-serif; ">
   <div id="grid-container" class="container">
-    <!-- <nav>
-    <div class="nav-wrapper">
-      <div class="col s12">
-        <a href="#!" class="breadcrumb">First</a>
-        <a href="#!" class="breadcrumb">Second</a>
-        <a href="#!" class="breadcrumb">Third</a>
+    <!-- <div class="row">
+      <div class="col s6 offset-s6">
+        <div class="input-field col s6">
+          <select id="sort-select">
+            <option value="" disabled selected>Choose your option</option>
+            <option value="A-Z">A-Z</option>
+            <option value="Z-A">Z-A</option>
+          </select>
+          <label>Sort</label>
+        </div>
+        <div class="input-field col s6">
+          <select id="price-select">
+            <option value="" disabled selected>Choose your option</option>
+            <option value="10000-15000" selected>10000-15000</option>
+          </select>
+          <label>Price</label>
+        </div>
       </div>
-    </div>
-  </nav> -->
+    </div> -->
     <div *ngIf="products" class="row">
+      <nav>
+        <div class="nav-wrapper green darken-2">
+          <div class="col s12">
+            <a routerLink="/category/{{ catID }}" class="breadcrumb">{{
+              catBreadCrumb
+            }}</a>
+            <a routerLink="" class="breadcrumb">{{ subCatBreadCrumb }}</a>
+          </div>
+        </div>
+      </nav>
       <div *ngFor="let product of products" class="col s4 m4 l3">
         <a
           routerLink="/subcategory/{{ product.subCategoryId }}/{{
@@ -22,8 +42,28 @@
       </div>
     </div>
     <div *ngIf="subCategories" class="row">
+      <nav>
+        <div class="nav-wrapper green darken-2">
+          <div class="col s12">
+            <a href="#!" class="breadcrumb">{{ catBreadCrumb }}</a>
+          </div>
+        </div>
+      </nav>
+      <!-- <nav>
+    <div class="nav-wrapper">
+      <div class="col s12">
+        <a href="#!" class="breadcrumb">First</a>
+        <a href="#!" class="breadcrumb">Second</a>
+        <a href="#!" class="breadcrumb">Third</a>
+      </div>
+    </div>
+  </nav> -->
       <div *ngFor="let subCategory of subCategories" class="col s6 m6 l4">
-        <a routerLink="/subcategory/{{ subCategory.subategoryId }}">
+        <a
+          routerLink="/{{ subCategory.categoryId }}/subcategory/{{
+            subCategory.subategoryId
+          }}"
+        >
           <app-sub-category-card
             [subCatContent]="subCategory"
           ></app-sub-category-card>

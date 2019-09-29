@@ -13,9 +13,12 @@ import { CardComponent } from "./card/card.component";
 import { ProductDetailComponent } from "./products/product-detail/product-detail.component";
 import { VendorDetailComponent } from "./vendor-detail/vendor-detail.component";
 import { AgmCoreModule } from "@agm/core";
+import * as M from "materialize-css/dist/js/materialize";
 import { SearchComponent } from "./search/search.component";
 import { RatingComponent } from "./rating/rating.component";
 import { ShareModule } from "@ngx-share/core";
+import { SlideshowModule } from "ng-simple-slideshow";
+import { NgxStepperModule } from "ngx-stepper";
 import { AgmDirectionModule } from "agm-direction";
 import { OtpService } from "./services/otp.service";
 import {
@@ -58,6 +61,8 @@ import { SubCategoryCardComponent } from "./sub-category-card/sub-category-card.
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    NgxStepperModule,
+    SlideshowModule,
     RatingModule,
     HttpClientModule,
     ShareModule,
@@ -65,7 +70,7 @@ import { SubCategoryCardComponent } from "./sub-category-card/sub-category-card.
     SelectDropDownModule,
     LazyLoadImageModule.forRoot({ preset: intersectionObserverPreset }),
     AgmCoreModule.forRoot({
-      apiKey: "Enter API key Here"
+      apiKey: "AIzaSyCPq73ZhDozL2oRl9jfqO_4xZpBMOCJA84"
     }),
     AgmDirectionModule
   ],

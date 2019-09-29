@@ -1,7 +1,7 @@
 <div class="navbar-fixed  grey darken-3">
   <nav>
     <div class="nav-wrapper grey darken-3">
-      <a href="#" class="brand-logo" style="padding-left: 4%;"
+      <a routerLink="/home" class="brand-logo" style="padding-left: 4%;"
         ><img
           src="../../assets/logo.png"
           alt="logo"
@@ -138,81 +138,41 @@
 </div>
 <!-- Near You Dropdown Menu -->
 <div id="services-dropdown" class="dropdown-content row">
-  <div class="col s3 center row">
-    <a id="tiz" style="font-size: x-large" routerLink="/category/APPA">Apparel</a>
-    <div class="col s12" style="font-size: medium">
-      <a style="font-size: medium" routerLink="/subcategory/T-S">T-Shirts </a>
-    </div>
-    <div class="col s12 grey-text" style="font-size: medium">
-      <a style="font-size: medium" routerLink="/subcategory/JEA">Jeans </a>
-    </div>
-    <div class="col s12 grey-text" style="font-size: medium">
-      <a style="font-size: medium" routerLink="/subcategory/SWE"
-        >Sweatshirts
-      </a>
-    </div>
-    <div class="col s12 grey-text" style="font-size: medium">
-      <a style="font-size: medium" routerLink="/subcategory/SNE">Sneakers </a>
-    </div>
+  <div class="col s2 row">
+    <ul id="main-menu">
+      <li id="cat-header" routerLink="/category/APPA">Apparel</li>
+      <li routerLink="/subcategory/T-S">T-shirts</li>
+      <li routerLink="/subcategory/JEA">Jeans</li>
+      <li routerLink="/subcategory/SWE">Sweatshirts</li>
+      <li routerLink="/subcategory/SNE">Sneaker</li>
+    </ul>
   </div>
-  <div class="col s3 center grey lighten-4 black-text row">
-    <a id="tiz" style="font-size: x-large" routerLink="/category/GROC">Grocery</a>
-    <div class="col s12 grey-text" style="font-size: medium">
-      <a style="font-size: medium" routerLink="/subcategory/DRE"
-        >Dressings & Sauces</a
-      >
-    </div>
-    <div class="col s12 grey-text" style="font-size: medium">
-      <a style="font-size: medium" routerLink="/subcategory/DAI"
-        >Dairy Products</a
-      >
-    </div>
-    <div class="col s12 grey-text" style="font-size: medium">
-      <a style="font-size: medium" routerLink="/subcategory/FRU">Fruits </a>
-    </div>
-    <div class="col s12 grey-text" style="font-size: medium">
-      <a style="font-size: medium" routerLink="/subcategory/FRO">Frozen Food</a>
-    </div>
+  <div class="col s2 row">
+    <ul id="main-menu">
+      <li id="cat-header" routerLink="/category/GROC">Grocery</li>
+      <li routerLink="/subcategory/DRE">Dressings & Sauces</li>
+      <li routerLink="/subcategory/DAI">Dairy Products</li>
+      <li routerLink="/subcategory/FRU">Fruits</li>
+      <li routerLink="/subcategory/FRO">Frozen Food</li>
+    </ul>
   </div>
-  <div class="col s3 center black-text row">
-    <a id="tiz" style="font-size: x-large" routerLink="/category/HOME"
-      >Home Appliances</a
-    >
-    <div class="col s12 grey-text" style="font-size: medium">
-      <a style="font-size: medium" routerLink="/subcategory/VID"
-        >Video Games & Consoles</a
-      >
-    </div>
-    <div class="col s12 grey-text" style="font-size: medium">
-      <a style="font-size: medium" routerLink="/subcategory/SPE">Speakers</a>
-    </div>
-    <div class="col s12 grey-text" style="font-size: medium">
-      <a style="font-size: medium" routerLink="/subcategory/WAS"
-        >Washing Machines</a
-      >
-    </div>
-    <div class="col s12 grey-text" style="font-size: medium">
-      <a style="font-size: medium" routerLink="/subcategory/TV "
-        >TV & Home Theatres</a
-      >
-    </div>
+  <div class="col s2 row">
+    <ul id="main-menu">
+      <li id="cat-header" routerLink="/category/HOME">Home Appliances</li>
+      <li routerLink="/subcategory/VID">Video Games & Consoles</li>
+      <li routerLink="/subcategory/SPE">Speakers</li>
+      <li routerLink="/subcategory/WAS">Washing Machine</li>
+      <li routerLink="/subcategory/TV ">TV & Home Theatres</li>
+    </ul>
   </div>
-  <div class="col s3 center grey lighten-4 black-text row">
-    <a id="tiz" style="font-size: x-large" routerLink="/category/DECO">Decors</a>
-    <div class="col s12 grey-text" style="font-size: medium">
-      <a style="font-size: medium" routerLink="/subcategory/CUR">Curtains</a>
-    </div>
-    <div class="col s12 grey-text" style="font-size: medium">
-      <a style="font-size: medium" routerLink="/subcategory/PIL"
-        >Pillows & Cushions</a
-      >
-    </div>
-    <div class="col s12 grey-text" style="font-size: medium">
-      <a style="font-size: medium" routerLink="/subcategory/BED">Bed Sheets</a>
-    </div>
-    <div class="col s12 grey-text" style="font-size: medium">
-      <a style="font-size: medium" routerLink="/subcategory/WAL">Wallpapers</a>
-    </div>
+  <div class="col s2 row">
+    <ul id="main-menu">
+      <li id="cat-header" routerLink="/category/DECO">Decors</li>
+      <li routerLink="/subcategory/CUR">Curtains</li>
+      <li routerLink="/subcategory/PIL">Pillows & Cushions</li>
+      <li routerLink="/subcategory/BED">Bed Sheets</li>
+      <li routerLink="/subcategory/WAL">Wallpapers</li>
+    </ul>
   </div>
 </div>
 <!-- Mobile Nav for Navbar -->

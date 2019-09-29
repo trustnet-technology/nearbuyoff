@@ -8,7 +8,7 @@ nav .left {
   top: 0px;
   right: 0px;
 }
-.col.s3.center.row a {
+.col.s2.row a {
   color: #839f0c !important;
 }
 .nav-wrapper form {
@@ -59,7 +59,7 @@ nav .left .imgProfil a {
   color: darkgreen !important;
   width: 100%;
 }
-#services-dropdown .col.s3 {
+#services-dropdown .col.s2 {
   height: 100%;
 }
 #services-dropdown {
@@ -73,6 +73,21 @@ nav .left .imgProfil a {
 #services2-dropdown,
 #services3-dropdown {
   width: 100%;
+}
+#main-menu {
+  margin-top: 5%;
+  font-family: sans-serif;
+}
+#main-menu li {
+  min-height: 15px;
+  color: gray;
+  font-size: x-small;
+}
+#main-menu #cat-header {
+  min-height: 20px;
+  font-size: medium;
+  font-weight: bolder;
+  color: black;
 }
 #sel-city-dropdown {
   width: 100%;

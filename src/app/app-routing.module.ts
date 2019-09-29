@@ -30,7 +30,10 @@ const routes: Routes = [
   { path: "customer/orders", component: CustomerOrdersComponent },
   { path: "user/profile", component: UserProfileComponent },
   { path: "cart/view", component: CartComponent },
-  { path: "subcategory/:subategoryId", component: ProductGridComponent },
+  {
+    path: ":categoryId/subcategory/:subategoryId",
+    component: ProductGridComponent
+  },
   { path: "category/:categoryId", component: ProductGridComponent }
 ];
 

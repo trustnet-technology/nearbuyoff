@@ -86,7 +86,7 @@
 @media (min-width: 320px) and (max-width: 480px) {
   .card {
     width: 8.69em;
-    height: 10.938em;
+    height: 12.938em;
     max-height: 100%;
     max-width: 100%;
   }
@@ -127,17 +127,21 @@
     );
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#007db9e8', endColorstr='#cc000000',GradientType=0 );
   }
-  .card .card-image .card-title {
-    padding: 13px;
+  .card .card-content .card-title {
+    /* padding: 13px; */
+    margin-bottom: 0px;
+    overflow: hidden;
+    display: block;
   }
   .card-image {
-    height: 133px;
+    height: 75px;
     max-width: 100%;
     object-fit: cover;
     background-size: contain;
   }
   #product-card-image {
-    height: 132px;
+    height: 80px;
+    object-fit: cover;
   }
   #distance-image {
     height: 16px;
@@ -163,7 +167,7 @@
     top: 12px;
   }
   .card .card-content {
-    padding: 7px;
+    padding: 10px;
   }
   #dist-stock {
     display: none;

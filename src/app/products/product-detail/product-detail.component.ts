@@ -3,7 +3,9 @@ import {
   OnInit,
   Input,
   AfterViewInit,
-  OnChanges
+  OnChanges,
+  ViewChild,
+  ElementRef
 } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ProductService } from "../../services/product.service";
@@ -17,7 +19,9 @@ import { AddToCartModel, OrderNowModel } from "src/app/models/user.model";
 import { delay, filter } from "rxjs/operators";
 import { PostLeadModel } from "src/app/models/post-lead.model";
 import { StarRatingComponent } from "ng-starrating";
+import { NgxStepperComponent } from "ngx-stepper";
 declare var $: any;
+declare const MStepper: any;
 @Component({
   selector: "app-product-detail",
   templateUrl: "./product-detail.component.html",
@@ -31,6 +35,17 @@ export class ProductDetailComponent implements OnInit {
       }
     }
   };
+  stepperOptions = {
+    mobileStepText: false
+  };
+  @ViewChild("stepperDemo")
+  public steppers: NgxStepperComponent;
+
+  public selectCampaign(): void {
+    this.steppers.showFeedback("Checking, please wait ...");
+    this.steppers.next();
+  }
+
   config = {
     displayKey: "description", //if objects array passed which key to be displayed defaults to description
     search: false, //true/false for the search functionlity defaults to false,
@@ -52,12 +67,16 @@ export class ProductDetailComponent implements OnInit {
     noWrap: false
   };
 
+  valueOtp: any;
+
   mainLazyImage = "https://picsum.photos/id/777/12/8";
   product: ProductModel;
   productMain: any;
   productM: any;
   productId: any;
   productAttr: any;
+
+  facilityTitle: string;
 
   userLog: any;
   loggedIn: number;
@@ -79,6 +98,8 @@ export class ProductDetailComponent implements OnInit {
   loggedInFt: number;
 
   qty: string;
+
+  facility: number;
 
   color: any;
   colors: any;
@@ -128,6 +149,9 @@ export class ProductDetailComponent implements OnInit {
     });
     $(document).ready(function() {
       $("#modal-inquire").modal();
+    });
+    $(document).ready(function() {
+      $("#modal-multi-step").modal();
     });
     $(document).ready(function() {
       $("#modal-otp").modal();
@@ -202,7 +226,6 @@ export class ProductDetailComponent implements OnInit {
     this.getProductAttributes(this.slat, this.slng);
     this.getRecomProducts();
   }
-
   selectSeller(event, sellerInfo) {
     this.location = JSON.parse(localStorage.getItem("currentCity"));
     this.selectedSeller = sellerInfo.productSellerId;
@@ -220,9 +243,9 @@ export class ProductDetailComponent implements OnInit {
     newValue: number;
     starRating: StarRatingComponent;
   }) {
-    console.log(`Old Value:${$event.oldValue}, 
-      New Value: ${$event.newValue}, 
-      Checked Color: ${$event.starRating.checkedcolor}, 
+    console.log(`Old Value:${$event.oldValue},
+      New Value: ${$event.newValue},
+      Checked Color: ${$event.starRating.checkedcolor},
       Unchecked Color: ${$event.starRating.uncheckedcolor}`);
   }
   // destination: { lat: 12.9763946, lng: 77.5992796 }
@@ -327,11 +350,18 @@ export class ProductDetailComponent implements OnInit {
       );
   }
   changeForm(phoneNo: string) {
-    this.formType = 2;
+    this.steppers.next();
     this.getOTP(phoneNo);
   }
-  goBack() {
-    this.formType = 1;
+  btnPressOrder() {
+    this.facility = 6;
+  }
+  btnPressCart() {
+    this.facility = 7;
+    this.facilityTitle = "Added to Cart";
+  }
+  btnPressLeads() {
+    this.facility = 8;
   }
   sendOTP(otpVal: string, getOTPDet: string, quantity: string): void {
     this.otpService.sendOTP(otpVal, getOTPDet).subscribe(
@@ -340,9 +370,14 @@ export class ProductDetailComponent implements OnInit {
         if (otpRecvMessage.Details == "OTP Matched") {
           var toastHTML = "OTP Matched";
           M.toast({ html: toastHTML });
-          this.orderNow(this.qty);
+          if (this.facility == 6) {
+            this.orderNow(this.qty);
+            this.facilityTitle = "Order Placed";
+          } else if (this.facility == 7) {
+            this.addProductToCart();
+            this.facilityTitle = "Added to Cart";
+          }
           this.formType = 3;
-          // $("#modal-inquire").modal("close");
         } else {
           var toastHTML = "OTP Does not Match";
           M.toast({ html: toastHTML });
@@ -353,6 +388,14 @@ export class ProductDetailComponent implements OnInit {
   }
   rstOrder() {
     this.formType = 1;
+    this.qty = "1";
+    this.userId = "";
+    this.userName = "";
+    this.contactNum = "";
+    this.address = "";
+    $(document).ready(function() {
+      $("#pymt-select").formSelect();
+    });
   }
   addProductToCart() {
     if (this.loggedIn === 0) {

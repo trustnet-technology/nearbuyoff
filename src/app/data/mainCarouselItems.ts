@@ -15,34 +15,34 @@ export const MAINCAROUSELITEMS: MainCarouselModel[] = [
   //   desc: "Jesse Pinkman",
   //   numSt: "Second"
   // },
-  {
-    heading: "Grocery",
-    color: "../../assets/madridsubzi.jpg",
-    url: "/category/GROC",
-    numSt: "Third"
-  },
-  {
-    heading: "Food Shops",
-    color: "../../assets/lassi.jpg",
-    url: "/category/GROC",
-    numSt: "Fourth"
-  },
-  {
-    heading: "Supermarkets",
-    color: "../../assets/troll.jpg",
-    url: "/category/GROC",
-    numSt: "Fourth"
-  },
-  {
-    heading: "Buy Clocks",
-    color: "../../assets/clocks.jpg",
-    url: "/category/DECO",
-    numSt: "Fourth"
-  },
-  {
-    heading: "Buy T-Shirts",
-    color: "../../assets/shirtssat.jpg",
-    url: "/category/APPA",
-    numSt: "Fourth"
-  }
+  // {
+  //   heading: "Grocery",
+  //   color: "../../assets/madridsubzi.jpg",
+  //   url: "/category/GROC",
+  //   numSt: "Third"
+  // },
+  // {
+  //   heading: "Food Shops",
+  //   color: "../../assets/lassi.jpg",
+  //   url: "/category/GROC",
+  //   numSt: "Fourth"
+  // },
+  // {
+  //   heading: "Supermarkets",
+  //   color: "../../assets/troll.jpg",
+  //   url: "/category/GROC",
+  //   numSt: "Fourth"
+  // },
+  // {
+  //   heading: "Buy Clocks",
+  //   color: "../../assets/clocks.jpg",
+  //   url: "/category/DECO",
+  //   numSt: "Fourth"
+  // },
+  // {
+  //   heading: "Buy T-Shirts",
+  //   color: "../../assets/shirtssat.jpg",
+  //   url: "/category/APPA",
+  //   numSt: "Fourth"
+  // }
 ];

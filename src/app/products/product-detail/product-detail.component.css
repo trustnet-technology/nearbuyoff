@@ -6,6 +6,9 @@
   /* font-weight: bolder; */
   background-color: #eeefe7;
 }
+#mobile-star {
+  display: none;
+}
 #cart-modal .row {
   margin-bottom: 0.625em;
 }
@@ -65,6 +68,9 @@
   align-items: center;
   padding: 5%;
 }
+#verify-imge {
+  width: 50vh;
+}
 
 .product-price span {
   font-size: 26px;
@@ -117,47 +123,14 @@ td a {
   padding-bottom: 2%;
   overflow: visible;
 }
-/* Ratings Thing */
-
-.rate {
-  float: left;
-  height: 46px;
-  /* padding: 30px; */
-}
-.rate:not(:checked) > input {
-  position: absolute;
-  top: -9999px;
-}
-.rate:not(:checked) > label {
-  float: right;
-  width: 1em;
-  overflow: hidden;
-  white-space: nowrap;
-  cursor: pointer;
-  font-size: 15px;
-  color: #ccc;
-}
-.rate:not(:checked) > label:before {
-  content: "★ ";
-}
-.rate > input:checked ~ label {
-  color: #ffc700;
-}
-.rate:not(:checked) > label:hover,
-.rate:not(:checked) > label:hover ~ label {
-  color: #deb217;
-}
-.rate > input:checked + label:hover,
-.rate > input:checked + label:hover ~ label,
-.rate > input:checked ~ label:hover,
-.rate > input:checked ~ label:hover ~ label,
-.rate > label:hover ~ input:checked ~ label {
-  color: #c59b08;
-}
 #modal-buyers,
-#cart-modal {
+#cart-modal,
+#modal-multi-step {
   max-height: 100% !important;
   width: 90% !important;
+}
+#modal-multi-step .modal-content {
+  padding: 0px 24px 24px 24px;
 }
 #modal-inquire {
   max-height: 100% !important;
@@ -206,7 +179,7 @@ div.explanation {
 
 @media (min-width: 320px) and (max-width: 480px) {
   #mobile-buttons {
-    display: block;
+    display: none;
   }
   #modal-buyers.modal .modal-content {
     padding: 16px;
@@ -217,11 +190,20 @@ div.explanation {
   #productPageCarousel {
     display: none;
   }
+  #modal-mrp {
+    font-size: 14px;
+  }
+  #modal-msp {
+    font-size: 18px;
+  }
   #mob-recom-prods {
     display: block;
   }
   .input-field.col.s4 {
     font-size: 0.8em;
+  }
+  #save-row {
+    display: none;
   }
   td {
     text-align: center;
@@ -274,19 +256,24 @@ div.explanation {
     margin-bottom: 10px;
   }
   #cart-modal p {
-    font-size: 0.6em;
+    font-size: 0.8em;
   }
   #cart-modal .col.s9 h5 {
     font-size: 0.9em;
   }
-  /* #qty-cart {
-    font-size: 0.8em;
-    height: 1.5em;
-  } */
+  #mobile-star {
+    display: block;
+  }
+  #desk-star {
+    display: none;
+  }
   #qty-label {
     top: 1em;
     left: 0em;
     font-size: 0.7em;
+  }
+  .col.l8.m8.s8 {
+    padding-top: 10%;
   }
   .btn {
     font-size: 7px;
@@ -297,8 +284,17 @@ div.explanation {
   .input-field > #qty {
     font-size: 0.5em;
   }
+  #modal-buyers,
+  #cart-modal {
+    height: 85vh;
+    overflow-y: scroll;
+  }
+  #modal-inquire {
+    height: 85vh;
+    overflow-y: scroll;
+  }
   input[type="text"]:not(.browser-default) {
-    margin: 15px 0 0 0;
+    margin: 10px 0 0 0;
     height: 2em;
   }
 
@@ -307,34 +303,13 @@ div.explanation {
     height: 46px;
     /* padding: 30px; */
   }
-  .rate:not(:checked) > input {
-    position: absolute;
-    top: -9999px;
+  #verify-imge {
+    width: 20vh;
   }
-  .rate:not(:checked) > label {
-    float: right;
-    width: 1em;
-    overflow: hidden;
-    white-space: nowrap;
-    cursor: pointer;
-    font-size: 14px;
-    color: #ccc;
+  .row .col.offset-s3 {
+    margin-left: 10%;
   }
-  .rate:not(:checked) > label:before {
-    content: "★ ";
-  }
-  .rate > input:checked ~ label {
-    color: #ffc700;
-  }
-  .rate:not(:checked) > label:hover,
-  .rate:not(:checked) > label:hover ~ label {
-    color: #deb217;
-  }
-  .rate > input:checked + label:hover,
-  .rate > input:checked + label:hover ~ label,
-  .rate > input:checked ~ label:hover,
-  .rate > input:checked ~ label:hover ~ label,
-  .rate > label:hover ~ input:checked ~ label {
-    color: #c59b08;
+  #rna-title {
+    margin: 0.7666666667rem 0 0.46rem 80px;
   }
 }

@@ -9,7 +9,21 @@ declare var $: any;
   styleUrls: ["./slider.component.css"]
 })
 export class SliderComponent implements OnInit {
-  mainImages: MainCarouselModel[];
+  mainImages: (string | MainCarouselModel)[] = [
+    {
+      url: "../../assets/madridsubzi.jpg",
+      href: "/category/GROC",
+      title: "Grocery"
+    },
+    { url: "../../assets/lassi.jpg", href: "/category/GROC", title: "Grocery" },
+    { url: "../../assets/troll.jpg", href: "/category/GROC", title: "Grocery" },
+    { url: "../../assets/clocks.jpg", href: "/category/DECO", title: "Decors" },
+    {
+      url: "../../assets/shirtssat.jpg",
+      href: "/category/APPA",
+      title: "Apparels"
+    }
+  ];
   options = { fullWidth: true, indicators: false, height: 300 };
   options2 = { responsiveThreshold: 0 };
   mainLazyImage = "https://picsum.photos/id/777/12/8";
@@ -17,19 +31,7 @@ export class SliderComponent implements OnInit {
   constructor(private mainCarouselItemsService: MainCarouselItemsService) {}
 
   ngOnInit() {
-    this.getMainCarouselItems();
-    $("#mainCarouselNext").click(function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      $(".carousel").carousel("next");
-    });
-
-    // move prev carousel
-    $("#mainCarouselPrev").click(function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      $(".carousel").carousel("prev");
-    });
+    // this.getMainCarouselItems();
   }
   ngAfterViewInit() {
     var elems = document.querySelectorAll(".carousel");
@@ -37,7 +39,7 @@ export class SliderComponent implements OnInit {
     // var elems2 = document.querySelectorAll(".parallax");
     // var instances2 = M.Parallax  .init(elems2, this.options2);
   }
-  getMainCarouselItems(): void {
-    this.mainImages = this.mainCarouselItemsService.getMainCarouselItems();
-  }
+  // getMainCarouselItems(): void {
+  //   this.mainImages = this.mainCarouselItemsService.getMainCarouselItems();
+  // }
 }
