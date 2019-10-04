@@ -13,6 +13,7 @@ import { CardComponent } from "./card/card.component";
 import { ProductDetailComponent } from "./products/product-detail/product-detail.component";
 import { VendorDetailComponent } from "./vendor-detail/vendor-detail.component";
 import { AgmCoreModule } from "@agm/core";
+import { OrderModule } from "ngx-order-pipe";
 import * as M from "materialize-css/dist/js/materialize";
 import { SearchComponent } from "./search/search.component";
 import { RatingComponent } from "./rating/rating.component";
@@ -65,12 +66,13 @@ import { SubCategoryCardComponent } from "./sub-category-card/sub-category-card.
     SlideshowModule,
     RatingModule,
     HttpClientModule,
+    OrderModule,
     ShareModule,
     Ng5SliderModule,
     SelectDropDownModule,
     LazyLoadImageModule.forRoot({ preset: intersectionObserverPreset }),
     AgmCoreModule.forRoot({
-      apiKey: "AIzaSyCPq73ZhDozL2oRl9jfqO_4xZpBMOCJA84"
+      apiKey: "Enter API key here"
     }),
     AgmDirectionModule
   ],

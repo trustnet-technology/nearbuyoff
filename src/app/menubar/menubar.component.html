@@ -45,7 +45,10 @@
         <div class="collapsible-body">
           <ul>
             <li *ngFor="let child of mItem.children">
-              <a routerLink="/subcategory/{{ child.url }}">{{ child.name }}</a>
+              <a
+                routerLink="/{{ mItem.categoryID }}/subcategory/{{ child.url }}"
+                >{{ child.name }}</a
+              >
             </li>
           </ul>
         </div>

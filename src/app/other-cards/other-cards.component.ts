@@ -9,6 +9,7 @@ import { VendorModel } from "../models/vendor-model";
 })
 export class OtherCardsComponent implements OnInit {
   mainLazyImage = "https://picsum.photos/id/777/12/8";
+  shopImage = "../../assets/shoppp.jpeg";
   recentVendors: VendorModel[];
   constructor(private vendor: VendorService) {}
 

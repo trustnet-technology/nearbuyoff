@@ -21,19 +21,19 @@
               <div class="collapsible-body">
                 <span>
                   <div class="cateogory-filter">
-                    <p><b>Category</b></p>
+                    <p><b>Sort by</b></p>
                     <p>
                       <label>
                         <input
                           name="group1"
                           class="with-gap"
                           [(ngModel)]="category"
-                          value="Apparel"
+                          value="Name"
                           type="radio"
                           [checked]="true"
                           (change)="onItemChange()"
                         />
-                        <span>Apparel</span>
+                        <span>Name</span>
                       </label>
                     </p>
                     <p>
@@ -42,11 +42,11 @@
                           class="with-gap"
                           name="group1"
                           [(ngModel)]="category"
-                          value="Home Appliances"
+                          value="Price (Asc.)"
                           type="radio"
                           (change)="onItemChange()"
                         />
-                        <span>Home Appliances</span>
+                        <span>Price (Asc.)</span>
                       </label>
                     </p>
                     <p>
@@ -55,24 +55,11 @@
                           class="with-gap"
                           name="group1"
                           [(ngModel)]="category"
-                          value="Grocery"
+                          value="Price (Desc.)"
                           type="radio"
                           (change)="onItemChange()"
                         />
-                        <span>Grocery</span>
-                      </label>
-                    </p>
-                    <p>
-                      <label>
-                        <input
-                          class="with-gap"
-                          name="group1"
-                          [(ngModel)]="category"
-                          value="Decor"
-                          type="radio"
-                          (change)="onItemChange()"
-                        />
-                        <span>Decor</span>
+                        <span>Price (Desc.)</span>
                       </label>
                     </p>
                   </div>
@@ -326,19 +313,18 @@
             <ng5-slider [(value)]="value" [options]="options"></ng5-slider>
           </div>
           <div class="cateogory-filter">
-            <p><b>Category</b></p>
+            <p><b>Sort by</b></p>
             <p>
               <label>
                 <input
                   name="group1"
                   class="with-gap"
                   [(ngModel)]="category"
-                  value="Apparel"
+                  value="Name"
                   type="radio"
-                  [checked]="true"
                   (change)="onItemChange()"
                 />
-                <span>Apparel</span>
+                <span>Name</span>
               </label>
             </p>
             <p>
@@ -347,11 +333,11 @@
                   class="with-gap"
                   name="group1"
                   [(ngModel)]="category"
-                  value="Home Appliances"
+                  value="Price (Asc.)"
                   type="radio"
                   (change)="onItemChange()"
                 />
-                <span>Home Appliances</span>
+                <span>Price (Asc.)</span>
               </label>
             </p>
             <p>
@@ -360,28 +346,15 @@
                   class="with-gap"
                   name="group1"
                   [(ngModel)]="category"
-                  value="Grocery"
+                  value="Price (Desc.)"
                   type="radio"
                   (change)="onItemChange()"
                 />
-                <span>Grocery</span>
-              </label>
-            </p>
-            <p>
-              <label>
-                <input
-                  class="with-gap"
-                  name="group1"
-                  [(ngModel)]="category"
-                  value="Decor"
-                  type="radio"
-                  (change)="onItemChange()"
-                />
-                <span>Decor</span>
+                <span>Price (Desc.)</span>
               </label>
             </p>
           </div>
-          <div class="sub-category-filter">
+          <!-- <div class="sub-category-filter">
             <p><b>Sub-Category</b></p>
             <p *ngFor="let subCat of subcategory">
               <label>
@@ -389,53 +362,54 @@
                 <span>{{ subCat }}</span>
               </label>
             </p>
-          </div>
+          </div> -->
         </div>
       </div>
       <div class="col s9 hide-on-med-and-down">
         <div *ngFor="let product of searchRes">
-          <a
-            routerLink="/subcategory/{{ product.subCategoryId }}/{{
-              product.productId
-            }}"
-            ><div class="row card">
-              <div class="col s3" style="padding-top:1.5%">
-                <img
-                  class="materialboxed"
-                  id="srch-img"
-                  src="{{ product.imageUrl }}"
-                />
-              </div>
-              <div class="col s4">
-                <h4 class="black-text">
-                  <b>{{ product.productName }}</b>
-                </h4>
-              </div>
-              <div class="col s3" style="padding-top: 3%">
-                <!-- <h6><b>Category: Apparel</b></h6> -->
-                <h6>
-                  <b>MSP: ₹{{ product.minPrice }}</b>
-                </h6>
-                <star-rating
-                  value="5"
-                  checkedcolor="gold"
-                  uncheckedcolor="grey"
-                  size="24px"
-                  readonly="false"
-                  (rate)="onRate($event)"
-                ></star-rating>
-                <!-- <app-rating [rate]="5"></app-rating> -->
-              </div>
-              <div class="col s2" style="padding-top:5%;">
-                <a
-                  id="bt-pre-book"
-                  class="btn btn-large"
-                  routerLink="/subcategory/{{ product.subCategoryId }}/{{
-                    product.productId
-                  }}"
-                  >View Details</a
-                ><br />
-                <!-- <div class="row" style="padding-top: 10%">
+          <div *ngIf="product.minPrice < value || product.minPrice === value">
+            <a
+              routerLink="/subcategory/{{ product.subCategoryId }}/{{
+                product.productId
+              }}"
+              ><div class="row card">
+                <div class="col s3" style="padding-top:1.5%">
+                  <img
+                    class="materialboxed"
+                    id="srch-img"
+                    src="{{ product.imageUrl }}"
+                  />
+                </div>
+                <div class="col s4">
+                  <h4 class="black-text">
+                    <b>{{ product.productName }}</b>
+                  </h4>
+                </div>
+                <div class="col s3" style="padding-top: 3%">
+                  <!-- <h6><b>Category: Apparel</b></h6> -->
+                  <h6>
+                    <b>MSP: ₹{{ product.minPrice }}</b>
+                  </h6>
+                  <star-rating
+                    value="5"
+                    checkedcolor="gold"
+                    uncheckedcolor="grey"
+                    size="24px"
+                    readonly="false"
+                    (rate)="onRate($event)"
+                  ></star-rating>
+                  <!-- <app-rating [rate]="5"></app-rating> -->
+                </div>
+                <div class="col s2" style="padding-top:5%;">
+                  <a
+                    id="bt-pre-book"
+                    class="btn btn-large"
+                    routerLink="/subcategory/{{ product.subCategoryId }}/{{
+                      product.productId
+                    }}"
+                    >View Details</a
+                  ><br />
+                  <!-- <div class="row" style="padding-top: 10%">
                   <div
                     class="col s2 offset-s2"
                     style="margin-top:4%;margin-right:1%"
@@ -450,41 +424,47 @@
                     />
                   </div>
                 </div> -->
-              </div>
-            </div></a
-          >
+                </div>
+              </div></a
+            >
+          </div>
         </div>
       </div>
-      <div *ngFor="let product of searchRes" class="card" id="mob-srch-rslt">
-        <div class="row">
-          <div class="col s3" style="padding-top:1.5%">
-            <img
-              class="materialboxed"
-              src="{{ product.imageUrl }}"
-              height="100"
-              width="90"
-            />
-          </div>
-          <div class="col s6" style="padding-left: 10%">
-            <h5>
-              <b>{{ product.productName }}</b>
-            </h5>
-            <!-- <div class="row">
+      <div *ngFor="let product of searchRes">
+        <div
+          *ngIf="product.minPrice < value || product.minPrice === value"
+          class="card"
+          id="mob-srch-rslt"
+        >
+          <div class="row">
+            <div class="col s3" style="padding-top:1.5%">
+              <img
+                class="materialboxed"
+                src="{{ product.imageUrl }}"
+                height="100"
+                width="90"
+              />
+            </div>
+            <div class="col s6" style="padding-left: 10%">
+              <h5>
+                <b>{{ product.productName }}</b>
+              </h5>
+              <!-- <div class="row">
               <div class="col s10" style="padding-left: 10%">
                 <p style="font-size: 12px"><b>Category:</b> Apparel</p>
               </div>
             </div> -->
-          </div>
-          <div class="col s3" style="padding-top: 4%">
-            <a
-              id="bt-pre-book"
-              class="btn"
-              routerLink="/subcategory/{{ product.subCategoryId }}/{{
-                product.productId
-              }}"
-              >View Details</a
-            >
-            <!-- <div class="row" style="margin-top:25%">
+            </div>
+            <div class="col s3" style="padding-top: 4%">
+              <a
+                id="bt-pre-book"
+                class="btn"
+                routerLink="/subcategory/{{ product.subCategoryId }}/{{
+                  product.productId
+                }}"
+                >View Details</a
+              >
+              <!-- <div class="row" style="margin-top:25%">
               <div class="col s2 ">
                 <img
                   src="../../assets/cirlceGreenWalk.png"
@@ -494,12 +474,12 @@
               </div>
               <div class="col s2"><b>5KM</b></div>
             </div> -->
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- <ul
+      <!-- <ul
       class="pagination center"
       style="margin-top: 5%; padding-bottom: 14%;margin-bottom: 0%"
     >
@@ -515,5 +495,6 @@
         <a href="#!"><i class="material-icons">chevron_right</i></a>
       </li>
     </ul> -->
+    </div>
   </div>
 </div>

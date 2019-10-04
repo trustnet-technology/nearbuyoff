@@ -353,9 +353,6 @@ export class ProductDetailComponent implements OnInit {
     this.steppers.next();
     this.getOTP(phoneNo);
   }
-  btnPressOrder() {
-    this.facility = 6;
-  }
   btnPressCart() {
     this.facility = 7;
     this.facilityTitle = "Added to Cart";
@@ -441,7 +438,7 @@ export class ProductDetailComponent implements OnInit {
       this.router.navigate(["customer/orders"]);
     }
   }
-  postLeads(sellerInfo, quantity: string) {
+  postLeads(sellerInfo) {
     const productID = this.route.snapshot.paramMap.get("productId");
     if (this.loggedIn === 0) {
       var toastHTML = "Please Login first";
@@ -451,7 +448,7 @@ export class ProductDetailComponent implements OnInit {
         product_id: productID,
         product_variant_id: sellerInfo.productAttributeId,
         user_id: this.userId,
-        quantity: Number(quantity),
+        quantity: Number(this.qty),
         contact_no: Number(this.contactNum),
         customer_name: this.userName,
         vendor_id: sellerInfo.sellerId

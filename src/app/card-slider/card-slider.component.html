@@ -14,7 +14,7 @@
     >
       <a
         class="col l3 m3 s6"
-        routerLink="/subcategory/{{ subccategory.subategoryId }}"
+        routerLink="/HOME/subcategory/{{ subccategory.subategoryId }}"
       >
         <app-sub-category-card [subCatContent]="subccategory">
         </app-sub-category-card>
@@ -36,7 +36,7 @@
     <div *ngFor="let subccategory of apparels2; let i = index; let last = last">
       <a
         class="col l3 m3 s6"
-        routerLink="/subcategory/{{ subccategory.subategoryId }}"
+        routerLink="/APPA/subcategory/{{ subccategory.subategoryId }}"
       >
         <app-sub-category-card
           [subCatContent]="subccategory"
@@ -60,7 +60,7 @@
     <div *ngFor="let subccategory of grocery2; let i = index; let last = last">
       <a
         class="col l3 m3 s6"
-        routerLink="/subcategory/{{ subccategory.subategoryId }}"
+        routerLink="/GROC/subcategory/{{ subccategory.subategoryId }}"
       >
         <app-sub-category-card
           [subCatContent]="subccategory"
@@ -84,7 +84,7 @@
     <div *ngFor="let subccategory of decors2; let i = index; let last = last">
       <a
         class="col l3 m3 s6"
-        routerLink="/subcategory/{{ subccategory.subategoryId }}"
+        routerLink="/DECO/subcategory/{{ subccategory.subategoryId }}"
       >
         <app-sub-category-card
           [subCatContent]="subccategory"

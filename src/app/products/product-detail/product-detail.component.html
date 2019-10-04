@@ -1,7 +1,7 @@
 <div style="background-color: #f2f3f4 ;font-family:  'Oswald', sans-serif;">
   <app-menubar></app-menubar>
   <div class="container">
-      <!-- <nav>
+    <!-- <nav>
           <div class="nav-wrapper" style="margin-top: 2%; padding-left: 5px">
             <div class="col s12" style="color: black">
               <a href="#!" class="breadcrumb">First</a>
@@ -118,8 +118,7 @@
               <button
                 id="bt-order-now"
                 class="btn btn-large center modal-trigger cyan darken-3"
-                data-target="cart-modal"
-                (click)="btnPressOrder()"
+                data-target="modal-multi-step"
               >
                 Order Now
               </button>
@@ -128,7 +127,7 @@
               <button
                 id="bt-add-to-cart"
                 class="modal-trigger btn btn-large center cyan darken-1"
-                data-target="modal-multi-step"
+                (click)="addProductToCart()"
               >
                 Add to Cart
                 <!-- data-target="cart-modal"
@@ -245,8 +244,8 @@
                   {{ attr.sellerAddress }}
                 </p>
                 <star-rating
-                id="desk-star"
-                value="5"
+                  id="desk-star"
+                  value="5"
                   checkedcolor="gold"
                   uncheckedcolor="grey"
                   size="24px"
@@ -254,8 +253,8 @@
                   (rate)="onRate($event)"
                 ></star-rating>
                 <star-rating
-                id="mobile-star"  
-                value="5"
+                  id="mobile-star"
+                  value="5"
                   checkedcolor="gold"
                   uncheckedcolor="grey"
                   size="12px"
@@ -266,16 +265,15 @@
               <td>
                 <a
                   class="waves-effect modal-close waves-light btn green darken-4"
-                  (click)="postLeads(attr, quantity.value)"
+                  (click)="postLeads(attr)"
                   >Inquire</a
                 >
                 <!--  -->
                 <!-- routerLink="/seller/{{ attr.sellerId }}" -->
                 <a
                   class="waves-effect modal-trigger waves-light btn green modal-close"
-                  data-target="cart-modal"
+                  data-target="modal-multi-step"
                   style="margin-top: 4%"
-                  (click)="btnPressOrder()"
                   >Order Now</a
                 >
                 <!-- (click)="orderNow(quantity.value)" -->
@@ -289,77 +287,90 @@
 </div>
 
 <div id="modal-multi-step" class="modal" style="overflow: visible">
-    <div *ngIf="formType === 1">
-  <div class="modal-content">
-    <ngx-stepper #stepperDemo="stepper"	 [options]="stepperOptions">
-      <ngx-step  [label]="'Order Details'">
-        <ngx-step-body>
-          <div class="row" style="height:50vh;overflow-y: scroll;margin-top: 3%">
-            <div class="col l8 m8 s12">
+  <div *ngIf="formType === 1">
+    <div class="modal-content">
+      <ngx-stepper #stepperDemo="stepper" [options]="stepperOptions">
+        <ngx-step [label]="'Order Details'">
+          <ngx-step-body>
+            <div
+              class="row"
+              style="height:50vh;overflow-y: scroll;margin-top: 3%"
+            >
+              <div class="col l6 m6 s12 offset-l1 offset-m1">
                 <div class="row">
-                  <div class="col l3 m3 s12 offset-l4 offset-m4">
-                      <img src="{{ productM?.imageUrl }}" />
+                  <div class="col l4 m4 s12 offset-l1 offset-m1">
+                    <img src="{{ productM?.imageUrl }}" />
                   </div>
-                  <div class="col l5 m5 s12 row" style="margin-top: 5%">
-                      <div class="col s12"><h5
-                            style="font-weight:bolder;display: inline;overflow: hidden;"
+                  <div class="col l7 m7 s12 row" style="margin-top: 5%">
+                    <div class="col s12">
+                      <h5
+                        style="font-weight:bolder;display: inline;overflow: hidden;"
+                      >
+                        {{ productM?.prductTitle }}
+                      </h5>
+                    </div>
+                    <div class="col s5"><p>SIZE: 42</p></div>
+                    <div class="col s7"><p>COLOR: Grey</p></div>
+                    <div class="col s1"><p>Qty:</p></div>
+                    <div class="col s2">
+                      <input
+                        #quantity
+                        id="qty-cart1"
+                        type="text"
+                        [(ngModel)]="qty"
+                        name="qty"
+                        class="center"
+                      />
+                    </div>
+                    <div class="col s7 offset-s2" style="margin-top: 3%">
+                      <h5
+                        id="modal-msp"
+                        style="overflow: hidden;display: inline"
+                      >
+                        ₹{{ productM?.minPrice }}
+                      </h5>
+                      <sub
+                        ><p style="display: inline">
+                          <s
+                            id="modal-mrp"
+                            class="grey-text"
+                            style="overflow: hidden"
+                            >₹{{ productAttr0?.productAttribute?.mrp }}</s
                           >
-                            {{ productM?.prductTitle }}
-                          </h5>
-                        </div>
-                        <div class="col s5"><p>SIZE: 42</p></div>
-                        <div class="col s7"><p>COLOR: Grey</p></div>
-                        <div class="col s1"><p>Qty:</p></div>
-                      <div class="col s2">
-                        <input
-                          #quantity
-                          id="qty-cart1"
-                          type="text"
-                          [(ngModel)]="qty"
-                          name="qty"
-                          class="center"
-                        />
-                      </div>
-                      <div class="col s7 offset-s2" style="margin-top: 3%">
-                          <h5 id="modal-msp" style="overflow: hidden;display: inline">
-                              ₹{{ productM?.minPrice }}
-                            </h5>
-                            <sub><p style="display: inline">
-                              <s id="modal-mrp" class="grey-text" style="overflow: hidden"
-                                >₹{{ productAttr0?.productAttribute?.mrp }}</s
-                              >
-                            </p></sub>
-                      </div>
-                      <div class="col s12">
-                          <p>
-                              You Save:
-                              <b>
-                                ₹{{
-                                  productAttr0?.productAttribute?.mrp - productM?.minPrice
-                                }}
-                              </b>
-                            </p>
-                      </div>
+                        </p></sub
+                      >
+                    </div>
+                    <div class="col s12">
+                      <p>
+                        You Save:
+                        <b>
+                          ₹{{
+                            productAttr0?.productAttribute?.mrp -
+                              productM?.minPrice
+                          }}
+                        </b>
+                      </p>
+                    </div>
                   </div>
                   <div class="col l5 m5 s12 offset-l7 offset-m7 row">
-                        <div *ngIf="loggedIn == 1" class="row">
-                            <div class="col s4">
-                              <p style="font-weight:bolder">Customer Address:</p>
-                            </div>
-                            <div class="col s8" style="overflow: hidden">
-                              <p>GH-13, Paschim Vihar, New Delhi</p>
-                            </div>
-                        </div>
+                    <div *ngIf="loggedIn == 1" class="row">
+                      <div class="col s4">
+                        <p style="font-weight:bolder">Customer Address:</p>
+                      </div>
+                      <div class="col s8" style="overflow: hidden">
+                        <p>GH-13, Paschim Vihar, New Delhi</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
-            </div>
-            <div class="col l4 m4 s12">
-              <div class="row">
-                <div class="col l12 m12 s12">
-                    <h5>Your Cart</h5>
-                </div>
               </div>
-              <div class="row">
+              <div class="col l4 m4 s12">
+                <div class="row">
+                  <div class="col l12 m12 s12">
+                    <h5>Your Cart</h5>
+                  </div>
+                </div>
+                <div class="row">
                   <div class="col l6 m6 s7"><h6>Item Price</h6></div>
                   <div class="col l5 m3 s4 offset-l1 offset-m1 offset-s1">
                     <h6>₹{{ qty * productM?.minPrice }}</h6>
@@ -372,36 +383,36 @@
                   </div>
                 </div>
                 <div class="row">
-                    <div class="col l6 m6 s7">
-                      <h6><b>Subtotal</b></h6>
-                    </div>
-                    <div class="col l5 m3 s4 offset-l1 offset-m1 offset-s1">
-                      <h6>₹{{ qty * productPricz + deliveryCharges }}</h6>
-                    </div>
+                  <div class="col l6 m6 s7">
+                    <h6><b>Subtotal</b></h6>
                   </div>
-                  <div class="row">
-                      <div class="input-field col s8">
-                        <select id="pymt-select">
-                          <!-- <option value="" disabled selected>Choose your option</option> -->
-                          <option value="COD" selected>COD</option>
-                        </select>
-                        <label>Payment Mode</label>
-                      </div>
+                  <div class="col l5 m3 s4 offset-l1 offset-m1 offset-s1">
+                    <h6>₹{{ qty * productPricz + deliveryCharges }}</h6>
                   </div>
-                    <div class="row">
-                      <div class="col s8">
-                        <a
-                          id="btn-view-all"
-                          (click)="viewAllCart()"
-                          class="black waves-effect waves-light btn modal-close"
-                          style="width: 100%"
-                          >View All Cart Items</a
-                        >
-                      </div>
-                   </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s8">
+                    <select id="pymt-select">
+                      <!-- <option value="" disabled selected>Choose your option</option> -->
+                      <option value="COD" selected>COD</option>
+                    </select>
+                    <label>Payment Mode</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col s8">
+                    <a
+                      id="btn-view-all"
+                      (click)="viewAllCart()"
+                      class="black waves-effect waves-light btn modal-close"
+                      style="width: 100%"
+                      >View All Cart Items</a
+                    >
+                  </div>
+                </div>
               </div>
             </div>
-          <div class="row" id="mobile-buttons">
+            <div class="row" id="mobile-buttons">
               <!-- <div class="col s6">
                 <a
                   class="modal-close modal-trigger green waves-effect waves-green btn"
@@ -419,112 +430,160 @@
                 >
               </div>
             </div>
-        </ngx-step-body>
-        <ngx-step-actions>
-          <button class="waves-effect waves-light btn-small right" (click)="steppers.next()">Checkout this Item</button>
-          <!-- <button class="waves-effect waves-light btn-small" (click)="steppers.back()">Cancel</button> -->
-        </ngx-step-actions>
-      </ngx-step>
-      <ngx-step [label]="'Customer Details'">
-        <ngx-step-body>
-          <form #mainForm="ngForm" style="margin-top: 3%">
-            <div class="row">
-              <div class="input-field col l5 m5 s12 offset-l3 offset-m3">
-                <input
-                  id="full_name"
-                  [(ngModel)]="userName"
-                  name="full Name"
-                  type="text"
-                  class="validate form-control"
-                  required
-                />
-                <label for="full_name">Full Name</label>
+          </ngx-step-body>
+          <ngx-step-actions>
+            <button
+              class="waves-effect waves-light btn-small right"
+              (click)="steppers.next()"
+            >
+              Checkout this Item
+            </button>
+            <!-- <button class="waves-effect waves-light btn-small" (click)="steppers.back()">Cancel</button> -->
+          </ngx-step-actions>
+        </ngx-step>
+        <ngx-step [label]="'Customer Details'">
+          <ngx-step-body>
+            <form #mainForm="ngForm" style="margin-top: 3%">
+              <div class="row">
+                <div class="input-field col l5 m5 s12 offset-l3 offset-m3">
+                  <input
+                    id="full_name"
+                    [(ngModel)]="userName"
+                    name="full Name"
+                    type="text"
+                    class="validate form-control"
+                    required
+                  />
+                  <label for="full_name">Full Name</label>
+                </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="input-field col l5 m5 s12 offset-l3 offset-m3">
-                <input id="address" type="text" class="validate form-control" required/>
-                <label for="address">Address</label>
+              <div class="row">
+                <div class="input-field col l5 m5 s12 offset-l3 offset-m3">
+                  <input
+                    id="address"
+                    type="text"
+                    class="validate form-control"
+                    required
+                  />
+                  <label for="address">Address</label>
+                </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="input-field col l5 m5 s12 offset-l3 offset-m3">
-                <input
-                  #otpTF
-                  id="phone_no"
-                  name="contact num"
-                  [(ngModel)]="contactNum"
-                  type="number"
-                  class="validate form-control"
-                  required
-                />
-                <label for="phone_no">Phone Number</label>
+              <div class="row">
+                <div class="input-field col l5 m5 s12 offset-l3 offset-m3">
+                  <input
+                    #otpTF
+                    id="phone_no"
+                    name="contact num"
+                    [(ngModel)]="contactNum"
+                    type="number"
+                    class="validate form-control"
+                    required
+                  />
+                  <label for="phone_no">Phone Number</label>
+                </div>
               </div>
-            </div>
-          </form>
-        </ngx-step-body>
-        <ngx-step-actions>
-            <button class="waves-effect waves-light btn-small right" [disabled]="!mainForm.form.valid" (click)="changeForm(otpTF.value)">Submit</button>
-            <button class="waves-effect waves-light btn-small left" (click)="steppers.back()">Back</button>
-        </ngx-step-actions>
-      </ngx-step>
-      <ngx-step [label]="'Verify OTP'" >
-        <ngx-step-body>
+            </form>
+          </ngx-step-body>
+          <ngx-step-actions>
+            <button
+              class="waves-effect waves-light btn-small right"
+              [disabled]="!mainForm.form.valid"
+              (click)="changeForm(otpTF.value)"
+            >
+              Submit
+            </button>
+            <button
+              class="waves-effect waves-light btn-small left"
+              (click)="steppers.back()"
+            >
+              Back
+            </button>
+          </ngx-step-actions>
+        </ngx-step>
+        <ngx-step [label]="'Verify OTP'">
+          <ngx-step-body>
             <form #verifyForm="ngForm" style="margin-top: 3%">
-                <div class="row">
-                  <div class="col s6 offset-s4"><label>Phone: </label>{{ contactNum }}</div>
+              <div class="row">
+                <div class="col s6 offset-s4">
+                  <label>Phone: </label>{{ contactNum }}
                 </div>
-                <div class="row">
-                  <div class="input-field col s4 offset-s4">
-                    <input #oneTime id="enter_otp" [(ngModel)]="valueOtp" type="number" class="form-control validate" required/>
-                    <label for="enter_otp">Enter OTP</label>
-                  </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s4 offset-s4">
+                  <input
+                    #oneTime
+                    name="valueOtp"
+                    id="enter_otp"
+                    [(ngModel)]="valueOtp"
+                    type="number"
+                    class="form-control validate"
+                    required
+                  />
+                  <label for="enter_otp">Enter OTP</label>
                 </div>
-              </form>
-        </ngx-step-body>
-        <ngx-step-actions>
-            <button class="waves-effect waves-light btn-small right" [disabled]="!verifyForm.form.valid" (click)="sendOTP(oneTime.value, otpMessage.Details, quantity.value)">Submit</button>
-            <button class="waves-effect waves-light btn-small left" (click)="steppers.back()">Back</button>
-        </ngx-step-actions>
-      </ngx-step>
-    </ngx-stepper>
+              </div>
+            </form>
+          </ngx-step-body>
+          <ngx-step-actions>
+            <button
+              class="waves-effect waves-light btn-small right"
+              [disabled]="!verifyForm.form.valid"
+              (click)="
+                sendOTP(oneTime.value, otpMessage.Details, quantity.value)
+              "
+            >
+              Submit
+            </button>
+            <button
+              class="waves-effect waves-light btn-small left"
+              (click)="steppers.back()"
+            >
+              Back
+            </button>
+          </ngx-step-actions>
+        </ngx-step>
+      </ngx-stepper>
+    </div>
   </div>
-</div>
   <div *ngIf="formType === 3">
-      <div class="modal-content" style="overflow-y: scroll">
+    <div class="modal-content" style="overflow-y: scroll">
+      <div class="row">
+        <div class="col l6 m6 s9 offset-l4 offset-m4">
+          <img
+            id="verify-imge"
+            src="https://s3.amazonaws.com/nex.auraaa.website/assets/tick.gif"
+            alt=""
+          />
+        </div>
+        <div class="col l3 m3 s3 offset-l4 offset-m4 center">
           <div class="row">
-              <div class="col l6 m6 s9 offset-l4 offset-m4">
-                <img id="verify-imge" src="https://s3.amazonaws.com/nex.auraaa.website/assets/tick.gif" alt="" />
-              </div>
-              <div class="col l3 m3 s3 offset-l4 offset-m4 center">
-                <div class="row">
-                  <div class="col s10 offset-s1">
-                    <a
-                      (click)="viewOrders()"
-                      class="modal-close black waves-effect waves-light btn"
-                      style="width: 100%"
-                      >View Orders
-                    </a>
-                  </div>
-                  <div class="col s10 offset-s1">
-                    <a
-                      id="btn-view-all"
-                      (click)="viewAllCart()"
-                      class="black waves-effect waves-light btn modal-close"
-                      style="width: 100%;margin-top: 10%"
-                      >View All Cart Items
-                    </a>
-                  </div>
-                </div>
-              </div>
+            <div class="col s10 offset-s1">
+              <a
+                (click)="viewOrders()"
+                class="modal-close black waves-effect waves-light btn"
+                style="width: 100%"
+                >View Orders
+              </a>
             </div>
+            <div class="col s10 offset-s1">
+              <a
+                id="btn-view-all"
+                (click)="viewAllCart()"
+                class="black waves-effect waves-light btn modal-close"
+                style="width: 100%;margin-top: 10%"
+                >View All Cart Items
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="modal-footer">
-          <a
-          (click)="rstOrder()"
-          class="modal-close waves-effect waves-black btn-flat black"
-          >Close
-        </a>
-      </div>
+    </div>
+    <div class="modal-footer">
+      <a
+        (click)="rstOrder()"
+        class="modal-close waves-effect waves-black btn-flat black"
+        >Close
+      </a>
+    </div>
   </div>
 </div>

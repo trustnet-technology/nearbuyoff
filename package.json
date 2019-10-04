@@ -38,6 +38,7 @@
     "ng-simple-slideshow": "^1.2.9",
     "ng-starrating": "^1.0.6",
     "ng5-slider": "^1.2.4",
+    "ngx-order-pipe": "^2.0.4",
     "ngx-page-scroll": "^6.0.2",
     "ngx-page-scroll-core": "^6.0.2",
     "ngx-select-dropdown": "^1.1.0",

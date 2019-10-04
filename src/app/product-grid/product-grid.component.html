@@ -1,25 +1,6 @@
 <app-menubar></app-menubar>
 <div style="background-color: #f2f3f4 ;font-family:  'Oswald', sans-serif; ">
   <div id="grid-container" class="container">
-    <!-- <div class="row">
-      <div class="col s6 offset-s6">
-        <div class="input-field col s6">
-          <select id="sort-select">
-            <option value="" disabled selected>Choose your option</option>
-            <option value="A-Z">A-Z</option>
-            <option value="Z-A">Z-A</option>
-          </select>
-          <label>Sort</label>
-        </div>
-        <div class="input-field col s6">
-          <select id="price-select">
-            <option value="" disabled selected>Choose your option</option>
-            <option value="10000-15000" selected>10000-15000</option>
-          </select>
-          <label>Price</label>
-        </div>
-      </div>
-    </div> -->
     <div *ngIf="products" class="row">
       <nav>
         <div class="nav-wrapper green darken-2">
@@ -31,6 +12,20 @@
           </div>
         </div>
       </nav>
+      <div class="row">
+        <div class="col s6 offset-s6">
+          <div class="col s12 l6 m6 offset-l6 offset-m6">
+            <label>Sort</label>
+            <ngx-select-dropdown
+              (change)="selectionChanged($event)"
+              [multiple]="false"
+              [(ngModel)]="orderByy"
+              [config]="config"
+              [options]="options"
+            ></ngx-select-dropdown>
+          </div>
+        </div>
+      </div>
       <div *ngFor="let product of products" class="col s4 m4 l3">
         <a
           routerLink="/subcategory/{{ product.subCategoryId }}/{{
@@ -49,15 +44,20 @@
           </div>
         </div>
       </nav>
-      <!-- <nav>
-    <div class="nav-wrapper">
-      <div class="col s12">
-        <a href="#!" class="breadcrumb">First</a>
-        <a href="#!" class="breadcrumb">Second</a>
-        <a href="#!" class="breadcrumb">Third</a>
+      <div class="row">
+        <div class="col s6 offset-s6">
+          <div class="col s12 l6 m6 offset-l6 offset-m6">
+            <label>Sort</label>
+            <ngx-select-dropdown
+              (change)="selectionChanged($event)"
+              [multiple]="false"
+              [(ngModel)]="orderByy"
+              [config]="config"
+              [options]="options"
+            ></ngx-select-dropdown>
+          </div>
+        </div>
       </div>
-    </div>
-  </nav> -->
       <div *ngFor="let subCategory of subCategories" class="col s6 m6 l4">
         <a
           routerLink="/{{ subCategory.categoryId }}/subcategory/{{

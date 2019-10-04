@@ -22,6 +22,7 @@ export class ProductService {
   getProductsSubcategories(): Observable<SubCategoryModel[]> {
     const path = "/nearby/getSubCatOfCategories";
     console.log(this.configs);
+
     if (!this.configs) {
       this.configs = this.http
         .get<SubCategoryModel[]>(`${environment.base_url}${path}`)
@@ -30,7 +31,6 @@ export class ProductService {
           publishReplay(),
           refCount()
         );
-      console.log(this.configs);
     }
     console.log(this.configs);
     return this.configs;

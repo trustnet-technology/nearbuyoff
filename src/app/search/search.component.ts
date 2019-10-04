@@ -5,6 +5,7 @@ import { Options } from "ng5-slider";
 import { SearchService } from "../services/search.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { StarRatingComponent } from "ng-starrating";
+import { OrderPipe } from "ngx-order-pipe";
 
 @Component({
   selector: "app-search",
@@ -13,8 +14,12 @@ import { StarRatingComponent } from "ng-starrating";
 })
 export class SearchComponent implements OnInit {
   category: string;
-  value: number = 100;
+  value: number = 10000;
   searchRes: any;
+  order: string = "productName";
+  prize: string = "minPrice";
+  orderByy: string;
+  byPrice: string;
   options: Options = {
     floor: 0,
     ceil: 10000
@@ -23,7 +28,8 @@ export class SearchComponent implements OnInit {
   constructor(
     private search: SearchService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private orderPipe: OrderPipe
   ) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
@@ -72,7 +78,7 @@ export class SearchComponent implements OnInit {
 
   ngOnInit() {
     this.jquery_code();
-    this.category = "Apparel";
+    this.category = "";
     this.subcategory = ["Jeans", "T-Shirts", "Sweatshirts", "Sneakers"];
     const productName = this.route.snapshot.paramMap.get("productName");
     this.getSearchReslts(productName);
@@ -89,24 +95,30 @@ export class SearchComponent implements OnInit {
   }
   onItemChange() {
     console.log(" Value is : ", this.category);
-    if (this.category == "Apparel") {
-      this.subcategory = ["Jeans", "T-Shirts", "Sweatshirts", "Sneakers"];
-    } else if (this.category == "Home Appliances") {
-      this.subcategory = [
-        "Gaming Consoles",
-        "TV & HTs",
-        "Washing Machine",
-        "Speakers"
-      ];
-    } else if (this.category == "Decor") {
-      this.subcategory = ["Curtains", "Pillows", "Wallpapers", "Showpieces"];
-    } else if (this.category == "Grocery") {
-      this.subcategory = [
-        "Dressings & Sauces",
-        "Dairy Products",
-        "Fruits",
-        "Frozen Food"
-      ];
+    if (this.category == "Name") {
+      this.searchRes = this.orderPipe.transform(
+        this.searchRes,
+        this.order,
+        false
+      );
+    } else if (this.category == "Name (Reverse)") {
+      this.searchRes = this.orderPipe.transform(
+        this.searchRes,
+        this.order,
+        true
+      );
+    } else if (this.category == "Price (Asc.)") {
+      this.searchRes = this.orderPipe.transform(
+        this.searchRes,
+        this.prize,
+        false
+      );
+    } else if (this.category == "Price (Desc.)") {
+      this.searchRes = this.orderPipe.transform(
+        this.searchRes,
+        this.prize,
+        true
+      );
     }
   }
   getSearchReslts(productName: string) {

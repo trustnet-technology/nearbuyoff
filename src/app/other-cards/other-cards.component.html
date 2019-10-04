@@ -8,35 +8,28 @@
     <h5 class="center">Recently Added Sellers</h5>
 
     <div class="col s12 m4 l4" *ngFor="let seller of recentVendors">
-      <div class="card">
-        <div class="card-image">
-          <img
-            [lazyLoad]="'../../assets/openResto.jpg'"
-            [defaultImage]="mainLazyImage"
-            [useSrcset]="true"
-          /><span class="card-badge green"
-            ><i class="material-icons">school</i>New!!</span
-          >
-          <span class="card-title">{{ seller.sellerName }}</span>
+      <a routerLink="/seller/{{ seller.sellerId }}"
+        ><div class="card">
+          <div class="card-image">
+            <img src="{{ shopImage }}" alt="" /><span class="card-badge green"
+              ><i class="material-icons">school</i>New!!</span
+            >
+          </div>
+          <div class="card-content">
+            <span class="card-title">{{ seller.sellerName }}</span>
+          </div>
+          <div class="card-action">
+            <button
+              class="btn waves-effect waves-light black"
+              type="submit"
+              name="action"
+              routerLink="/seller/{{ seller.sellerId }}"
+            >
+              Connect to Shop<i class="material-icons right">send</i>
+            </button>
+          </div>
         </div>
-        <!-- <div class="card-content">
-          <p>
-            I am a very simple card. I am good at containing small bits of
-            information. I am convenient because I require little markup to use
-            effectively.
-          </p>
-        </div> -->
-        <div class="card-action">
-          <button
-            class="btn waves-effect waves-light black"
-            type="submit"
-            name="action"
-            routerLink="/seller/{{ seller.sellerId }}"
-          >
-            Connect to Shop<i class="material-icons right">send</i>
-          </button>
-        </div>
-      </div>
+      </a>
     </div>
   </div>
 </section>
@@ -46,33 +39,31 @@
     <h5 class="center">Recently Added Shops</h5>
 
     <div *ngFor="let seller of recentVendors" class="col s4">
-      <div class="card">
-        <div class="card-image">
-          <img
-            [lazyLoad]="'../../assets/openResto.jpg'"
-            [defaultImage]="mainLazyImage"
-            [useSrcset]="true"
-          /><span class="card-badge green"
-            ><i class="material-icons">school</i>New!!</span
-          >
+      <a routerLink="/seller/{{ seller.sellerId }}"
+        ><div class="card">
+          <div class="card-image">
+            <img src="{{ shopImage }}" alt="" /><span class="card-badge green"
+              ><i class="material-icons">school</i>New!!</span
+            >
+          </div>
+          <div class="card-content">
+            <span id="recent-add-title-mob" class="card-title">{{
+              seller.sellerName
+            }}</span>
+          </div>
+          <div class="card-action">
+            <button
+              id="bt-connect-shop"
+              class="btn waves-effect waves-light black"
+              type="submit"
+              name="action"
+              routerLink="/seller/{{ seller.sellerId }}"
+            >
+              Connect to Shop<i class="material-icons right">send</i>
+            </button>
+          </div>
         </div>
-        <div class="card-content">
-          <span id="recent-add-title-mob" class="card-title">{{
-            seller.sellerName
-          }}</span>
-        </div>
-        <div class="card-action">
-          <button
-            id="bt-connect-shop"
-            class="btn waves-effect waves-light black"
-            type="submit"
-            name="action"
-            routerLink="/seller/{{ seller.sellerId }}"
-          >
-            Connect to Shop<i class="material-icons right">send</i>
-          </button>
-        </div>
-      </div>
+      </a>
     </div>
   </div>
 </section>
